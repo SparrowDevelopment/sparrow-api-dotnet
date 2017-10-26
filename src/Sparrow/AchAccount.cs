@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sparrow
 {
-    public class AchAccount
+    public class AchAccount: IPaymentType, ISparrowApi
     {
         public string BankName { get; set; }
         public string Routing { get; set; }
@@ -13,5 +13,13 @@ namespace Sparrow
         public string AccountSubType { get; set; }
         public string CourtesyCardId { get; set; }
         public string CheckNumber { get; set; }
+    }
+
+    public interface ISparrowApi
+    {
+    }
+
+    public interface IPaymentType: ISparrowApi
+    {
     }
 }

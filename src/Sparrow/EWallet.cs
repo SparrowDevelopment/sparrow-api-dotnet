@@ -8,7 +8,7 @@ namespace Sparrow
     {
         PayPal,
     }
-    public class EWallet
+    public class EWallet: IPaymentType
     {
         public EWalletType Type { get; set; }
         public string Account { get; set; }
