@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sparrow
 {
-    class CreditCard
+    public class CreditCard
     {
         public string CardNum { get; set; }
         public string CardExp { get; set; }

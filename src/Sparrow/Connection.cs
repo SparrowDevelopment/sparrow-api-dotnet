@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Sparrow
 {
-    class Connection
+    public class Connection
     {
         private string _mKey;
         public Connection(string mKey)
@@ -13,7 +13,7 @@ namespace Sparrow
             _mKey = mKey;
         }
 
-        public Response Sale()
+        public Response Sale(CreditCard card, string )
         {
             return new Response();
         }

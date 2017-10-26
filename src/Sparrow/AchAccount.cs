@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sparrow
 {
-    class AchAccount
+    public class AchAccount
     {
         public string BankName { get; set; }
         public string Routing { get; set; }
