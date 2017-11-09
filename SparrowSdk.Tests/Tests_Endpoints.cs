@@ -344,7 +344,7 @@ namespace SparrowSdk.Tests
             var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
                 payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
             var result = await _sparrow_creditcard.DeletePaymentType(result_AddCustomer.CustomerToken,
-                payments: new[] { new Sparrow.DeletePaymentTypePayment { Token = result_AddCustomer.CustomerToken, OperationType = "" } });
+                payments: new[] { new Sparrow.DeletePaymentTypePayment { Token = result_AddCustomer.CustomerToken } });
 
             TestContext.WriteLine(result.ToString());
 
@@ -408,8 +408,10 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AssignPaymentPlanToCustomer()
         {
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-            var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017");
+            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
+            var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
+                sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
             var result = await _sparrow_creditcard.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
 
             TestContext.WriteLine(result.ToString());
