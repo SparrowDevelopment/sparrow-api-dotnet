@@ -8,11 +8,11 @@ namespace SparrowSdk
 {
     // Docs at: http://foresight.sparrowone.com/
 
-    public class SparrowReponse
+    public class SparrowResponse
     {
-        public static SparrowReponse Create(Dictionary<string, string> values)
+        public static SparrowResponse Create(Dictionary<string, string> values)
         {
-            return new SparrowReponse()
+            return new SparrowResponse()
             {
                 Status = values.GetIntOrZero("status"),
                 Response = values.GetIntOrZero("response"),
