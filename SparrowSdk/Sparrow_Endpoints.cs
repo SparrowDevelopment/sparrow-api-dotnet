@@ -86,10 +86,6 @@ namespace SparrowSdk
         public class AdvancedSaleOptionalAmount
         {
             /// <summary>
-            /// Type of additional amount
-            /// </summary>
-            public string OptAmountType { get; set; } = "";
-            /// <summary>
             /// Value of additional amount (e.g. 1.00)
             /// </summary>
             public decimal? OptAmountValue { get; set; } = null;
@@ -1295,7 +1291,7 @@ namespace SparrowSdk
         /// <param name="amount">Total amount to be charged (i.e. 10.00) (Format: d.dd)</param>,
         /// <param name="ewallet">Currently PayPal is the only eWallet type supported (ewallet type Format: PayPal)</param>,
         /// <param name="currency">Code of the payment currency. If not currency is specified, the default is USD (Format: ccc)</param>
-        public async Task<SparrowReponse> EWalletSimpleCredit(string ewalletAccount, decimal amount, string ewallet = "", string currency = "")
+        public async Task<SparrowReponse> EWalletSimpleCredit(string ewalletAccount, decimal amount, string currency = "")
         {
             var data = new Dictionary<string, string>
             {
@@ -1303,7 +1299,7 @@ namespace SparrowSdk
                 { "mkey", _apiKey },
                 { "ewalletaccount", ewalletAccount },
                 { "amount", amount.ToString("f2") },
-                { "ewallet", ewallet },
+                { "ewallet", "paypal" },
                 { "currency", currency }
             };
 
@@ -1788,10 +1784,6 @@ namespace SparrowSdk
             /// eWallet account credentials, ie; email
             /// </summary>
             public string EwalletAccount { get; set; } = "";
-            /// <summary>
-            /// Type of eWallet
-            /// </summary>
-            public string EwalletType { get; set; } = "";
         }
 
         public class AddCustomerShipping
@@ -1914,7 +1906,7 @@ namespace SparrowSdk
                     data.Add("achaccountsubtype_" + (i + 1), x.AchAccountSubType);
                     data.Add("payno_" + (i + 1), "" + x.PayNo);
                     data.Add("ewalletaccount_" + (i + 1), x.EwalletAccount);
-                    data.Add("ewallettype_" + (i + 1), x.EwalletType);
+                    data.Add("ewallettype_" + (i + 1), "paypal");
                 }
             }
 
@@ -1942,10 +1934,6 @@ namespace SparrowSdk
 
         public class AddCreditCardPayment
         {
-            /// <summary>
-            /// Type of payment info
-            /// </summary>
-            public string PayType { get; set; }
             /// <summary>
             /// Credit card number
             /// </summary>
@@ -1982,7 +1970,7 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("paytype_" + (i + 1), x.PayType);
+                    data.Add("paytype_" + (i + 1), "creditcard");
                     data.Add("cardnum_" + (i + 1), x.CardNum);
                     data.Add("cardexp_" + (i + 1), x.CardExp);
                 }
@@ -1996,10 +1984,6 @@ namespace SparrowSdk
 
         public class AddACHPayment
         {
-            /// <summary>
-            /// Type of payment info
-            /// </summary>
-            public string PayType { get; set; }
             /// <summary>
             /// Type of ACH account
             /// </summary>
@@ -2042,7 +2026,7 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("paytype_" + (i + 1), x.PayType);
+                    data.Add("paytype_" + (i + 1), "ach");
                     data.Add("achaccounttype_" + (i + 1), x.AchAccountType);
                     data.Add("achaccountsubtype_" + (i + 1), x.AchAccountSubType);
                 }
@@ -2056,10 +2040,6 @@ namespace SparrowSdk
 
         public class AddStarCardPayment
         {
-            /// <summary>
-            /// Type of payment info
-            /// </summary>
-            public string PayType { get; set; }
             /// <summary>
             /// Credit Card number
             /// </summary>
@@ -2094,7 +2074,7 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("paytype_" + (i + 1), x.PayType);
+                    data.Add("paytype_" + (i + 1), "starcard");
                     data.Add("cardnum_" + (i + 1), x.CardNum);
                 }
             }
@@ -2107,14 +2087,6 @@ namespace SparrowSdk
 
         public class AddEwalletPayment
         {
-            /// <summary>
-            /// Type of payment info
-            /// </summary>
-            public string PayType { get; set; }
-            /// <summary>
-            /// Type of eWallet
-            /// </summary>
-            public string EwalletType { get; set; } = "";
             /// <summary>
             /// eWallet credentials (email)
             /// </summary>
@@ -2147,8 +2119,8 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("paytype_" + (i + 1), x.PayType);
-                    data.Add("ewallettype_" + (i + 1), x.EwalletType);
+                    data.Add("paytype_" + (i + 1), "ewallet");
+                    data.Add("ewallettype_" + (i + 1), "paypal");
                     data.Add("ewalletaccount_" + (i + 1), x.EwalletAccount);
                 }
             }
@@ -2332,10 +2304,6 @@ namespace SparrowSdk
             /// Token of the payment type to be deleted
             /// </summary>
             public string Token { get; set; }
-            /// <summary>
-            /// Delete a specific payment type
-            /// </summary>
-            public string OperationType { get; set; }
         }
 
         /// <summary>
@@ -2361,7 +2329,7 @@ namespace SparrowSdk
                 {
                     var x = payments[i];
                     data.Add("token_" + (i + 1), x.Token);
-                    data.Add("operationtype_" + (i + 1), x.OperationType);
+                    data.Add("operationtype_" + (i + 1), "deletepaytype");
                 }
             }
 
@@ -2879,10 +2847,6 @@ namespace SparrowSdk
         public class DeleteSequenceSequence
         {
             /// <summary>
-            /// This will delete a sequence
-            /// </summary>
-            public string OperationType { get; set; } = "";
-            /// <summary>
             /// Sequence to be deleted
             /// </summary>
             public int? Sequence { get; set; } = null;
@@ -2999,7 +2963,7 @@ namespace SparrowSdk
                 for (int i = 0; i < deleteSequenceSequences.Count; i++)
                 {
                     var x = deleteSequenceSequences[i];
-                    data.Add("operationtype_" + (i + 1), x.OperationType);
+                    data.Add("operationtype_" + (i + 1), "deletesequence");
                     data.Add("sequence_" + (i + 1), "" + x.Sequence);
                 }
             }
@@ -3731,11 +3695,11 @@ namespace SparrowSdk
             /// <summary>
             /// Billing first name
             /// </summary>
-            public string FirstName { get; set; } = "";
+            public string FirstName { get; set; }
             /// <summary>
             /// Billing last name
             /// </summary>
-            public string LastName { get; set; } = "";
+            public string LastName { get; set; }
             /// <summary>
             /// Billing company
             /// </summary>
@@ -3791,7 +3755,7 @@ namespace SparrowSdk
         /// <param name="achAccountSubType">The customer’s ACH account entity (Format: [business|personal])</param>,
         /// <param name="shipping">PayInvoiceWithBankAccountShipping</param>,
         /// <param name="billing">PayInvoiceWithBankAccountBilling</param>
-        public async Task<SparrowReponse> PayInvoiceWithBankAccount(string invoiceNumber, string bankName, string routing, string account, string achAccountType, string achAccountSubType, PayInvoiceWithBankAccountShipping shipping = null, PayInvoiceWithBankAccountBilling billing = null)
+        public async Task<SparrowReponse> PayInvoiceWithBankAccount(string invoiceNumber, string bankName, string routing, string account, string achAccountType, string achAccountSubType, PayInvoiceWithBankAccountBilling billing, PayInvoiceWithBankAccountShipping shipping = null)
         {
             var data = new Dictionary<string, string>
             {
