@@ -46,3 +46,56 @@
 - This endpoint does not refer to any customer in the docs, it seems to be identical to CancelInvoice
 
 
+# Inconsistent Success Responses
+
+## Inconsistent Text Response
+
+Most response messages contain the word "success" or "successfully" and this is the most reliable way to confirm success.
+
+However, the following do not always respond with a message containing the word "success"
+
+- MarkSuccessfulTransactionAsChargeback
+
+## Inconsistent Status Code
+
+These do not respond with 'status' value of 200
+
+- UpdateInvoice
+- RetrieveInvoice
+- AssignPaymentPlanToCustomer
+- CancelPlanAssignment
+- CancelInvoice
+- CancelInvoiceByCustomer
+- CreatePaymentPlan
+- PayInvoiceWithCreditCard
+- AddCreditCard
+- CreateInvoice
+- UpdatePaymentPlanAssignment
+- UpdatePaymentPlan
+- AddStarCard
+- DeleteDataVaultCustomer
+- AddEwallet
+- DeletePlan
+- DeletePaymentType
+- PayInvoiceWithBankAccount
+- AddACH
+- UpdateCustomer
+- AddCustomer
+
+
+## Inconsistent Response Codes
+
+These respond with a response code of '00' 'A' or nothing
+
+- UpdateInvoice
+- AdvancedACH
+- SimpleACH
+- RetrieveInvoice
+- CancelInvoice
+- CancelInvoiceByCustomer
+- PayInvoiceWithCreditCard
+- CreateInvoice
+- AddStarCard
+- PayInvoiceWithBankAccount
+- AddACH
+
