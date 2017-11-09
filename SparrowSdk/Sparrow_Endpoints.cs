@@ -281,9 +281,9 @@ namespace SparrowSdk
                 for (int i = 0; i < optionalAmounts.Count; i++)
                 {
                     var x = optionalAmounts[i];
-                    data.Add("opt_amount_type" + i, "tip");
-                    data.Add("opt_amount_value" + i, x.OptAmountValue?.ToString("f2") ?? "");
-                    data.Add("opt_amount_percentage" + i, x.OptAmountPercentage);
+                    data.Add("opt_amount_type_" + (i + 1), "tip");
+                    data.Add("opt_amount_value_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
+                    data.Add("opt_amount_percentage_" + (i + 1), x.OptAmountPercentage);
                 }
             }
 
@@ -329,10 +329,10 @@ namespace SparrowSdk
                 for (int i = 0; i < products.Count; i++)
                 {
                     var x = products[i];
-                    data.Add("skunumber" + i, x.SkuNumber);
-                    data.Add("description" + i, x.Description);
-                    data.Add("amount" + i, x.Amount?.ToString("f2") ?? "");
-                    data.Add("quantity" + i, "" + x.Quantity);
+                    data.Add("skunumber_" + (i + 1), x.SkuNumber);
+                    data.Add("description_" + (i + 1), x.Description);
+                    data.Add("amount_" + (i + 1), x.Amount?.ToString("f2") ?? "");
+                    data.Add("quantity_" + (i + 1), "" + x.Quantity);
                 }
             }
 
@@ -536,8 +536,8 @@ namespace SparrowSdk
                 for (int i = 0; i < optionalAmounts.Count; i++)
                 {
                     var x = optionalAmounts[i];
-                    data.Add("opt_amount_type" + i, x.OptAmountType);
-                    data.Add("opt_amount_value" + i, x.OptAmountValue);
+                    data.Add("opt_amount_type_" + (i + 1), x.OptAmountType);
+                    data.Add("opt_amount_value_" + (i + 1), x.OptAmountValue);
                 }
             }
 
@@ -966,10 +966,10 @@ namespace SparrowSdk
                 for (int i = 0; i < products.Count; i++)
                 {
                     var x = products[i];
-                    data.Add("skunumber" + i, x.SkuNumber);
-                    data.Add("description" + i, x.Description);
-                    data.Add("amount" + i, x.Amount?.ToString("f2") ?? "");
-                    data.Add("quantity" + i, "" + x.Quantity);
+                    data.Add("skunumber_" + (i + 1), x.SkuNumber);
+                    data.Add("description_" + (i + 1), x.Description);
+                    data.Add("amount_" + (i + 1), x.Amount?.ToString("f2") ?? "");
+                    data.Add("quantity_" + (i + 1), "" + x.Quantity);
                 }
             }
 
@@ -1023,7 +1023,7 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("achaccountsubtype" + i, x.AchAccountSubType);
+                    data.Add("achaccountsubtype_" + (i + 1), x.AchAccountSubType);
                 }
             }
 
@@ -1263,9 +1263,9 @@ namespace SparrowSdk
                 for (int i = 0; i < optionalAmounts.Count; i++)
                 {
                     var x = optionalAmounts[i];
-                    data.Add("opt_amount_type" + i, x.OptAmountType);
-                    data.Add("opt_amount_value" + i, x.OptAmountValue?.ToString("f2") ?? "");
-                    data.Add("opt_amount_percentage" + i, x.OptAmountPercentage);
+                    data.Add("opt_amount_type_" + (i + 1), x.OptAmountType);
+                    data.Add("opt_amount_value_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
+                    data.Add("opt_amount_percentage_" + (i + 1), x.OptAmountPercentage);
                 }
             }
 
@@ -1274,7 +1274,7 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("achaccountsubtype" + i, x.AchAccountSubType);
+                    data.Add("achaccountsubtype_" + (i + 1), x.AchAccountSubType);
                 }
             }
 
@@ -1593,10 +1593,10 @@ namespace SparrowSdk
                 for (int i = 0; i < products.Count; i++)
                 {
                     var x = products[i];
-                    data.Add("skunumber" + i, x.SkuNumber);
-                    data.Add("description" + i, x.Description);
-                    data.Add("amount" + i, x.Amount?.ToString("f2") ?? "");
-                    data.Add("quantity" + i, "" + x.Quantity);
+                    data.Add("skunumber_" + (i + 1), x.SkuNumber);
+                    data.Add("description_" + (i + 1), x.Description);
+                    data.Add("amount_" + (i + 1), x.Amount?.ToString("f2") ?? "");
+                    data.Add("quantity_" + (i + 1), "" + x.Quantity);
                 }
             }
 
@@ -1925,28 +1925,28 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("paytype" + i, x.PayType);
-                    data.Add("company" + i, x.Company);
-                    data.Add("firstname" + i, x.FirstName);
-                    data.Add("lastname" + i, x.LastName);
-                    data.Add("address1" + i, x.Address1);
-                    data.Add("address2" + i, x.Address2);
-                    data.Add("city" + i, x.City);
-                    data.Add("state" + i, x.State);
-                    data.Add("zip" + i, x.Zip);
-                    data.Add("country" + i, x.Country);
-                    data.Add("phone" + i, x.Phone);
-                    data.Add("email" + i, x.Email);
-                    data.Add("cardnum" + i, x.CardNum);
-                    data.Add("cardexp" + i, x.CardExp);
-                    data.Add("bankname" + i, x.BankName);
-                    data.Add("routing" + i, x.Routing);
-                    data.Add("account" + i, x.Account);
-                    data.Add("achaccounttype" + i, x.AchAccountType);
-                    data.Add("achaccountsubtype" + i, x.AchAccountSubType);
-                    data.Add("payno" + i, x.PayNo);
-                    data.Add("ewalletaccount" + i, x.EwalletAccount);
-                    data.Add("ewallettype" + i, x.EwalletType);
+                    data.Add("paytype_" + (i + 1), x.PayType);
+                    data.Add("company_" + (i + 1), x.Company);
+                    data.Add("firstname_" + (i + 1), x.FirstName);
+                    data.Add("lastname_" + (i + 1), x.LastName);
+                    data.Add("address1_" + (i + 1), x.Address1);
+                    data.Add("address2_" + (i + 1), x.Address2);
+                    data.Add("city_" + (i + 1), x.City);
+                    data.Add("state_" + (i + 1), x.State);
+                    data.Add("zip_" + (i + 1), x.Zip);
+                    data.Add("country_" + (i + 1), x.Country);
+                    data.Add("phone_" + (i + 1), x.Phone);
+                    data.Add("email_" + (i + 1), x.Email);
+                    data.Add("cardnum_" + (i + 1), x.CardNum);
+                    data.Add("cardexp_" + (i + 1), x.CardExp);
+                    data.Add("bankname_" + (i + 1), x.BankName);
+                    data.Add("routing_" + (i + 1), x.Routing);
+                    data.Add("account_" + (i + 1), x.Account);
+                    data.Add("achaccounttype_" + (i + 1), x.AchAccountType);
+                    data.Add("achaccountsubtype_" + (i + 1), x.AchAccountSubType);
+                    data.Add("payno_" + (i + 1), x.PayNo);
+                    data.Add("ewalletaccount_" + (i + 1), x.EwalletAccount);
+                    data.Add("ewallettype_" + (i + 1), x.EwalletType);
                 }
             }
 
@@ -2014,9 +2014,9 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("paytype" + i, x.PayType);
-                    data.Add("cardnum" + i, x.CardNum);
-                    data.Add("cardexp" + i, x.CardExp);
+                    data.Add("paytype_" + (i + 1), x.PayType);
+                    data.Add("cardnum_" + (i + 1), x.CardNum);
+                    data.Add("cardexp_" + (i + 1), x.CardExp);
                 }
             }
 
@@ -2074,9 +2074,9 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("paytype" + i, x.PayType);
-                    data.Add("achaccounttype" + i, x.AchAccountType);
-                    data.Add("achaccountsubtype" + i, x.AchAccountSubType);
+                    data.Add("paytype_" + (i + 1), x.PayType);
+                    data.Add("achaccounttype_" + (i + 1), x.AchAccountType);
+                    data.Add("achaccountsubtype_" + (i + 1), x.AchAccountSubType);
                 }
             }
 
@@ -2126,8 +2126,8 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("paytype" + i, x.PayType);
-                    data.Add("cardnum" + i, x.CardNum);
+                    data.Add("paytype_" + (i + 1), x.PayType);
+                    data.Add("cardnum_" + (i + 1), x.CardNum);
                 }
             }
 
@@ -2179,9 +2179,9 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("paytype" + i, x.PayType);
-                    data.Add("ewallettype" + i, x.EwalletType);
-                    data.Add("ewalletaccount" + i, x.EwalletAccount);
+                    data.Add("paytype_" + (i + 1), x.PayType);
+                    data.Add("ewallettype_" + (i + 1), x.EwalletType);
+                    data.Add("ewalletaccount_" + (i + 1), x.EwalletAccount);
                 }
             }
 
@@ -2392,8 +2392,8 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("token" + i, x.Token);
-                    data.Add("operationtype" + i, x.OperationType);
+                    data.Add("token_" + (i + 1), x.Token);
+                    data.Add("operationtype_" + (i + 1), x.OperationType);
                 }
             }
 
@@ -2425,270 +2425,7 @@ namespace SparrowSdk
             return SparrowReponse.Create(responseValues);
         }
 
-        /// <summary>
-        /// Create a Payment Plan: First we must describe our plan
-        /// </summary>
-        /// <param name="mKey">Secured merchant account key</param>,
-        /// <param name="transType"> (Format: addplan)</param>,
-        /// <param name="planName">Payment plan name (Format: string)</param>,
-        /// <param name="planDesc">Payment plan description (Format: string)</param>,
-        /// <param name="startDate">Starting day of the plan (Format: MM/DD/YYYY)</param>,
-        /// <param name="defaultAchMKey">Merchant key of ACH account with which plan payments should be processed by default</param>,
-        /// <param name="defaultCreditCardMKey">Merchant key of Credit Card account with which plan payments should be processed by default</param>,
-        /// <param name="defaultEcheckMKey">Merchant key of eCheck account with which plan payments should be processed by default</param>,
-        /// <param name="defaultStartCardMKey">Merchant key of Star Card account with which plan payments should be processed by default</param>,
-        /// <param name="defaultEwalletMKey">Merchant key of eWallet account with which plan payments should be processed by default</param>
-        public async Task<SparrowReponse> CreatePaymentPlan(string planName, string planDesc, string startDate, string defaultAchMKey = "", string defaultCreditCardMKey = "", string defaultEcheckMKey = "", string defaultStartCardMKey = "", string defaultEwalletMKey = "")
-        {
-            var data = new Dictionary<string, string>
-            {
-                { "mkey", _apiKey },
-                { "transtype", "addplan" },
-                { "planname", planName },
-                { "plandesc", planDesc },
-                { "startdate", startDate },
-                { "defaultachmkey", defaultAchMKey },
-                { "defaultcreditcardmkey", defaultCreditCardMKey },
-                { "defaultecheckmkey", defaultEcheckMKey },
-                { "defaultstartcardmkey", defaultStartCardMKey },
-                { "defaultewalletmkey", defaultEwalletMKey }
-            };
-
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowReponse.Create(responseValues);
-        }
-
-        public class UpdatePaymentPlanOptions
-        {
-            /// <summary>
-            /// Payment plan name
-            /// </summary>
-            public string PlanName { get; set; } = "";
-            /// <summary>
-            /// Payment plan description
-            /// </summary>
-            public string PlanDesc { get; set; } = "";
-            /// <summary>
-            /// Starting day of the plan
-            /// </summary>
-            public string StartDate { get; set; } = "";
-            /// <summary>
-            /// Specifies whether to reprocess failed transactions in this plan
-            /// </summary>
-            public bool? UseRecycling { get; set; } = null;
-            /// <summary>
-            /// Sends notification emails to the client in case of failed payments
-            /// </summary>
-            public bool? NotifyFailures { get; set; } = null;
-            /// <summary>
-            /// Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise
-            /// </summary>
-            public string RetryCount { get; set; } = "";
-            /// <summary>
-            /// Specifies the type of retry schedule
-            /// </summary>
-            public string RetryType { get; set; } = "";
-            /// <summary>
-            /// Number of days between retry attempts. This field is required if retrytype=daily
-            /// </summary>
-            public string RetryPeriod { get; set; } = "";
-            /// <summary>
-            /// This field is required if retrytype=weekly (monday, tuesday etc.)
-            /// </summary>
-            public string RetryDayOfWeek { get; set; } = "";
-            /// <summary>
-            /// First date of retry schedule. This field is required if retrytype=monthly
-            /// </summary>
-            public string RetryFirstDayOfMonth { get; set; } = "";
-            /// <summary>
-            /// Second date of retry schedule. This field is required if retrytype=monthly
-            /// </summary>
-            public string RetrySecondDayOfMonth { get; set; } = "";
-            /// <summary>
-            /// Creates username and password for Client Portal automatically when plan is assigned to the client
-            /// </summary>
-            public bool? AutoCreateClientAccounts { get; set; } = null;
-        }
-
-        /// <summary>
-        /// Update a Payment Plan: Payment Plans can be updated by using the transaction type “updateplan”.
-        /// </summary>
-        /// <param name="mKey">Secured merchant account key</param>,
-        /// <param name="transType"> (Format: updateplan)</param>,
-        /// <param name="token">Unique payment plan identifier</param>,
-        /// <param name="defaultAchMKey">Merchant key of ACH account with which plan payments should be processed by default</param>,
-        /// <param name="defaultCreditCardMKey">Merchant key of Credit Card account with which plan payments should be processed by default</param>,
-        /// <param name="defaultEcheckMKey">Merchant key of eCheck account with which plan payments should be processed by default</param>,
-        /// <param name="defaultStartCardMKey">Merchant key of Star Card account with which plan payments should be processed by default</param>,
-        /// <param name="defaultEwalletMKey">Merchant key of eWallet account with which plan payments should be processed by default</param>,
-        /// <param name="options">Options</param>
-        public async Task<SparrowReponse> UpdatePaymentPlan(string token, string defaultAchMKey = "", string defaultCreditCardMKey = "", string defaultEcheckMKey = "", string defaultStartCardMKey = "", string defaultEwalletMKey = "", UpdatePaymentPlanOptions options = null)
-        {
-            var data = new Dictionary<string, string>
-            {
-                { "mkey", _apiKey },
-                { "transtype", "updateplan" },
-                { "token", token },
-                { "defaultachmkey", defaultAchMKey },
-                { "defaultcreditcardmkey", defaultCreditCardMKey },
-                { "defaultecheckmkey", defaultEcheckMKey },
-                { "defaultstartcardmkey", defaultStartCardMKey },
-                { "defaultewalletmkey", defaultEwalletMKey }
-            };
-
-
-            if (options != null)
-            {
-                var x = options;
-                data.Add("planname", x.PlanName);
-                data.Add("plandesc", x.PlanDesc);
-                data.Add("startdate", x.StartDate);
-                data.Add("userecycling", x.UseRecycling == true ? "true" : "false");
-                data.Add("notifyfailures", x.NotifyFailures == true ? "true" : "false");
-                data.Add("retrycount", x.RetryCount);
-                data.Add("retrytype", x.RetryType);
-                data.Add("retryperiod", x.RetryPeriod);
-                data.Add("retrydayofweek", x.RetryDayOfWeek);
-                data.Add("retryfirstdayofmonth", x.RetryFirstDayOfMonth);
-                data.Add("retryseconddayofmonth", x.RetrySecondDayOfMonth);
-                data.Add("autocreateclientaccounts", x.AutoCreateClientAccounts == true ? "true" : "false");
-            }
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowReponse.Create(responseValues);
-        }
-
-        public class BuildSequenceOptions
-        {
-            /// <summary>
-            /// Sends notification emails to the client if failed payments occur
-            /// </summary>
-            public bool? NotifyFailures { get; set; } = null;
-            /// <summary>
-            /// Specifies whether to reprocess failed transactions for this plan
-            /// </summary>
-            public bool? UseRecycling { get; set; } = null;
-            /// <summary>
-            /// Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise
-            /// </summary>
-            public string RetryCount { get; set; } = "";
-            /// <summary>
-            /// Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date
-            /// </summary>
-            public string RetryType { get; set; } = "";
-            /// <summary>
-            /// Number of days between retry attempts. This field is required if retrytype=daily
-            /// </summary>
-            public string RetryPeriod { get; set; } = "";
-            /// <summary>
-            /// This field is required if retrytype=weekly (monday, tuesday etc.)
-            /// </summary>
-            public string RetryDayOfWeek { get; set; } = "";
-            /// <summary>
-            /// First date of retry schedule. This field is required if retrytype=monthly
-            /// </summary>
-            public string RetryFirstDayOfMonth { get; set; } = "";
-            /// <summary>
-            /// Second date of retry schedule. This field is required if retrytype=monthly
-            /// </summary>
-            public string RetrySecondDayOfMonth { get; set; } = "";
-            /// <summary>
-            /// Creates username and password for Client Portal automatically when plan is assigned to the client
-            /// </summary>
-            public bool? AutoCreateClientAccounts { get; set; } = null;
-            /// <summary>
-            /// Merchant key of eWallet account with which plan payments should be processed by default
-            /// </summary>
-            public string DefaultEwalletMKey { get; set; } = "";
-        }
-
-        public class BuildSequenceSequence
-        {
-            /// <summary>
-            /// The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present
-            /// </summary>
-            public string Sequence { get; set; } = "";
-            /// <summary>
-            /// Amount to be paid
-            /// </summary>
-            public decimal Amount { get; set; }
-            /// <summary>
-            /// Specifies the type of payment schedule. Supported types are: every month of a specified date, every N days, every year on a specified date
-            /// </summary>
-            public string ScheduleType { get; set; }
-            /// <summary>
-            /// Day of the month for processing payments (scheduletype=monthly) or number of days between payments (scheduletype=custom)
-            /// </summary>
-            public string ScheduleDay { get; set; }
-            /// <summary>
-            /// Positive number of charges or -1 if no limit
-            /// </summary>
-            public string Duration { get; set; }
-            /// <summary>
-            /// External ID for the product
-            /// </summary>
-            public string ProductId { get; set; } = "";
-            /// <summary>
-            /// Description of the sequence
-            /// </summary>
-            public string Description { get; set; } = "";
-        }
-
-        /// <summary>
-        /// Build a Sequence: Now we define the sequences within the plan which determine how much the customer will be charged and when
-        /// </summary>
-        /// <param name="options">Options</param>,
-        /// <param name="sequences">Sequences</param>
-        public async Task<SparrowReponse> BuildSequence(BuildSequenceOptions options = null, IList<BuildSequenceSequence> sequences = null)
-        {
-            var data = new Dictionary<string, string>
-            {
-
-            };
-
-
-            if (options != null)
-            {
-                var x = options;
-                data.Add("notifyfailures", x.NotifyFailures == true ? "true" : "false");
-                data.Add("userecycling", x.UseRecycling == true ? "true" : "false");
-                data.Add("retrycount", x.RetryCount);
-                data.Add("retrytype", x.RetryType);
-                data.Add("retryperiod", x.RetryPeriod);
-                data.Add("retrydayofweek", x.RetryDayOfWeek);
-                data.Add("retryfirstdayofmonth", x.RetryFirstDayOfMonth);
-                data.Add("retryseconddayofmonth", x.RetrySecondDayOfMonth);
-                data.Add("autocreateclientaccounts", x.AutoCreateClientAccounts == true ? "true" : "false");
-                data.Add("defaultewalletmkey", x.DefaultEwalletMKey);
-            }
-
-            if (sequences != null)
-            {
-                for (int i = 0; i < sequences.Count; i++)
-                {
-                    var x = sequences[i];
-                    data.Add("sequence" + i, x.Sequence);
-                    data.Add("amount" + i, x.Amount.ToString("f2"));
-                    data.Add("scheduletype" + i, x.ScheduleType);
-                    data.Add("scheduleday" + i, x.ScheduleDay);
-                    data.Add("duration" + i, x.Duration);
-                    data.Add("productid" + i, x.ProductId);
-                    data.Add("description" + i, x.Description);
-                }
-            }
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowReponse.Create(responseValues);
-        }
-
-        public class NotificationSettingsOptions
+        public class CreatePaymentPlanNotificationSettingsOptions
         {
             /// <summary>
             /// If “true” this will set the payment plan to pending until it is reviewed by the merchant admin
@@ -2776,51 +2513,7 @@ namespace SparrowSdk
             public string NotifyFlaggedEmails { get; set; } = "";
         }
 
-        /// <summary>
-        /// Notification Settings: We must also set notification settings to alert customers of successful payments, passed due payment, plan changes, etc.
-        /// </summary>
-        /// <param name="options">Options</param>
-        public async Task<SparrowReponse> NotificationSettings(NotificationSettingsOptions options = null)
-        {
-            var data = new Dictionary<string, string>
-            {
-
-            };
-
-
-            if (options != null)
-            {
-                var x = options;
-                data.Add("reviewonassignment", x.ReviewOnAssignment == true ? "true" : "false");
-                data.Add("processimmediately", x.ProcessImmediately == true ? "true" : "false");
-                data.Add("overridesender", x.OverrideSender == true ? "true" : "false");
-                data.Add("senderemail", x.SenderEmail);
-                data.Add("notifyupcomingpayment", x.NotifyUpcomingPayment == true ? "true" : "false");
-                data.Add("notifydaysbeforeupcomingpayment", x.NotifyDaysBeforeUpcomingPayment);
-                data.Add("notifyplansummary", x.NotifyPlanSummary == true ? "true" : "false");
-                data.Add("notifyplansummaryinterval", x.NotifyPlanSummaryInterval);
-                data.Add("notifyplansummaryemails", x.NotifyPlanSummaryEmails);
-                data.Add("notifydailystats", x.NotifyDailyStats == true ? "true" : "false");
-                data.Add("notifydailystatsemails", x.NotifyDailyStatsEmails);
-                data.Add("notifyplancomplete", x.NotifyPlanComplete == true ? "true" : "false");
-                data.Add("notifyplancompleteemails", x.NotifyPlanCompleteEmails);
-                data.Add("notifydecline", x.NotifyDecline == true ? "true" : "false");
-                data.Add("notifydeclineemails", x.NotifyDeclineEmails);
-                data.Add("notifyviaftp", x.NotifyViaFtp == true ? "true" : "false");
-                data.Add("notifyviaftpurl", x.NotifyViaFtpUrl == true ? "true" : "false");
-                data.Add("notifyviaftpusername", x.NotifyViaFtpUserName);
-                data.Add("notifyviaftppassword", x.NotifyViaFtpPassword);
-                data.Add("notifyflagged", x.NotifyFlagged == true ? "true" : "false");
-                data.Add("notifyflaggedemails", x.NotifyFlaggedEmails);
-            }
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowReponse.Create(responseValues);
-        }
-
-        public class AddOrUpdateSequenceOptions
+        public class CreatePaymentPlanBuildSequenceOptions
         {
             /// <summary>
             /// Sends notification emails to the client if failed payments occur
@@ -2864,7 +2557,318 @@ namespace SparrowSdk
             public string DefaultEwalletMKey { get; set; } = "";
         }
 
-        public class AddOrUpdateSequenceSequence
+        public class CreatePaymentPlanBuildSequenceSequence
+        {
+            /// <summary>
+            /// The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present
+            /// </summary>
+            public string Sequence { get; set; } = "";
+            /// <summary>
+            /// Amount to be paid
+            /// </summary>
+            public decimal Amount { get; set; }
+            /// <summary>
+            /// Specifies the type of payment schedule. Supported types are: every month of a specified date, every N days, every year on a specified date
+            /// </summary>
+            public string ScheduleType { get; set; }
+            /// <summary>
+            /// Day of the month for processing payments (scheduletype=monthly) or number of days between payments (scheduletype=custom)
+            /// </summary>
+            public string ScheduleDay { get; set; }
+            /// <summary>
+            /// Positive number of charges or -1 if no limit
+            /// </summary>
+            public string Duration { get; set; }
+            /// <summary>
+            /// External ID for the product
+            /// </summary>
+            public string ProductId { get; set; } = "";
+            /// <summary>
+            /// Description of the sequence
+            /// </summary>
+            public string Description { get; set; } = "";
+        }
+
+        /// <summary>
+        /// Create a Payment Plan: First we must describe our plan
+        /// </summary>
+        /// <param name="mKey">Secured merchant account key</param>,
+        /// <param name="transType"> (Format: addplan)</param>,
+        /// <param name="planName">Payment plan name (Format: string)</param>,
+        /// <param name="planDesc">Payment plan description (Format: string)</param>,
+        /// <param name="startDate">Starting day of the plan (Format: MM/DD/YYYY)</param>,
+        /// <param name="defaultAchMKey">Merchant key of ACH account with which plan payments should be processed by default</param>,
+        /// <param name="defaultCreditCardMKey">Merchant key of Credit Card account with which plan payments should be processed by default</param>,
+        /// <param name="defaultEcheckMKey">Merchant key of eCheck account with which plan payments should be processed by default</param>,
+        /// <param name="defaultStartCardMKey">Merchant key of Star Card account with which plan payments should be processed by default</param>,
+        /// <param name="defaultEwalletMKey">Merchant key of eWallet account with which plan payments should be processed by default</param>,
+        /// <param name="notificationSettingsOptions">notificationSettings Options</param>,
+        /// <param name="buildSequenceOptions">buildSequence Options</param>,
+        /// <param name="buildSequenceSequences">buildSequence Sequences</param>
+        public async Task<SparrowReponse> CreatePaymentPlan(string planName, string planDesc, string startDate, string defaultAchMKey = "", string defaultCreditCardMKey = "", string defaultEcheckMKey = "", string defaultStartCardMKey = "", string defaultEwalletMKey = "", CreatePaymentPlanNotificationSettingsOptions notificationSettingsOptions = null, CreatePaymentPlanBuildSequenceOptions buildSequenceOptions = null, IList<CreatePaymentPlanBuildSequenceSequence> buildSequenceSequences = null)
+        {
+            var data = new Dictionary<string, string>
+            {
+                { "mkey", _apiKey },
+                { "transtype", "addplan" },
+                { "planname", planName },
+                { "plandesc", planDesc },
+                { "startdate", startDate },
+                { "defaultachmkey", defaultAchMKey },
+                { "defaultcreditcardmkey", defaultCreditCardMKey },
+                { "defaultecheckmkey", defaultEcheckMKey },
+                { "defaultstartcardmkey", defaultStartCardMKey },
+                { "defaultewalletmkey", defaultEwalletMKey }
+            };
+
+
+            if (notificationSettingsOptions != null)
+            {
+                var x = notificationSettingsOptions;
+                data.Add("reviewonassignment", x.ReviewOnAssignment == true ? "true" : "false");
+                data.Add("processimmediately", x.ProcessImmediately == true ? "true" : "false");
+                data.Add("overridesender", x.OverrideSender == true ? "true" : "false");
+                data.Add("senderemail", x.SenderEmail);
+                data.Add("notifyupcomingpayment", x.NotifyUpcomingPayment == true ? "true" : "false");
+                data.Add("notifydaysbeforeupcomingpayment", x.NotifyDaysBeforeUpcomingPayment);
+                data.Add("notifyplansummary", x.NotifyPlanSummary == true ? "true" : "false");
+                data.Add("notifyplansummaryinterval", x.NotifyPlanSummaryInterval);
+                data.Add("notifyplansummaryemails", x.NotifyPlanSummaryEmails);
+                data.Add("notifydailystats", x.NotifyDailyStats == true ? "true" : "false");
+                data.Add("notifydailystatsemails", x.NotifyDailyStatsEmails);
+                data.Add("notifyplancomplete", x.NotifyPlanComplete == true ? "true" : "false");
+                data.Add("notifyplancompleteemails", x.NotifyPlanCompleteEmails);
+                data.Add("notifydecline", x.NotifyDecline == true ? "true" : "false");
+                data.Add("notifydeclineemails", x.NotifyDeclineEmails);
+                data.Add("notifyviaftp", x.NotifyViaFtp == true ? "true" : "false");
+                data.Add("notifyviaftpurl", x.NotifyViaFtpUrl == true ? "true" : "false");
+                data.Add("notifyviaftpusername", x.NotifyViaFtpUserName);
+                data.Add("notifyviaftppassword", x.NotifyViaFtpPassword);
+                data.Add("notifyflagged", x.NotifyFlagged == true ? "true" : "false");
+                data.Add("notifyflaggedemails", x.NotifyFlaggedEmails);
+            }
+
+            if (buildSequenceOptions != null)
+            {
+                var x = buildSequenceOptions;
+                data.Add("notifyfailures", x.NotifyFailures == true ? "true" : "false");
+                data.Add("userecycling", x.UseRecycling == true ? "true" : "false");
+                data.Add("retrycount", x.RetryCount);
+                data.Add("retrytype", x.RetryType);
+                data.Add("retryperiod", x.RetryPeriod);
+                data.Add("retrydayofweek", x.RetryDayOfWeek);
+                data.Add("retryfirstdayofmonth", x.RetryFirstDayOfMonth);
+                data.Add("retryseconddayofmonth", x.RetrySecondDayOfMonth);
+                data.Add("autocreateclientaccounts", x.AutoCreateClientAccounts == true ? "true" : "false");
+                data.Add("defaultewalletmkey", x.DefaultEwalletMKey);
+            }
+
+            if (buildSequenceSequences != null)
+            {
+                for (int i = 0; i < buildSequenceSequences.Count; i++)
+                {
+                    var x = buildSequenceSequences[i];
+                    data.Add("sequence_" + (i + 1), x.Sequence);
+                    data.Add("amount_" + (i + 1), x.Amount.ToString("f2"));
+                    data.Add("scheduletype_" + (i + 1), x.ScheduleType);
+                    data.Add("scheduleday_" + (i + 1), x.ScheduleDay);
+                    data.Add("duration_" + (i + 1), x.Duration);
+                    data.Add("productid_" + (i + 1), x.ProductId);
+                    data.Add("description_" + (i + 1), x.Description);
+                }
+            }
+
+            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+
+            var responseValues = await MakeRequest(data);
+            return SparrowReponse.Create(responseValues);
+        }
+
+        public class UpdatePaymentPlanOptions
+        {
+            /// <summary>
+            /// Payment plan name
+            /// </summary>
+            public string PlanName { get; set; } = "";
+            /// <summary>
+            /// Payment plan description
+            /// </summary>
+            public string PlanDesc { get; set; } = "";
+            /// <summary>
+            /// Starting day of the plan
+            /// </summary>
+            public string StartDate { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to reprocess failed transactions in this plan
+            /// </summary>
+            public bool? UseRecycling { get; set; } = null;
+            /// <summary>
+            /// Sends notification emails to the client in case of failed payments
+            /// </summary>
+            public bool? NotifyFailures { get; set; } = null;
+            /// <summary>
+            /// Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise
+            /// </summary>
+            public string RetryCount { get; set; } = "";
+            /// <summary>
+            /// Specifies the type of retry schedule
+            /// </summary>
+            public string RetryType { get; set; } = "";
+            /// <summary>
+            /// Number of days between retry attempts. This field is required if retrytype=daily
+            /// </summary>
+            public string RetryPeriod { get; set; } = "";
+            /// <summary>
+            /// This field is required if retrytype=weekly (monday, tuesday etc.)
+            /// </summary>
+            public string RetryDayOfWeek { get; set; } = "";
+            /// <summary>
+            /// First date of retry schedule. This field is required if retrytype=monthly
+            /// </summary>
+            public string RetryFirstDayOfMonth { get; set; } = "";
+            /// <summary>
+            /// Second date of retry schedule. This field is required if retrytype=monthly
+            /// </summary>
+            public string RetrySecondDayOfMonth { get; set; } = "";
+            /// <summary>
+            /// Creates username and password for Client Portal automatically when plan is assigned to the client
+            /// </summary>
+            public bool? AutoCreateClientAccounts { get; set; } = null;
+        }
+
+        public class UpdatePaymentPlanNotificationSettingsOptions
+        {
+            /// <summary>
+            /// If “true” this will set the payment plan to pending until it is reviewed by the merchant admin
+            /// </summary>
+            public bool? ReviewOnAssignment { get; set; } = null;
+            /// <summary>
+            /// Specifies if new payments should be processed immediately or end of day
+            /// </summary>
+            public bool? ProcessImmediately { get; set; } = null;
+            /// <summary>
+            /// Specifies whether to override sender email for customers notifications
+            /// </summary>
+            public bool? OverrideSender { get; set; } = null;
+            /// <summary>
+            /// Sender email. This field is required if overridesender = true
+            /// </summary>
+            public string SenderEmail { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to notify customer about upcoming payment
+            /// </summary>
+            public bool? NotifyUpcomingPayment { get; set; } = null;
+            /// <summary>
+            /// Number of days before notification about upcoming payment should be sent to the client. This field is required if notifyupcomingpayment = true
+            /// </summary>
+            public string NotifyDaysBeforeUpcomingPayment { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to send merchant a Summarized Plan Report
+            /// </summary>
+            public bool? NotifyPlanSummary { get; set; } = null;
+            /// <summary>
+            /// Interval of plan summary notifications. This field is required if notifyplansummary = true
+            /// </summary>
+            public string NotifyPlanSummaryInterval { get; set; } = "";
+            /// <summary>
+            /// Multiple addresses are separated by comma. This field is required if notifyplansummary = true
+            /// </summary>
+            public string NotifyPlanSummaryEmails { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to send merchant a Daily Plan Processing Statistics Report
+            /// </summary>
+            public bool? NotifyDailyStats { get; set; } = null;
+            /// <summary>
+            /// Multiple addresses are separated by comma. This field is required if notifydailystats = true
+            /// </summary>
+            public string NotifyDailyStatsEmails { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to notify merchant about plan completion
+            /// </summary>
+            public bool? NotifyPlanComplete { get; set; } = null;
+            /// <summary>
+            /// Multiple addresses are separated by comma. This field is required if notifyplancomplete = true
+            /// </summary>
+            public string NotifyPlanCompleteEmails { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to notify merchant about failed payments
+            /// </summary>
+            public bool? NotifyDecline { get; set; } = null;
+            /// <summary>
+            /// Multiple addresses are separated by comma. This field is required if notifydecline = true
+            /// </summary>
+            public string NotifyDeclineEmails { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to transfer transaction file via ftp
+            /// </summary>
+            public bool? NotifyViaFtp { get; set; } = null;
+            /// <summary>
+            /// FTP address on which transaction file is transferred. This field is required if notifyviaftp = true
+            /// </summary>
+            public bool? NotifyViaFtpUrl { get; set; } = null;
+            /// <summary>
+            /// Username to access FTP address. This field is required if notifyviaftp = true
+            /// </summary>
+            public string NotifyViaFtpUserName { get; set; } = "";
+            /// <summary>
+            /// Password to access FTP address. This field is required if notifyviaftp = true
+            /// </summary>
+            public string NotifyViaFtpPassword { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to notify merchant about flagged for review payments
+            /// </summary>
+            public bool? NotifyFlagged { get; set; } = null;
+            /// <summary>
+            /// Multiple addresses are separated by comma. This field is required if notifyflagged = true
+            /// </summary>
+            public string NotifyFlaggedEmails { get; set; } = "";
+        }
+
+        public class UpdatePaymentPlanAddOrUpdateSequenceOptions
+        {
+            /// <summary>
+            /// Sends notification emails to the client if failed payments occur
+            /// </summary>
+            public bool? NotifyFailures { get; set; } = null;
+            /// <summary>
+            /// Specifies whether to reprocess failed transactions for this plan
+            /// </summary>
+            public bool? UseRecycling { get; set; } = null;
+            /// <summary>
+            /// Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise
+            /// </summary>
+            public string RetryCount { get; set; } = "";
+            /// <summary>
+            /// Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date
+            /// </summary>
+            public string RetryType { get; set; } = "";
+            /// <summary>
+            /// Number of days between retry attempts. This field is required if retrytype=daily
+            /// </summary>
+            public string RetryPeriod { get; set; } = "";
+            /// <summary>
+            /// This field is required if retrytype=weekly (monday, tuesday etc.)
+            /// </summary>
+            public string RetryDayOfWeek { get; set; } = "";
+            /// <summary>
+            /// First date of retry schedule. This field is required if retrytype=monthly
+            /// </summary>
+            public string RetryFirstDayOfMonth { get; set; } = "";
+            /// <summary>
+            /// Second date of retry schedule. This field is required if retrytype=monthly
+            /// </summary>
+            public string RetrySecondDayOfMonth { get; set; } = "";
+            /// <summary>
+            /// Creates username and password for Client Portal automatically when plan is assigned to the client
+            /// </summary>
+            public bool? AutoCreateClientAccounts { get; set; } = null;
+            /// <summary>
+            /// Merchant key of eWallet account with which plan payments should be processed by default
+            /// </summary>
+            public string DefaultEwalletMKey { get; set; } = "";
+        }
+
+        public class UpdatePaymentPlanAddOrUpdateSequenceSequence
         {
             /// <summary>
             /// Addsequence will add a new sequence, whereas Updatesequence will update an existing sequence
@@ -2904,58 +2908,7 @@ namespace SparrowSdk
             public string NewSequence { get; set; } = "";
         }
 
-        /// <summary>
-        /// Add or Update a Sequence: We can also add a new sequence or update an existing plan sequence.
-        /// </summary>
-        /// <param name="options">Options</param>,
-        /// <param name="sequences">Sequences</param>
-        public async Task<SparrowReponse> AddOrUpdateSequence(AddOrUpdateSequenceOptions options = null, IList<AddOrUpdateSequenceSequence> sequences = null)
-        {
-            var data = new Dictionary<string, string>
-            {
-
-            };
-
-
-            if (options != null)
-            {
-                var x = options;
-                data.Add("notifyfailures", x.NotifyFailures == true ? "true" : "false");
-                data.Add("userecycling", x.UseRecycling == true ? "true" : "false");
-                data.Add("retrycount", x.RetryCount);
-                data.Add("retrytype", x.RetryType);
-                data.Add("retryperiod", x.RetryPeriod);
-                data.Add("retrydayofweek", x.RetryDayOfWeek);
-                data.Add("retryfirstdayofmonth", x.RetryFirstDayOfMonth);
-                data.Add("retryseconddayofmonth", x.RetrySecondDayOfMonth);
-                data.Add("autocreateclientaccounts", x.AutoCreateClientAccounts == true ? "true" : "false");
-                data.Add("defaultewalletmkey", x.DefaultEwalletMKey);
-            }
-
-            if (sequences != null)
-            {
-                for (int i = 0; i < sequences.Count; i++)
-                {
-                    var x = sequences[i];
-                    data.Add("operationtype" + i, x.OperationType);
-                    data.Add("sequence" + i, x.Sequence);
-                    data.Add("amount" + i, x.Amount.ToString("f2"));
-                    data.Add("scheduletype" + i, x.ScheduleType);
-                    data.Add("scheduleday" + i, x.ScheduleDay);
-                    data.Add("duration" + i, x.Duration);
-                    data.Add("productid" + i, x.ProductId);
-                    data.Add("description" + i, x.Description);
-                    data.Add("newsequence" + i, x.NewSequence);
-                }
-            }
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowReponse.Create(responseValues);
-        }
-
-        public class DeleteSequenceSequence
+        public class UpdatePaymentPlanDeleteSequenceSequence
         {
             /// <summary>
             /// This will delete a sequence
@@ -2968,24 +2921,118 @@ namespace SparrowSdk
         }
 
         /// <summary>
-        /// Delete a Sequence: We can also delete a sequence.
+        /// Update a Payment Plan: Payment Plans can be updated by using the transaction type “updateplan”.
         /// </summary>
-        /// <param name="sequences">Sequences</param>
-        public async Task<SparrowReponse> DeleteSequence(IList<DeleteSequenceSequence> sequences = null)
+        /// <param name="mKey">Secured merchant account key</param>,
+        /// <param name="transType"> (Format: updateplan)</param>,
+        /// <param name="token">Unique payment plan identifier</param>,
+        /// <param name="defaultAchMKey">Merchant key of ACH account with which plan payments should be processed by default</param>,
+        /// <param name="defaultCreditCardMKey">Merchant key of Credit Card account with which plan payments should be processed by default</param>,
+        /// <param name="defaultEcheckMKey">Merchant key of eCheck account with which plan payments should be processed by default</param>,
+        /// <param name="defaultStartCardMKey">Merchant key of Star Card account with which plan payments should be processed by default</param>,
+        /// <param name="defaultEwalletMKey">Merchant key of eWallet account with which plan payments should be processed by default</param>,
+        /// <param name="options">Options</param>,
+        /// <param name="notificationSettingsOptions">notificationSettings Options</param>,
+        /// <param name="addOrUpdateSequenceOptions">addOrUpdateSequence Options</param>,
+        /// <param name="addOrUpdateSequenceSequences">addOrUpdateSequence Sequences</param>,
+        /// <param name="deleteSequenceSequences">deleteSequence Sequences</param>
+        public async Task<SparrowReponse> UpdatePaymentPlan(string token, string defaultAchMKey = "", string defaultCreditCardMKey = "", string defaultEcheckMKey = "", string defaultStartCardMKey = "", string defaultEwalletMKey = "", UpdatePaymentPlanOptions options = null, UpdatePaymentPlanNotificationSettingsOptions notificationSettingsOptions = null, UpdatePaymentPlanAddOrUpdateSequenceOptions addOrUpdateSequenceOptions = null, IList<UpdatePaymentPlanAddOrUpdateSequenceSequence> addOrUpdateSequenceSequences = null, IList<UpdatePaymentPlanDeleteSequenceSequence> deleteSequenceSequences = null)
         {
             var data = new Dictionary<string, string>
             {
-
+                { "mkey", _apiKey },
+                { "transtype", "updateplan" },
+                { "token", token },
+                { "defaultachmkey", defaultAchMKey },
+                { "defaultcreditcardmkey", defaultCreditCardMKey },
+                { "defaultecheckmkey", defaultEcheckMKey },
+                { "defaultstartcardmkey", defaultStartCardMKey },
+                { "defaultewalletmkey", defaultEwalletMKey }
             };
 
 
-            if (sequences != null)
+            if (options != null)
             {
-                for (int i = 0; i < sequences.Count; i++)
+                var x = options;
+                data.Add("planname", x.PlanName);
+                data.Add("plandesc", x.PlanDesc);
+                data.Add("startdate", x.StartDate);
+                data.Add("userecycling", x.UseRecycling == true ? "true" : "false");
+                data.Add("notifyfailures", x.NotifyFailures == true ? "true" : "false");
+                data.Add("retrycount", x.RetryCount);
+                data.Add("retrytype", x.RetryType);
+                data.Add("retryperiod", x.RetryPeriod);
+                data.Add("retrydayofweek", x.RetryDayOfWeek);
+                data.Add("retryfirstdayofmonth", x.RetryFirstDayOfMonth);
+                data.Add("retryseconddayofmonth", x.RetrySecondDayOfMonth);
+                data.Add("autocreateclientaccounts", x.AutoCreateClientAccounts == true ? "true" : "false");
+            }
+
+            if (notificationSettingsOptions != null)
+            {
+                var x = notificationSettingsOptions;
+                data.Add("reviewonassignment", x.ReviewOnAssignment == true ? "true" : "false");
+                data.Add("processimmediately", x.ProcessImmediately == true ? "true" : "false");
+                data.Add("overridesender", x.OverrideSender == true ? "true" : "false");
+                data.Add("senderemail", x.SenderEmail);
+                data.Add("notifyupcomingpayment", x.NotifyUpcomingPayment == true ? "true" : "false");
+                data.Add("notifydaysbeforeupcomingpayment", x.NotifyDaysBeforeUpcomingPayment);
+                data.Add("notifyplansummary", x.NotifyPlanSummary == true ? "true" : "false");
+                data.Add("notifyplansummaryinterval", x.NotifyPlanSummaryInterval);
+                data.Add("notifyplansummaryemails", x.NotifyPlanSummaryEmails);
+                data.Add("notifydailystats", x.NotifyDailyStats == true ? "true" : "false");
+                data.Add("notifydailystatsemails", x.NotifyDailyStatsEmails);
+                data.Add("notifyplancomplete", x.NotifyPlanComplete == true ? "true" : "false");
+                data.Add("notifyplancompleteemails", x.NotifyPlanCompleteEmails);
+                data.Add("notifydecline", x.NotifyDecline == true ? "true" : "false");
+                data.Add("notifydeclineemails", x.NotifyDeclineEmails);
+                data.Add("notifyviaftp", x.NotifyViaFtp == true ? "true" : "false");
+                data.Add("notifyviaftpurl", x.NotifyViaFtpUrl == true ? "true" : "false");
+                data.Add("notifyviaftpusername", x.NotifyViaFtpUserName);
+                data.Add("notifyviaftppassword", x.NotifyViaFtpPassword);
+                data.Add("notifyflagged", x.NotifyFlagged == true ? "true" : "false");
+                data.Add("notifyflaggedemails", x.NotifyFlaggedEmails);
+            }
+
+            if (addOrUpdateSequenceOptions != null)
+            {
+                var x = addOrUpdateSequenceOptions;
+                data.Add("notifyfailures", x.NotifyFailures == true ? "true" : "false");
+                data.Add("userecycling", x.UseRecycling == true ? "true" : "false");
+                data.Add("retrycount", x.RetryCount);
+                data.Add("retrytype", x.RetryType);
+                data.Add("retryperiod", x.RetryPeriod);
+                data.Add("retrydayofweek", x.RetryDayOfWeek);
+                data.Add("retryfirstdayofmonth", x.RetryFirstDayOfMonth);
+                data.Add("retryseconddayofmonth", x.RetrySecondDayOfMonth);
+                data.Add("autocreateclientaccounts", x.AutoCreateClientAccounts == true ? "true" : "false");
+                data.Add("defaultewalletmkey", x.DefaultEwalletMKey);
+            }
+
+            if (addOrUpdateSequenceSequences != null)
+            {
+                for (int i = 0; i < addOrUpdateSequenceSequences.Count; i++)
                 {
-                    var x = sequences[i];
-                    data.Add("operationtype" + i, x.OperationType);
-                    data.Add("sequence" + i, x.Sequence);
+                    var x = addOrUpdateSequenceSequences[i];
+                    data.Add("operationtype_" + (i + 1), x.OperationType);
+                    data.Add("sequence_" + (i + 1), x.Sequence);
+                    data.Add("amount_" + (i + 1), x.Amount.ToString("f2"));
+                    data.Add("scheduletype_" + (i + 1), x.ScheduleType);
+                    data.Add("scheduleday_" + (i + 1), x.ScheduleDay);
+                    data.Add("duration_" + (i + 1), x.Duration);
+                    data.Add("productid_" + (i + 1), x.ProductId);
+                    data.Add("description_" + (i + 1), x.Description);
+                    data.Add("newsequence_" + (i + 1), x.NewSequence);
+                }
+            }
+
+            if (deleteSequenceSequences != null)
+            {
+                for (int i = 0; i < deleteSequenceSequences.Count; i++)
+                {
+                    var x = deleteSequenceSequences[i];
+                    data.Add("operationtype_" + (i + 1), x.OperationType);
+                    data.Add("sequence_" + (i + 1), x.Sequence);
                 }
             }
 
@@ -3317,10 +3364,10 @@ namespace SparrowSdk
                 for (int i = 0; i < products.Count; i++)
                 {
                     var x = products[i];
-                    data.Add("invoiceitemsku" + i, x.InvoiceItemSku);
-                    data.Add("invoiceitemdescription" + i, x.InvoiceItemDescription);
-                    data.Add("invoiceitemprice" + i, x.InvoiceItemPrice?.ToString("f2") ?? "");
-                    data.Add("invoiceitemquantity" + i, x.InvoiceItemQuantity);
+                    data.Add("invoiceitemsku_" + (i + 1), x.InvoiceItemSku);
+                    data.Add("invoiceitemdescription_" + (i + 1), x.InvoiceItemDescription);
+                    data.Add("invoiceitemprice_" + (i + 1), x.InvoiceItemPrice?.ToString("f2") ?? "");
+                    data.Add("invoiceitemquantity_" + (i + 1), x.InvoiceItemQuantity);
                 }
             }
 
@@ -3417,10 +3464,10 @@ namespace SparrowSdk
                 for (int i = 0; i < products.Count; i++)
                 {
                     var x = products[i];
-                    data.Add("invoiceitemsku" + i, x.InvoiceItemSku);
-                    data.Add("invoiceitemdescription" + i, x.InvoiceItemDescription);
-                    data.Add("invoiceitemprice" + i, x.InvoiceItemPrice?.ToString("f2") ?? "");
-                    data.Add("invoiceitemquantity" + i, x.InvoiceItemQuantity);
+                    data.Add("invoiceitemsku_" + (i + 1), x.InvoiceItemSku);
+                    data.Add("invoiceitemdescription_" + (i + 1), x.InvoiceItemDescription);
+                    data.Add("invoiceitemprice_" + (i + 1), x.InvoiceItemPrice?.ToString("f2") ?? "");
+                    data.Add("invoiceitemquantity_" + (i + 1), x.InvoiceItemQuantity);
                 }
             }
 
@@ -3803,7 +3850,7 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
-                    data.Add("achaccountsubtype" + i, x.AchAccountSubType);
+                    data.Add("achaccountsubtype_" + (i + 1), x.AchAccountSubType);
                 }
             }
 

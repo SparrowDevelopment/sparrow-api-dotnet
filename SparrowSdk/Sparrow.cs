@@ -32,6 +32,8 @@ namespace SparrowSdk
                 InvoiceNumber = values.GetStringOrEmpty("invoicenumber"),
                 AssignmentToken = values.GetStringOrEmpty("assignmenttoken"),
 
+                PaymentTokens = values.GetStringArray("paymenttoken"),
+
                 ErrorCode = values.GetIntOrZero("errorcode"),
 
                 Raw = values,
@@ -55,6 +57,8 @@ namespace SparrowSdk
         public string PlanToken { get; set; }
         public string InvoiceNumber { get; set; }
         public string AssignmentToken { get; set; }
+
+        public IList<string> PaymentTokens { get; set; }
 
         public int ErrorCode { get; set; }
 
@@ -90,6 +94,21 @@ namespace SparrowSdk
 
             return 0;
         }
+
+        public static IList<string> GetStringArray(this Dictionary<string, string> values, string key)
+        {
+            var items = new List<string>();
+            var i = 1;
+
+            while (values.TryGetValue(key + "_" + i, out string value))
+            {
+                items.Add(value.Replace("+", " "));
+                i++;
+            }
+
+            return items;
+        }
+
     }
 
     public partial class Sparrow
