@@ -1,16 +1,48 @@
+# Unknown Test Data
 
-		        [TestMethod]
-        public async Task AssignPaymentPlanToCustomer()
-        {
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
-                payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4005562231212149", CardExp = "1019" } });
-            var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
-                buildSequenceSequences: new[] { new Sparrow.CreatePaymentPlanBuildSequenceSequence() { Sequence = "1", Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = "5", Duration = "12" } });
-            var result = await _sparrow_creditcard.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
+## SimpleStarCard and AdvancedStarCard
 
-            TestContext.WriteLine(result.ToString());
+- Need a valid CID number for testing
+- textresponse: System Error: Reason Code: 002 CID value is invalid or non existant
+- Attempted Values:
+	- 52347800001
+	- 12345678901
 
-            // Assert.AreEqual(200, result.Status);
-            // Assert.AreEqual(1, result.Response);
-            Assert.IsTrue(result.TextResponse.ToUpper().Contains("SUCCESS"));
-        }
+- curl state: INVALID TEST
+	- The curl test does not execute the proper call, but is actually doing a credit card transation
+
+## DecryptCustomFields
+
+- Need valid data to test:
+	- token and fieldname
+	- OR a way to create an encrypted field
+- textresponse: Custom field 'customField1' not found
+
+- curl state: ERROR RESPONSE
+	- textresponse=Internal+processing+error
+
+
+## RetrieveCardBalance
+
+- Unknown Error, Possibly a Parameter is missing from the documentation
+- textresponse: Operation type is not supported by payment processor
+
+- curl state: ERROR RESPONSE
+	- textresponse=Operation+type+is+not+supported+by+payment+processor&
+
+## PassengerSale
+
+- Need valid test data
+- textresponse: Operation type is not supported by payment processor
+
+- curl state: INVALID TEST
+	- The curl test does not execute the proper call, but is actually doing a regular sale (NOT transtype=passengersale)
+
+
+# Possible Implementation Bugs
+
+## CancelInvoiceByCustomer 
+
+- This endpoint does not refer to any customer in the docs, it seems to be identical to CancelInvoice
+
+
