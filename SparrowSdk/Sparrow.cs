@@ -17,6 +17,7 @@ namespace SparrowSdk
                 Status = values.GetIntOrZero("status"),
                 Response = values.GetIntOrZero("response"),
                 TextResponse = values.GetStringOrEmpty("textresponse"),
+
                 TransId = values.GetStringOrEmpty("transid"),
                 XRef = values.GetStringOrEmpty("xref"),
                 AuthCode = values.GetStringOrEmpty("authcode"),
@@ -40,9 +41,18 @@ namespace SparrowSdk
             };
         }
 
+        public bool IsSuccess
+        {
+            get
+            {
+                return Status == 200 || TextResponse.ToUpper().Contains("SUCCESS");
+            }
+        }
+
         public int Status { get; set; }
         public int Response { get; set; }
         public string TextResponse { get; set; }
+
         public string TransId { get; set; }
         public string XRef { get; set; }
         public string AuthCode { get; set; }
@@ -150,87 +160,6 @@ namespace SparrowSdk
             }).ToDictionary(x => x.key, x => x.value);
 
             return values;
-        }
-
-        public async Task<SparrowReponse> CreateSale_Example(string cardnum, string cardexp, decimal amount, string cvv)
-        {
-            var data = new Dictionary<string, string>
-            {
-                { "transtype", "sale" },
-                { "mkey", _apiKey },
-                { "cardnum", cardnum },
-                { "cardexp", cardexp },
-                { "amount", amount.ToString("f2") },
-                { "cvv", cvv },
-            };
-
-            var responseValues = await MakeRequest(data);
-            return SparrowReponse.Create(responseValues);
-        }
-
-
-        // Example with Array
-
-
-        public class Product_Example
-        {
-            /// <summary>
-            /// SKU number of the product being purchased (skunumber_1, skunumber_2, etc) (skunumber_#)
-            /// </summary>
-            public string SkuNumber { get; set; } = "";
-            public string Description { get; set; } = "";
-            public string Amount { get; set; } = "";
-            public string Quantity { get; set; } = "";
-        }
-
-
-        /// <param name="lastName">Billing last name</param>,
-        /// <param name="skuNumberArray">SKU number of the product being purchased (skunumber_1, skunumber_2, etc) (skunumber_#)</param>,
-        /// <param name="descriptionArray">Description of the product being purchased (description_#)</param>,
-        /// <param name="amountArray">Price of the single unit of a product being purchased (amount_#)</param>,
-        /// <param name="quantityArray">Number of units of a product being purchased (quantity_#)</param>,
-        /// <param name="orderDesc">Order Description</param>,
-        public async Task<SparrowReponse> AdvancedSale_Example(
-            string cardNum, string cardExp, decimal amount, string cvv = "", decimal? currency = null, string firstName = "", string lastName = "",
-            IList<Product_Example> products = null,
-            string orderDesc = "", string orderId = "", string cardIpAddress = "", decimal? tax = null, decimal? shipAmount = null, string poNumber = "",
-            string company = "", string address1 = "", string address2 = "", string city = "", string state = "", string zip = "", string groupId = "",
-            string phone = "", string fax = "", string email = "", string shipFirstName = "", string shipLastName = "", string shipCompany = "", string shipAddress1 = "", string shipAddress2 = "",
-            string shipCity = "", string shipState = "", string shipZip = "", string shipCountry = "", string shipPhone = "", string shipEmail = "",
-            decimal[] optAmountValueArray = null, string[] optAmountPercentageArray = null,
-            bool? sendTransReceiptToBillEmail = null, bool? sendTransReceiptToShipEmail = null, string sendTransReceiptToEmails = "", string token = "",
-            bool? saveClient = null, bool? updateClient = null, string country = "")
-        {
-            var data = new Dictionary<string, string>
-            {
-                { "currency", currency != null ? currency.Value.ToString("f2") : "" },
-                { "firstname", firstName },
-                { "lastname", lastName },
-                //{ "skunumber", skuNumberArray },
-                //{ "description", descriptionArray },
-                //{ "amount", amountArray },
-                //{ "quantity", quantityArray },
-                { "orderdesc", orderDesc },
-                { "orderid", orderId },
-                { "cardipaddress", cardIpAddress },
-
-            };
-
-            if (products != null)
-            {
-                for (int i = 0; i < products.Count; i++)
-                {
-                    var x = products[i];
-                    data.Add("skunumber" + i, x.SkuNumber);
-                    data.Add("description" + i, x.Description);
-                    data.Add("amount" + i, x.Amount);
-                    data.Add("quantity" + i, x.Quantity);
-                }
-            }
-
-
-            var responseValues = await MakeRequest(data);
-            return SparrowReponse.Create(responseValues);
         }
     }
 }
