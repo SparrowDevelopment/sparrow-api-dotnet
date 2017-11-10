@@ -32,7 +32,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AdvancedSaleOptions
@@ -335,7 +335,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class SimpleCaptureOptions
@@ -412,7 +412,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -468,7 +468,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AdvancedRefundOptions
@@ -540,7 +540,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -562,7 +562,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AdvancedVoidOptions
@@ -609,7 +609,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class PassengerSaleOptions
@@ -705,7 +705,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -731,7 +731,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AdvancedStarCardOptions
@@ -972,7 +972,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -1010,7 +1010,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AdvancedACHOptions
@@ -1279,7 +1279,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -1307,7 +1307,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -1333,7 +1333,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AdvancedFiservSaleOptions
@@ -1567,7 +1567,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -1591,7 +1591,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -1613,7 +1613,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -1637,7 +1637,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -1667,7 +1667,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AddCustomerOptions
@@ -1929,7 +1929,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AddCreditCardPayment
@@ -1979,7 +1979,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AddACHPayment
@@ -2035,7 +2035,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AddStarCardPayment
@@ -2082,7 +2082,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AddEwalletPayment
@@ -2128,7 +2128,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class UpdateCustomerOptions
@@ -2295,7 +2295,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class DeletePaymentTypePayment
@@ -2336,7 +2336,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -2358,7 +2358,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class NotificationSettingsOptions
@@ -2617,7 +2617,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class UpdatePaymentPlanOptions
@@ -2971,7 +2971,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -2995,7 +2995,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class AssignPaymentPlanToCustomerOptions
@@ -3096,7 +3096,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class UpdatePaymentPlanAssignmentOptions
@@ -3198,7 +3198,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -3220,7 +3220,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class CreateInvoiceOptions
@@ -3306,7 +3306,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class UpdateInvoiceOptions
@@ -3406,7 +3406,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -3428,7 +3428,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -3452,7 +3452,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         /// <summary>
@@ -3476,7 +3476,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class PayInvoiceWithCreditCardShipping
@@ -3639,7 +3639,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
         public class PayInvoiceWithBankAccountShipping
@@ -3806,7 +3806,7 @@ namespace SparrowSdk
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
             var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues);
+            return SparrowResponse.Create(responseValues, data);
         }
 
     }
