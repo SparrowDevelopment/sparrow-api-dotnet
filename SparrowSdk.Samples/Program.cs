@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace SparrowSdk.Samples
 {
@@ -6,7 +7,14 @@ namespace SparrowSdk.Samples
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Run().Wait();
+        }
+
+        static async Task Run()
+        {
+            var generator = new SampleGenerator();
+            await generator.Generate();
+            var result = generator.Result;
         }
     }
 }

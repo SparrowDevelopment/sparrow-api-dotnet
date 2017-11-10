@@ -8,6 +8,21 @@ namespace SparrowSdk.Samples
 {
     public static class SparrowResponseSamples
     {
+        public static string EnterSample(string instanceName, bool isSuccess)
+        {
+            var name = instanceName.Replace("result_", "");
+            return ""
+    + $"\r\n### {name}{(isSuccess ? "" : " (FAIL)")}\r\n"
+    ;
+        }
+
+        public static string ExitSample(string instanceName, bool isSuccess)
+        {
+            var name = instanceName.Replace("result_", "");
+            return ""
+    ;
+        }
+
         public static string CreateCodeSample(string code)
         {
             return ""
