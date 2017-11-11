@@ -105,7 +105,7 @@ namespace SparrowSdk
 
             while (values.TryGetValue(key + "_" + i, out string value))
             {
-                items.Add(value.Replace("+", " "));
+                items.Add(Uri.UnescapeDataString(value).Replace("+", " "));
                 i++;
             }
 
