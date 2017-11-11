@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{162CC07D-7331-4451-9FF2-5D18FDFCAB79}"
 	ProjectSection(SolutionItems) = preProject
 		notes.md = notes.md
+		samples-context.md = samples-context.md
+		samples.md = samples.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparrowSdk.Samples", "SparrowSdk.Samples\SparrowSdk.Samples.csproj", "{258F42E6-6EE5-4618-B533-C2E795F3A0EA}"

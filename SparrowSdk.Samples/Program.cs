@@ -13,7 +13,13 @@ namespace SparrowSdk.Samples
 
         static async Task Run()
         {
+            var placeholderGenerator = new SampleGenerator();
+
+            await placeholderGenerator.GeneratePlaceholder();
+            var placeholderDoc = placeholderGenerator.Result;
+
             var generator = new SampleGenerator();
+
             await generator.Generate();
             var result = generator.Result;
 

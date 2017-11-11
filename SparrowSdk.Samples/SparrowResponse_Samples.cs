@@ -130,18 +130,21 @@ namespace SparrowSdk.Samples
 
             }
 
+            return CreateResultBlock(instanceName, sb.ToString().TrimEnd());
+        }
+
+        public static string CreateResultBlock(string instanceName, string content)
+        {
             var resultName = instanceName.RemoveResultPrefix();
             if (!string.IsNullOrWhiteSpace(resultName)) { resultName = " " + resultName; }
 
             return ""
                 + "\r\nRESULT" + resultName + ":\r\n"
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n"
-                + sb.ToString().TrimEnd()
+                + content
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n"
                 ;
         }
-
-
 
         public static Dictionary<string, string> UnparsedResponseValues(this SparrowResponse response)
         {
