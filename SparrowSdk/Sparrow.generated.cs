@@ -1205,6 +1205,10 @@ namespace SparrowSdk
             return SparrowResponse.Create(responseValues, data);
         }
 
+        public class AddPaymentTypesToCustomerPayment
+        {
+        }
+
         /// <summary>
         /// Add Payment Types to a Customer
         /// </summary>
@@ -1214,17 +1218,25 @@ namespace SparrowSdk
         /// <param name="mKey">Secured merchant key</param>,
         /// <param name="transType">This transaction type will update the current client information with any new data fields provided (Format: updatecustomer)</param>,
         /// <param name="token">Unique customer identifier (Format: alphanumericstring)</param>,
-        /// <param name="operationType"> (operationtype_# Format: addpaytype)</param>
-        public async Task<SparrowResponse> AddPaymentTypesToCustomer(string token)
+        /// <param name="payments">AddPaymentTypesToCustomerPayment</param>
+        public async Task<SparrowResponse> AddPaymentTypesToCustomer(string token, IList<AddPaymentTypesToCustomerPayment> payments = null)
         {
             var data = new Dictionary<string, string>
             {
                 { "mkey", _apiKey },
                 { "transtype", "updatecustomer" },
-                { "token", token },
-                { "operationtype", "addpaytype" }
+                { "token", token }
             };
 
+
+            if (payments != null)
+            {
+                for (int i = 0; i < payments.Count; i++)
+                {
+                    var x = payments[i];
+                    data.Add("operationtype_" + (i + 1), "addpaytype");
+                }
+            }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
@@ -1566,6 +1578,56 @@ namespace SparrowSdk
             return SparrowResponse.Create(responseValues, data);
         }
 
+        /// <summary>
+        /// Retrieve Customer
+        /// </summary>
+        /// <remarks>
+        /// datavault/get-customer.md - Retrieve Customer
+        /// </remarks>
+        /// <param name="mKey">Secured merchant account key</param>,
+        /// <param name="transType"> (Format: getcustomer)</param>,
+        /// <param name="token">Unique customer identifier (Format: alphanumeric string)</param>
+        public async Task<SparrowResponse> RetrieveCustomer(string token)
+        {
+            var data = new Dictionary<string, string>
+            {
+                { "mkey", _apiKey },
+                { "transtype", "getcustomer" },
+                { "token", token }
+            };
+
+
+            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+
+            var responseValues = await MakeRequest(data);
+            return SparrowResponse.Create(responseValues, data);
+        }
+
+        /// <summary>
+        /// Retrieve Payment Type
+        /// </summary>
+        /// <remarks>
+        /// datavault/get-payment-type.md - Retrieve Payment Type
+        /// </remarks>
+        /// <param name="mKey">Secured merchant account key</param>,
+        /// <param name="transType"> (Format: getcustomer)</param>,
+        /// <param name="token">Unique payment type identifier (Format: alphanumeric string)</param>
+        public async Task<SparrowResponse> RetrievePaymentType(string token)
+        {
+            var data = new Dictionary<string, string>
+            {
+                { "mkey", _apiKey },
+                { "transtype", "getcustomer" },
+                { "token", token }
+            };
+
+
+            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+
+            var responseValues = await MakeRequest(data);
+            return SparrowResponse.Create(responseValues, data);
+        }
+
         public class UpdateCustomerOptions
         {
             /// <summary>
@@ -1753,7 +1815,6 @@ namespace SparrowSdk
         /// <param name="mKey">Secured merchant key</param>,
         /// <param name="transType">This transaction type will update the current client information with any new data fields provided (Format: updatecustomer)</param>,
         /// <param name="token">Unique customer identifier (Format: alphanumericstring)</param>,
-        /// <param name="operationType"> (operationtype_# Format: updatepaytype)</param>,
         /// <param name="payments">UpdatePaymentTypePayment</param>
         public async Task<SparrowResponse> UpdatePaymentType(string token, IList<UpdatePaymentTypePayment> payments = null)
         {
@@ -1761,8 +1822,7 @@ namespace SparrowSdk
             {
                 { "mkey", _apiKey },
                 { "transtype", "updatecustomer" },
-                { "token", token },
-                { "operationtype", "updatepaytype" }
+                { "token", token }
             };
 
 
@@ -1771,6 +1831,7 @@ namespace SparrowSdk
                 for (int i = 0; i < payments.Count; i++)
                 {
                     var x = payments[i];
+                    data.Add("operationtype_" + (i + 1), "updatepaytype");
                     data.Add("token_" + (i + 1), x.Token);
                 }
             }
@@ -2241,6 +2302,31 @@ namespace SparrowSdk
                     data.Add("invoiceitemquantity_" + (i + 1), x.InvoiceItemQuantity);
                 }
             }
+
+            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+
+            var responseValues = await MakeRequest(data);
+            return SparrowResponse.Create(responseValues, data);
+        }
+
+        /// <summary>
+        /// Retrieve Invoice
+        /// </summary>
+        /// <remarks>
+        /// invoicing/get-invoice.md - Retrieve Invoice
+        /// </remarks>
+        /// <param name="mKey">Secured merchant account key</param>,
+        /// <param name="transType"> (Format: getinvoice)</param>,
+        /// <param name="invoiceNumber">Unique invoice identifier (Format: Inv- [0-9])</param>
+        public async Task<SparrowResponse> RetrieveInvoice(string invoiceNumber)
+        {
+            var data = new Dictionary<string, string>
+            {
+                { "mkey", _apiKey },
+                { "transtype", "getinvoice" },
+                { "invoicenumber", invoiceNumber }
+            };
+
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
@@ -4247,3 +4333,4 @@ namespace SparrowSdk
 
     }
 }
+    

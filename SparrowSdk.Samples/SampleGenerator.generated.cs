@@ -242,6 +242,34 @@ namespace SparrowSdk.Samples
 
             if (!!true)
             {
+                var result_RetrieveCustomer = await _sparrow_creditcard.RetrieveCustomer("I4LYCSV3FMGDTA9G");
+
+                Log(SparrowResponseSamples.EnterSample("result_RetrieveCustomer", result_RetrieveCustomer.IsSuccess));
+
+                Log(SparrowResponseSamples.CreateCodeSample(@"
+            var result_RetrieveCustomer = await _sparrow_creditcard.RetrieveCustomer(""I4LYCSV3FMGDTA9G"");"));
+
+                Log(result_RetrieveCustomer.CreateResponseDemo("result_RetrieveCustomer"));
+
+                Log(SparrowResponseSamples.ExitSample("result_RetrieveCustomer", result_RetrieveCustomer.IsSuccess));
+            }
+
+            if (!!true)
+            {
+                var result_RetrievePaymentType = await _sparrow_creditcard.RetrievePaymentType("I4LYCSV3FMGDTA9G");
+
+                Log(SparrowResponseSamples.EnterSample("result_RetrievePaymentType", result_RetrievePaymentType.IsSuccess));
+
+                Log(SparrowResponseSamples.CreateCodeSample(@"
+            var result_RetrievePaymentType = await _sparrow_creditcard.RetrievePaymentType(""I4LYCSV3FMGDTA9G"");"));
+
+                Log(result_RetrievePaymentType.CreateResponseDemo("result_RetrievePaymentType"));
+
+                Log(SparrowResponseSamples.ExitSample("result_RetrievePaymentType", result_RetrievePaymentType.IsSuccess));
+            }
+
+            if (!!true)
+            {
                 var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
                 var result_UpdateCustomer = await _sparrow_creditcard.UpdateCustomer(result_AddCustomer.CustomerToken);
 
@@ -379,6 +407,23 @@ namespace SparrowSdk.Samples
                 Log(result_CreateInvoice.CreateResponseDemo("result_CreateInvoice"));
 
                 Log(SparrowResponseSamples.ExitSample("result_CreateInvoice", result_CreateInvoice.IsSuccess));
+            }
+
+            if (!!true)
+            {
+                var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+                var result_RetrieveInvoice = await _sparrow_creditcard.RetrieveInvoice(result_CreateInvoice.InvoiceNumber);
+
+                Log(SparrowResponseSamples.EnterSample("result_RetrieveInvoice", result_RetrieveInvoice.IsSuccess));
+
+                Log(SparrowResponseSamples.CreateCodeSample(@"
+            var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);
+            var result_RetrieveInvoice = await _sparrow_creditcard.RetrieveInvoice(result_CreateInvoice.InvoiceNumber);"));
+
+                Log(result_CreateInvoice.CreateResponseDemo("result_CreateInvoice"));
+                Log(result_RetrieveInvoice.CreateResponseDemo("result_RetrieveInvoice"));
+
+                Log(SparrowResponseSamples.ExitSample("result_RetrieveInvoice", result_RetrieveInvoice.IsSuccess));
             }
 
             if (!!true)

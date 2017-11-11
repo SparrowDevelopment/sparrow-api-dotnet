@@ -42,7 +42,7 @@ namespace SparrowSdk
         {
             get
             {
-                return Status == 200 || TextResponse.ToUpper().Contains("SUCCESS");
+                return Status == 200 || Response == 1 || TextResponse.ToUpper().Contains("SUCCESS");
             }
         }
 
