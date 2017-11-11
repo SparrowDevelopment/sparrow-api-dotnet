@@ -1,8 +1,8 @@
 ## Context
 
-The following is an example of the context where a call to the sparrow sdk could be made.
+The following is an example of a simple usage of the Sparrow Sdk.
 
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 using System.Threading.Tasks;
 using SparrowSdk;
 
@@ -50,6 +50,4 @@ namespace SampleClient
 
     }
 }
-
-
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
