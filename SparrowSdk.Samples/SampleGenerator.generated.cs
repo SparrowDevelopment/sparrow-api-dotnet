@@ -10,783 +10,788 @@ namespace SparrowSdk.Samples
 
             if (!!true)
             {
-                var result_AdvancedECheck = await _sparrow_ach.AdvancedECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m,
+                var resultAdvancedECheck = await _sparrow_ach.AdvancedECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m,
                     billing: new Sparrow.AdvancedECheckBilling { FirstName = "John", LastName = "Doe", Company = "Sparrow One", Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" });
 
-                Log(SparrowResponseSamples.EnterSample("ach/advanced-echeck-sale.md", "result_AdvancedECheck", result_AdvancedECheck.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("ach/advanced-echeck-sale.md", "AdvancedECheck", resultAdvancedECheck.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AdvancedECheck = await _sparrow.AdvancedECheck(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 9.99m, 
-                billing: new Sparrow.AdvancedECheckBilling{ FirstName = ""John"", LastName = ""Doe"", Company = ""Sparrow One"", Address1 = ""16100 N 71st Street"", City = ""Scottsdale"", State = ""AZ"", Zip = ""85254"", Country = ""US"" });"));
+var result = await _sparrow.AdvancedECheck(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 9.99m, 
+    billing: new Sparrow.AdvancedECheckBilling{ FirstName = ""John"", LastName = ""Doe"", Company = ""Sparrow One"", Address1 = ""16100 N 71st Street"", City = ""Scottsdale"", State = ""AZ"", Zip = ""85254"", Country = ""US"" });"));
 
-                Log(result_AdvancedECheck.CreateResponseDemo("result_AdvancedECheck"));
+                Log(resultAdvancedECheck.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("ach/advanced-echeck-sale.md", "result_AdvancedECheck", result_AdvancedECheck.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("ach/advanced-echeck-sale.md", "AdvancedECheck", resultAdvancedECheck.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AdvancedACH = await _sparrow_ach.AdvancedACH("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, "John", "Doe");
+                var resultAdvancedACH = await _sparrow_ach.AdvancedACH("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, "John", "Doe");
 
-                Log(SparrowResponseSamples.EnterSample("ach/advanced-sale.md", "result_AdvancedACH", result_AdvancedACH.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("ach/advanced-sale.md", "AdvancedACH", resultAdvancedACH.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AdvancedACH = await _sparrow.AdvancedACH(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 9.99m, ""John"", ""Doe"");"));
+var result = await _sparrow.AdvancedACH(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 9.99m, ""John"", ""Doe"");"));
 
-                Log(result_AdvancedACH.CreateResponseDemo("result_AdvancedACH"));
+                Log(resultAdvancedACH.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("ach/advanced-sale.md", "result_AdvancedACH", result_AdvancedACH.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("ach/advanced-sale.md", "AdvancedACH", resultAdvancedACH.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleACH = await _sparrow_ach.SimpleACH("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, "John", "Doe");
+                var resultSimpleACH = await _sparrow_ach.SimpleACH("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, "John", "Doe");
 
-                Log(SparrowResponseSamples.EnterSample("ach/simple-ach.md", "result_SimpleACH", result_SimpleACH.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("ach/simple-ach.md", "SimpleACH", resultSimpleACH.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleACH = await _sparrow.SimpleACH(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 9.99m, ""John"", ""Doe"");"));
+var result = await _sparrow.SimpleACH(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 9.99m, ""John"", ""Doe"");"));
 
-                Log(result_SimpleACH.CreateResponseDemo("result_SimpleACH"));
+                Log(resultSimpleACH.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("ach/simple-ach.md", "result_SimpleACH", result_SimpleACH.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("ach/simple-ach.md", "SimpleACH", resultSimpleACH.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleECheck = await _sparrow_ach.SimpleECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m,
+                var resultSimpleECheck = await _sparrow_ach.SimpleECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m,
                     billing: new Sparrow.SimpleECheckBilling { Company = "Sparrow One", FirstName = "John", LastName = "Doe", Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" });
 
-                Log(SparrowResponseSamples.EnterSample("ach/simple-echeck.md", "result_SimpleECheck", result_SimpleECheck.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("ach/simple-echeck.md", "SimpleECheck", resultSimpleECheck.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleECheck = await _sparrow.SimpleECheck(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 9.99m, 
-                billing: new Sparrow.SimpleECheckBilling{ Company = ""Sparrow One"", FirstName = ""John"", LastName = ""Doe"", Address1 = ""16100 N 71st Street"", City = ""Scottsdale"", State = ""AZ"", Zip = ""85254"", Country = ""US"" });"));
+var result = await _sparrow.SimpleECheck(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 9.99m, 
+    billing: new Sparrow.SimpleECheckBilling{ Company = ""Sparrow One"", FirstName = ""John"", LastName = ""Doe"", Address1 = ""16100 N 71st Street"", City = ""Scottsdale"", State = ""AZ"", Zip = ""85254"", Country = ""US"" });"));
 
-                Log(result_SimpleECheck.CreateResponseDemo("result_SimpleECheck"));
+                Log(resultSimpleECheck.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("ach/simple-echeck.md", "result_SimpleECheck", result_SimpleECheck.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("ach/simple-echeck.md", "SimpleECheck", resultSimpleECheck.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_PassengerSale = await _sparrow_creditcard.PassengerSale("4111111111111111", "1019", 9.99m, "John Doe", "LAS", "AA0", "1234567890", "", "", "123456", "A", "1234", "AB");
+                var resultPassengerSale = await _sparrow_creditcard.PassengerSale("4111111111111111", "1019", 9.99m, "John Doe", "LAS", "AA0", "1234567890", "", "", "123456", "A", "1234", "AB");
 
-                Log(SparrowResponseSamples.EnterSample("airline-passenger-sale/passenger-sale.md", "result_PassengerSale", result_PassengerSale.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("airline-passenger-sale/passenger-sale.md", "PassengerSale", resultPassengerSale.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_PassengerSale = await _sparrow.PassengerSale(""4111111111111111"", ""1019"", 9.99m, ""John Doe"", ""LAS"", ""AA0"", ""1234567890"", """", """", ""123456"", ""A"", ""1234"", ""AB"");"));
+var result = await _sparrow.PassengerSale(""4111111111111111"", ""1019"", 9.99m, ""John Doe"", ""LAS"", ""AA0"", ""1234567890"", """", """", ""123456"", ""A"", ""1234"", ""AB"");"));
 
-                Log(result_PassengerSale.CreateResponseDemo("result_PassengerSale"));
+                Log(resultPassengerSale.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("airline-passenger-sale/passenger-sale.md", "result_PassengerSale", result_PassengerSale.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("airline-passenger-sale/passenger-sale.md", "PassengerSale", resultPassengerSale.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_RetrieveCardBalance = await _sparrow_creditcard.RetrieveCardBalance("4111111111111111");
+                var resultRetrieveCardBalance = await _sparrow_creditcard.RetrieveCardBalance("4111111111111111");
 
-                Log(SparrowResponseSamples.EnterSample("balance-inquiry/check-balance.md", "result_RetrieveCardBalance", result_RetrieveCardBalance.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("balance-inquiry/check-balance.md", "RetrieveCardBalance", resultRetrieveCardBalance.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_RetrieveCardBalance = await _sparrow.RetrieveCardBalance(""4111111111111111"");"));
+var result = await _sparrow.RetrieveCardBalance(""4111111111111111"");"));
 
-                Log(result_RetrieveCardBalance.CreateResponseDemo("result_RetrieveCardBalance"));
+                Log(resultRetrieveCardBalance.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("balance-inquiry/check-balance.md", "result_RetrieveCardBalance", result_RetrieveCardBalance.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("balance-inquiry/check-balance.md", "RetrieveCardBalance", resultRetrieveCardBalance.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_VerifyAccount = await _sparrow_creditcard.VerifyAccount("4111111111111111", "1019", 9.99m);
+                var resultVerifyAccount = await _sparrow_creditcard.VerifyAccount("4111111111111111", "1019", 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("cc-verification/card-verification.md", "result_VerifyAccount", result_VerifyAccount.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("cc-verification/card-verification.md", "VerifyAccount", resultVerifyAccount.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_VerifyAccount = await _sparrow.VerifyAccount(""4111111111111111"", ""1019"", 9.99m);"));
+var result = await _sparrow.VerifyAccount(""4111111111111111"", ""1019"", 9.99m);"));
 
-                Log(result_VerifyAccount.CreateResponseDemo("result_VerifyAccount"));
+                Log(resultVerifyAccount.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("cc-verification/card-verification.md", "result_VerifyAccount", result_VerifyAccount.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("cc-verification/card-verification.md", "VerifyAccount", resultVerifyAccount.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-                var result_MarkSuccessfulTransactionAsChargeback = await _sparrow_creditcard.MarkSuccessfulTransactionAsChargeback(result_SimpleSale.TransId, "Testing for Success");
+                var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
+                var resultMarkSuccessfulTransactionAsChargeback = await _sparrow_creditcard.MarkSuccessfulTransactionAsChargeback(resultSimpleSale.TransId, "Testing for Success");
 
-                Log(SparrowResponseSamples.EnterSample("chargeback/mark-chargeback.md", "result_MarkSuccessfulTransactionAsChargeback", result_MarkSuccessfulTransactionAsChargeback.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("chargeback/mark-chargeback.md", "MarkSuccessfulTransactionAsChargeback", resultMarkSuccessfulTransactionAsChargeback.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleSale = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);
-            var result_MarkSuccessfulTransactionAsChargeback = await _sparrow.MarkSuccessfulTransactionAsChargeback(result_SimpleSale.TransId, ""Testing for Success"");"));
+var resultSimpleSale = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);
+var result = await _sparrow.MarkSuccessfulTransactionAsChargeback(resultSimpleSale.TransId, ""Testing for Success"");"));
 
-                Log(result_SimpleSale.CreateResponseDemo("result_SimpleSale"));
-                Log(result_MarkSuccessfulTransactionAsChargeback.CreateResponseDemo("result_MarkSuccessfulTransactionAsChargeback"));
+                Log(resultSimpleSale.CreateResponseDemo("resultSimpleSale"));
+                Log(resultMarkSuccessfulTransactionAsChargeback.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("chargeback/mark-chargeback.md", "result_MarkSuccessfulTransactionAsChargeback", result_MarkSuccessfulTransactionAsChargeback.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("chargeback/mark-chargeback.md", "MarkSuccessfulTransactionAsChargeback", resultMarkSuccessfulTransactionAsChargeback.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleCredit = await _sparrow_creditcard.SimpleCredit("4111111111111111", "1019", 9.99m);
+                var resultSimpleCredit = await _sparrow_creditcard.SimpleCredit("4111111111111111", "1019", 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("creating-a-credit/simple-credit.md", "result_SimpleCredit", result_SimpleCredit.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("creating-a-credit/simple-credit.md", "SimpleCredit", resultSimpleCredit.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleCredit = await _sparrow.SimpleCredit(""4111111111111111"", ""1019"", 9.99m);"));
+var result = await _sparrow.SimpleCredit(""4111111111111111"", ""1019"", 9.99m);"));
 
-                Log(result_SimpleCredit.CreateResponseDemo("result_SimpleCredit"));
+                Log(resultSimpleCredit.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("creating-a-credit/simple-credit.md", "result_SimpleCredit", result_SimpleCredit.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("creating-a-credit/simple-credit.md", "SimpleCredit", resultSimpleCredit.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AdvancedSale = await _sparrow_creditcard.AdvancedSale("4111111111111111", "1019", 9.99m);
+                var resultAdvancedSale = await _sparrow_creditcard.AdvancedSale("4111111111111111", "1019", 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("creating-a-sale/advanced-sale.md", "result_AdvancedSale", result_AdvancedSale.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("creating-a-sale/advanced-sale.md", "AdvancedSale", resultAdvancedSale.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AdvancedSale = await _sparrow.AdvancedSale(""4111111111111111"", ""1019"", 9.99m);"));
+var result = await _sparrow.AdvancedSale(""4111111111111111"", ""1019"", 9.99m);"));
 
-                Log(result_AdvancedSale.CreateResponseDemo("result_AdvancedSale"));
+                Log(resultAdvancedSale.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("creating-a-sale/advanced-sale.md", "result_AdvancedSale", result_AdvancedSale.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("creating-a-sale/advanced-sale.md", "AdvancedSale", resultAdvancedSale.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
+                var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("creating-a-sale/simple-sale.md", "result_SimpleSale", result_SimpleSale.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("creating-a-sale/simple-sale.md", "SimpleSale", resultSimpleSale.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleSale = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);"));
+var result = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);"));
 
-                Log(result_SimpleSale.CreateResponseDemo("result_SimpleSale"));
+                Log(resultSimpleSale.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("creating-a-sale/simple-sale.md", "result_SimpleSale", result_SimpleSale.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("creating-a-sale/simple-sale.md", "SimpleSale", resultSimpleSale.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-                var result_AddPaymentTypesToCustomer = await _sparrow_creditcard.AddPaymentTypesToCustomer(result_AddCustomer.CustomerToken);
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
+                var resultAddPaymentTypesToCustomer = await _sparrow_creditcard.AddPaymentTypesToCustomer(resultAddCustomer.CustomerToken);
 
-                Log(SparrowResponseSamples.EnterSample("datavault/add-payment-type.md", "result_AddPaymentTypesToCustomer", result_AddPaymentTypesToCustomer.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("datavault/add-payment-type.md", "AddPaymentTypesToCustomer", resultAddPaymentTypesToCustomer.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"");
-            var result_AddPaymentTypesToCustomer = await _sparrow.AddPaymentTypesToCustomer(result_AddCustomer.CustomerToken);"));
+var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"");
+var result = await _sparrow.AddPaymentTypesToCustomer(resultAddCustomer.CustomerToken);"));
 
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-                Log(result_AddPaymentTypesToCustomer.CreateResponseDemo("result_AddPaymentTypesToCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultAddPaymentTypesToCustomer.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("datavault/add-payment-type.md", "result_AddPaymentTypesToCustomer", result_AddPaymentTypesToCustomer.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("datavault/add-payment-type.md", "AddPaymentTypesToCustomer", resultAddPaymentTypesToCustomer.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
                     payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
 
-                Log(SparrowResponseSamples.EnterSample("datavault/adding-a-customer.md", "result_AddCustomer", result_AddCustomer.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("datavault/adding-a-customer.md", "AddCustomer", resultAddCustomer.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
-                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });"));
+var result = await _sparrow.AddCustomer(""John"", ""Doe"", 
+    payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });"));
 
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("datavault/adding-a-customer.md", "result_AddCustomer", result_AddCustomer.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("datavault/adding-a-customer.md", "AddCustomer", resultAddCustomer.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-                var result_DeleteDataVaultCustomer = await _sparrow_creditcard.DeleteDataVaultCustomer(result_AddCustomer.CustomerToken);
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
+                var resultDeleteDataVaultCustomer = await _sparrow_creditcard.DeleteDataVaultCustomer(resultAddCustomer.CustomerToken);
 
-                Log(SparrowResponseSamples.EnterSample("datavault/delete-customer.md", "result_DeleteDataVaultCustomer", result_DeleteDataVaultCustomer.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("datavault/delete-customer.md", "DeleteDataVaultCustomer", resultDeleteDataVaultCustomer.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"");
-            var result_DeleteDataVaultCustomer = await _sparrow.DeleteDataVaultCustomer(result_AddCustomer.CustomerToken);"));
+var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"");
+var result = await _sparrow.DeleteDataVaultCustomer(resultAddCustomer.CustomerToken);"));
 
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-                Log(result_DeleteDataVaultCustomer.CreateResponseDemo("result_DeleteDataVaultCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultDeleteDataVaultCustomer.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("datavault/delete-customer.md", "result_DeleteDataVaultCustomer", result_DeleteDataVaultCustomer.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("datavault/delete-customer.md", "DeleteDataVaultCustomer", resultDeleteDataVaultCustomer.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
                     payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-                var result_DeletePaymentType = await _sparrow_creditcard.DeletePaymentType(result_AddCustomer.CustomerToken,
-                    payments: new[] { new Sparrow.DeletePaymentTypePayment { Token = result_AddCustomer.PaymentTokens[0] } });
+                var resultDeletePaymentType = await _sparrow_creditcard.DeletePaymentType(resultAddCustomer.CustomerToken,
+                    payments: new[] { new Sparrow.DeletePaymentTypePayment { Token = resultAddCustomer.PaymentTokens[0] } });
 
-                Log(SparrowResponseSamples.EnterSample("datavault/delete-payment-type.md", "result_DeletePaymentType", result_DeletePaymentType.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("datavault/delete-payment-type.md", "DeletePaymentType", resultDeletePaymentType.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
-                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
-            var result_DeletePaymentType = await _sparrow.DeletePaymentType(result_AddCustomer.CustomerToken, 
-                payments: new []{ new Sparrow.DeletePaymentTypePayment{ Token = result_AddCustomer.PaymentTokens[0] } });"));
+var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
+    payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
+var result = await _sparrow.DeletePaymentType(resultAddCustomer.CustomerToken, 
+    payments: new []{ new Sparrow.DeletePaymentTypePayment{ Token = resultAddCustomer.PaymentTokens[0] } });"));
 
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-                Log(result_DeletePaymentType.CreateResponseDemo("result_DeletePaymentType"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultDeletePaymentType.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("datavault/delete-payment-type.md", "result_DeletePaymentType", result_DeletePaymentType.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("datavault/delete-payment-type.md", "DeletePaymentType", resultDeletePaymentType.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-                var result_RetrieveCustomer = await _sparrow_creditcard.RetrieveCustomer(result_AddCustomer.CustomerToken);
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
+                var resultRetrieveCustomer = await _sparrow_creditcard.RetrieveCustomer(resultAddCustomer.CustomerToken);
 
-                Log(SparrowResponseSamples.EnterSample("datavault/get-customer.md", "result_RetrieveCustomer", result_RetrieveCustomer.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("datavault/get-customer.md", "RetrieveCustomer", resultRetrieveCustomer.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"");
-            var result_RetrieveCustomer = await _sparrow.RetrieveCustomer(result_AddCustomer.CustomerToken);"));
+var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"");
+var result = await _sparrow.RetrieveCustomer(resultAddCustomer.CustomerToken);"));
 
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-                Log(result_RetrieveCustomer.CreateResponseDemo("result_RetrieveCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultRetrieveCustomer.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("datavault/get-customer.md", "result_RetrieveCustomer", result_RetrieveCustomer.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("datavault/get-customer.md", "RetrieveCustomer", resultRetrieveCustomer.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
                     payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-                var result_RetrievePaymentType = await _sparrow_creditcard.RetrievePaymentType(result_AddCustomer.PaymentTokens[0]);
+                var resultRetrievePaymentType = await _sparrow_creditcard.RetrievePaymentType(resultAddCustomer.PaymentTokens[0]);
 
-                Log(SparrowResponseSamples.EnterSample("datavault/get-payment-type.md", "result_RetrievePaymentType", result_RetrievePaymentType.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("datavault/get-payment-type.md", "RetrievePaymentType", resultRetrievePaymentType.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
-                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
-            var result_RetrievePaymentType = await _sparrow.RetrievePaymentType(result_AddCustomer.PaymentTokens[0]);"));
+var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
+    payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
+var result = await _sparrow.RetrievePaymentType(resultAddCustomer.PaymentTokens[0]);"));
 
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-                Log(result_RetrievePaymentType.CreateResponseDemo("result_RetrievePaymentType"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultRetrievePaymentType.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("datavault/get-payment-type.md", "result_RetrievePaymentType", result_RetrievePaymentType.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("datavault/get-payment-type.md", "RetrievePaymentType", resultRetrievePaymentType.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
                     payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-                var result_UpdateCustomer = await _sparrow_creditcard.UpdateCustomer(result_AddCustomer.CustomerToken,
+                var resultUpdateCustomer = await _sparrow_creditcard.UpdateCustomer(resultAddCustomer.CustomerToken,
                     billing: new Sparrow.UpdateCustomerBilling { Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254" });
 
-                Log(SparrowResponseSamples.EnterSample("datavault/update-payment-type.md", "result_UpdateCustomer", result_UpdateCustomer.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("datavault/update-payment-type.md", "UpdateCustomer", resultUpdateCustomer.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
-                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
-            var result_UpdateCustomer = await _sparrow.UpdateCustomer(result_AddCustomer.CustomerToken, 
-                billing: new Sparrow.UpdateCustomerBilling{ Address1 = ""16100 N 71st Street"", City = ""Scottsdale"", State = ""AZ"", Zip = ""85254"" });"));
+var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
+    payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
+var result = await _sparrow.UpdateCustomer(resultAddCustomer.CustomerToken, 
+    billing: new Sparrow.UpdateCustomerBilling{ Address1 = ""16100 N 71st Street"", City = ""Scottsdale"", State = ""AZ"", Zip = ""85254"" });"));
 
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-                Log(result_UpdateCustomer.CreateResponseDemo("result_UpdateCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultUpdateCustomer.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("datavault/update-payment-type.md", "result_UpdateCustomer", result_UpdateCustomer.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("datavault/update-payment-type.md", "UpdateCustomer", resultUpdateCustomer.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
                     payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-                var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(result_AddCustomer.CustomerToken,
-                    payments: new[] { new Sparrow.UpdatePaymentTypePayment { Token = result_AddCustomer.PaymentTokens[0] } });
+                var resultUpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(resultAddCustomer.CustomerToken,
+                    payments: new[] { new Sparrow.UpdatePaymentTypePayment { Token = resultAddCustomer.PaymentTokens[0] } });
 
-                Log(SparrowResponseSamples.EnterSample("datavault/update-payment-types.md", "result_UpdatePaymentType", result_UpdatePaymentType.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("datavault/update-payment-types.md", "UpdatePaymentType", resultUpdatePaymentType.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
-                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
-            var result_UpdatePaymentType = await _sparrow.UpdatePaymentType(result_AddCustomer.CustomerToken, 
-                payments: new []{ new Sparrow.UpdatePaymentTypePayment{ Token = result_AddCustomer.PaymentTokens[0] } });"));
+var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
+    payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
+var result = await _sparrow.UpdatePaymentType(resultAddCustomer.CustomerToken, 
+    payments: new []{ new Sparrow.UpdatePaymentTypePayment{ Token = resultAddCustomer.PaymentTokens[0] } });"));
 
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-                Log(result_UpdatePaymentType.CreateResponseDemo("result_UpdatePaymentType"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultUpdatePaymentType.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("datavault/update-payment-types.md", "result_UpdatePaymentType", result_UpdatePaymentType.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("datavault/update-payment-types.md", "UpdatePaymentType", resultUpdatePaymentType.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-                var result_DecryptCustomFields = await _sparrow_creditcard.DecryptCustomFields("customField1", result_AddCustomer.CustomerToken);
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
+                var resultDecryptCustomFields = await _sparrow_creditcard.DecryptCustomFields("customField1", resultAddCustomer.CustomerToken);
 
-                Log(SparrowResponseSamples.EnterSample("decrypt-custom-field/decrypt.md", "result_DecryptCustomFields", result_DecryptCustomFields.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("decrypt-custom-field/decrypt.md", "DecryptCustomFields", resultDecryptCustomFields.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"");
-            var result_DecryptCustomFields = await _sparrow.DecryptCustomFields(""customField1"", result_AddCustomer.CustomerToken);"));
+var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"");
+var result = await _sparrow.DecryptCustomFields(""customField1"", resultAddCustomer.CustomerToken);"));
 
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-                Log(result_DecryptCustomFields.CreateResponseDemo("result_DecryptCustomFields"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultDecryptCustomFields.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("decrypt-custom-field/decrypt.md", "result_DecryptCustomFields", result_DecryptCustomFields.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("decrypt-custom-field/decrypt.md", "DecryptCustomFields", resultDecryptCustomFields.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_EWalletSimpleCredit = await _sparrow_ewallet.EWalletSimpleCredit("user@example.com", 9.99m);
+                var resultEWalletSimpleCredit = await _sparrow_ewallet.EWalletSimpleCredit("user@example.com", 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("ewallet/ewallet-credit.md", "result_EWalletSimpleCredit", result_EWalletSimpleCredit.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("ewallet/ewallet-credit.md", "EWalletSimpleCredit", resultEWalletSimpleCredit.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_EWalletSimpleCredit = await _sparrow.EWalletSimpleCredit(""user@example.com"", 9.99m);"));
+var result = await _sparrow.EWalletSimpleCredit(""user@example.com"", 9.99m);"));
 
-                Log(result_EWalletSimpleCredit.CreateResponseDemo("result_EWalletSimpleCredit"));
+                Log(resultEWalletSimpleCredit.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("ewallet/ewallet-credit.md", "result_EWalletSimpleCredit", result_EWalletSimpleCredit.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("ewallet/ewallet-credit.md", "EWalletSimpleCredit", resultEWalletSimpleCredit.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AdvancedFiservSale = await _sparrow_creditcard.AdvancedFiservSale("4111111111111111", "1019", 9.99m);
+                var resultAdvancedFiservSale = await _sparrow_creditcard.AdvancedFiservSale("4111111111111111", "1019", 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("fiserv/fiserv-advanced.md", "result_AdvancedFiservSale", result_AdvancedFiservSale.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("fiserv/fiserv-advanced.md", "AdvancedFiservSale", resultAdvancedFiservSale.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AdvancedFiservSale = await _sparrow.AdvancedFiservSale(""4111111111111111"", ""1019"", 9.99m);"));
+var result = await _sparrow.AdvancedFiservSale(""4111111111111111"", ""1019"", 9.99m);"));
 
-                Log(result_AdvancedFiservSale.CreateResponseDemo("result_AdvancedFiservSale"));
+                Log(resultAdvancedFiservSale.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("fiserv/fiserv-advanced.md", "result_AdvancedFiservSale", result_AdvancedFiservSale.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("fiserv/fiserv-advanced.md", "AdvancedFiservSale", resultAdvancedFiservSale.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_FiservSimpleSale = await _sparrow_creditcard.FiservSimpleSale("4111111111111111", "1019", 9.99m);
+                var resultFiservSimpleSale = await _sparrow_creditcard.FiservSimpleSale("4111111111111111", "1019", 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("fiserv/fiserv-simple.md", "result_FiservSimpleSale", result_FiservSimpleSale.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("fiserv/fiserv-simple.md", "FiservSimpleSale", resultFiservSimpleSale.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_FiservSimpleSale = await _sparrow.FiservSimpleSale(""4111111111111111"", ""1019"", 9.99m);"));
+var result = await _sparrow.FiservSimpleSale(""4111111111111111"", ""1019"", 9.99m);"));
 
-                Log(result_FiservSimpleSale.CreateResponseDemo("result_FiservSimpleSale"));
+                Log(resultFiservSimpleSale.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("fiserv/fiserv-simple.md", "result_FiservSimpleSale", result_FiservSimpleSale.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("fiserv/fiserv-simple.md", "FiservSimpleSale", resultFiservSimpleSale.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-                var result_CancelInvoiceByCustomer = await _sparrow_creditcard.CancelInvoiceByCustomer(result_CreateInvoice.InvoiceNumber, "Testing");
+                var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+                var resultCancelInvoiceByCustomer = await _sparrow_creditcard.CancelInvoiceByCustomer(resultCreateInvoice.InvoiceNumber, "Testing");
 
-                Log(SparrowResponseSamples.EnterSample("invoicing/cancel-inv-customer.md", "result_CancelInvoiceByCustomer", result_CancelInvoiceByCustomer.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("invoicing/cancel-inv-customer.md", "CancelInvoiceByCustomer", resultCancelInvoiceByCustomer.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_CreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);
-            var result_CancelInvoiceByCustomer = await _sparrow.CancelInvoiceByCustomer(result_CreateInvoice.InvoiceNumber, ""Testing"");"));
+var resultCreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);
+var result = await _sparrow.CancelInvoiceByCustomer(resultCreateInvoice.InvoiceNumber, ""Testing"");"));
 
-                Log(result_CreateInvoice.CreateResponseDemo("result_CreateInvoice"));
-                Log(result_CancelInvoiceByCustomer.CreateResponseDemo("result_CancelInvoiceByCustomer"));
+                Log(resultCreateInvoice.CreateResponseDemo("resultCreateInvoice"));
+                Log(resultCancelInvoiceByCustomer.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("invoicing/cancel-inv-customer.md", "result_CancelInvoiceByCustomer", result_CancelInvoiceByCustomer.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("invoicing/cancel-inv-customer.md", "CancelInvoiceByCustomer", resultCancelInvoiceByCustomer.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-                var result_CancelInvoice = await _sparrow_creditcard.CancelInvoice(result_CreateInvoice.InvoiceNumber, "Testing");
+                var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+                var resultCancelInvoice = await _sparrow_creditcard.CancelInvoice(resultCreateInvoice.InvoiceNumber, "Testing");
 
-                Log(SparrowResponseSamples.EnterSample("invoicing/cancel-invoice.md", "result_CancelInvoice", result_CancelInvoice.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("invoicing/cancel-invoice.md", "CancelInvoice", resultCancelInvoice.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_CreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);
-            var result_CancelInvoice = await _sparrow.CancelInvoice(result_CreateInvoice.InvoiceNumber, ""Testing"");"));
+var resultCreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);
+var result = await _sparrow.CancelInvoice(resultCreateInvoice.InvoiceNumber, ""Testing"");"));
 
-                Log(result_CreateInvoice.CreateResponseDemo("result_CreateInvoice"));
-                Log(result_CancelInvoice.CreateResponseDemo("result_CancelInvoice"));
+                Log(resultCreateInvoice.CreateResponseDemo("resultCreateInvoice"));
+                Log(resultCancelInvoice.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("invoicing/cancel-invoice.md", "result_CancelInvoice", result_CancelInvoice.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("invoicing/cancel-invoice.md", "CancelInvoice", resultCancelInvoice.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+                var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
 
-                Log(SparrowResponseSamples.EnterSample("invoicing/create-merchant-invoice.md", "result_CreateInvoice", result_CreateInvoice.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("invoicing/create-merchant-invoice.md", "CreateInvoice", resultCreateInvoice.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_CreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);"));
+var result = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);"));
 
-                Log(result_CreateInvoice.CreateResponseDemo("result_CreateInvoice"));
+                Log(resultCreateInvoice.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("invoicing/create-merchant-invoice.md", "result_CreateInvoice", result_CreateInvoice.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("invoicing/create-merchant-invoice.md", "CreateInvoice", resultCreateInvoice.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-                var result_RetrieveInvoice = await _sparrow_creditcard.RetrieveInvoice(result_CreateInvoice.InvoiceNumber);
+                var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+                var resultRetrieveInvoice = await _sparrow_creditcard.RetrieveInvoice(resultCreateInvoice.InvoiceNumber);
 
-                Log(SparrowResponseSamples.EnterSample("invoicing/get-invoice.md", "result_RetrieveInvoice", result_RetrieveInvoice.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("invoicing/get-invoice.md", "RetrieveInvoice", resultRetrieveInvoice.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_CreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);
-            var result_RetrieveInvoice = await _sparrow.RetrieveInvoice(result_CreateInvoice.InvoiceNumber);"));
+var resultCreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);
+var result = await _sparrow.RetrieveInvoice(resultCreateInvoice.InvoiceNumber);"));
 
-                Log(result_CreateInvoice.CreateResponseDemo("result_CreateInvoice"));
-                Log(result_RetrieveInvoice.CreateResponseDemo("result_RetrieveInvoice"));
+                Log(resultCreateInvoice.CreateResponseDemo("resultCreateInvoice"));
+                Log(resultRetrieveInvoice.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("invoicing/get-invoice.md", "result_RetrieveInvoice", result_RetrieveInvoice.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("invoicing/get-invoice.md", "RetrieveInvoice", resultRetrieveInvoice.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_CreateInvoice = await _sparrow_ach.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-                var result_PayInvoiceWithBankAccount = await _sparrow_ach.PayInvoiceWithBankAccount(result_CreateInvoice.InvoiceNumber, "First Test Bank", "110000000", "1234567890123", "checking", "personal",
+                var resultCreateInvoice = await _sparrow_ach.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+                var resultPayInvoiceWithBankAccount = await _sparrow_ach.PayInvoiceWithBankAccount(resultCreateInvoice.InvoiceNumber, "First Test Bank", "110000000", "1234567890123", "checking", "personal",
                     billing: new Sparrow.PayInvoiceWithBankAccountBilling { FirstName = "John", LastName = "Doe" });
 
-                Log(SparrowResponseSamples.EnterSample("invoicing/pay-inv-ach.md", "result_PayInvoiceWithBankAccount", result_PayInvoiceWithBankAccount.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("invoicing/pay-inv-ach.md", "PayInvoiceWithBankAccount", resultPayInvoiceWithBankAccount.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_CreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);
-            var result_PayInvoiceWithBankAccount = await _sparrow.PayInvoiceWithBankAccount(result_CreateInvoice.InvoiceNumber, ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 
-                billing: new Sparrow.PayInvoiceWithBankAccountBilling{ FirstName = ""John"", LastName = ""Doe"" });"));
+var resultCreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);
+var result = await _sparrow.PayInvoiceWithBankAccount(resultCreateInvoice.InvoiceNumber, ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 
+    billing: new Sparrow.PayInvoiceWithBankAccountBilling{ FirstName = ""John"", LastName = ""Doe"" });"));
 
-                Log(result_CreateInvoice.CreateResponseDemo("result_CreateInvoice"));
-                Log(result_PayInvoiceWithBankAccount.CreateResponseDemo("result_PayInvoiceWithBankAccount"));
+                Log(resultCreateInvoice.CreateResponseDemo("resultCreateInvoice"));
+                Log(resultPayInvoiceWithBankAccount.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("invoicing/pay-inv-ach.md", "result_PayInvoiceWithBankAccount", result_PayInvoiceWithBankAccount.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("invoicing/pay-inv-ach.md", "PayInvoiceWithBankAccount", resultPayInvoiceWithBankAccount.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-                var result_PayInvoiceWithCreditCard = await _sparrow_creditcard.PayInvoiceWithCreditCard(result_CreateInvoice.InvoiceNumber, "4111111111111111", "1019");
+                var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+                var resultPayInvoiceWithCreditCard = await _sparrow_creditcard.PayInvoiceWithCreditCard(resultCreateInvoice.InvoiceNumber, "4111111111111111", "1019");
 
-                Log(SparrowResponseSamples.EnterSample("invoicing/pay-inv-cc.md", "result_PayInvoiceWithCreditCard", result_PayInvoiceWithCreditCard.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("invoicing/pay-inv-cc.md", "PayInvoiceWithCreditCard", resultPayInvoiceWithCreditCard.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_CreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);
-            var result_PayInvoiceWithCreditCard = await _sparrow.PayInvoiceWithCreditCard(result_CreateInvoice.InvoiceNumber, ""4111111111111111"", ""1019"");"));
+var resultCreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""active"", 10.00m);
+var result = await _sparrow.PayInvoiceWithCreditCard(resultCreateInvoice.InvoiceNumber, ""4111111111111111"", ""1019"");"));
 
-                Log(result_CreateInvoice.CreateResponseDemo("result_CreateInvoice"));
-                Log(result_PayInvoiceWithCreditCard.CreateResponseDemo("result_PayInvoiceWithCreditCard"));
+                Log(resultCreateInvoice.CreateResponseDemo("resultCreateInvoice"));
+                Log(resultPayInvoiceWithCreditCard.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("invoicing/pay-inv-cc.md", "result_PayInvoiceWithCreditCard", result_PayInvoiceWithCreditCard.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("invoicing/pay-inv-cc.md", "PayInvoiceWithCreditCard", resultPayInvoiceWithCreditCard.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "draft", 10.00m);
-                var result_UpdateInvoice = await _sparrow_creditcard.UpdateInvoice(result_CreateInvoice.InvoiceNumber,
+                var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "draft", 10.00m);
+                var resultUpdateInvoice = await _sparrow_creditcard.UpdateInvoice(resultCreateInvoice.InvoiceNumber,
                     options: new Sparrow.UpdateInvoiceOptions { InvoiceStatus = "active" });
 
-                Log(SparrowResponseSamples.EnterSample("invoicing/update-invoice.md", "result_UpdateInvoice", result_UpdateInvoice.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("invoicing/update-invoice.md", "UpdateInvoice", resultUpdateInvoice.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_CreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""draft"", 10.00m);
-            var result_UpdateInvoice = await _sparrow.UpdateInvoice(result_CreateInvoice.InvoiceNumber, 
-                options: new Sparrow.UpdateInvoiceOptions{ InvoiceStatus = ""active"" });"));
+var resultCreateInvoice = await _sparrow.CreateInvoice(""12/01/2017"", ""USD"", ""draft"", 10.00m);
+var result = await _sparrow.UpdateInvoice(resultCreateInvoice.InvoiceNumber, 
+    options: new Sparrow.UpdateInvoiceOptions{ InvoiceStatus = ""active"" });"));
 
-                Log(result_CreateInvoice.CreateResponseDemo("result_CreateInvoice"));
-                Log(result_UpdateInvoice.CreateResponseDemo("result_UpdateInvoice"));
+                Log(resultCreateInvoice.CreateResponseDemo("resultCreateInvoice"));
+                Log(resultUpdateInvoice.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("invoicing/update-invoice.md", "result_UpdateInvoice", result_UpdateInvoice.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("invoicing/update-invoice.md", "UpdateInvoice", resultUpdateInvoice.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-                var result_SimpleRefund = await _sparrow_creditcard.SimpleRefund(result_SimpleSale.TransId, 9.99m);
+                var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
+                var resultSimpleRefund = await _sparrow_creditcard.SimpleRefund(resultSimpleSale.TransId, 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("issuing-a-refund/Simple-refund.md", "result_SimpleRefund", result_SimpleRefund.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("issuing-a-refund/Simple-refund.md", "SimpleRefund", resultSimpleRefund.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleSale = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);
-            var result_SimpleRefund = await _sparrow.SimpleRefund(result_SimpleSale.TransId, 9.99m);"));
+var resultSimpleSale = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);
+var result = await _sparrow.SimpleRefund(resultSimpleSale.TransId, 9.99m);"));
 
-                Log(result_SimpleSale.CreateResponseDemo("result_SimpleSale"));
-                Log(result_SimpleRefund.CreateResponseDemo("result_SimpleRefund"));
+                Log(resultSimpleSale.CreateResponseDemo("resultSimpleSale"));
+                Log(resultSimpleRefund.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("issuing-a-refund/Simple-refund.md", "result_SimpleRefund", result_SimpleRefund.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("issuing-a-refund/Simple-refund.md", "SimpleRefund", resultSimpleRefund.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-                var result_AdvancedRefund = await _sparrow_creditcard.AdvancedRefund(result_SimpleSale.TransId, 9.99m);
+                var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
+                var resultAdvancedRefund = await _sparrow_creditcard.AdvancedRefund(resultSimpleSale.TransId, 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("issuing-a-refund/advanced-refund.md", "result_AdvancedRefund", result_AdvancedRefund.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("issuing-a-refund/advanced-refund.md", "AdvancedRefund", resultAdvancedRefund.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleSale = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);
-            var result_AdvancedRefund = await _sparrow.AdvancedRefund(result_SimpleSale.TransId, 9.99m);"));
+var resultSimpleSale = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);
+var result = await _sparrow.AdvancedRefund(resultSimpleSale.TransId, 9.99m);"));
 
-                Log(result_SimpleSale.CreateResponseDemo("result_SimpleSale"));
-                Log(result_AdvancedRefund.CreateResponseDemo("result_AdvancedRefund"));
+                Log(resultSimpleSale.CreateResponseDemo("resultSimpleSale"));
+                Log(resultAdvancedRefund.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("issuing-a-refund/advanced-refund.md", "result_AdvancedRefund", result_AdvancedRefund.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("issuing-a-refund/advanced-refund.md", "AdvancedRefund", resultAdvancedRefund.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-                var result_AdvancedVoid = await _sparrow_creditcard.AdvancedVoid(result_SimpleSale.TransId);
+                var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
+                var resultAdvancedVoid = await _sparrow_creditcard.AdvancedVoid(resultSimpleSale.TransId);
 
-                Log(SparrowResponseSamples.EnterSample("issuing-a-void/advanced-void.md", "result_AdvancedVoid", result_AdvancedVoid.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("issuing-a-void/advanced-void.md", "AdvancedVoid", resultAdvancedVoid.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleSale = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);
-            var result_AdvancedVoid = await _sparrow.AdvancedVoid(result_SimpleSale.TransId);"));
+var resultSimpleSale = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);
+var result = await _sparrow.AdvancedVoid(resultSimpleSale.TransId);"));
 
-                Log(result_SimpleSale.CreateResponseDemo("result_SimpleSale"));
-                Log(result_AdvancedVoid.CreateResponseDemo("result_AdvancedVoid"));
+                Log(resultSimpleSale.CreateResponseDemo("resultSimpleSale"));
+                Log(resultAdvancedVoid.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("issuing-a-void/advanced-void.md", "result_AdvancedVoid", result_AdvancedVoid.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("issuing-a-void/advanced-void.md", "AdvancedVoid", resultAdvancedVoid.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-                var result_SimpleVoid = await _sparrow_creditcard.SimpleVoid(result_SimpleSale.TransId);
+                var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
+                var resultSimpleVoid = await _sparrow_creditcard.SimpleVoid(resultSimpleSale.TransId);
 
-                Log(SparrowResponseSamples.EnterSample("issuing-a-void/simple-void.md", "result_SimpleVoid", result_SimpleVoid.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("issuing-a-void/simple-void.md", "SimpleVoid", resultSimpleVoid.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleSale = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);
-            var result_SimpleVoid = await _sparrow.SimpleVoid(result_SimpleSale.TransId);"));
+var resultSimpleSale = await _sparrow.SimpleSale(""4111111111111111"", ""1019"", 9.99m);
+var result = await _sparrow.SimpleVoid(resultSimpleSale.TransId);"));
 
-                Log(result_SimpleSale.CreateResponseDemo("result_SimpleSale"));
-                Log(result_SimpleVoid.CreateResponseDemo("result_SimpleVoid"));
+                Log(resultSimpleSale.CreateResponseDemo("resultSimpleSale"));
+                Log(resultSimpleVoid.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("issuing-a-void/simple-void.md", "result_SimpleVoid", result_SimpleVoid.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("issuing-a-void/simple-void.md", "SimpleVoid", resultSimpleVoid.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
                     payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-                var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
+                var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
                     sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-                var result_AssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
+                var resultAssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(resultAddCustomer.CustomerToken, resultCreatePaymentPlan.PlanToken, resultAddCustomer.PaymentTokens[0]);
 
-                Log(SparrowResponseSamples.EnterSample("payment-plans/assign-payment-plan.md", "result_AssignPaymentPlanToCustomer", result_AssignPaymentPlanToCustomer.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("payment-plans/assign-payment-plan.md", "AssignPaymentPlanToCustomer", resultAssignPaymentPlanToCustomer.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
-                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
-            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"", 
-                sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });
-            var result_AssignPaymentPlanToCustomer = await _sparrow.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);"));
+var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
+    payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
+var resultCreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"", 
+    sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });
+var result = await _sparrow.AssignPaymentPlanToCustomer(resultAddCustomer.CustomerToken, resultCreatePaymentPlan.PlanToken, resultAddCustomer.PaymentTokens[0]);"));
 
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-                Log(result_CreatePaymentPlan.CreateResponseDemo("result_CreatePaymentPlan"));
-                Log(result_AssignPaymentPlanToCustomer.CreateResponseDemo("result_AssignPaymentPlanToCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultCreatePaymentPlan.CreateResponseDemo("resultCreatePaymentPlan"));
+                Log(resultAssignPaymentPlanToCustomer.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("payment-plans/assign-payment-plan.md", "result_AssignPaymentPlanToCustomer", result_AssignPaymentPlanToCustomer.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("payment-plans/assign-payment-plan.md", "AssignPaymentPlanToCustomer", resultAssignPaymentPlanToCustomer.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
                     payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-                var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
+                var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
                     sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-                var result_AssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
-                var result_CancelPlanAssignment = await _sparrow_creditcard.CancelPlanAssignment(result_AssignPaymentPlanToCustomer.AssignmentToken);
+                var resultAssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(resultAddCustomer.CustomerToken, resultCreatePaymentPlan.PlanToken, resultAddCustomer.PaymentTokens[0]);
+                var resultCancelPlanAssignment = await _sparrow_creditcard.CancelPlanAssignment(resultAssignPaymentPlanToCustomer.AssignmentToken);
 
-                Log(SparrowResponseSamples.EnterSample("payment-plans/cancel-plan-assignment.md", "result_CancelPlanAssignment", result_CancelPlanAssignment.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("payment-plans/cancel-plan-assignment.md", "CancelPlanAssignment", resultCancelPlanAssignment.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
-                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
-            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"", 
-                sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });
-            var result_AssignPaymentPlanToCustomer = await _sparrow.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
-            var result_CancelPlanAssignment = await _sparrow.CancelPlanAssignment(result_AssignPaymentPlanToCustomer.AssignmentToken);"));
+var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
+    payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
+var resultCreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"", 
+    sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });
+var resultAssignPaymentPlanToCustomer = await _sparrow.AssignPaymentPlanToCustomer(resultAddCustomer.CustomerToken, resultCreatePaymentPlan.PlanToken, resultAddCustomer.PaymentTokens[0]);
+var result = await _sparrow.CancelPlanAssignment(resultAssignPaymentPlanToCustomer.AssignmentToken);"));
 
-                Log(result_AssignPaymentPlanToCustomer.CreateResponseDemo("result_AssignPaymentPlanToCustomer"));
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-                Log(result_CreatePaymentPlan.CreateResponseDemo("result_CreatePaymentPlan"));
-                Log(result_CancelPlanAssignment.CreateResponseDemo("result_CancelPlanAssignment"));
+                Log(resultAssignPaymentPlanToCustomer.CreateResponseDemo("resultAssignPaymentPlanToCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultCreatePaymentPlan.CreateResponseDemo("resultCreatePaymentPlan"));
+                Log(resultCancelPlanAssignment.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("payment-plans/cancel-plan-assignment.md", "result_CancelPlanAssignment", result_CancelPlanAssignment.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("payment-plans/cancel-plan-assignment.md", "CancelPlanAssignment", resultCancelPlanAssignment.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
+                var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
                     sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
 
-                Log(SparrowResponseSamples.EnterSample("payment-plans/create-plan.md", "result_CreatePaymentPlan", result_CreatePaymentPlan.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("payment-plans/create-plan.md", "CreatePaymentPlan", resultCreatePaymentPlan.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"", 
-                sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });"));
+var result = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"", 
+    sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });"));
 
-                Log(result_CreatePaymentPlan.CreateResponseDemo("result_CreatePaymentPlan"));
+                Log(resultCreatePaymentPlan.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("payment-plans/create-plan.md", "result_CreatePaymentPlan", result_CreatePaymentPlan.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("payment-plans/create-plan.md", "CreatePaymentPlan", resultCreatePaymentPlan.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017");
-                var result_DeletePlan = await _sparrow_creditcard.DeletePlan(result_CreatePaymentPlan.PlanToken);
+                var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017");
+                var resultDeletePlan = await _sparrow_creditcard.DeletePlan(resultCreatePaymentPlan.PlanToken);
 
-                Log(SparrowResponseSamples.EnterSample("payment-plans/delete-plan.md", "result_DeletePlan", result_DeletePlan.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("payment-plans/delete-plan.md", "DeletePlan", resultDeletePlan.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"");
-            var result_DeletePlan = await _sparrow.DeletePlan(result_CreatePaymentPlan.PlanToken);"));
+var resultCreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"");
+var result = await _sparrow.DeletePlan(resultCreatePaymentPlan.PlanToken);"));
 
-                Log(result_CreatePaymentPlan.CreateResponseDemo("result_CreatePaymentPlan"));
-                Log(result_DeletePlan.CreateResponseDemo("result_DeletePlan"));
+                Log(resultCreatePaymentPlan.CreateResponseDemo("resultCreatePaymentPlan"));
+                Log(resultDeletePlan.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("payment-plans/delete-plan.md", "result_DeletePlan", result_DeletePlan.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("payment-plans/delete-plan.md", "DeletePlan", resultDeletePlan.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
                     payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-                var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/01/2018",
+                var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/01/2018",
                     sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-                var result_AssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
-                var result_UpdatePaymentPlanAssignment = await _sparrow_creditcard.UpdatePaymentPlanAssignment(result_AssignPaymentPlanToCustomer.AssignmentToken,
+                var resultAssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(resultAddCustomer.CustomerToken, resultCreatePaymentPlan.PlanToken, resultAddCustomer.PaymentTokens[0]);
+                var resultUpdatePaymentPlanAssignment = await _sparrow_creditcard.UpdatePaymentPlanAssignment(resultAssignPaymentPlanToCustomer.AssignmentToken,
                     options: new Sparrow.UpdatePaymentPlanAssignmentOptions { StartDate = "02/02/2020" });
 
-                Log(SparrowResponseSamples.EnterSample("payment-plans/update-plan-assignment.md", "result_UpdatePaymentPlanAssignment", result_UpdatePaymentPlanAssignment.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("payment-plans/update-plan-assignment.md", "UpdatePaymentPlanAssignment", resultUpdatePaymentPlanAssignment.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
-                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
-            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/01/2018"", 
-                sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });
-            var result_AssignPaymentPlanToCustomer = await _sparrow.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
-            var result_UpdatePaymentPlanAssignment = await _sparrow.UpdatePaymentPlanAssignment(result_AssignPaymentPlanToCustomer.AssignmentToken, 
-                options: new Sparrow.UpdatePaymentPlanAssignmentOptions{ StartDate = ""02/02/2020"" });"));
+var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"", 
+    payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
+var resultCreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/01/2018"", 
+    sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });
+var resultAssignPaymentPlanToCustomer = await _sparrow.AssignPaymentPlanToCustomer(resultAddCustomer.CustomerToken, resultCreatePaymentPlan.PlanToken, resultAddCustomer.PaymentTokens[0]);
+var result = await _sparrow.UpdatePaymentPlanAssignment(resultAssignPaymentPlanToCustomer.AssignmentToken, 
+    options: new Sparrow.UpdatePaymentPlanAssignmentOptions{ StartDate = ""02/02/2020"" });"));
 
-                Log(result_AssignPaymentPlanToCustomer.CreateResponseDemo("result_AssignPaymentPlanToCustomer"));
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-                Log(result_CreatePaymentPlan.CreateResponseDemo("result_CreatePaymentPlan"));
-                Log(result_UpdatePaymentPlanAssignment.CreateResponseDemo("result_UpdatePaymentPlanAssignment"));
+                Log(resultAssignPaymentPlanToCustomer.CreateResponseDemo("resultAssignPaymentPlanToCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
+                Log(resultCreatePaymentPlan.CreateResponseDemo("resultCreatePaymentPlan"));
+                Log(resultUpdatePaymentPlanAssignment.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("payment-plans/update-plan-assignment.md", "result_UpdatePaymentPlanAssignment", result_UpdatePaymentPlanAssignment.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("payment-plans/update-plan-assignment.md", "UpdatePaymentPlanAssignment", resultUpdatePaymentPlanAssignment.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
+                var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
                     sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 10.00m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-                var result_UpdatePaymentPlan = await _sparrow_creditcard.UpdatePaymentPlan(result_CreatePaymentPlan.PlanToken,
+                var resultUpdatePaymentPlan = await _sparrow_creditcard.UpdatePaymentPlan(resultCreatePaymentPlan.PlanToken,
                     sequences: new[] { new Sparrow.AddOrUpdateSequenceSequence { OperationType = "updatesequence", Sequence = 1, Amount = 20.00m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
 
-                Log(SparrowResponseSamples.EnterSample("payment-plans/update-plan.md", "result_UpdatePaymentPlan", result_UpdatePaymentPlan.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("payment-plans/update-plan.md", "UpdatePaymentPlan", resultUpdatePaymentPlan.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"", 
-                sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 10.00m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });
-            var result_UpdatePaymentPlan = await _sparrow.UpdatePaymentPlan(result_CreatePaymentPlan.PlanToken, 
-                sequences: new []{ new Sparrow.AddOrUpdateSequenceSequence{ OperationType = ""updatesequence"", Sequence = 1, Amount = 20.00m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });"));
+var resultCreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"", 
+    sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 10.00m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });
+var result = await _sparrow.UpdatePaymentPlan(resultCreatePaymentPlan.PlanToken, 
+    sequences: new []{ new Sparrow.AddOrUpdateSequenceSequence{ OperationType = ""updatesequence"", Sequence = 1, Amount = 20.00m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });"));
 
-                Log(result_CreatePaymentPlan.CreateResponseDemo("result_CreatePaymentPlan"));
-                Log(result_UpdatePaymentPlan.CreateResponseDemo("result_UpdatePaymentPlan"));
+                Log(resultCreatePaymentPlan.CreateResponseDemo("resultCreatePaymentPlan"));
+                Log(resultUpdatePaymentPlan.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("payment-plans/update-plan.md", "result_UpdatePaymentPlan", result_UpdatePaymentPlan.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("payment-plans/update-plan.md", "UpdatePaymentPlan", resultUpdatePaymentPlan.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleOfflineCapture = await _sparrow_creditcard.SimpleOfflineCapture("4111111111111111", "1019", 9.99m, "123456", "01/31/2017");
+                var resultSimpleOfflineCapture = await _sparrow_creditcard.SimpleOfflineCapture("4111111111111111", "1019", 9.99m, "123456", "01/31/2017");
 
-                Log(SparrowResponseSamples.EnterSample("separate-auth-capture/Offline-Capture.md", "result_SimpleOfflineCapture", result_SimpleOfflineCapture.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("separate-auth-capture/Offline-Capture.md", "SimpleOfflineCapture", resultSimpleOfflineCapture.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleOfflineCapture = await _sparrow.SimpleOfflineCapture(""4111111111111111"", ""1019"", 9.99m, ""123456"", ""01/31/2017"");"));
+var result = await _sparrow.SimpleOfflineCapture(""4111111111111111"", ""1019"", 9.99m, ""123456"", ""01/31/2017"");"));
 
-                Log(result_SimpleOfflineCapture.CreateResponseDemo("result_SimpleOfflineCapture"));
+                Log(resultSimpleOfflineCapture.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("separate-auth-capture/Offline-Capture.md", "result_SimpleOfflineCapture", result_SimpleOfflineCapture.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("separate-auth-capture/Offline-Capture.md", "SimpleOfflineCapture", resultSimpleOfflineCapture.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
-                var result_AdvancedCapture = await _sparrow_creditcard.AdvancedCapture(result_SimpleAuthorization.TransId, 9.99m);
+                var resultSimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
+                var resultAdvancedCapture = await _sparrow_creditcard.AdvancedCapture(resultSimpleAuthorization.TransId, 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("separate-auth-capture/advanced-capture.md", "result_AdvancedCapture", result_AdvancedCapture.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("separate-auth-capture/advanced-capture.md", "AdvancedCapture", resultAdvancedCapture.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleAuthorization = await _sparrow.SimpleAuthorization(""4111111111111111"", ""1019"", 9.99m);
-            var result_AdvancedCapture = await _sparrow.AdvancedCapture(result_SimpleAuthorization.TransId, 9.99m);"));
+var resultSimpleAuthorization = await _sparrow.SimpleAuthorization(""4111111111111111"", ""1019"", 9.99m);
+var result = await _sparrow.AdvancedCapture(resultSimpleAuthorization.TransId, 9.99m);"));
 
-                Log(result_SimpleAuthorization.CreateResponseDemo("result_SimpleAuthorization"));
-                Log(result_AdvancedCapture.CreateResponseDemo("result_AdvancedCapture"));
+                Log(resultSimpleAuthorization.CreateResponseDemo("resultSimpleAuthorization"));
+                Log(resultAdvancedCapture.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("separate-auth-capture/advanced-capture.md", "result_AdvancedCapture", result_AdvancedCapture.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("separate-auth-capture/advanced-capture.md", "AdvancedCapture", resultAdvancedCapture.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
+                var resultSimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("separate-auth-capture/simple-auth.md", "result_SimpleAuthorization", result_SimpleAuthorization.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("separate-auth-capture/simple-auth.md", "SimpleAuthorization", resultSimpleAuthorization.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleAuthorization = await _sparrow.SimpleAuthorization(""4111111111111111"", ""1019"", 9.99m);"));
+var result = await _sparrow.SimpleAuthorization(""4111111111111111"", ""1019"", 9.99m);"));
 
-                Log(result_SimpleAuthorization.CreateResponseDemo("result_SimpleAuthorization"));
+                Log(resultSimpleAuthorization.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("separate-auth-capture/simple-auth.md", "result_SimpleAuthorization", result_SimpleAuthorization.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("separate-auth-capture/simple-auth.md", "SimpleAuthorization", resultSimpleAuthorization.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
-                var result_SimpleCapture = await _sparrow_creditcard.SimpleCapture(result_SimpleAuthorization.TransId, 9.99m);
+                var resultSimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
+                var resultSimpleCapture = await _sparrow_creditcard.SimpleCapture(resultSimpleAuthorization.TransId, 9.99m);
 
-                Log(SparrowResponseSamples.EnterSample("separate-auth-capture/simple-capture.md", "result_SimpleCapture", result_SimpleCapture.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("separate-auth-capture/simple-capture.md", "SimpleCapture", resultSimpleCapture.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleAuthorization = await _sparrow.SimpleAuthorization(""4111111111111111"", ""1019"", 9.99m);
-            var result_SimpleCapture = await _sparrow.SimpleCapture(result_SimpleAuthorization.TransId, 9.99m);"));
+var resultSimpleAuthorization = await _sparrow.SimpleAuthorization(""4111111111111111"", ""1019"", 9.99m);
+var result = await _sparrow.SimpleCapture(resultSimpleAuthorization.TransId, 9.99m);"));
 
-                Log(result_SimpleAuthorization.CreateResponseDemo("result_SimpleAuthorization"));
-                Log(result_SimpleCapture.CreateResponseDemo("result_SimpleCapture"));
+                Log(resultSimpleAuthorization.CreateResponseDemo("resultSimpleAuthorization"));
+                Log(resultSimpleCapture.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("separate-auth-capture/simple-capture.md", "result_SimpleCapture", result_SimpleCapture.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("separate-auth-capture/simple-capture.md", "SimpleCapture", resultSimpleCapture.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_AdvancedStarCard = await _sparrow_starcard.AdvancedStarCard("4111111111111111", "1019", 9.99m, "12345678901");
+                var resultAdvancedStarCard = await _sparrow_starcard.AdvancedStarCard("4111111111111111", "1019", 9.99m, "12345678901");
 
-                Log(SparrowResponseSamples.EnterSample("starcard/advanced-starcard.md", "result_AdvancedStarCard", result_AdvancedStarCard.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("starcard/advanced-starcard.md", "AdvancedStarCard", resultAdvancedStarCard.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AdvancedStarCard = await _sparrow.AdvancedStarCard(""4111111111111111"", ""1019"", 9.99m, ""12345678901"");"));
+var result = await _sparrow.AdvancedStarCard(""4111111111111111"", ""1019"", 9.99m, ""12345678901"");"));
 
-                Log(result_AdvancedStarCard.CreateResponseDemo("result_AdvancedStarCard"));
+                Log(resultAdvancedStarCard.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("starcard/advanced-starcard.md", "result_AdvancedStarCard", result_AdvancedStarCard.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("starcard/advanced-starcard.md", "AdvancedStarCard", resultAdvancedStarCard.IsSuccess));
             }
 
             if (!!true)
             {
-                var result_SimpleStarCard = await _sparrow_starcard.SimpleStarCard("4111111111111111", 9.99m, "12345678901");
+                var resultSimpleStarCard = await _sparrow_starcard.SimpleStarCard("4111111111111111", 9.99m, "12345678901");
 
-                Log(SparrowResponseSamples.EnterSample("starcard/simple-starcard.md", "result_SimpleStarCard", result_SimpleStarCard.IsSuccess));
+                Log(SparrowResponseSamples.EnterSample("starcard/simple-starcard.md", "SimpleStarCard", resultSimpleStarCard.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleStarCard = await _sparrow.SimpleStarCard(""4111111111111111"", 9.99m, ""12345678901"");"));
+var result = await _sparrow.SimpleStarCard(""4111111111111111"", 9.99m, ""12345678901"");"));
 
-                Log(result_SimpleStarCard.CreateResponseDemo("result_SimpleStarCard"));
+                Log(resultSimpleStarCard.CreateResponseDemo("result"));
 
-                Log(SparrowResponseSamples.ExitSample("starcard/simple-starcard.md", "result_SimpleStarCard", result_SimpleStarCard.IsSuccess));
+                Log(SparrowResponseSamples.ExitSample("starcard/simple-starcard.md", "SimpleStarCard", resultSimpleStarCard.IsSuccess));
             }
 
         }

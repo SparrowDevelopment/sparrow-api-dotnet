@@ -11,17 +11,20 @@ namespace SparrowSdk.Samples
         public static Dictionary<string, List<string>> AllResponses = new Dictionary<string, List<string>>();
         public static Dictionary<string, List<string>> AllUnparsed = new Dictionary<string, List<string>>();
 
-        public static string EnterSample(string relativePath, string instanceName, bool isSuccess)
+        public static string RemoveResultPrefix(this string instanceName)
         {
-            var name = instanceName.Replace("result_", "");
+            return instanceName.Replace("result", "");
+        }
+
+        public static string EnterSample(string relativePath, string name, bool isSuccess)
+        {
             return ""
     + $"\r\n### {relativePath}: {name}{(isSuccess ? "" : " (FAIL)")}\r\n"
     ;
         }
 
-        public static string ExitSample(string relativePath, string instanceName, bool isSuccess)
+        public static string ExitSample(string relativePath, string name, bool isSuccess)
         {
-            var name = instanceName.Replace("result_", "");
             return ""
     ;
         }
@@ -31,7 +34,7 @@ namespace SparrowSdk.Samples
             return ""
                 + "\r\nCODE: \r\n"
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n"
-                + code
+                + code.Trim()
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n"
                 ;
         }
@@ -39,9 +42,9 @@ namespace SparrowSdk.Samples
         public static string CreateSample(this SparrowResponse response, string instanceName, string code)
         {
             return ""
-                + "\r\nCODE " + instanceName.Replace("result_", "") + ":\r\n"
+                + "\r\nCODE " + instanceName.RemoveResultPrefix() + ":\r\n"
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n"
-                + code
+                + code.Trim()
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n"
                 + CreateResponseDemo(response, instanceName)
                 + CreateRawLog(response, instanceName)
@@ -51,7 +54,7 @@ namespace SparrowSdk.Samples
         public static string CreateRawLog(this SparrowResponse response, string instanceName = "RAW")
         {
             return ""
-                + "\r\nLOG " + instanceName.Replace("result_", "") + ":\r\n"
+                + "\r\nLOG " + instanceName.RemoveResultPrefix() + ":\r\n"
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n"
                 + response.RawRequest.Select(x => x.Key + " = " + x.Value).JoinStrings("\r\n")
                 + "\r\n\r\n==>\r\n\r\n"
