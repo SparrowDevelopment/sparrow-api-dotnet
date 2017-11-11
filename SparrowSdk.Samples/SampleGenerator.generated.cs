@@ -242,13 +242,16 @@ namespace SparrowSdk.Samples
 
             if (!!true)
             {
-                var result_RetrieveCustomer = await _sparrow_creditcard.RetrieveCustomer("I4LYCSV3FMGDTA9G");
+                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
+                var result_RetrieveCustomer = await _sparrow_creditcard.RetrieveCustomer(result_AddCustomer.CustomerToken);
 
                 Log(SparrowResponseSamples.EnterSample("result_RetrieveCustomer", result_RetrieveCustomer.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_RetrieveCustomer = await _sparrow_creditcard.RetrieveCustomer(""I4LYCSV3FMGDTA9G"");"));
+            var result_AddCustomer = await _sparrow_creditcard.AddCustomer(""John"", ""Doe"");
+            var result_RetrieveCustomer = await _sparrow_creditcard.RetrieveCustomer(result_AddCustomer.CustomerToken);"));
 
+                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
                 Log(result_RetrieveCustomer.CreateResponseDemo("result_RetrieveCustomer"));
 
                 Log(SparrowResponseSamples.ExitSample("result_RetrieveCustomer", result_RetrieveCustomer.IsSuccess));
@@ -256,13 +259,18 @@ namespace SparrowSdk.Samples
 
             if (!!true)
             {
-                var result_RetrievePaymentType = await _sparrow_creditcard.RetrievePaymentType("I4LYCSV3FMGDTA9G");
+                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                    payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
+                var result_RetrievePaymentType = await _sparrow_creditcard.RetrievePaymentType(result_AddCustomer.PaymentTokens[0]);
 
                 Log(SparrowResponseSamples.EnterSample("result_RetrievePaymentType", result_RetrievePaymentType.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_RetrievePaymentType = await _sparrow_creditcard.RetrievePaymentType(""I4LYCSV3FMGDTA9G"");"));
+            var result_AddCustomer = await _sparrow_creditcard.AddCustomer(""John"", ""Doe"", 
+                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
+            var result_RetrievePaymentType = await _sparrow_creditcard.RetrievePaymentType(result_AddCustomer.PaymentTokens[0]);"));
 
+                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
                 Log(result_RetrievePaymentType.CreateResponseDemo("result_RetrievePaymentType"));
 
                 Log(SparrowResponseSamples.ExitSample("result_RetrievePaymentType", result_RetrievePaymentType.IsSuccess));
@@ -270,14 +278,18 @@ namespace SparrowSdk.Samples
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-                var result_UpdateCustomer = await _sparrow_creditcard.UpdateCustomer(result_AddCustomer.CustomerToken);
+                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                    payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
+                var result_UpdateCustomer = await _sparrow_creditcard.UpdateCustomer(result_AddCustomer.CustomerToken,
+                    billing: new Sparrow.UpdateCustomerBilling { Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254" });
 
                 Log(SparrowResponseSamples.EnterSample("result_UpdateCustomer", result_UpdateCustomer.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer(""John"", ""Doe"");
-            var result_UpdateCustomer = await _sparrow_creditcard.UpdateCustomer(result_AddCustomer.CustomerToken);"));
+            var result_AddCustomer = await _sparrow_creditcard.AddCustomer(""John"", ""Doe"", 
+                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
+            var result_UpdateCustomer = await _sparrow_creditcard.UpdateCustomer(result_AddCustomer.CustomerToken, 
+                billing: new Sparrow.UpdateCustomerBilling{ Address1 = ""16100 N 71st Street"", City = ""Scottsdale"", State = ""AZ"", Zip = ""85254"" });"));
 
                 Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
                 Log(result_UpdateCustomer.CreateResponseDemo("result_UpdateCustomer"));
@@ -287,14 +299,18 @@ namespace SparrowSdk.Samples
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-                var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(result_AddCustomer.CustomerToken);
+                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                    payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
+                var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(result_AddCustomer.CustomerToken,
+                    payments: new[] { new Sparrow.UpdatePaymentTypePayment { Token = result_AddCustomer.PaymentTokens[0] } });
 
                 Log(SparrowResponseSamples.EnterSample("result_UpdatePaymentType", result_UpdatePaymentType.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer(""John"", ""Doe"");
-            var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(result_AddCustomer.CustomerToken);"));
+            var result_AddCustomer = await _sparrow_creditcard.AddCustomer(""John"", ""Doe"", 
+                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });
+            var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(result_AddCustomer.CustomerToken, 
+                payments: new []{ new Sparrow.UpdatePaymentTypePayment{ Token = result_AddCustomer.PaymentTokens[0] } });"));
 
                 Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
                 Log(result_UpdatePaymentType.CreateResponseDemo("result_UpdatePaymentType"));
@@ -664,14 +680,18 @@ namespace SparrowSdk.Samples
 
             if (!!true)
             {
-                var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017");
-                var result_UpdatePaymentPlan = await _sparrow_creditcard.UpdatePaymentPlan(result_CreatePaymentPlan.PlanToken);
+                var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
+                    sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 10.00m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
+                var result_UpdatePaymentPlan = await _sparrow_creditcard.UpdatePaymentPlan(result_CreatePaymentPlan.PlanToken,
+                    sequences: new[] { new Sparrow.AddOrUpdateSequenceSequence { OperationType = "updatesequence", Sequence = 1, Amount = 20.00m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
 
                 Log(SparrowResponseSamples.EnterSample("result_UpdatePaymentPlan", result_UpdatePaymentPlan.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"");
-            var result_UpdatePaymentPlan = await _sparrow_creditcard.UpdatePaymentPlan(result_CreatePaymentPlan.PlanToken);"));
+            var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan(""PaymentPlan1"", ""1st Payment Plan"", ""01/31/2017"", 
+                sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 10.00m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });
+            var result_UpdatePaymentPlan = await _sparrow_creditcard.UpdatePaymentPlan(result_CreatePaymentPlan.PlanToken, 
+                sequences: new []{ new Sparrow.AddOrUpdateSequenceSequence{ OperationType = ""updatesequence"", Sequence = 1, Amount = 20.00m, ScheduleType = ""monthly"", ScheduleDay = 5, Duration = 12 } });"));
 
                 Log(result_CreatePaymentPlan.CreateResponseDemo("result_CreatePaymentPlan"));
                 Log(result_UpdatePaymentPlan.CreateResponseDemo("result_UpdatePaymentPlan"));
