@@ -11,7 +11,7 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AdvancedECheck()
         {
-            var result_AdvancedECheck = await _sparrow_ach.AdvancedECheck("sale", "First Test Bank", "110000000", "1234567890123", "business", 9.99m,
+            var result_AdvancedECheck = await _sparrow_ach.AdvancedECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m,
                 billing: new Sparrow.AdvancedECheckBilling { FirstName = "John", LastName = "Doe", Company = "Sparrow One", Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" });
 
             TestContext.WriteLine(result_AdvancedECheck.CreateRawLog("result_AdvancedECheck"));
@@ -48,7 +48,7 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task SimpleECheck()
         {
-            var result_SimpleECheck = await _sparrow_ach.SimpleECheck("sale", "First Test Bank", "110000000", "1234567890123", "business", 9.99m,
+            var result_SimpleECheck = await _sparrow_ach.SimpleECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m,
                 billing: new Sparrow.SimpleECheckBilling { Company = "Sparrow One", FirstName = "John", LastName = "Doe", Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" });
 
             TestContext.WriteLine(result_SimpleECheck.CreateRawLog("result_SimpleECheck"));
@@ -218,8 +218,10 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task UpdatePaymentType()
         {
-            var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType("I4LYCSV3FMGDTA9G");
+            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
+            var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(result_AddCustomer.CustomerToken);
 
+            TestContext.WriteLine(result_AddCustomer.CreateRawLog("result_AddCustomer"));
             TestContext.WriteLine(result_UpdatePaymentType.CreateRawLog("result_UpdatePaymentType"));
 
             // Assert.AreEqual(200, result_UpdatePaymentType.Status);

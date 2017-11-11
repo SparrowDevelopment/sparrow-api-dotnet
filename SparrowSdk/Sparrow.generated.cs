@@ -162,13 +162,14 @@ namespace SparrowSdk
         /// <param name="bankName">Customers bank name</param>,
         /// <param name="routing">Customers bank routing number</param>,
         /// <param name="account">Customers bank account number</param>,
-        /// <param name="achAccountType">Customers type of eCheck account (Format: [business|personal])</param>,
+        /// <param name="achAccountType">Customers type of bank account (Format: [checking|savings])</param>,
+        /// <param name="achAccountSubType">Customers type of bank account (Format: [business|personal])</param>,
         /// <param name="amount">Total amount to be charged (Format: d.dd)</param>,
         /// <param name="options">AdvancedECheckOptions</param>,
         /// <param name="optionalAmounts">AdvancedECheckOptionalAmount</param>,
         /// <param name="shipping">AdvancedECheckShipping</param>,
         /// <param name="billing">AdvancedECheckBilling</param>
-        public async Task<SparrowResponse> AdvancedECheck(string transType, string bankName, string routing, string account, string achAccountType, decimal amount, AdvancedECheckBilling billing, AdvancedECheckOptions options = null, IList<AdvancedECheckOptionalAmount> optionalAmounts = null, AdvancedECheckShipping shipping = null)
+        public async Task<SparrowResponse> AdvancedECheck(string transType, string bankName, string routing, string account, string achAccountType, string achAccountSubType, decimal amount, AdvancedECheckBilling billing, AdvancedECheckOptions options = null, IList<AdvancedECheckOptionalAmount> optionalAmounts = null, AdvancedECheckShipping shipping = null)
         {
             var data = new Dictionary<string, string>
             {
@@ -178,6 +179,7 @@ namespace SparrowSdk
                 { "routing", routing },
                 { "account", account },
                 { "achaccounttype", achAccountType },
+                { "achaccountsubtype", achAccountSubType },
                 { "amount", amount.ToString("f2") }
             };
 
@@ -603,10 +605,11 @@ namespace SparrowSdk
         /// <param name="bankName">Customers bank name</param>,
         /// <param name="routing">Customers bank routing number</param>,
         /// <param name="account">Customers bank account number</param>,
-        /// <param name="achAccountType">Customers type of eCheck account (Format: [business|personal])</param>,
+        /// <param name="achAccountType">Customers type of bank account (Format: [checking|savings])</param>,
+        /// <param name="achAccountSubType">Customers type of bank account (Format: [business|personal])</param>,
         /// <param name="amount">Total amount to be charged (Format: d.dd)</param>,
         /// <param name="billing">SimpleECheckBilling</param>
-        public async Task<SparrowResponse> SimpleECheck(string transType, string bankName, string routing, string account, string achAccountType, decimal amount, SimpleECheckBilling billing)
+        public async Task<SparrowResponse> SimpleECheck(string transType, string bankName, string routing, string account, string achAccountType, string achAccountSubType, decimal amount, SimpleECheckBilling billing)
         {
             var data = new Dictionary<string, string>
             {
@@ -616,6 +619,7 @@ namespace SparrowSdk
                 { "routing", routing },
                 { "account", account },
                 { "achaccounttype", achAccountType },
+                { "achaccountsubtype", achAccountSubType },
                 { "amount", amount.ToString("f2") }
             };
 
@@ -1228,6 +1232,31 @@ namespace SparrowSdk
             return SparrowResponse.Create(responseValues, data);
         }
 
+        /// <summary>
+        /// Delete Data Vault Customer
+        /// </summary>
+        /// <remarks>
+        /// datavault/delete-customer.md - Delete Data Vault Customer
+        /// </remarks>
+        /// <param name="mKey">Secured merchant key</param>,
+        /// <param name="transType">This transaction type will update the current client information with any new data fields provided (Format: deletecustomer)</param>,
+        /// <param name="token">Unique customer identifier (Format: alphanumericstring)</param>
+        public async Task<SparrowResponse> DeleteDataVaultCustomer(string token)
+        {
+            var data = new Dictionary<string, string>
+            {
+                { "mkey", _apiKey },
+                { "transtype", "deletecustomer" },
+                { "token", token }
+            };
+
+
+            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+
+            var responseValues = await MakeRequest(data);
+            return SparrowResponse.Create(responseValues, data);
+        }
+
         public class AddCustomerOptions
         {
             /// <summary>
@@ -1486,31 +1515,6 @@ namespace SparrowSdk
                 data.Add("shipphone", x.ShipPhone);
                 data.Add("shipemail", x.ShipEmail);
             }
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues, data);
-        }
-
-        /// <summary>
-        /// Delete Data Vault Customer
-        /// </summary>
-        /// <remarks>
-        /// datavault/delete-customer.md - Delete Data Vault Customer
-        /// </remarks>
-        /// <param name="mKey">Secured merchant key</param>,
-        /// <param name="transType">This transaction type will update the current client information with any new data fields provided (Format: deletecustomer)</param>,
-        /// <param name="token">Unique customer identifier (Format: alphanumericstring)</param>
-        public async Task<SparrowResponse> DeleteDataVaultCustomer(string token)
-        {
-            var data = new Dictionary<string, string>
-            {
-                { "mkey", _apiKey },
-                { "transtype", "deletecustomer" },
-                { "token", token }
-            };
-
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
@@ -4243,3 +4247,4 @@ namespace SparrowSdk
 
     }
 }
+    

@@ -10,13 +10,13 @@ namespace SparrowSdk.Samples
 
             if (!!true)
             {
-                var result_AdvancedECheck = await _sparrow_ach.AdvancedECheck("sale", "First Test Bank", "110000000", "1234567890123", "business", 9.99m,
+                var result_AdvancedECheck = await _sparrow_ach.AdvancedECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m,
                     billing: new Sparrow.AdvancedECheckBilling { FirstName = "John", LastName = "Doe", Company = "Sparrow One", Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" });
 
                 Log(SparrowResponseSamples.EnterSample("result_AdvancedECheck", result_AdvancedECheck.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AdvancedECheck = await _sparrow_ach.AdvancedECheck(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""business"", 9.99m, 
+            var result_AdvancedECheck = await _sparrow_ach.AdvancedECheck(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 9.99m, 
                 billing: new Sparrow.AdvancedECheckBilling{ FirstName = ""John"", LastName = ""Doe"", Company = ""Sparrow One"", Address1 = ""16100 N 71st Street"", City = ""Scottsdale"", State = ""AZ"", Zip = ""85254"", Country = ""US"" });"));
 
                 Log(result_AdvancedECheck.CreateResponseDemo("result_AdvancedECheck"));
@@ -54,13 +54,13 @@ namespace SparrowSdk.Samples
 
             if (!!true)
             {
-                var result_SimpleECheck = await _sparrow_ach.SimpleECheck("sale", "First Test Bank", "110000000", "1234567890123", "business", 9.99m,
+                var result_SimpleECheck = await _sparrow_ach.SimpleECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m,
                     billing: new Sparrow.SimpleECheckBilling { Company = "Sparrow One", FirstName = "John", LastName = "Doe", Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" });
 
                 Log(SparrowResponseSamples.EnterSample("result_SimpleECheck", result_SimpleECheck.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_SimpleECheck = await _sparrow_ach.SimpleECheck(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""business"", 9.99m, 
+            var result_SimpleECheck = await _sparrow_ach.SimpleECheck(""sale"", ""First Test Bank"", ""110000000"", ""1234567890123"", ""checking"", ""personal"", 9.99m, 
                 billing: new Sparrow.SimpleECheckBilling{ Company = ""Sparrow One"", FirstName = ""John"", LastName = ""Doe"", Address1 = ""16100 N 71st Street"", City = ""Scottsdale"", State = ""AZ"", Zip = ""85254"", Country = ""US"" });"));
 
                 Log(result_SimpleECheck.CreateResponseDemo("result_SimpleECheck"));
@@ -188,22 +188,6 @@ namespace SparrowSdk.Samples
 
             if (!!true)
             {
-                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
-                    payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-
-                Log(SparrowResponseSamples.EnterSample("result_AddCustomer", result_AddCustomer.IsSuccess));
-
-                Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer(""John"", ""Doe"", 
-                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });"));
-
-                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
-
-                Log(SparrowResponseSamples.ExitSample("result_AddCustomer", result_AddCustomer.IsSuccess));
-            }
-
-            if (!!true)
-            {
                 var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
                 var result_DeleteDataVaultCustomer = await _sparrow_creditcard.DeleteDataVaultCustomer(result_AddCustomer.CustomerToken);
 
@@ -217,6 +201,22 @@ namespace SparrowSdk.Samples
                 Log(result_DeleteDataVaultCustomer.CreateResponseDemo("result_DeleteDataVaultCustomer"));
 
                 Log(SparrowResponseSamples.ExitSample("result_DeleteDataVaultCustomer", result_DeleteDataVaultCustomer.IsSuccess));
+            }
+
+            if (!!true)
+            {
+                var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
+                    payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
+
+                Log(SparrowResponseSamples.EnterSample("result_AddCustomer", result_AddCustomer.IsSuccess));
+
+                Log(SparrowResponseSamples.CreateCodeSample(@"
+            var result_AddCustomer = await _sparrow_creditcard.AddCustomer(""John"", ""Doe"", 
+                payments: new []{ new Sparrow.AddCustomerPayment{ PayType = ""creditcard"", CardNum = ""4111111111111111"", CardExp = ""1019"" } });"));
+
+                Log(result_AddCustomer.CreateResponseDemo("result_AddCustomer"));
+
+                Log(SparrowResponseSamples.ExitSample("result_AddCustomer", result_AddCustomer.IsSuccess));
             }
 
             if (!!true)
@@ -259,12 +259,12 @@ namespace SparrowSdk.Samples
 
             if (!!true)
             {
-                var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType("I4LYCSV3FMGDTA9G");
+                var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType("315KMHH74U690DS5");
 
                 Log(SparrowResponseSamples.EnterSample("result_UpdatePaymentType", result_UpdatePaymentType.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
-            var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(""I4LYCSV3FMGDTA9G"");"));
+            var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(""315KMHH74U690DS5"");"));
 
                 Log(result_UpdatePaymentType.CreateResponseDemo("result_UpdatePaymentType"));
 
