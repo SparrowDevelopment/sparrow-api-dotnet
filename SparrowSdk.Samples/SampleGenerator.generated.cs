@@ -235,7 +235,6 @@ var result = await _sparrow.DeletePaymentType(resultAddCustomer.CustomerToken,
     payments: new []{ new Sparrow.DeletePaymentTypePayment{ Token = resultAddCustomer.PaymentTokens[0] } });"));
 
                 Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
-                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
                 Log(resultDeletePaymentType.CreateResponseDemo("result"));
 
                 Log(SparrowResponseSamples.ExitSample("datavault/delete-payment-type.md", "DeletePaymentType", resultDeletePaymentType.IsSuccess));
@@ -313,7 +312,6 @@ var resultAddCustomer = await _sparrow.AddCustomer(""John"", ""Doe"",
 var result = await _sparrow.UpdatePaymentType(resultAddCustomer.CustomerToken, 
     payments: new []{ new Sparrow.UpdatePaymentTypePayment{ Token = resultAddCustomer.PaymentTokens[0] } });"));
 
-                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
                 Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
                 Log(resultUpdatePaymentType.CreateResponseDemo("result"));
 
@@ -585,7 +583,6 @@ var resultCreatePaymentPlan = await _sparrow.CreatePaymentPlan(""PaymentPlan1"",
 var result = await _sparrow.AssignPaymentPlanToCustomer(resultAddCustomer.CustomerToken, resultCreatePaymentPlan.PlanToken, resultAddCustomer.PaymentTokens[0]);"));
 
                 Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
-                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
                 Log(resultCreatePaymentPlan.CreateResponseDemo("resultCreatePaymentPlan"));
                 Log(resultAssignPaymentPlanToCustomer.CreateResponseDemo("result"));
 
@@ -612,7 +609,6 @@ var resultAssignPaymentPlanToCustomer = await _sparrow.AssignPaymentPlanToCustom
 var result = await _sparrow.CancelPlanAssignment(resultAssignPaymentPlanToCustomer.AssignmentToken);"));
 
                 Log(resultAssignPaymentPlanToCustomer.CreateResponseDemo("resultAssignPaymentPlanToCustomer"));
-                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
                 Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
                 Log(resultCreatePaymentPlan.CreateResponseDemo("resultCreatePaymentPlan"));
                 Log(resultCancelPlanAssignment.CreateResponseDemo("result"));
@@ -675,7 +671,6 @@ var result = await _sparrow.UpdatePaymentPlanAssignment(resultAssignPaymentPlanT
     options: new Sparrow.UpdatePaymentPlanAssignmentOptions{ StartDate = ""02/02/2020"" });"));
 
                 Log(resultAssignPaymentPlanToCustomer.CreateResponseDemo("resultAssignPaymentPlanToCustomer"));
-                Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
                 Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
                 Log(resultCreatePaymentPlan.CreateResponseDemo("resultCreatePaymentPlan"));
                 Log(resultUpdatePaymentPlanAssignment.CreateResponseDemo("result"));

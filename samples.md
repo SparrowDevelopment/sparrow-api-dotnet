@@ -15,8 +15,8 @@ RESULT:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Status;    // 200
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929553
-result.XRef;    // 3863651486
+result.TransId;    // 10929640
+result.XRef;    // 3863662162
 result.AuthCode;    // 123456
 result.Type;    // sale
 result.CodeResponse;    // 100
@@ -40,8 +40,8 @@ RESULT:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Status;    // 200
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929554
-result.XRef;    // 3863651498
+result.TransId;    // 10929642
+result.XRef;    // 3863662194
 result.AuthCode;    // 123456
 result.Type;    // sale
 result.CodeResponse;    // 100
@@ -65,8 +65,8 @@ RESULT:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Status;    // 200
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929555
-result.XRef;    // 3863651509
+result.TransId;    // 10929643
+result.XRef;    // 3863662205
 result.AuthCode;    // 123456
 result.Type;    // sale
 result.CodeResponse;    // 100
@@ -91,8 +91,8 @@ RESULT:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Status;    // 200
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929556
-result.XRef;    // 3863651519
+result.TransId;    // 10929644
+result.XRef;    // 3863662219
 result.AuthCode;    // 123456
 result.Type;    // sale
 result.CodeResponse;    // 100
@@ -159,8 +159,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929557
-result.XRef;    // 3863651550
+result.TransId;    // 10929645
+result.XRef;    // 3863662241
 result.AuthCode;    // 123456
 result.Type;    // auth
 result.CodeResponse;    // 100
@@ -186,8 +186,8 @@ RESULT SimpleSale:
 resultSimpleSale.Status;    // 200
 resultSimpleSale.Response;    // 1
 resultSimpleSale.TextResponse;    // SUCCESS
-resultSimpleSale.TransId;    // 10929558
-resultSimpleSale.XRef;    // 3863651589
+resultSimpleSale.TransId;    // 10929646
+resultSimpleSale.XRef;    // 3863662272
 resultSimpleSale.AuthCode;    // 123456
 resultSimpleSale.Type;    // sale
 resultSimpleSale.CodeResponse;    // 100
@@ -201,8 +201,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // Testing for Success
-result.TransId;    // 10929558
-result.XRef;    // 3863651589
+result.TransId;    // 10929646
+result.XRef;    // 3863662272
 result.AuthCode;    // 123456
 result.Type;    // chargeback
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -225,8 +225,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929559
-result.XRef;    // 3863651615
+result.TransId;    // 10929648
+result.XRef;    // 3863662314
 result.Type;    // credit
 result.CodeResponse;    // 100
 result.CodeDescription;    // Transaction was Approved
@@ -250,8 +250,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929560
-result.XRef;    // 3863651649
+result.TransId;    // 10929649
+result.XRef;    // 3863662335
 result.AuthCode;    // 123456
 result.Type;    // sale
 result.CodeResponse;    // 100
@@ -276,8 +276,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929561
-result.XRef;    // 3863651668
+result.TransId;    // 10929650
+result.XRef;    // 3863662359
 result.AuthCode;    // 123456
 result.Type;    // sale
 result.CodeResponse;    // 100
@@ -301,9 +301,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'H23P4BF41SRQHYJA' successfully created
+resultAddCustomer.TextResponse;    // Customer with token 'HIWH5W1R03MGBKJ8' successfully created
 resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // H23P4BF41SRQHYJA
+resultAddCustomer.CustomerToken;    // HIWH5W1R03MGBKJ8
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -311,9 +311,9 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Response;    // 1
-result.TextResponse;    // Customer with token 'H23P4BF41SRQHYJA' successfully updated
+result.TextResponse;    // Customer with token 'HIWH5W1R03MGBKJ8' successfully updated
 result.Type;    // updatecustomer
-result.CustomerToken;    // H23P4BF41SRQHYJA
+result.CustomerToken;    // HIWH5W1R03MGBKJ8
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -333,10 +333,10 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Response;    // 1
-result.TextResponse;    // Customer with token 'SITXRX6K7I6TU1XD' successfully created
+result.TextResponse;    // Customer with token 'J8GI7EL527SDUQ66' successfully created
 result.Type;    // addcustomer
-result.CustomerToken;    // SITXRX6K7I6TU1XD
-result.PaymentTokens[0];    // SYZDC2JPKUIAP3NK
+result.CustomerToken;    // J8GI7EL527SDUQ66
+result.PaymentTokens[0];    // TBSOO0AEEKP9VXZH
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -356,9 +356,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token '8OZFFEHGS6J04FUK' successfully created
+resultAddCustomer.TextResponse;    // Customer with token 'VLJSR1HEHW4Y05F4' successfully created
 resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // 8OZFFEHGS6J04FUK
+resultAddCustomer.CustomerToken;    // VLJSR1HEHW4Y05F4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -389,21 +389,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'JYWL6RPNJ5JRB9KX' successfully created
+resultAddCustomer.TextResponse;    // Customer with token 'HQUJ3D1R3AHHJ0FF' successfully created
 resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // JYWL6RPNJ5JRB9KX
-resultAddCustomer.PaymentTokens[0];    // TMTJ73X652A1UQ1E
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RESULT AddCustomer:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'JYWL6RPNJ5JRB9KX' successfully created
-resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // JYWL6RPNJ5JRB9KX
-resultAddCustomer.PaymentTokens[0];    // TMTJ73X652A1UQ1E
+resultAddCustomer.CustomerToken;    // HQUJ3D1R3AHHJ0FF
+resultAddCustomer.PaymentTokens[0];    // PEI47OHNNQE9RLBU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -411,10 +400,10 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Response;    // 1
-result.TextResponse;    // Customer with token 'JYWL6RPNJ5JRB9KX' successfully updated
+result.TextResponse;    // Customer with token 'HQUJ3D1R3AHHJ0FF' successfully updated
 result.Type;    // updatecustomer
-result.CustomerToken;    // JYWL6RPNJ5JRB9KX
-result.PaymentTokens[0];    // TMTJ73X652A1UQ1E
+result.CustomerToken;    // HQUJ3D1R3AHHJ0FF
+result.PaymentTokens[0];    // PEI47OHNNQE9RLBU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -434,9 +423,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token '9HPNURN0NQG91Y21' successfully created
+resultAddCustomer.TextResponse;    // Customer with token 'FFRQ237ST2YQUA5Q' successfully created
 resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // 9HPNURN0NQG91Y21
+resultAddCustomer.CustomerToken;    // FFRQ237ST2YQUA5Q
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -445,7 +434,7 @@ RESULT:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Response;    // 1
 result.TextResponse;    // Processed
-result.CustomerToken;    // 9HPNURN0NQG91Y21
+result.CustomerToken;    // FFRQ237ST2YQUA5Q
 result.FirstName;    // John
 result.LastName;    // Doe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -468,10 +457,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'H375F9CQB0QDRX33' successfully created
+resultAddCustomer.TextResponse;    // Customer with token 'RYIWWK62IG5N829S' successfully created
 resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // H375F9CQB0QDRX33
-resultAddCustomer.PaymentTokens[0];    // DFR3T6CB826RWXEG
+resultAddCustomer.CustomerToken;    // RYIWWK62IG5N829S
+resultAddCustomer.PaymentTokens[0];    // 8WBDIZNVG0KE003M
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -480,12 +469,12 @@ RESULT:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Response;    // 1
 result.TextResponse;    // Processed
-result.CustomerToken;    // H375F9CQB0QDRX33
+result.CustomerToken;    // RYIWWK62IG5N829S
 result.PayType;    // CreditCard
 result.PayNo;    // 1
 result.CardExp;    // 1019
 result.Account;    // 411111******1111
-result.Token;    // DFR3T6CB826RWXEG
+result.Token;    // 8WBDIZNVG0KE003M
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -507,10 +496,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token '9IU0S599F9M4BJJZ' successfully created
+resultAddCustomer.TextResponse;    // Customer with token 'UXR3CO84JYHW7UT0' successfully created
 resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // 9IU0S599F9M4BJJZ
-resultAddCustomer.PaymentTokens[0];    // WN5WG9HL156MDV4N
+resultAddCustomer.CustomerToken;    // UXR3CO84JYHW7UT0
+resultAddCustomer.PaymentTokens[0];    // 2GS792I1LXP5A2CR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -518,9 +507,9 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Response;    // 1
-result.TextResponse;    // Customer with token '9IU0S599F9M4BJJZ' successfully updated
+result.TextResponse;    // Customer with token 'UXR3CO84JYHW7UT0' successfully updated
 result.Type;    // updatecustomer
-result.CustomerToken;    // 9IU0S599F9M4BJJZ
+result.CustomerToken;    // UXR3CO84JYHW7UT0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -542,21 +531,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'VJEIDDKIFSYUTIAZ' successfully created
+resultAddCustomer.TextResponse;    // Customer with token 'NT2LKGPTYG3UR0XV' successfully created
 resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // VJEIDDKIFSYUTIAZ
-resultAddCustomer.PaymentTokens[0];    // TG4I2SAAAJ8X8X6T
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RESULT AddCustomer:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'VJEIDDKIFSYUTIAZ' successfully created
-resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // VJEIDDKIFSYUTIAZ
-resultAddCustomer.PaymentTokens[0];    // TG4I2SAAAJ8X8X6T
+resultAddCustomer.CustomerToken;    // NT2LKGPTYG3UR0XV
+resultAddCustomer.PaymentTokens[0];    // HULTI5N1PZRP9C4R
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -564,10 +542,10 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Response;    // 1
-result.TextResponse;    // Customer with token 'VJEIDDKIFSYUTIAZ' successfully updated
+result.TextResponse;    // Customer with token 'NT2LKGPTYG3UR0XV' successfully updated
 result.Type;    // updatecustomer
-result.CustomerToken;    // VJEIDDKIFSYUTIAZ
-result.PaymentTokens[0];    // TG4I2SAAAJ8X8X6T
+result.CustomerToken;    // NT2LKGPTYG3UR0XV
+result.PaymentTokens[0];    // HULTI5N1PZRP9C4R
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -587,9 +565,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'E9J1FAWTDXQYKX1T' successfully created
+resultAddCustomer.TextResponse;    // Customer with token 'WZJO2IPW18I29XKU' successfully created
 resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // E9J1FAWTDXQYKX1T
+resultAddCustomer.CustomerToken;    // WZJO2IPW18I29XKU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -598,8 +576,8 @@ RESULT:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Response;    // 3
 result.TextResponse;    // Custom field 'customField1' not found.
-result.CustomerToken;    // E9J1FAWTDXQYKX1T
-result.Token;    // E9J1FAWTDXQYKX1T
+result.CustomerToken;    // WZJO2IPW18I29XKU
+result.Token;    // WZJO2IPW18I29XKU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -620,8 +598,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // Successful
-result.TransId;    // 10929562
-result.XRef;    // 8JFJATZEYXV4G
+result.TransId;    // 10929651
+result.XRef;    // YBR4C6LBZKN88
 result.Type;    // credit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -643,8 +621,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929563
-result.XRef;    // 3863651823
+result.TransId;    // 10929653
+result.XRef;    // 3863662510
 result.AuthCode;    // 123456
 result.Type;    // sale
 result.CodeResponse;    // 100
@@ -669,8 +647,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929564
-result.XRef;    // 3863651857
+result.TransId;    // 10929654
+result.XRef;    // 3863662536
 result.AuthCode;    // 123456
 result.Type;    // sale
 result.CodeResponse;    // 100
@@ -694,7 +672,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultCreateInvoice.TextResponse;    // invoice has been successfully created
-resultCreateInvoice.InvoiceNumber;    // Inv-39530
+resultCreateInvoice.InvoiceNumber;    // Inv-39537
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -702,7 +680,7 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.TextResponse;    // invoice has been successfully canceled
-result.InvoiceNumber;    // Inv-39530
+result.InvoiceNumber;    // Inv-39537
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -722,7 +700,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultCreateInvoice.TextResponse;    // invoice has been successfully created
-resultCreateInvoice.InvoiceNumber;    // Inv-39531
+resultCreateInvoice.InvoiceNumber;    // Inv-39538
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -730,7 +708,7 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.TextResponse;    // invoice has been successfully canceled
-result.InvoiceNumber;    // Inv-39531
+result.InvoiceNumber;    // Inv-39538
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -749,7 +727,7 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.TextResponse;    // invoice has been successfully created
-result.InvoiceNumber;    // Inv-39532
+result.InvoiceNumber;    // Inv-39539
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -769,7 +747,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultCreateInvoice.TextResponse;    // invoice has been successfully created
-resultCreateInvoice.InvoiceNumber;    // Inv-39533
+resultCreateInvoice.InvoiceNumber;    // Inv-39540
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -777,12 +755,12 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.TextResponse;    // Success
-result.InvoiceNumber;    // Inv-39533
+result.InvoiceNumber;    // Inv-39540
 result.InvoiceAmount;    // 10.0000
 result.Currency;    // USD
 result.InvoiceDate;    // 12/01/2017
 result.InvoiceStatus;    // Active
-result.InvoicePaymentLink;    // https://secure.sparrowone.com/Payments/Payment.aspx?token=1DB1C4F494D9B343
+result.InvoicePaymentLink;    // https://secure.sparrowone.com/Payments/Payment.aspx?token=C8FC15465E31C9BC
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -803,7 +781,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultCreateInvoice.TextResponse;    // invoice has been successfully created
-resultCreateInvoice.InvoiceNumber;    // Inv-39534
+resultCreateInvoice.InvoiceNumber;    // Inv-39541
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -811,8 +789,8 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.TextResponse;    // Invoice has been successfully paid
-result.TransId;    // 10929565
-result.InvoiceNumber;    // Inv-39534
+result.TransId;    // 10929655
+result.InvoiceNumber;    // Inv-39541
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -832,7 +810,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultCreateInvoice.TextResponse;    // invoice has been successfully created
-resultCreateInvoice.InvoiceNumber;    // Inv-39535
+resultCreateInvoice.InvoiceNumber;    // Inv-39542
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -840,8 +818,8 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.TextResponse;    // Invoice has been successfully paid
-result.TransId;    // 10929567
-result.InvoiceNumber;    // Inv-39535
+result.TransId;    // 10929656
+result.InvoiceNumber;    // Inv-39542
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -862,7 +840,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultCreateInvoice.TextResponse;    // invoice has been successfully created
-resultCreateInvoice.InvoiceNumber;    // Inv-39536
+resultCreateInvoice.InvoiceNumber;    // Inv-39543
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -870,7 +848,7 @@ RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.TextResponse;    // Invoice has been successfully updated
-result.InvoiceNumber;    // Inv-39536
+result.InvoiceNumber;    // Inv-39543
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -892,8 +870,8 @@ RESULT SimpleSale:
 resultSimpleSale.Status;    // 200
 resultSimpleSale.Response;    // 1
 resultSimpleSale.TextResponse;    // SUCCESS
-resultSimpleSale.TransId;    // 10929568
-resultSimpleSale.XRef;    // 3863651984
+resultSimpleSale.TransId;    // 10929657
+resultSimpleSale.XRef;    // 3863662663
 resultSimpleSale.AuthCode;    // 123456
 resultSimpleSale.Type;    // sale
 resultSimpleSale.CodeResponse;    // 100
@@ -907,8 +885,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929568
-result.XRef;    // 3863651984
+result.TransId;    // 10929657
+result.XRef;    // 3863662663
 result.AuthCode;    // 123456
 result.Type;    // refund
 result.CodeResponse;    // 100
@@ -934,8 +912,8 @@ RESULT SimpleSale:
 resultSimpleSale.Status;    // 200
 resultSimpleSale.Response;    // 1
 resultSimpleSale.TextResponse;    // SUCCESS
-resultSimpleSale.TransId;    // 10929569
-resultSimpleSale.XRef;    // 3863652029
+resultSimpleSale.TransId;    // 10929658
+resultSimpleSale.XRef;    // 3863662716
 resultSimpleSale.AuthCode;    // 123456
 resultSimpleSale.Type;    // sale
 resultSimpleSale.CodeResponse;    // 100
@@ -948,12 +926,12 @@ RESULT:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Status;    // 300
 result.Response;    // 3
-result.TextResponse;    // Flagged for Review by Velocity and Duplicates Policy (Duplicate Transactions Rule). Original Transaction ID: 10929568
-result.TransId;    // 10929569
-result.XRef;    // 3863652029
+result.TextResponse;    // Flagged for Review by Velocity and Duplicates Policy (Duplicate Transactions Rule). Original Transaction ID: 10929657
+result.TransId;    // 10929658
+result.XRef;    // 3863662716
 result.AuthCode;    // 123456
 result.Type;    // refund
-result.OrigTransId;    // 10929568
+result.OrigTransId;    // 10929657
 result.OrigResponse;    // 1
 result.OrigTextResponse;    // SUCCESS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -977,8 +955,8 @@ RESULT SimpleSale:
 resultSimpleSale.Status;    // 200
 resultSimpleSale.Response;    // 1
 resultSimpleSale.TextResponse;    // SUCCESS
-resultSimpleSale.TransId;    // 10929570
-resultSimpleSale.XRef;    // 3863652062
+resultSimpleSale.TransId;    // 10929659
+resultSimpleSale.XRef;    // 3863662753
 resultSimpleSale.AuthCode;    // 123456
 resultSimpleSale.Type;    // sale
 resultSimpleSale.CodeResponse;    // 100
@@ -992,8 +970,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // Transaction Void Successful
-result.TransId;    // 10929570
-result.XRef;    // 3863652062
+result.TransId;    // 10929659
+result.XRef;    // 3863662753
 result.AuthCode;    // 123456
 result.Type;    // void
 result.CodeResponse;    // 100
@@ -1019,8 +997,8 @@ RESULT SimpleSale:
 resultSimpleSale.Status;    // 200
 resultSimpleSale.Response;    // 1
 resultSimpleSale.TextResponse;    // SUCCESS
-resultSimpleSale.TransId;    // 10929571
-resultSimpleSale.XRef;    // 3863652140
+resultSimpleSale.TransId;    // 10929660
+resultSimpleSale.XRef;    // 3863662800
 resultSimpleSale.AuthCode;    // 123456
 resultSimpleSale.Type;    // sale
 resultSimpleSale.CodeResponse;    // 100
@@ -1034,8 +1012,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // Transaction Void Successful
-result.TransId;    // 10929571
-result.XRef;    // 3863652140
+result.TransId;    // 10929660
+result.XRef;    // 3863662800
 result.AuthCode;    // 123456
 result.Type;    // void
 result.CodeResponse;    // 100
@@ -1062,21 +1040,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'UI6Q8MW08EGCL7WF' successfully created
+resultAddCustomer.TextResponse;    // Customer with token 'HK4AHGWEROSYMBAQ' successfully created
 resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // UI6Q8MW08EGCL7WF
-resultAddCustomer.PaymentTokens[0];    // 08DNXLUVZPSTLSVZ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RESULT AddCustomer:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'UI6Q8MW08EGCL7WF' successfully created
-resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // UI6Q8MW08EGCL7WF
-resultAddCustomer.PaymentTokens[0];    // 08DNXLUVZPSTLSVZ
+resultAddCustomer.CustomerToken;    // HK4AHGWEROSYMBAQ
+resultAddCustomer.PaymentTokens[0];    // OFCEA0PNA01IK7PU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1086,7 +1053,7 @@ RESULT CreatePaymentPlan:
 resultCreatePaymentPlan.Response;    // 1
 resultCreatePaymentPlan.TextResponse;    // SUCCESS
 resultCreatePaymentPlan.Type;    // addplan
-resultCreatePaymentPlan.PlanToken;    // 11QSOLXZSFJQHGIB
+resultCreatePaymentPlan.PlanToken;    // P6QFOOADQ1J1N472
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1096,7 +1063,7 @@ RESULT:
 result.Response;    // 1
 result.TextResponse;    // Success
 result.Type;    // assignplan
-result.AssignmentToken;    // LWN7F41IYK0T4DOQ
+result.AssignmentToken;    // PJ0335C03SRNM5G6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1122,7 +1089,7 @@ RESULT AssignPaymentPlanToCustomer:
 resultAssignPaymentPlanToCustomer.Response;    // 1
 resultAssignPaymentPlanToCustomer.TextResponse;    // Success
 resultAssignPaymentPlanToCustomer.Type;    // assignplan
-resultAssignPaymentPlanToCustomer.AssignmentToken;    // 036Z6ZVH58V19JFT
+resultAssignPaymentPlanToCustomer.AssignmentToken;    // 2A7ADGB640FYCKNS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1130,21 +1097,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'TRKTQD1OLO4RCEOT' successfully created
+resultAddCustomer.TextResponse;    // Customer with token 'NWRW0SC0AZL0084V' successfully created
 resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // TRKTQD1OLO4RCEOT
-resultAddCustomer.PaymentTokens[0];    // GQHYEXT7AI4DVE4O
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RESULT AddCustomer:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'TRKTQD1OLO4RCEOT' successfully created
-resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // TRKTQD1OLO4RCEOT
-resultAddCustomer.PaymentTokens[0];    // GQHYEXT7AI4DVE4O
+resultAddCustomer.CustomerToken;    // NWRW0SC0AZL0084V
+resultAddCustomer.PaymentTokens[0];    // HDF1SPH7L4LZACVJ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1154,7 +1110,7 @@ RESULT CreatePaymentPlan:
 resultCreatePaymentPlan.Response;    // 1
 resultCreatePaymentPlan.TextResponse;    // SUCCESS
 resultCreatePaymentPlan.Type;    // addplan
-resultCreatePaymentPlan.PlanToken;    // 4H260VVCJDI4EWJS
+resultCreatePaymentPlan.PlanToken;    // BXITKFER5Q9ROO4U
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1185,7 +1141,7 @@ RESULT:
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
 result.Type;    // addplan
-result.PlanToken;    // 6GMO6ZL57MTIJX3H
+result.PlanToken;    // 7XTJZFJ7PTK6HMZ8
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1207,7 +1163,7 @@ RESULT CreatePaymentPlan:
 resultCreatePaymentPlan.Response;    // 1
 resultCreatePaymentPlan.TextResponse;    // SUCCESS
 resultCreatePaymentPlan.Type;    // addplan
-resultCreatePaymentPlan.PlanToken;    // VEPU8ITSULFEBLZN
+resultCreatePaymentPlan.PlanToken;    // 97ICKGXSCLLRICAF
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1243,7 +1199,7 @@ RESULT AssignPaymentPlanToCustomer:
 resultAssignPaymentPlanToCustomer.Response;    // 1
 resultAssignPaymentPlanToCustomer.TextResponse;    // Success
 resultAssignPaymentPlanToCustomer.Type;    // assignplan
-resultAssignPaymentPlanToCustomer.AssignmentToken;    // O4MY4SYVL6G20R02
+resultAssignPaymentPlanToCustomer.AssignmentToken;    // P47THH5DX97BIKWQ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1251,21 +1207,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'RP21493TOGRB22OQ' successfully created
+resultAddCustomer.TextResponse;    // Customer with token 'T5HWY6KJFJ8M5VMO' successfully created
 resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // RP21493TOGRB22OQ
-resultAddCustomer.PaymentTokens[0];    // O7CGHGUVYJMPPQA7
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RESULT AddCustomer:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-resultAddCustomer.Response;    // 1
-resultAddCustomer.TextResponse;    // Customer with token 'RP21493TOGRB22OQ' successfully created
-resultAddCustomer.Type;    // addcustomer
-resultAddCustomer.CustomerToken;    // RP21493TOGRB22OQ
-resultAddCustomer.PaymentTokens[0];    // O7CGHGUVYJMPPQA7
+resultAddCustomer.CustomerToken;    // T5HWY6KJFJ8M5VMO
+resultAddCustomer.PaymentTokens[0];    // Y7NPWDV4AZR84WJ3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1275,7 +1220,7 @@ RESULT CreatePaymentPlan:
 resultCreatePaymentPlan.Response;    // 1
 resultCreatePaymentPlan.TextResponse;    // SUCCESS
 resultCreatePaymentPlan.Type;    // addplan
-resultCreatePaymentPlan.PlanToken;    // TP1IHYWR4A3GB170
+resultCreatePaymentPlan.PlanToken;    // EB70B3RBCI72KT4B
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1285,7 +1230,7 @@ RESULT:
 result.Response;    // 1
 result.TextResponse;    // Success
 result.Type;    // updateassignment
-result.AssignmentToken;    // O4MY4SYVL6G20R02
+result.AssignmentToken;    // P47THH5DX97BIKWQ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1309,7 +1254,7 @@ RESULT CreatePaymentPlan:
 resultCreatePaymentPlan.Response;    // 1
 resultCreatePaymentPlan.TextResponse;    // SUCCESS
 resultCreatePaymentPlan.Type;    // addplan
-resultCreatePaymentPlan.PlanToken;    // 6Y0EJTGL5GCUXNE8
+resultCreatePaymentPlan.PlanToken;    // 963KYVTPJMW8OLOS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1339,8 +1284,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929572
-result.XRef;    // 3863652253
+result.TransId;    // 10929661
+result.XRef;    // 3863662933
 result.AuthCode;    // 123456
 result.Type;    // offline
 result.CodeResponse;    // 100
@@ -1366,8 +1311,8 @@ RESULT SimpleAuthorization:
 resultSimpleAuthorization.Status;    // 200
 resultSimpleAuthorization.Response;    // 1
 resultSimpleAuthorization.TextResponse;    // SUCCESS
-resultSimpleAuthorization.TransId;    // 10929573
-resultSimpleAuthorization.XRef;    // 3863652281
+resultSimpleAuthorization.TransId;    // 10929662
+resultSimpleAuthorization.XRef;    // 3863662961
 resultSimpleAuthorization.AuthCode;    // 123456
 resultSimpleAuthorization.Type;    // auth
 resultSimpleAuthorization.CodeResponse;    // 100
@@ -1381,8 +1326,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929573
-result.XRef;    // 3863652281
+result.TransId;    // 10929662
+result.XRef;    // 3863662961
 result.AuthCode;    // 123456
 result.Type;    // capture
 result.CodeResponse;    // 100
@@ -1407,8 +1352,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929574
-result.XRef;    // 3863652349
+result.TransId;    // 10929663
+result.XRef;    // 3863663014
 result.AuthCode;    // 123456
 result.Type;    // auth
 result.CodeResponse;    // 100
@@ -1434,8 +1379,8 @@ RESULT SimpleAuthorization:
 resultSimpleAuthorization.Status;    // 200
 resultSimpleAuthorization.Response;    // 1
 resultSimpleAuthorization.TextResponse;    // SUCCESS
-resultSimpleAuthorization.TransId;    // 10929575
-resultSimpleAuthorization.XRef;    // 3863652364
+resultSimpleAuthorization.TransId;    // 10929665
+resultSimpleAuthorization.XRef;    // 3863663054
 resultSimpleAuthorization.AuthCode;    // 123456
 resultSimpleAuthorization.Type;    // auth
 resultSimpleAuthorization.CodeResponse;    // 100
@@ -1449,8 +1394,8 @@ RESULT:
 result.Status;    // 200
 result.Response;    // 1
 result.TextResponse;    // SUCCESS
-result.TransId;    // 10929575
-result.XRef;    // 3863652364
+result.TransId;    // 10929665
+result.XRef;    // 3863663054
 result.AuthCode;    // 123456
 result.Type;    // capture
 result.CodeResponse;    // 100
@@ -1474,7 +1419,7 @@ RESULT:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Status;    // 400
 result.TextResponse;    // System Error: Reason Code: 002 CID value is invalid or non existant
-result.TransId;    // 10929577
+result.TransId;    // 10929667
 result.Type;    // sale
 result.CodeDescription;    // Denied
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1496,7 +1441,7 @@ RESULT:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result.Status;    // 400
 result.TextResponse;    // System Error: Reason Code: 002 CID value is invalid or non existant
-result.TransId;    // 10929578
+result.TransId;    // 10929668
 result.Type;    // sale
 result.CodeDescription;    // Denied
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
