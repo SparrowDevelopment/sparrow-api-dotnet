@@ -130,8 +130,11 @@ namespace SparrowSdk.Samples
 
             }
 
+            var resultName = instanceName.RemoveResultPrefix();
+            if (!string.IsNullOrWhiteSpace(resultName)) { resultName = " " + resultName; }
+
             return ""
-                + "\r\nRESULT " + instanceName.Replace("result_", "") + ":\r\n"
+                + "\r\nRESULT" + resultName + ":\r\n"
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n"
                 + sb.ToString().TrimEnd()
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n"
