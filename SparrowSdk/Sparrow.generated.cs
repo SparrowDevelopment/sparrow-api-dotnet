@@ -1232,31 +1232,6 @@ namespace SparrowSdk
             return SparrowResponse.Create(responseValues, data);
         }
 
-        /// <summary>
-        /// Delete Data Vault Customer
-        /// </summary>
-        /// <remarks>
-        /// datavault/delete-customer.md - Delete Data Vault Customer
-        /// </remarks>
-        /// <param name="mKey">Secured merchant key</param>,
-        /// <param name="transType">This transaction type will update the current client information with any new data fields provided (Format: deletecustomer)</param>,
-        /// <param name="token">Unique customer identifier (Format: alphanumericstring)</param>
-        public async Task<SparrowResponse> DeleteDataVaultCustomer(string token)
-        {
-            var data = new Dictionary<string, string>
-            {
-                { "mkey", _apiKey },
-                { "transtype", "deletecustomer" },
-                { "token", token }
-            };
-
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues, data);
-        }
-
         public class AddCustomerOptions
         {
             /// <summary>
@@ -1515,6 +1490,31 @@ namespace SparrowSdk
                 data.Add("shipphone", x.ShipPhone);
                 data.Add("shipemail", x.ShipEmail);
             }
+
+            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+
+            var responseValues = await MakeRequest(data);
+            return SparrowResponse.Create(responseValues, data);
+        }
+
+        /// <summary>
+        /// Delete Data Vault Customer
+        /// </summary>
+        /// <remarks>
+        /// datavault/delete-customer.md - Delete Data Vault Customer
+        /// </remarks>
+        /// <param name="mKey">Secured merchant key</param>,
+        /// <param name="transType">This transaction type will update the current client information with any new data fields provided (Format: deletecustomer)</param>,
+        /// <param name="token">Unique customer identifier (Format: alphanumericstring)</param>
+        public async Task<SparrowResponse> DeleteDataVaultCustomer(string token)
+        {
+            var data = new Dictionary<string, string>
+            {
+                { "mkey", _apiKey },
+                { "transtype", "deletecustomer" },
+                { "token", token }
+            };
+
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
@@ -2687,6 +2687,33 @@ namespace SparrowSdk
             return SparrowResponse.Create(responseValues, data);
         }
 
+        /// <summary>
+        /// Simple Refund
+        /// </summary>
+        /// <remarks>
+        /// issuing-a-refund/Simple-refund.md - Simple Refund
+        /// </remarks>
+        /// <param name="transType">Refund (Format: refund)</param>,
+        /// <param name="mKey">Secured merchant account key</param>,
+        /// <param name="transId">Original payment gateway transaction ID</param>,
+        /// <param name="amount">Total amount to be refunded (Format: d.dd)</param>
+        public async Task<SparrowResponse> SimpleRefund(string transId, decimal amount)
+        {
+            var data = new Dictionary<string, string>
+            {
+                { "transtype", "refund" },
+                { "mkey", _apiKey },
+                { "transid", transId },
+                { "amount", amount.ToString("f2") }
+            };
+
+
+            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+
+            var responseValues = await MakeRequest(data);
+            return SparrowResponse.Create(responseValues, data);
+        }
+
         public class AdvancedRefundOptions
         {
             /// <summary>
@@ -2755,33 +2782,6 @@ namespace SparrowSdk
                     data.Add("opt_amount_value_" + (i + 1), x.OptAmountValue);
                 }
             }
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues, data);
-        }
-
-        /// <summary>
-        /// Simple Refund
-        /// </summary>
-        /// <remarks>
-        /// issuing-a-refund/Simple-refund.md - Simple Refund
-        /// </remarks>
-        /// <param name="transType">Refund (Format: refund)</param>,
-        /// <param name="mKey">Secured merchant account key</param>,
-        /// <param name="transId">Original payment gateway transaction ID</param>,
-        /// <param name="amount">Total amount to be refunded (Format: d.dd)</param>
-        public async Task<SparrowResponse> SimpleRefund(string transId, decimal amount)
-        {
-            var data = new Dictionary<string, string>
-            {
-                { "transtype", "refund" },
-                { "mkey", _apiKey },
-                { "transid", transId },
-                { "amount", amount.ToString("f2") }
-            };
-
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
@@ -3749,6 +3749,41 @@ namespace SparrowSdk
             return SparrowResponse.Create(responseValues, data);
         }
 
+        /// <summary>
+        /// Simple Offline Capture
+        /// </summary>
+        /// <remarks>
+        /// separate-auth-capture/Offline-Capture.md - Simple Offline Capture
+        /// </remarks>
+        /// <param name="transType">Offline Capture closes an open authorization which was manually obtained from the card issuer (Format: offline)</param>,
+        /// <param name="mKey">Secured merchant account key</param>,
+        /// <param name="cardNum">Credit card number</param>,
+        /// <param name="cardExp">Credit card expiration (ie. 0711 = 7/2011) (Format: MMYY)</param>,
+        /// <param name="amount">Total amount to be charged (i.e. 10.00) (Format: d.dd)</param>,
+        /// <param name="authCode">Auth code received from the issuer (Format: string)</param>,
+        /// <param name="authDate">Date that auth code was obtained, required for Chase only (Format: MM/DD/YYYY)</param>,
+        /// <param name="cvv">Card security code</param>
+        public async Task<SparrowResponse> SimpleOfflineCapture(string cardNum, string cardExp, decimal amount, string authCode, string authDate, string cvv = "")
+        {
+            var data = new Dictionary<string, string>
+            {
+                { "transtype", "offline" },
+                { "mkey", _apiKey },
+                { "cardnum", cardNum },
+                { "cardexp", cardExp },
+                { "amount", amount.ToString("f2") },
+                { "authcode", authCode },
+                { "authdate", authDate },
+                { "cvv", cvv }
+            };
+
+
+            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+
+            var responseValues = await MakeRequest(data);
+            return SparrowResponse.Create(responseValues, data);
+        }
+
         public class AdvancedCaptureOptions
         {
             /// <summary>
@@ -3847,41 +3882,6 @@ namespace SparrowSdk
                 data.Add("shiptracknum", x.ShipTrackNum);
                 data.Add("shipcarrier", x.ShipCarrier);
             }
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues, data);
-        }
-
-        /// <summary>
-        /// Simple Offline Capture
-        /// </summary>
-        /// <remarks>
-        /// separate-auth-capture/Offline-Capture.md - Simple Offline Capture
-        /// </remarks>
-        /// <param name="transType">Offline Capture closes an open authorization which was manually obtained from the card issuer (Format: offline)</param>,
-        /// <param name="mKey">Secured merchant account key</param>,
-        /// <param name="cardNum">Credit card number</param>,
-        /// <param name="cardExp">Credit card expiration (ie. 0711 = 7/2011) (Format: MMYY)</param>,
-        /// <param name="amount">Total amount to be charged (i.e. 10.00) (Format: d.dd)</param>,
-        /// <param name="authCode">Auth code received from the issuer (Format: string)</param>,
-        /// <param name="authDate">Date that auth code was obtained, required for Chase only (Format: MM/DD/YYYY)</param>,
-        /// <param name="cvv">Card security code</param>
-        public async Task<SparrowResponse> SimpleOfflineCapture(string cardNum, string cardExp, decimal amount, string authCode, string authDate, string cvv = "")
-        {
-            var data = new Dictionary<string, string>
-            {
-                { "transtype", "offline" },
-                { "mkey", _apiKey },
-                { "cardnum", cardNum },
-                { "cardexp", cardExp },
-                { "amount", amount.ToString("f2") },
-                { "authcode", authCode },
-                { "authdate", authDate },
-                { "cvv", cvv }
-            };
-
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
@@ -4247,4 +4247,3 @@ namespace SparrowSdk
 
     }
 }
-    

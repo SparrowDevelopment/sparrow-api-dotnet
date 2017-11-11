@@ -364,20 +364,6 @@ namespace SparrowSdk.Tests
         }
 
         [TestMethod]
-        public async Task AdvancedRefund()
-        {
-            var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-            var result_AdvancedRefund = await _sparrow_creditcard.AdvancedRefund(result_SimpleSale.TransId, 9.99m);
-
-            TestContext.WriteLine(result_SimpleSale.CreateRawLog("result_SimpleSale"));
-            TestContext.WriteLine(result_AdvancedRefund.CreateRawLog("result_AdvancedRefund"));
-
-            // Assert.AreEqual(200, result_AdvancedRefund.Status);
-            // Assert.AreEqual(1, result_AdvancedRefund.Response);
-            Assert.IsTrue(result_AdvancedRefund.TextResponse.ToUpper().Contains("SUCCESS"));
-        }
-
-        [TestMethod]
         public async Task SimpleRefund()
         {
             var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
@@ -389,6 +375,20 @@ namespace SparrowSdk.Tests
             // Assert.AreEqual(200, result_SimpleRefund.Status);
             // Assert.AreEqual(1, result_SimpleRefund.Response);
             Assert.IsTrue(result_SimpleRefund.TextResponse.ToUpper().Contains("SUCCESS"));
+        }
+
+        [TestMethod]
+        public async Task AdvancedRefund()
+        {
+            var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
+            var result_AdvancedRefund = await _sparrow_creditcard.AdvancedRefund(result_SimpleSale.TransId, 9.99m);
+
+            TestContext.WriteLine(result_SimpleSale.CreateRawLog("result_SimpleSale"));
+            TestContext.WriteLine(result_AdvancedRefund.CreateRawLog("result_AdvancedRefund"));
+
+            // Assert.AreEqual(200, result_AdvancedRefund.Status);
+            // Assert.AreEqual(1, result_AdvancedRefund.Response);
+            Assert.IsTrue(result_AdvancedRefund.TextResponse.ToUpper().Contains("SUCCESS"));
         }
 
         [TestMethod]
@@ -520,6 +520,18 @@ namespace SparrowSdk.Tests
         }
 
         [TestMethod]
+        public async Task SimpleOfflineCapture()
+        {
+            var result_SimpleOfflineCapture = await _sparrow_creditcard.SimpleOfflineCapture("4111111111111111", "1019", 9.99m, "123456", "01/31/2017");
+
+            TestContext.WriteLine(result_SimpleOfflineCapture.CreateRawLog("result_SimpleOfflineCapture"));
+
+            // Assert.AreEqual(200, result_SimpleOfflineCapture.Status);
+            // Assert.AreEqual(1, result_SimpleOfflineCapture.Response);
+            Assert.IsTrue(result_SimpleOfflineCapture.TextResponse.ToUpper().Contains("SUCCESS"));
+        }
+
+        [TestMethod]
         public async Task AdvancedCapture()
         {
             var result_SimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
@@ -531,18 +543,6 @@ namespace SparrowSdk.Tests
             // Assert.AreEqual(200, result_AdvancedCapture.Status);
             // Assert.AreEqual(1, result_AdvancedCapture.Response);
             Assert.IsTrue(result_AdvancedCapture.TextResponse.ToUpper().Contains("SUCCESS"));
-        }
-
-        [TestMethod]
-        public async Task SimpleOfflineCapture()
-        {
-            var result_SimpleOfflineCapture = await _sparrow_creditcard.SimpleOfflineCapture("4111111111111111", "1019", 9.99m, "123456", "01/31/2017");
-
-            TestContext.WriteLine(result_SimpleOfflineCapture.CreateRawLog("result_SimpleOfflineCapture"));
-
-            // Assert.AreEqual(200, result_SimpleOfflineCapture.Status);
-            // Assert.AreEqual(1, result_SimpleOfflineCapture.Response);
-            Assert.IsTrue(result_SimpleOfflineCapture.TextResponse.ToUpper().Contains("SUCCESS"));
         }
 
         [TestMethod]
