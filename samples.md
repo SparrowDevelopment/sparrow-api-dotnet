@@ -6,7 +6,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AdvancedECheck = await _sparrow_ach.AdvancedECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, 
+            var result_AdvancedECheck = await _sparrow.AdvancedECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, 
                 billing: new Sparrow.AdvancedECheckBilling{ FirstName = "John", LastName = "Doe", Company = "Sparrow One", Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -16,8 +16,8 @@ RESULT AdvancedECheck:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AdvancedECheck.Status;    // 200
 result_AdvancedECheck.TextResponse;    // SUCCESS
-result_AdvancedECheck.TransId;    // 10928242
-result_AdvancedECheck.XRef;    // 3863062871
+result_AdvancedECheck.TransId;    // 10928928
+result_AdvancedECheck.XRef;    // 3863527207
 result_AdvancedECheck.AuthCode;    // 123456
 result_AdvancedECheck.Type;    // sale
 result_AdvancedECheck.CodeResponse;    // 100
@@ -33,7 +33,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AdvancedACH = await _sparrow_ach.AdvancedACH("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, "John", "Doe");
+            var result_AdvancedACH = await _sparrow.AdvancedACH("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, "John", "Doe");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -42,8 +42,8 @@ RESULT AdvancedACH:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AdvancedACH.Status;    // 200
 result_AdvancedACH.TextResponse;    // SUCCESS
-result_AdvancedACH.TransId;    // 10928248
-result_AdvancedACH.XRef;    // 3863062966
+result_AdvancedACH.TransId;    // 10928929
+result_AdvancedACH.XRef;    // 3863527231
 result_AdvancedACH.AuthCode;    // 123456
 result_AdvancedACH.Type;    // sale
 result_AdvancedACH.CodeResponse;    // 100
@@ -59,7 +59,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleACH = await _sparrow_ach.SimpleACH("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, "John", "Doe");
+            var result_SimpleACH = await _sparrow.SimpleACH("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, "John", "Doe");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -68,8 +68,8 @@ RESULT SimpleACH:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_SimpleACH.Status;    // 200
 result_SimpleACH.TextResponse;    // SUCCESS
-result_SimpleACH.TransId;    // 10928249
-result_SimpleACH.XRef;    // 3863062972
+result_SimpleACH.TransId;    // 10928930
+result_SimpleACH.XRef;    // 3863527246
 result_SimpleACH.AuthCode;    // 123456
 result_SimpleACH.Type;    // sale
 result_SimpleACH.CodeResponse;    // 100
@@ -85,7 +85,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleECheck = await _sparrow_ach.SimpleECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, 
+            var result_SimpleECheck = await _sparrow.SimpleECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, 
                 billing: new Sparrow.SimpleECheckBilling{ Company = "Sparrow One", FirstName = "John", LastName = "Doe", Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -95,8 +95,8 @@ RESULT SimpleECheck:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_SimpleECheck.Status;    // 200
 result_SimpleECheck.TextResponse;    // SUCCESS
-result_SimpleECheck.TransId;    // 10928250
-result_SimpleECheck.XRef;    // 3863062981
+result_SimpleECheck.TransId;    // 10928931
+result_SimpleECheck.XRef;    // 3863527267
 result_SimpleECheck.AuthCode;    // 123456
 result_SimpleECheck.Type;    // sale
 result_SimpleECheck.CodeResponse;    // 100
@@ -112,7 +112,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_PassengerSale = await _sparrow_creditcard.PassengerSale("4111111111111111", "1019", 9.99m, "John Doe", "LAS", "AA0", "1234567890", "", "", "123456", "A", "1234", "AB");
+            var result_PassengerSale = await _sparrow.PassengerSale("4111111111111111", "1019", 9.99m, "John Doe", "LAS", "AA0", "1234567890", "", "", "123456", "A", "1234", "AB");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -134,7 +134,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_RetrieveCardBalance = await _sparrow_creditcard.RetrieveCardBalance("4111111111111111");
+            var result_RetrieveCardBalance = await _sparrow.RetrieveCardBalance("4111111111111111");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -156,7 +156,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_VerifyAccount = await _sparrow_creditcard.VerifyAccount("4111111111111111", "1019", 9.99m);
+            var result_VerifyAccount = await _sparrow.VerifyAccount("4111111111111111", "1019", 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -166,8 +166,8 @@ RESULT VerifyAccount:
 result_VerifyAccount.Status;    // 200
 result_VerifyAccount.Response;    // 1
 result_VerifyAccount.TextResponse;    // SUCCESS
-result_VerifyAccount.TransId;    // 10928251
-result_VerifyAccount.XRef;    // 3863062995
+result_VerifyAccount.TransId;    // 10928932
+result_VerifyAccount.XRef;    // 3863527298
 result_VerifyAccount.AuthCode;    // 123456
 result_VerifyAccount.Type;    // auth
 result_VerifyAccount.CodeResponse;    // 100
@@ -183,8 +183,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-            var result_MarkSuccessfulTransactionAsChargeback = await _sparrow_creditcard.MarkSuccessfulTransactionAsChargeback(result_SimpleSale.TransId, "Testing for Success");
+            var result_SimpleSale = await _sparrow.SimpleSale("4111111111111111", "1019", 9.99m);
+            var result_MarkSuccessfulTransactionAsChargeback = await _sparrow.MarkSuccessfulTransactionAsChargeback(result_SimpleSale.TransId, "Testing for Success");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -194,8 +194,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928252
-result_SimpleSale.XRef;    // 3863063015
+result_SimpleSale.TransId;    // 10928933
+result_SimpleSale.XRef;    // 3863527321
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -209,8 +209,8 @@ RESULT MarkSuccessfulTransactionAsChargeback:
 result_MarkSuccessfulTransactionAsChargeback.Status;    // 200
 result_MarkSuccessfulTransactionAsChargeback.Response;    // 1
 result_MarkSuccessfulTransactionAsChargeback.TextResponse;    // Testing for Success
-result_MarkSuccessfulTransactionAsChargeback.TransId;    // 10928252
-result_MarkSuccessfulTransactionAsChargeback.XRef;    // 3863063015
+result_MarkSuccessfulTransactionAsChargeback.TransId;    // 10928933
+result_MarkSuccessfulTransactionAsChargeback.XRef;    // 3863527321
 result_MarkSuccessfulTransactionAsChargeback.AuthCode;    // 123456
 result_MarkSuccessfulTransactionAsChargeback.Type;    // chargeback
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -224,7 +224,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleCredit = await _sparrow_creditcard.SimpleCredit("4111111111111111", "1019", 9.99m);
+            var result_SimpleCredit = await _sparrow.SimpleCredit("4111111111111111", "1019", 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -234,8 +234,8 @@ RESULT SimpleCredit:
 result_SimpleCredit.Status;    // 200
 result_SimpleCredit.Response;    // 1
 result_SimpleCredit.TextResponse;    // SUCCESS
-result_SimpleCredit.TransId;    // 10928253
-result_SimpleCredit.XRef;    // 3863063037
+result_SimpleCredit.TransId;    // 10928934
+result_SimpleCredit.XRef;    // 3863527353
 result_SimpleCredit.Type;    // credit
 result_SimpleCredit.CodeResponse;    // 100
 result_SimpleCredit.CodeDescription;    // Transaction was Approved
@@ -250,7 +250,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AdvancedSale = await _sparrow_creditcard.AdvancedSale("4111111111111111", "1019", 9.99m);
+            var result_AdvancedSale = await _sparrow.AdvancedSale("4111111111111111", "1019", 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -260,8 +260,8 @@ RESULT AdvancedSale:
 result_AdvancedSale.Status;    // 200
 result_AdvancedSale.Response;    // 1
 result_AdvancedSale.TextResponse;    // SUCCESS
-result_AdvancedSale.TransId;    // 10928254
-result_AdvancedSale.XRef;    // 3863063053
+result_AdvancedSale.TransId;    // 10928935
+result_AdvancedSale.XRef;    // 3863527384
 result_AdvancedSale.AuthCode;    // 123456
 result_AdvancedSale.Type;    // sale
 result_AdvancedSale.CodeResponse;    // 100
@@ -277,7 +277,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
+            var result_SimpleSale = await _sparrow.SimpleSale("4111111111111111", "1019", 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -287,8 +287,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928255
-result_SimpleSale.XRef;    // 3863063071
+result_SimpleSale.TransId;    // 10928936
+result_SimpleSale.XRef;    // 3863527409
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -304,8 +304,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-            var result_AddPaymentTypesToCustomer = await _sparrow_creditcard.AddPaymentTypesToCustomer(result_AddCustomer.CustomerToken);
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe");
+            var result_AddPaymentTypesToCustomer = await _sparrow.AddPaymentTypesToCustomer(result_AddCustomer.CustomerToken);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -313,9 +313,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token '2QMI7WDYOTB2VQE6' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'K9IMT1NZD61Q7T4W' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // 2QMI7WDYOTB2VQE6
+result_AddCustomer.CustomerToken;    // K9IMT1NZD61Q7T4W
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -323,9 +323,9 @@ RESULT AddPaymentTypesToCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddPaymentTypesToCustomer.Response;    // 1
-result_AddPaymentTypesToCustomer.TextResponse;    // Customer with token '2QMI7WDYOTB2VQE6' successfully updated
+result_AddPaymentTypesToCustomer.TextResponse;    // Customer with token 'K9IMT1NZD61Q7T4W' successfully updated
 result_AddPaymentTypesToCustomer.Type;    // updatecustomer
-result_AddPaymentTypesToCustomer.CustomerToken;    // 2QMI7WDYOTB2VQE6
+result_AddPaymentTypesToCustomer.CustomerToken;    // K9IMT1NZD61Q7T4W
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -337,7 +337,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe", 
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe", 
                 payments: new []{ new Sparrow.AddCustomerPayment{ PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -346,10 +346,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'V0G9368AYISRFAL7' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'SU6W3BL5QLA135YT' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // V0G9368AYISRFAL7
-result_AddCustomer.PaymentTokens[0];    // XJ9JJG4KRK6NU1SB
+result_AddCustomer.CustomerToken;    // SU6W3BL5QLA135YT
+result_AddCustomer.PaymentTokens[0];    // 8UXTC0NJU5790GEI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -361,8 +361,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-            var result_DeleteDataVaultCustomer = await _sparrow_creditcard.DeleteDataVaultCustomer(result_AddCustomer.CustomerToken);
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe");
+            var result_DeleteDataVaultCustomer = await _sparrow.DeleteDataVaultCustomer(result_AddCustomer.CustomerToken);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -370,9 +370,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'MQ72J1P4DR2UEHGD' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'S47FX04JL6QO67NY' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // MQ72J1P4DR2UEHGD
+result_AddCustomer.CustomerToken;    // S47FX04JL6QO67NY
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -393,9 +393,9 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe", 
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe", 
                 payments: new []{ new Sparrow.AddCustomerPayment{ PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var result_DeletePaymentType = await _sparrow_creditcard.DeletePaymentType(result_AddCustomer.CustomerToken, 
+            var result_DeletePaymentType = await _sparrow.DeletePaymentType(result_AddCustomer.CustomerToken, 
                 payments: new []{ new Sparrow.DeletePaymentTypePayment{ Token = result_AddCustomer.PaymentTokens[0] } });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -404,10 +404,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'R3SII255JHC7Y9IW' successfully created
+result_AddCustomer.TextResponse;    // Customer with token '50JJM1FG7L2YPFQI' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // R3SII255JHC7Y9IW
-result_AddCustomer.PaymentTokens[0];    // 77P3R874DGRKHCAM
+result_AddCustomer.CustomerToken;    // 50JJM1FG7L2YPFQI
+result_AddCustomer.PaymentTokens[0];    // LV5UWX3WXNGPN3UL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -415,10 +415,10 @@ RESULT DeletePaymentType:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_DeletePaymentType.Response;    // 1
-result_DeletePaymentType.TextResponse;    // Customer with token 'R3SII255JHC7Y9IW' successfully updated
+result_DeletePaymentType.TextResponse;    // Customer with token '50JJM1FG7L2YPFQI' successfully updated
 result_DeletePaymentType.Type;    // updatecustomer
-result_DeletePaymentType.CustomerToken;    // R3SII255JHC7Y9IW
-result_DeletePaymentType.PaymentTokens[0];    // 77P3R874DGRKHCAM
+result_DeletePaymentType.CustomerToken;    // 50JJM1FG7L2YPFQI
+result_DeletePaymentType.PaymentTokens[0];    // LV5UWX3WXNGPN3UL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -430,8 +430,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-            var result_RetrieveCustomer = await _sparrow_creditcard.RetrieveCustomer(result_AddCustomer.CustomerToken);
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe");
+            var result_RetrieveCustomer = await _sparrow.RetrieveCustomer(result_AddCustomer.CustomerToken);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -439,9 +439,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'LVKYTB4UUCTCYSGE' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'YZBJKH71Y0IL8G4G' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // LVKYTB4UUCTCYSGE
+result_AddCustomer.CustomerToken;    // YZBJKH71Y0IL8G4G
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -450,7 +450,7 @@ RESULT RetrieveCustomer:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_RetrieveCustomer.Response;    // 1
 result_RetrieveCustomer.TextResponse;    // Processed
-result_RetrieveCustomer.CustomerToken;    // LVKYTB4UUCTCYSGE
+result_RetrieveCustomer.CustomerToken;    // YZBJKH71Y0IL8G4G
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -462,9 +462,9 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe", 
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe", 
                 payments: new []{ new Sparrow.AddCustomerPayment{ PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var result_RetrievePaymentType = await _sparrow_creditcard.RetrievePaymentType(result_AddCustomer.PaymentTokens[0]);
+            var result_RetrievePaymentType = await _sparrow.RetrievePaymentType(result_AddCustomer.PaymentTokens[0]);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -472,10 +472,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'IGWG2NVT5XFBKUYG' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'PIDKB2CI6XW9U03E' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // IGWG2NVT5XFBKUYG
-result_AddCustomer.PaymentTokens[0];    // H0VCYUC6D5IPP5FU
+result_AddCustomer.CustomerToken;    // PIDKB2CI6XW9U03E
+result_AddCustomer.PaymentTokens[0];    // 1Q90DH8DYE56PRXQ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -484,7 +484,7 @@ RESULT RetrievePaymentType:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_RetrievePaymentType.Response;    // 1
 result_RetrievePaymentType.TextResponse;    // Processed
-result_RetrievePaymentType.CustomerToken;    // IGWG2NVT5XFBKUYG
+result_RetrievePaymentType.CustomerToken;    // PIDKB2CI6XW9U03E
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -496,9 +496,9 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe", 
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe", 
                 payments: new []{ new Sparrow.AddCustomerPayment{ PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var result_UpdateCustomer = await _sparrow_creditcard.UpdateCustomer(result_AddCustomer.CustomerToken, 
+            var result_UpdateCustomer = await _sparrow.UpdateCustomer(result_AddCustomer.CustomerToken, 
                 billing: new Sparrow.UpdateCustomerBilling{ Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254" });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -507,10 +507,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'AMCAQ3U8A03552J9' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'T99FZJK6X3MXV8G8' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // AMCAQ3U8A03552J9
-result_AddCustomer.PaymentTokens[0];    // NN586DPYD0D7EFEA
+result_AddCustomer.CustomerToken;    // T99FZJK6X3MXV8G8
+result_AddCustomer.PaymentTokens[0];    // 7EURGEDIKAV66F3P
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -518,9 +518,9 @@ RESULT UpdateCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_UpdateCustomer.Response;    // 1
-result_UpdateCustomer.TextResponse;    // Customer with token 'AMCAQ3U8A03552J9' successfully updated
+result_UpdateCustomer.TextResponse;    // Customer with token 'T99FZJK6X3MXV8G8' successfully updated
 result_UpdateCustomer.Type;    // updatecustomer
-result_UpdateCustomer.CustomerToken;    // AMCAQ3U8A03552J9
+result_UpdateCustomer.CustomerToken;    // T99FZJK6X3MXV8G8
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -532,9 +532,9 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe", 
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe", 
                 payments: new []{ new Sparrow.AddCustomerPayment{ PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var result_UpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(result_AddCustomer.CustomerToken, 
+            var result_UpdatePaymentType = await _sparrow.UpdatePaymentType(result_AddCustomer.CustomerToken, 
                 payments: new []{ new Sparrow.UpdatePaymentTypePayment{ Token = result_AddCustomer.PaymentTokens[0] } });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -543,10 +543,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'SVB8SXZNFXC81HAK' successfully created
+result_AddCustomer.TextResponse;    // Customer with token '9FPU0XORGDCK4LS0' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // SVB8SXZNFXC81HAK
-result_AddCustomer.PaymentTokens[0];    // WIBCAHX77N70ZW34
+result_AddCustomer.CustomerToken;    // 9FPU0XORGDCK4LS0
+result_AddCustomer.PaymentTokens[0];    // 879K7FKP615ZYN9R
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -554,10 +554,10 @@ RESULT UpdatePaymentType:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_UpdatePaymentType.Response;    // 1
-result_UpdatePaymentType.TextResponse;    // Customer with token 'SVB8SXZNFXC81HAK' successfully updated
+result_UpdatePaymentType.TextResponse;    // Customer with token '9FPU0XORGDCK4LS0' successfully updated
 result_UpdatePaymentType.Type;    // updatecustomer
-result_UpdatePaymentType.CustomerToken;    // SVB8SXZNFXC81HAK
-result_UpdatePaymentType.PaymentTokens[0];    // WIBCAHX77N70ZW34
+result_UpdatePaymentType.CustomerToken;    // 9FPU0XORGDCK4LS0
+result_UpdatePaymentType.PaymentTokens[0];    // 879K7FKP615ZYN9R
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -569,8 +569,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-            var result_DecryptCustomFields = await _sparrow_creditcard.DecryptCustomFields("customField1", result_AddCustomer.CustomerToken);
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe");
+            var result_DecryptCustomFields = await _sparrow.DecryptCustomFields("customField1", result_AddCustomer.CustomerToken);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -578,9 +578,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'W3NK1KR0XR2JBR75' successfully created
+result_AddCustomer.TextResponse;    // Customer with token '97XPSVHJZCLDB2N9' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // W3NK1KR0XR2JBR75
+result_AddCustomer.CustomerToken;    // 97XPSVHJZCLDB2N9
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -589,7 +589,7 @@ RESULT DecryptCustomFields:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_DecryptCustomFields.Response;    // 3
 result_DecryptCustomFields.TextResponse;    // Custom field 'customField1' not found.
-result_DecryptCustomFields.CustomerToken;    // W3NK1KR0XR2JBR75
+result_DecryptCustomFields.CustomerToken;    // 97XPSVHJZCLDB2N9
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -601,7 +601,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_EWalletSimpleCredit = await _sparrow_ewallet.EWalletSimpleCredit("user@example.com", 9.99m);
+            var result_EWalletSimpleCredit = await _sparrow.EWalletSimpleCredit("user@example.com", 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -611,8 +611,8 @@ RESULT EWalletSimpleCredit:
 result_EWalletSimpleCredit.Status;    // 200
 result_EWalletSimpleCredit.Response;    // 1
 result_EWalletSimpleCredit.TextResponse;    // Successful
-result_EWalletSimpleCredit.TransId;    // 10928256
-result_EWalletSimpleCredit.XRef;    // XRXFQGVK4RGYJ
+result_EWalletSimpleCredit.TransId;    // 10928937
+result_EWalletSimpleCredit.XRef;    // PGP9HXSCSYJJG
 result_EWalletSimpleCredit.Type;    // credit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -625,7 +625,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AdvancedFiservSale = await _sparrow_creditcard.AdvancedFiservSale("4111111111111111", "1019", 9.99m);
+            var result_AdvancedFiservSale = await _sparrow.AdvancedFiservSale("4111111111111111", "1019", 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -635,8 +635,8 @@ RESULT AdvancedFiservSale:
 result_AdvancedFiservSale.Status;    // 200
 result_AdvancedFiservSale.Response;    // 1
 result_AdvancedFiservSale.TextResponse;    // SUCCESS
-result_AdvancedFiservSale.TransId;    // 10928257
-result_AdvancedFiservSale.XRef;    // 3863063141
+result_AdvancedFiservSale.TransId;    // 10928938
+result_AdvancedFiservSale.XRef;    // 3863527614
 result_AdvancedFiservSale.AuthCode;    // 123456
 result_AdvancedFiservSale.Type;    // sale
 result_AdvancedFiservSale.CodeResponse;    // 100
@@ -652,7 +652,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_FiservSimpleSale = await _sparrow_creditcard.FiservSimpleSale("4111111111111111", "1019", 9.99m);
+            var result_FiservSimpleSale = await _sparrow.FiservSimpleSale("4111111111111111", "1019", 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -662,8 +662,8 @@ RESULT FiservSimpleSale:
 result_FiservSimpleSale.Status;    // 200
 result_FiservSimpleSale.Response;    // 1
 result_FiservSimpleSale.TextResponse;    // SUCCESS
-result_FiservSimpleSale.TransId;    // 10928258
-result_FiservSimpleSale.XRef;    // 3863063159
+result_FiservSimpleSale.TransId;    // 10928939
+result_FiservSimpleSale.XRef;    // 3863527634
 result_FiservSimpleSale.AuthCode;    // 123456
 result_FiservSimpleSale.Type;    // sale
 result_FiservSimpleSale.CodeResponse;    // 100
@@ -679,8 +679,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-            var result_CancelInvoiceByCustomer = await _sparrow_creditcard.CancelInvoiceByCustomer(result_CreateInvoice.InvoiceNumber, "Testing");
+            var result_CreateInvoice = await _sparrow.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+            var result_CancelInvoiceByCustomer = await _sparrow.CancelInvoiceByCustomer(result_CreateInvoice.InvoiceNumber, "Testing");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -688,7 +688,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39470
+result_CreateInvoice.InvoiceNumber;    // Inv-39477
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -696,7 +696,7 @@ RESULT CancelInvoiceByCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CancelInvoiceByCustomer.TextResponse;    // invoice has been successfully canceled
-result_CancelInvoiceByCustomer.InvoiceNumber;    // Inv-39470
+result_CancelInvoiceByCustomer.InvoiceNumber;    // Inv-39477
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -708,8 +708,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-            var result_CancelInvoice = await _sparrow_creditcard.CancelInvoice(result_CreateInvoice.InvoiceNumber, "Testing");
+            var result_CreateInvoice = await _sparrow.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+            var result_CancelInvoice = await _sparrow.CancelInvoice(result_CreateInvoice.InvoiceNumber, "Testing");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -717,7 +717,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39471
+result_CreateInvoice.InvoiceNumber;    // Inv-39478
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -725,7 +725,7 @@ RESULT CancelInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CancelInvoice.TextResponse;    // invoice has been successfully canceled
-result_CancelInvoice.InvoiceNumber;    // Inv-39471
+result_CancelInvoice.InvoiceNumber;    // Inv-39478
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -737,7 +737,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+            var result_CreateInvoice = await _sparrow.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -745,7 +745,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39472
+result_CreateInvoice.InvoiceNumber;    // Inv-39479
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -757,8 +757,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-            var result_RetrieveInvoice = await _sparrow_creditcard.RetrieveInvoice(result_CreateInvoice.InvoiceNumber);
+            var result_CreateInvoice = await _sparrow.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+            var result_RetrieveInvoice = await _sparrow.RetrieveInvoice(result_CreateInvoice.InvoiceNumber);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -766,7 +766,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39473
+result_CreateInvoice.InvoiceNumber;    // Inv-39480
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -774,7 +774,7 @@ RESULT RetrieveInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_RetrieveInvoice.TextResponse;    // Success
-result_RetrieveInvoice.InvoiceNumber;    // Inv-39473
+result_RetrieveInvoice.InvoiceNumber;    // Inv-39480
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -786,8 +786,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_CreateInvoice = await _sparrow_ach.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-            var result_PayInvoiceWithBankAccount = await _sparrow_ach.PayInvoiceWithBankAccount(result_CreateInvoice.InvoiceNumber, "First Test Bank", "110000000", "1234567890123", "checking", "personal", 
+            var result_CreateInvoice = await _sparrow.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+            var result_PayInvoiceWithBankAccount = await _sparrow.PayInvoiceWithBankAccount(result_CreateInvoice.InvoiceNumber, "First Test Bank", "110000000", "1234567890123", "checking", "personal", 
                 billing: new Sparrow.PayInvoiceWithBankAccountBilling{ FirstName = "John", LastName = "Doe" });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -796,7 +796,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39474
+result_CreateInvoice.InvoiceNumber;    // Inv-39481
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -804,8 +804,8 @@ RESULT PayInvoiceWithBankAccount:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_PayInvoiceWithBankAccount.TextResponse;    // Invoice has been successfully paid
-result_PayInvoiceWithBankAccount.TransId;    // 10928259
-result_PayInvoiceWithBankAccount.InvoiceNumber;    // Inv-39474
+result_PayInvoiceWithBankAccount.TransId;    // 10928940
+result_PayInvoiceWithBankAccount.InvoiceNumber;    // Inv-39481
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -817,8 +817,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-            var result_PayInvoiceWithCreditCard = await _sparrow_creditcard.PayInvoiceWithCreditCard(result_CreateInvoice.InvoiceNumber, "4111111111111111", "1019");
+            var result_CreateInvoice = await _sparrow.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+            var result_PayInvoiceWithCreditCard = await _sparrow.PayInvoiceWithCreditCard(result_CreateInvoice.InvoiceNumber, "4111111111111111", "1019");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -826,7 +826,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39475
+result_CreateInvoice.InvoiceNumber;    // Inv-39482
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -834,8 +834,8 @@ RESULT PayInvoiceWithCreditCard:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_PayInvoiceWithCreditCard.TextResponse;    // Invoice has been successfully paid
-result_PayInvoiceWithCreditCard.TransId;    // 10928260
-result_PayInvoiceWithCreditCard.InvoiceNumber;    // Inv-39475
+result_PayInvoiceWithCreditCard.TransId;    // 10928941
+result_PayInvoiceWithCreditCard.InvoiceNumber;    // Inv-39482
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -847,8 +847,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_CreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "draft", 10.00m);
-            var result_UpdateInvoice = await _sparrow_creditcard.UpdateInvoice(result_CreateInvoice.InvoiceNumber, 
+            var result_CreateInvoice = await _sparrow.CreateInvoice("12/01/2017", "USD", "draft", 10.00m);
+            var result_UpdateInvoice = await _sparrow.UpdateInvoice(result_CreateInvoice.InvoiceNumber, 
                 options: new Sparrow.UpdateInvoiceOptions{ InvoiceStatus = "active" });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -857,7 +857,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39476
+result_CreateInvoice.InvoiceNumber;    // Inv-39483
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -865,7 +865,7 @@ RESULT UpdateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_UpdateInvoice.TextResponse;    // Invoice has been successfully updated
-result_UpdateInvoice.InvoiceNumber;    // Inv-39476
+result_UpdateInvoice.InvoiceNumber;    // Inv-39483
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -877,8 +877,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-            var result_SimpleRefund = await _sparrow_creditcard.SimpleRefund(result_SimpleSale.TransId, 9.99m);
+            var result_SimpleSale = await _sparrow.SimpleSale("4111111111111111", "1019", 9.99m);
+            var result_SimpleRefund = await _sparrow.SimpleRefund(result_SimpleSale.TransId, 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -888,8 +888,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928261
-result_SimpleSale.XRef;    // 3863063198
+result_SimpleSale.TransId;    // 10928943
+result_SimpleSale.XRef;    // 3863527747
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -903,8 +903,8 @@ RESULT SimpleRefund:
 result_SimpleRefund.Status;    // 200
 result_SimpleRefund.Response;    // 1
 result_SimpleRefund.TextResponse;    // SUCCESS
-result_SimpleRefund.TransId;    // 10928261
-result_SimpleRefund.XRef;    // 3863063198
+result_SimpleRefund.TransId;    // 10928943
+result_SimpleRefund.XRef;    // 3863527747
 result_SimpleRefund.AuthCode;    // 123456
 result_SimpleRefund.Type;    // refund
 result_SimpleRefund.CodeResponse;    // 100
@@ -920,8 +920,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-            var result_AdvancedRefund = await _sparrow_creditcard.AdvancedRefund(result_SimpleSale.TransId, 9.99m);
+            var result_SimpleSale = await _sparrow.SimpleSale("4111111111111111", "1019", 9.99m);
+            var result_AdvancedRefund = await _sparrow.AdvancedRefund(result_SimpleSale.TransId, 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -931,8 +931,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928262
-result_SimpleSale.XRef;    // 3863063223
+result_SimpleSale.TransId;    // 10928944
+result_SimpleSale.XRef;    // 3863527805
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -945,9 +945,9 @@ RESULT AdvancedRefund:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AdvancedRefund.Status;    // 300
 result_AdvancedRefund.Response;    // 3
-result_AdvancedRefund.TextResponse;    // Flagged for Review by Velocity and Duplicates Policy (Duplicate Transactions Rule). Original Transaction ID: 10928261
-result_AdvancedRefund.TransId;    // 10928262
-result_AdvancedRefund.XRef;    // 3863063223
+result_AdvancedRefund.TextResponse;    // Flagged for Review by Velocity and Duplicates Policy (Duplicate Transactions Rule). Original Transaction ID: 10928943
+result_AdvancedRefund.TransId;    // 10928944
+result_AdvancedRefund.XRef;    // 3863527805
 result_AdvancedRefund.AuthCode;    // 123456
 result_AdvancedRefund.Type;    // refund
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -961,8 +961,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-            var result_AdvancedVoid = await _sparrow_creditcard.AdvancedVoid(result_SimpleSale.TransId);
+            var result_SimpleSale = await _sparrow.SimpleSale("4111111111111111", "1019", 9.99m);
+            var result_AdvancedVoid = await _sparrow.AdvancedVoid(result_SimpleSale.TransId);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -972,8 +972,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928263
-result_SimpleSale.XRef;    // 3863063246
+result_SimpleSale.TransId;    // 10928945
+result_SimpleSale.XRef;    // 3863527833
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -987,8 +987,8 @@ RESULT AdvancedVoid:
 result_AdvancedVoid.Status;    // 200
 result_AdvancedVoid.Response;    // 1
 result_AdvancedVoid.TextResponse;    // Transaction Void Successful
-result_AdvancedVoid.TransId;    // 10928263
-result_AdvancedVoid.XRef;    // 3863063246
+result_AdvancedVoid.TransId;    // 10928945
+result_AdvancedVoid.XRef;    // 3863527833
 result_AdvancedVoid.AuthCode;    // 123456
 result_AdvancedVoid.Type;    // void
 result_AdvancedVoid.CodeResponse;    // 100
@@ -1004,8 +1004,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-            var result_SimpleVoid = await _sparrow_creditcard.SimpleVoid(result_SimpleSale.TransId);
+            var result_SimpleSale = await _sparrow.SimpleSale("4111111111111111", "1019", 9.99m);
+            var result_SimpleVoid = await _sparrow.SimpleVoid(result_SimpleSale.TransId);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1015,8 +1015,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928264
-result_SimpleSale.XRef;    // 3863063270
+result_SimpleSale.TransId;    // 10928946
+result_SimpleSale.XRef;    // 3863527884
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -1030,8 +1030,8 @@ RESULT SimpleVoid:
 result_SimpleVoid.Status;    // 200
 result_SimpleVoid.Response;    // 1
 result_SimpleVoid.TextResponse;    // Transaction Void Successful
-result_SimpleVoid.TransId;    // 10928264
-result_SimpleVoid.XRef;    // 3863063270
+result_SimpleVoid.TransId;    // 10928946
+result_SimpleVoid.XRef;    // 3863527884
 result_SimpleVoid.AuthCode;    // 123456
 result_SimpleVoid.Type;    // void
 result_SimpleVoid.CodeResponse;    // 100
@@ -1047,11 +1047,11 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe", 
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe", 
                 payments: new []{ new Sparrow.AddCustomerPayment{ PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017", 
+            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017", 
                 sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-            var result_AssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
+            var result_AssignPaymentPlanToCustomer = await _sparrow.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1059,10 +1059,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'Z3L5EC9K7DAFZ9XS' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'H1RP9TZHHN5Y4FR8' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // Z3L5EC9K7DAFZ9XS
-result_AddCustomer.PaymentTokens[0];    // 4HL84ZSL1LOSOO5Q
+result_AddCustomer.CustomerToken;    // H1RP9TZHHN5Y4FR8
+result_AddCustomer.PaymentTokens[0];    // 9Y1SZ1M92C8HZOFN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1072,7 +1072,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // V88ZJAW6RMTYEVSN
+result_CreatePaymentPlan.PlanToken;    // R589GSS35AY82Y33
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1082,7 +1082,7 @@ RESULT AssignPaymentPlanToCustomer:
 result_AssignPaymentPlanToCustomer.Response;    // 1
 result_AssignPaymentPlanToCustomer.TextResponse;    // Success
 result_AssignPaymentPlanToCustomer.Type;    // assignplan
-result_AssignPaymentPlanToCustomer.AssignmentToken;    // QBA6L70U3CNXKLAY
+result_AssignPaymentPlanToCustomer.AssignmentToken;    // IWA9EQIZTKFSP68A
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1094,12 +1094,12 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe", 
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe", 
                 payments: new []{ new Sparrow.AddCustomerPayment{ PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017", 
+            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017", 
                 sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-            var result_AssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
-            var result_CancelPlanAssignment = await _sparrow_creditcard.CancelPlanAssignment(result_AssignPaymentPlanToCustomer.AssignmentToken);
+            var result_AssignPaymentPlanToCustomer = await _sparrow.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
+            var result_CancelPlanAssignment = await _sparrow.CancelPlanAssignment(result_AssignPaymentPlanToCustomer.AssignmentToken);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1109,7 +1109,7 @@ RESULT AssignPaymentPlanToCustomer:
 result_AssignPaymentPlanToCustomer.Response;    // 1
 result_AssignPaymentPlanToCustomer.TextResponse;    // Success
 result_AssignPaymentPlanToCustomer.Type;    // assignplan
-result_AssignPaymentPlanToCustomer.AssignmentToken;    // 1TFQWGU0LS2NSE76
+result_AssignPaymentPlanToCustomer.AssignmentToken;    // IR9PSQLPWWIQ7X8Y
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1117,10 +1117,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'HDFLR4WP66RS9VP6' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'EVK7XCIM00U54GOD' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // HDFLR4WP66RS9VP6
-result_AddCustomer.PaymentTokens[0];    // 0R6HCWYWWC17WFG5
+result_AddCustomer.CustomerToken;    // EVK7XCIM00U54GOD
+result_AddCustomer.PaymentTokens[0];    // O6H2OAKRO4UR7IQB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1130,7 +1130,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // 4JP3F9B9KAE2XR6T
+result_CreatePaymentPlan.PlanToken;    // FC9PTWUPPRW6USR3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1151,7 +1151,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017", 
+            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017", 
                 sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1162,7 +1162,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // 6X8WZLLVPSYPDZ20
+result_CreatePaymentPlan.PlanToken;    // WUU6QAODL3S2R0OR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1174,8 +1174,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017");
-            var result_DeletePlan = await _sparrow_creditcard.DeletePlan(result_CreatePaymentPlan.PlanToken);
+            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017");
+            var result_DeletePlan = await _sparrow.DeletePlan(result_CreatePaymentPlan.PlanToken);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1185,7 +1185,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // HUYX81H6R1F1M4AP
+result_CreatePaymentPlan.PlanToken;    // ISPHER4TPC9OV3U6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1206,12 +1206,12 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe", 
+            var result_AddCustomer = await _sparrow.AddCustomer("John", "Doe", 
                 payments: new []{ new Sparrow.AddCustomerPayment{ PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/01/2018", 
+            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/01/2018", 
                 sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-            var result_AssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
-            var result_UpdatePaymentPlanAssignment = await _sparrow_creditcard.UpdatePaymentPlanAssignment(result_AssignPaymentPlanToCustomer.AssignmentToken, 
+            var result_AssignPaymentPlanToCustomer = await _sparrow.AssignPaymentPlanToCustomer(result_AddCustomer.CustomerToken, result_CreatePaymentPlan.PlanToken, result_AddCustomer.PaymentTokens[0]);
+            var result_UpdatePaymentPlanAssignment = await _sparrow.UpdatePaymentPlanAssignment(result_AssignPaymentPlanToCustomer.AssignmentToken, 
                 options: new Sparrow.UpdatePaymentPlanAssignmentOptions{ StartDate = "02/02/2020" });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1222,7 +1222,7 @@ RESULT AssignPaymentPlanToCustomer:
 result_AssignPaymentPlanToCustomer.Response;    // 1
 result_AssignPaymentPlanToCustomer.TextResponse;    // Success
 result_AssignPaymentPlanToCustomer.Type;    // assignplan
-result_AssignPaymentPlanToCustomer.AssignmentToken;    // 9YR731UFIHX7F5DU
+result_AssignPaymentPlanToCustomer.AssignmentToken;    // 702XQ4OTY3FT7H0D
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1230,10 +1230,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'L0YE8CLRABVL376L' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'E7BWPZ3WBVUW3MEB' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // L0YE8CLRABVL376L
-result_AddCustomer.PaymentTokens[0];    // F4PZXMZCCSLN4JXP
+result_AddCustomer.CustomerToken;    // E7BWPZ3WBVUW3MEB
+result_AddCustomer.PaymentTokens[0];    // 3LK7Q06XIP9RWF3W
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1243,7 +1243,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // ZV0QQ9KT7F5T3KES
+result_CreatePaymentPlan.PlanToken;    // JTWMH8V7U1G213T1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1253,7 +1253,7 @@ RESULT UpdatePaymentPlanAssignment:
 result_UpdatePaymentPlanAssignment.Response;    // 1
 result_UpdatePaymentPlanAssignment.TextResponse;    // Success
 result_UpdatePaymentPlanAssignment.Type;    // updateassignment
-result_UpdatePaymentPlanAssignment.AssignmentToken;    // 9YR731UFIHX7F5DU
+result_UpdatePaymentPlanAssignment.AssignmentToken;    // 702XQ4OTY3FT7H0D
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1265,9 +1265,9 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_CreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017", 
+            var result_CreatePaymentPlan = await _sparrow.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017", 
                 sequences: new []{ new Sparrow.BuildSequenceSequence{ Sequence = 1, Amount = 10.00m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-            var result_UpdatePaymentPlan = await _sparrow_creditcard.UpdatePaymentPlan(result_CreatePaymentPlan.PlanToken, 
+            var result_UpdatePaymentPlan = await _sparrow.UpdatePaymentPlan(result_CreatePaymentPlan.PlanToken, 
                 sequences: new []{ new Sparrow.AddOrUpdateSequenceSequence{ OperationType = "updatesequence", Sequence = 1, Amount = 20.00m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1278,7 +1278,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // 53WSOK28AVCP18X0
+result_CreatePaymentPlan.PlanToken;    // 88VJTXQNBOO9ZM96
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1299,7 +1299,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleOfflineCapture = await _sparrow_creditcard.SimpleOfflineCapture("4111111111111111", "1019", 9.99m, "123456", "01/31/2017");
+            var result_SimpleOfflineCapture = await _sparrow.SimpleOfflineCapture("4111111111111111", "1019", 9.99m, "123456", "01/31/2017");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1309,8 +1309,8 @@ RESULT SimpleOfflineCapture:
 result_SimpleOfflineCapture.Status;    // 200
 result_SimpleOfflineCapture.Response;    // 1
 result_SimpleOfflineCapture.TextResponse;    // SUCCESS
-result_SimpleOfflineCapture.TransId;    // 10928265
-result_SimpleOfflineCapture.XRef;    // 3863063315
+result_SimpleOfflineCapture.TransId;    // 10928947
+result_SimpleOfflineCapture.XRef;    // 3863527981
 result_SimpleOfflineCapture.AuthCode;    // 123456
 result_SimpleOfflineCapture.Type;    // offline
 result_SimpleOfflineCapture.CodeResponse;    // 100
@@ -1326,8 +1326,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
-            var result_AdvancedCapture = await _sparrow_creditcard.AdvancedCapture(result_SimpleAuthorization.TransId, 9.99m);
+            var result_SimpleAuthorization = await _sparrow.SimpleAuthorization("4111111111111111", "1019", 9.99m);
+            var result_AdvancedCapture = await _sparrow.AdvancedCapture(result_SimpleAuthorization.TransId, 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1337,8 +1337,8 @@ RESULT SimpleAuthorization:
 result_SimpleAuthorization.Status;    // 200
 result_SimpleAuthorization.Response;    // 1
 result_SimpleAuthorization.TextResponse;    // SUCCESS
-result_SimpleAuthorization.TransId;    // 10928266
-result_SimpleAuthorization.XRef;    // 3863063325
+result_SimpleAuthorization.TransId;    // 10928948
+result_SimpleAuthorization.XRef;    // 3863528016
 result_SimpleAuthorization.AuthCode;    // 123456
 result_SimpleAuthorization.Type;    // auth
 result_SimpleAuthorization.CodeResponse;    // 100
@@ -1352,8 +1352,8 @@ RESULT AdvancedCapture:
 result_AdvancedCapture.Status;    // 200
 result_AdvancedCapture.Response;    // 1
 result_AdvancedCapture.TextResponse;    // SUCCESS
-result_AdvancedCapture.TransId;    // 10928266
-result_AdvancedCapture.XRef;    // 3863063325
+result_AdvancedCapture.TransId;    // 10928948
+result_AdvancedCapture.XRef;    // 3863528016
 result_AdvancedCapture.AuthCode;    // 123456
 result_AdvancedCapture.Type;    // capture
 result_AdvancedCapture.CodeResponse;    // 100
@@ -1369,7 +1369,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
+            var result_SimpleAuthorization = await _sparrow.SimpleAuthorization("4111111111111111", "1019", 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1379,8 +1379,8 @@ RESULT SimpleAuthorization:
 result_SimpleAuthorization.Status;    // 200
 result_SimpleAuthorization.Response;    // 1
 result_SimpleAuthorization.TextResponse;    // SUCCESS
-result_SimpleAuthorization.TransId;    // 10928267
-result_SimpleAuthorization.XRef;    // 3863063353
+result_SimpleAuthorization.TransId;    // 10928949
+result_SimpleAuthorization.XRef;    // 3863528062
 result_SimpleAuthorization.AuthCode;    // 123456
 result_SimpleAuthorization.Type;    // auth
 result_SimpleAuthorization.CodeResponse;    // 100
@@ -1396,8 +1396,8 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
-            var result_SimpleCapture = await _sparrow_creditcard.SimpleCapture(result_SimpleAuthorization.TransId, 9.99m);
+            var result_SimpleAuthorization = await _sparrow.SimpleAuthorization("4111111111111111", "1019", 9.99m);
+            var result_SimpleCapture = await _sparrow.SimpleCapture(result_SimpleAuthorization.TransId, 9.99m);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1407,8 +1407,8 @@ RESULT SimpleAuthorization:
 result_SimpleAuthorization.Status;    // 200
 result_SimpleAuthorization.Response;    // 1
 result_SimpleAuthorization.TextResponse;    // SUCCESS
-result_SimpleAuthorization.TransId;    // 10928268
-result_SimpleAuthorization.XRef;    // 3863063365
+result_SimpleAuthorization.TransId;    // 10928950
+result_SimpleAuthorization.XRef;    // 3863528082
 result_SimpleAuthorization.AuthCode;    // 123456
 result_SimpleAuthorization.Type;    // auth
 result_SimpleAuthorization.CodeResponse;    // 100
@@ -1422,8 +1422,8 @@ RESULT SimpleCapture:
 result_SimpleCapture.Status;    // 200
 result_SimpleCapture.Response;    // 1
 result_SimpleCapture.TextResponse;    // SUCCESS
-result_SimpleCapture.TransId;    // 10928268
-result_SimpleCapture.XRef;    // 3863063365
+result_SimpleCapture.TransId;    // 10928950
+result_SimpleCapture.XRef;    // 3863528082
 result_SimpleCapture.AuthCode;    // 123456
 result_SimpleCapture.Type;    // capture
 result_SimpleCapture.CodeResponse;    // 100
@@ -1439,7 +1439,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_AdvancedStarCard = await _sparrow_starcard.AdvancedStarCard("4111111111111111", "1019", 9.99m, "12345678901");
+            var result_AdvancedStarCard = await _sparrow.AdvancedStarCard("4111111111111111", "1019", 9.99m, "12345678901");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1448,7 +1448,7 @@ RESULT AdvancedStarCard:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AdvancedStarCard.Status;    // 400
 result_AdvancedStarCard.TextResponse;    // System Error: Reason Code: 002 CID value is invalid or non existant
-result_AdvancedStarCard.TransId;    // 10928269
+result_AdvancedStarCard.TransId;    // 10928951
 result_AdvancedStarCard.Type;    // sale
 result_AdvancedStarCard.CodeDescription;    // Denied
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1462,7 +1462,7 @@ CODE:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            var result_SimpleStarCard = await _sparrow_starcard.SimpleStarCard("4111111111111111", 9.99m, "12345678901");
+            var result_SimpleStarCard = await _sparrow.SimpleStarCard("4111111111111111", 9.99m, "12345678901");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1471,7 +1471,7 @@ RESULT SimpleStarCard:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_SimpleStarCard.Status;    // 400
 result_SimpleStarCard.TextResponse;    // System Error: Reason Code: 002 CID value is invalid or non existant
-result_SimpleStarCard.TransId;    // 10928270
+result_SimpleStarCard.TransId;    // 10928952
 result_SimpleStarCard.Type;    // sale
 result_SimpleStarCard.CodeDescription;    // Denied
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
