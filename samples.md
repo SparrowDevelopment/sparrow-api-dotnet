@@ -16,8 +16,8 @@ RESULT AdvancedECheck:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AdvancedECheck.Status;    // 200
 result_AdvancedECheck.TextResponse;    // SUCCESS
-result_AdvancedECheck.TransId;    // 10928928
-result_AdvancedECheck.XRef;    // 3863527207
+result_AdvancedECheck.TransId;    // 10929102
+result_AdvancedECheck.XRef;    // 3863565714
 result_AdvancedECheck.AuthCode;    // 123456
 result_AdvancedECheck.Type;    // sale
 result_AdvancedECheck.CodeResponse;    // 100
@@ -42,8 +42,8 @@ RESULT AdvancedACH:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AdvancedACH.Status;    // 200
 result_AdvancedACH.TextResponse;    // SUCCESS
-result_AdvancedACH.TransId;    // 10928929
-result_AdvancedACH.XRef;    // 3863527231
+result_AdvancedACH.TransId;    // 10929103
+result_AdvancedACH.XRef;    // 3863565748
 result_AdvancedACH.AuthCode;    // 123456
 result_AdvancedACH.Type;    // sale
 result_AdvancedACH.CodeResponse;    // 100
@@ -68,8 +68,8 @@ RESULT SimpleACH:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_SimpleACH.Status;    // 200
 result_SimpleACH.TextResponse;    // SUCCESS
-result_SimpleACH.TransId;    // 10928930
-result_SimpleACH.XRef;    // 3863527246
+result_SimpleACH.TransId;    // 10929104
+result_SimpleACH.XRef;    // 3863565774
 result_SimpleACH.AuthCode;    // 123456
 result_SimpleACH.Type;    // sale
 result_SimpleACH.CodeResponse;    // 100
@@ -95,8 +95,8 @@ RESULT SimpleECheck:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_SimpleECheck.Status;    // 200
 result_SimpleECheck.TextResponse;    // SUCCESS
-result_SimpleECheck.TransId;    // 10928931
-result_SimpleECheck.XRef;    // 3863527267
+result_SimpleECheck.TransId;    // 10929105
+result_SimpleECheck.XRef;    // 3863565800
 result_SimpleECheck.AuthCode;    // 123456
 result_SimpleECheck.Type;    // sale
 result_SimpleECheck.CodeResponse;    // 100
@@ -166,8 +166,8 @@ RESULT VerifyAccount:
 result_VerifyAccount.Status;    // 200
 result_VerifyAccount.Response;    // 1
 result_VerifyAccount.TextResponse;    // SUCCESS
-result_VerifyAccount.TransId;    // 10928932
-result_VerifyAccount.XRef;    // 3863527298
+result_VerifyAccount.TransId;    // 10929107
+result_VerifyAccount.XRef;    // 3863565851
 result_VerifyAccount.AuthCode;    // 123456
 result_VerifyAccount.Type;    // auth
 result_VerifyAccount.CodeResponse;    // 100
@@ -194,8 +194,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928933
-result_SimpleSale.XRef;    // 3863527321
+result_SimpleSale.TransId;    // 10929109
+result_SimpleSale.XRef;    // 3863565918
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -209,8 +209,8 @@ RESULT MarkSuccessfulTransactionAsChargeback:
 result_MarkSuccessfulTransactionAsChargeback.Status;    // 200
 result_MarkSuccessfulTransactionAsChargeback.Response;    // 1
 result_MarkSuccessfulTransactionAsChargeback.TextResponse;    // Testing for Success
-result_MarkSuccessfulTransactionAsChargeback.TransId;    // 10928933
-result_MarkSuccessfulTransactionAsChargeback.XRef;    // 3863527321
+result_MarkSuccessfulTransactionAsChargeback.TransId;    // 10929109
+result_MarkSuccessfulTransactionAsChargeback.XRef;    // 3863565918
 result_MarkSuccessfulTransactionAsChargeback.AuthCode;    // 123456
 result_MarkSuccessfulTransactionAsChargeback.Type;    // chargeback
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -234,8 +234,8 @@ RESULT SimpleCredit:
 result_SimpleCredit.Status;    // 200
 result_SimpleCredit.Response;    // 1
 result_SimpleCredit.TextResponse;    // SUCCESS
-result_SimpleCredit.TransId;    // 10928934
-result_SimpleCredit.XRef;    // 3863527353
+result_SimpleCredit.TransId;    // 10929110
+result_SimpleCredit.XRef;    // 3863566020
 result_SimpleCredit.Type;    // credit
 result_SimpleCredit.CodeResponse;    // 100
 result_SimpleCredit.CodeDescription;    // Transaction was Approved
@@ -260,8 +260,8 @@ RESULT AdvancedSale:
 result_AdvancedSale.Status;    // 200
 result_AdvancedSale.Response;    // 1
 result_AdvancedSale.TextResponse;    // SUCCESS
-result_AdvancedSale.TransId;    // 10928935
-result_AdvancedSale.XRef;    // 3863527384
+result_AdvancedSale.TransId;    // 10929111
+result_AdvancedSale.XRef;    // 3863566064
 result_AdvancedSale.AuthCode;    // 123456
 result_AdvancedSale.Type;    // sale
 result_AdvancedSale.CodeResponse;    // 100
@@ -287,8 +287,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928936
-result_SimpleSale.XRef;    // 3863527409
+result_SimpleSale.TransId;    // 10929112
+result_SimpleSale.XRef;    // 3863566120
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -313,9 +313,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'K9IMT1NZD61Q7T4W' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'PG31IODZGHZ1NVTZ' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // K9IMT1NZD61Q7T4W
+result_AddCustomer.CustomerToken;    // PG31IODZGHZ1NVTZ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -323,9 +323,9 @@ RESULT AddPaymentTypesToCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddPaymentTypesToCustomer.Response;    // 1
-result_AddPaymentTypesToCustomer.TextResponse;    // Customer with token 'K9IMT1NZD61Q7T4W' successfully updated
+result_AddPaymentTypesToCustomer.TextResponse;    // Customer with token 'PG31IODZGHZ1NVTZ' successfully updated
 result_AddPaymentTypesToCustomer.Type;    // updatecustomer
-result_AddPaymentTypesToCustomer.CustomerToken;    // K9IMT1NZD61Q7T4W
+result_AddPaymentTypesToCustomer.CustomerToken;    // PG31IODZGHZ1NVTZ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -346,10 +346,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'SU6W3BL5QLA135YT' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'OVF7RGGUA6OYBXDZ' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // SU6W3BL5QLA135YT
-result_AddCustomer.PaymentTokens[0];    // 8UXTC0NJU5790GEI
+result_AddCustomer.CustomerToken;    // OVF7RGGUA6OYBXDZ
+result_AddCustomer.PaymentTokens[0];    // RF9YBRB1LDDQ87ZN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -370,9 +370,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'S47FX04JL6QO67NY' successfully created
+result_AddCustomer.TextResponse;    // Customer with token '3IRRFJJEFNJAQXVM' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // S47FX04JL6QO67NY
+result_AddCustomer.CustomerToken;    // 3IRRFJJEFNJAQXVM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -404,10 +404,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token '50JJM1FG7L2YPFQI' successfully created
+result_AddCustomer.TextResponse;    // Customer with token '10VBWOUHF1RXZJ2P' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // 50JJM1FG7L2YPFQI
-result_AddCustomer.PaymentTokens[0];    // LV5UWX3WXNGPN3UL
+result_AddCustomer.CustomerToken;    // 10VBWOUHF1RXZJ2P
+result_AddCustomer.PaymentTokens[0];    // SBPSIEO8CHGZ9QBK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -415,10 +415,10 @@ RESULT DeletePaymentType:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_DeletePaymentType.Response;    // 1
-result_DeletePaymentType.TextResponse;    // Customer with token '50JJM1FG7L2YPFQI' successfully updated
+result_DeletePaymentType.TextResponse;    // Customer with token '10VBWOUHF1RXZJ2P' successfully updated
 result_DeletePaymentType.Type;    // updatecustomer
-result_DeletePaymentType.CustomerToken;    // 50JJM1FG7L2YPFQI
-result_DeletePaymentType.PaymentTokens[0];    // LV5UWX3WXNGPN3UL
+result_DeletePaymentType.CustomerToken;    // 10VBWOUHF1RXZJ2P
+result_DeletePaymentType.PaymentTokens[0];    // SBPSIEO8CHGZ9QBK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -439,9 +439,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'YZBJKH71Y0IL8G4G' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'SW7VSVOOXKMN2WP5' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // YZBJKH71Y0IL8G4G
+result_AddCustomer.CustomerToken;    // SW7VSVOOXKMN2WP5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -450,7 +450,9 @@ RESULT RetrieveCustomer:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_RetrieveCustomer.Response;    // 1
 result_RetrieveCustomer.TextResponse;    // Processed
-result_RetrieveCustomer.CustomerToken;    // YZBJKH71Y0IL8G4G
+result_RetrieveCustomer.CustomerToken;    // SW7VSVOOXKMN2WP5
+result_RetrieveCustomer.FirstName;    // John
+result_RetrieveCustomer.LastName;    // Doe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -472,10 +474,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'PIDKB2CI6XW9U03E' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'GBW69Q8DL0Y2ZZ16' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // PIDKB2CI6XW9U03E
-result_AddCustomer.PaymentTokens[0];    // 1Q90DH8DYE56PRXQ
+result_AddCustomer.CustomerToken;    // GBW69Q8DL0Y2ZZ16
+result_AddCustomer.PaymentTokens[0];    // OUL8XR2HQ1BM2QFJ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -484,7 +486,12 @@ RESULT RetrievePaymentType:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_RetrievePaymentType.Response;    // 1
 result_RetrievePaymentType.TextResponse;    // Processed
-result_RetrievePaymentType.CustomerToken;    // PIDKB2CI6XW9U03E
+result_RetrievePaymentType.CustomerToken;    // GBW69Q8DL0Y2ZZ16
+result_RetrievePaymentType.PayType;    // CreditCard
+result_RetrievePaymentType.PayNo;    // 1
+result_RetrievePaymentType.CardExp;    // 1019
+result_RetrievePaymentType.Account;    // 411111******1111
+result_RetrievePaymentType.Token;    // OUL8XR2HQ1BM2QFJ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -507,10 +514,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'T99FZJK6X3MXV8G8' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'V4SOICEXMW9PI4HZ' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // T99FZJK6X3MXV8G8
-result_AddCustomer.PaymentTokens[0];    // 7EURGEDIKAV66F3P
+result_AddCustomer.CustomerToken;    // V4SOICEXMW9PI4HZ
+result_AddCustomer.PaymentTokens[0];    // 0GECMG67XA581AGP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -518,9 +525,9 @@ RESULT UpdateCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_UpdateCustomer.Response;    // 1
-result_UpdateCustomer.TextResponse;    // Customer with token 'T99FZJK6X3MXV8G8' successfully updated
+result_UpdateCustomer.TextResponse;    // Customer with token 'V4SOICEXMW9PI4HZ' successfully updated
 result_UpdateCustomer.Type;    // updatecustomer
-result_UpdateCustomer.CustomerToken;    // T99FZJK6X3MXV8G8
+result_UpdateCustomer.CustomerToken;    // V4SOICEXMW9PI4HZ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -543,10 +550,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token '9FPU0XORGDCK4LS0' successfully created
+result_AddCustomer.TextResponse;    // Customer with token '1KEF7WBQSJJ5W8G2' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // 9FPU0XORGDCK4LS0
-result_AddCustomer.PaymentTokens[0];    // 879K7FKP615ZYN9R
+result_AddCustomer.CustomerToken;    // 1KEF7WBQSJJ5W8G2
+result_AddCustomer.PaymentTokens[0];    // CXXVRMTP7V1IGG5L
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -554,10 +561,10 @@ RESULT UpdatePaymentType:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_UpdatePaymentType.Response;    // 1
-result_UpdatePaymentType.TextResponse;    // Customer with token '9FPU0XORGDCK4LS0' successfully updated
+result_UpdatePaymentType.TextResponse;    // Customer with token '1KEF7WBQSJJ5W8G2' successfully updated
 result_UpdatePaymentType.Type;    // updatecustomer
-result_UpdatePaymentType.CustomerToken;    // 9FPU0XORGDCK4LS0
-result_UpdatePaymentType.PaymentTokens[0];    // 879K7FKP615ZYN9R
+result_UpdatePaymentType.CustomerToken;    // 1KEF7WBQSJJ5W8G2
+result_UpdatePaymentType.PaymentTokens[0];    // CXXVRMTP7V1IGG5L
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -578,9 +585,9 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token '97XPSVHJZCLDB2N9' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'QTY70B1DFYUC7AKY' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // 97XPSVHJZCLDB2N9
+result_AddCustomer.CustomerToken;    // QTY70B1DFYUC7AKY
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -589,7 +596,8 @@ RESULT DecryptCustomFields:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_DecryptCustomFields.Response;    // 3
 result_DecryptCustomFields.TextResponse;    // Custom field 'customField1' not found.
-result_DecryptCustomFields.CustomerToken;    // 97XPSVHJZCLDB2N9
+result_DecryptCustomFields.CustomerToken;    // QTY70B1DFYUC7AKY
+result_DecryptCustomFields.Token;    // QTY70B1DFYUC7AKY
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -611,8 +619,8 @@ RESULT EWalletSimpleCredit:
 result_EWalletSimpleCredit.Status;    // 200
 result_EWalletSimpleCredit.Response;    // 1
 result_EWalletSimpleCredit.TextResponse;    // Successful
-result_EWalletSimpleCredit.TransId;    // 10928937
-result_EWalletSimpleCredit.XRef;    // PGP9HXSCSYJJG
+result_EWalletSimpleCredit.TransId;    // 10929114
+result_EWalletSimpleCredit.XRef;    // NUJR8JALVZNDW
 result_EWalletSimpleCredit.Type;    // credit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -635,8 +643,8 @@ RESULT AdvancedFiservSale:
 result_AdvancedFiservSale.Status;    // 200
 result_AdvancedFiservSale.Response;    // 1
 result_AdvancedFiservSale.TextResponse;    // SUCCESS
-result_AdvancedFiservSale.TransId;    // 10928938
-result_AdvancedFiservSale.XRef;    // 3863527614
+result_AdvancedFiservSale.TransId;    // 10929115
+result_AdvancedFiservSale.XRef;    // 3863566447
 result_AdvancedFiservSale.AuthCode;    // 123456
 result_AdvancedFiservSale.Type;    // sale
 result_AdvancedFiservSale.CodeResponse;    // 100
@@ -662,8 +670,8 @@ RESULT FiservSimpleSale:
 result_FiservSimpleSale.Status;    // 200
 result_FiservSimpleSale.Response;    // 1
 result_FiservSimpleSale.TextResponse;    // SUCCESS
-result_FiservSimpleSale.TransId;    // 10928939
-result_FiservSimpleSale.XRef;    // 3863527634
+result_FiservSimpleSale.TransId;    // 10929116
+result_FiservSimpleSale.XRef;    // 3863566487
 result_FiservSimpleSale.AuthCode;    // 123456
 result_FiservSimpleSale.Type;    // sale
 result_FiservSimpleSale.CodeResponse;    // 100
@@ -688,7 +696,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39477
+result_CreateInvoice.InvoiceNumber;    // Inv-39509
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -696,7 +704,7 @@ RESULT CancelInvoiceByCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CancelInvoiceByCustomer.TextResponse;    // invoice has been successfully canceled
-result_CancelInvoiceByCustomer.InvoiceNumber;    // Inv-39477
+result_CancelInvoiceByCustomer.InvoiceNumber;    // Inv-39509
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -717,7 +725,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39478
+result_CreateInvoice.InvoiceNumber;    // Inv-39510
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -725,7 +733,7 @@ RESULT CancelInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CancelInvoice.TextResponse;    // invoice has been successfully canceled
-result_CancelInvoice.InvoiceNumber;    // Inv-39478
+result_CancelInvoice.InvoiceNumber;    // Inv-39510
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -745,7 +753,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39479
+result_CreateInvoice.InvoiceNumber;    // Inv-39511
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -766,7 +774,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39480
+result_CreateInvoice.InvoiceNumber;    // Inv-39512
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -774,7 +782,12 @@ RESULT RetrieveInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_RetrieveInvoice.TextResponse;    // Success
-result_RetrieveInvoice.InvoiceNumber;    // Inv-39480
+result_RetrieveInvoice.InvoiceNumber;    // Inv-39512
+result_RetrieveInvoice.InvoiceAmount;    // 10.0000
+result_RetrieveInvoice.Currency;    // USD
+result_RetrieveInvoice.InvoiceDate;    // 12/01/2017
+result_RetrieveInvoice.InvoiceStatus;    // Active
+result_RetrieveInvoice.InvoicePaymentLink;    // https://secure.sparrowone.com/Payments/Payment.aspx?token=15693F50EC8DEB7D
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -796,7 +809,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39481
+result_CreateInvoice.InvoiceNumber;    // Inv-39513
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -804,8 +817,8 @@ RESULT PayInvoiceWithBankAccount:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_PayInvoiceWithBankAccount.TextResponse;    // Invoice has been successfully paid
-result_PayInvoiceWithBankAccount.TransId;    // 10928940
-result_PayInvoiceWithBankAccount.InvoiceNumber;    // Inv-39481
+result_PayInvoiceWithBankAccount.TransId;    // 10929117
+result_PayInvoiceWithBankAccount.InvoiceNumber;    // Inv-39513
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -826,7 +839,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39482
+result_CreateInvoice.InvoiceNumber;    // Inv-39514
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -834,8 +847,8 @@ RESULT PayInvoiceWithCreditCard:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_PayInvoiceWithCreditCard.TextResponse;    // Invoice has been successfully paid
-result_PayInvoiceWithCreditCard.TransId;    // 10928941
-result_PayInvoiceWithCreditCard.InvoiceNumber;    // Inv-39482
+result_PayInvoiceWithCreditCard.TransId;    // 10929118
+result_PayInvoiceWithCreditCard.InvoiceNumber;    // Inv-39514
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -857,7 +870,7 @@ RESULT CreateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_CreateInvoice.TextResponse;    // invoice has been successfully created
-result_CreateInvoice.InvoiceNumber;    // Inv-39483
+result_CreateInvoice.InvoiceNumber;    // Inv-39515
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -865,7 +878,7 @@ RESULT UpdateInvoice:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_UpdateInvoice.TextResponse;    // Invoice has been successfully updated
-result_UpdateInvoice.InvoiceNumber;    // Inv-39483
+result_UpdateInvoice.InvoiceNumber;    // Inv-39515
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -888,8 +901,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928943
-result_SimpleSale.XRef;    // 3863527747
+result_SimpleSale.TransId;    // 10929119
+result_SimpleSale.XRef;    // 3863566739
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -903,8 +916,8 @@ RESULT SimpleRefund:
 result_SimpleRefund.Status;    // 200
 result_SimpleRefund.Response;    // 1
 result_SimpleRefund.TextResponse;    // SUCCESS
-result_SimpleRefund.TransId;    // 10928943
-result_SimpleRefund.XRef;    // 3863527747
+result_SimpleRefund.TransId;    // 10929119
+result_SimpleRefund.XRef;    // 3863566739
 result_SimpleRefund.AuthCode;    // 123456
 result_SimpleRefund.Type;    // refund
 result_SimpleRefund.CodeResponse;    // 100
@@ -931,8 +944,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928944
-result_SimpleSale.XRef;    // 3863527805
+result_SimpleSale.TransId;    // 10929120
+result_SimpleSale.XRef;    // 3863566840
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -945,11 +958,14 @@ RESULT AdvancedRefund:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AdvancedRefund.Status;    // 300
 result_AdvancedRefund.Response;    // 3
-result_AdvancedRefund.TextResponse;    // Flagged for Review by Velocity and Duplicates Policy (Duplicate Transactions Rule). Original Transaction ID: 10928943
-result_AdvancedRefund.TransId;    // 10928944
-result_AdvancedRefund.XRef;    // 3863527805
+result_AdvancedRefund.TextResponse;    // Flagged for Review by Velocity and Duplicates Policy (Duplicate Transactions Rule). Original Transaction ID: 10929119
+result_AdvancedRefund.TransId;    // 10929120
+result_AdvancedRefund.XRef;    // 3863566840
 result_AdvancedRefund.AuthCode;    // 123456
 result_AdvancedRefund.Type;    // refund
+result_AdvancedRefund.OrigTransId;    // 10929119
+result_AdvancedRefund.OrigResponse;    // 1
+result_AdvancedRefund.OrigTextResponse;    // SUCCESS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -972,8 +988,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928945
-result_SimpleSale.XRef;    // 3863527833
+result_SimpleSale.TransId;    // 10929121
+result_SimpleSale.XRef;    // 3863566906
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -987,8 +1003,8 @@ RESULT AdvancedVoid:
 result_AdvancedVoid.Status;    // 200
 result_AdvancedVoid.Response;    // 1
 result_AdvancedVoid.TextResponse;    // Transaction Void Successful
-result_AdvancedVoid.TransId;    // 10928945
-result_AdvancedVoid.XRef;    // 3863527833
+result_AdvancedVoid.TransId;    // 10929121
+result_AdvancedVoid.XRef;    // 3863566906
 result_AdvancedVoid.AuthCode;    // 123456
 result_AdvancedVoid.Type;    // void
 result_AdvancedVoid.CodeResponse;    // 100
@@ -1015,8 +1031,8 @@ RESULT SimpleSale:
 result_SimpleSale.Status;    // 200
 result_SimpleSale.Response;    // 1
 result_SimpleSale.TextResponse;    // SUCCESS
-result_SimpleSale.TransId;    // 10928946
-result_SimpleSale.XRef;    // 3863527884
+result_SimpleSale.TransId;    // 10929122
+result_SimpleSale.XRef;    // 3863566983
 result_SimpleSale.AuthCode;    // 123456
 result_SimpleSale.Type;    // sale
 result_SimpleSale.CodeResponse;    // 100
@@ -1030,8 +1046,8 @@ RESULT SimpleVoid:
 result_SimpleVoid.Status;    // 200
 result_SimpleVoid.Response;    // 1
 result_SimpleVoid.TextResponse;    // Transaction Void Successful
-result_SimpleVoid.TransId;    // 10928946
-result_SimpleVoid.XRef;    // 3863527884
+result_SimpleVoid.TransId;    // 10929122
+result_SimpleVoid.XRef;    // 3863566983
 result_SimpleVoid.AuthCode;    // 123456
 result_SimpleVoid.Type;    // void
 result_SimpleVoid.CodeResponse;    // 100
@@ -1059,10 +1075,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'H1RP9TZHHN5Y4FR8' successfully created
+result_AddCustomer.TextResponse;    // Customer with token '3C5ENV7O1ZIM53JM' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // H1RP9TZHHN5Y4FR8
-result_AddCustomer.PaymentTokens[0];    // 9Y1SZ1M92C8HZOFN
+result_AddCustomer.CustomerToken;    // 3C5ENV7O1ZIM53JM
+result_AddCustomer.PaymentTokens[0];    // N7PCKJCB5TP22QR6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1072,7 +1088,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // R589GSS35AY82Y33
+result_CreatePaymentPlan.PlanToken;    // XYE832TXBH74F5H4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1082,7 +1098,7 @@ RESULT AssignPaymentPlanToCustomer:
 result_AssignPaymentPlanToCustomer.Response;    // 1
 result_AssignPaymentPlanToCustomer.TextResponse;    // Success
 result_AssignPaymentPlanToCustomer.Type;    // assignplan
-result_AssignPaymentPlanToCustomer.AssignmentToken;    // IWA9EQIZTKFSP68A
+result_AssignPaymentPlanToCustomer.AssignmentToken;    // KCODK184WJFB3OIM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1109,7 +1125,7 @@ RESULT AssignPaymentPlanToCustomer:
 result_AssignPaymentPlanToCustomer.Response;    // 1
 result_AssignPaymentPlanToCustomer.TextResponse;    // Success
 result_AssignPaymentPlanToCustomer.Type;    // assignplan
-result_AssignPaymentPlanToCustomer.AssignmentToken;    // IR9PSQLPWWIQ7X8Y
+result_AssignPaymentPlanToCustomer.AssignmentToken;    // 6CIZ0GK3WMS007EL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1117,10 +1133,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'EVK7XCIM00U54GOD' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'WZ9TOXOZJPPHPWK5' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // EVK7XCIM00U54GOD
-result_AddCustomer.PaymentTokens[0];    // O6H2OAKRO4UR7IQB
+result_AddCustomer.CustomerToken;    // WZ9TOXOZJPPHPWK5
+result_AddCustomer.PaymentTokens[0];    // VPFAU3DWAY6QU7BU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1130,7 +1146,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // FC9PTWUPPRW6USR3
+result_CreatePaymentPlan.PlanToken;    // TG0CQV49KPZNMLIP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1162,7 +1178,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // WUU6QAODL3S2R0OR
+result_CreatePaymentPlan.PlanToken;    // N5YI5IO9VG0FDZKZ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1185,7 +1201,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // ISPHER4TPC9OV3U6
+result_CreatePaymentPlan.PlanToken;    // PIY9UIOUA3J4GEWK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1222,7 +1238,7 @@ RESULT AssignPaymentPlanToCustomer:
 result_AssignPaymentPlanToCustomer.Response;    // 1
 result_AssignPaymentPlanToCustomer.TextResponse;    // Success
 result_AssignPaymentPlanToCustomer.Type;    // assignplan
-result_AssignPaymentPlanToCustomer.AssignmentToken;    // 702XQ4OTY3FT7H0D
+result_AssignPaymentPlanToCustomer.AssignmentToken;    // X54RMP8KHC992OR9
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1230,10 +1246,10 @@ RESULT AddCustomer:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AddCustomer.Response;    // 1
-result_AddCustomer.TextResponse;    // Customer with token 'E7BWPZ3WBVUW3MEB' successfully created
+result_AddCustomer.TextResponse;    // Customer with token 'HLC2OFBW9VQADAIQ' successfully created
 result_AddCustomer.Type;    // addcustomer
-result_AddCustomer.CustomerToken;    // E7BWPZ3WBVUW3MEB
-result_AddCustomer.PaymentTokens[0];    // 3LK7Q06XIP9RWF3W
+result_AddCustomer.CustomerToken;    // HLC2OFBW9VQADAIQ
+result_AddCustomer.PaymentTokens[0];    // KDNT1SMBX4DRSEYR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1243,7 +1259,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // JTWMH8V7U1G213T1
+result_CreatePaymentPlan.PlanToken;    // PRUSZL4N67PDDEIN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1253,7 +1269,7 @@ RESULT UpdatePaymentPlanAssignment:
 result_UpdatePaymentPlanAssignment.Response;    // 1
 result_UpdatePaymentPlanAssignment.TextResponse;    // Success
 result_UpdatePaymentPlanAssignment.Type;    // updateassignment
-result_UpdatePaymentPlanAssignment.AssignmentToken;    // 702XQ4OTY3FT7H0D
+result_UpdatePaymentPlanAssignment.AssignmentToken;    // X54RMP8KHC992OR9
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1278,7 +1294,7 @@ RESULT CreatePaymentPlan:
 result_CreatePaymentPlan.Response;    // 1
 result_CreatePaymentPlan.TextResponse;    // SUCCESS
 result_CreatePaymentPlan.Type;    // addplan
-result_CreatePaymentPlan.PlanToken;    // 88VJTXQNBOO9ZM96
+result_CreatePaymentPlan.PlanToken;    // V2TD1CSY9AFUBUE5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1309,8 +1325,8 @@ RESULT SimpleOfflineCapture:
 result_SimpleOfflineCapture.Status;    // 200
 result_SimpleOfflineCapture.Response;    // 1
 result_SimpleOfflineCapture.TextResponse;    // SUCCESS
-result_SimpleOfflineCapture.TransId;    // 10928947
-result_SimpleOfflineCapture.XRef;    // 3863527981
+result_SimpleOfflineCapture.TransId;    // 10929123
+result_SimpleOfflineCapture.XRef;    // 3863567242
 result_SimpleOfflineCapture.AuthCode;    // 123456
 result_SimpleOfflineCapture.Type;    // offline
 result_SimpleOfflineCapture.CodeResponse;    // 100
@@ -1337,8 +1353,8 @@ RESULT SimpleAuthorization:
 result_SimpleAuthorization.Status;    // 200
 result_SimpleAuthorization.Response;    // 1
 result_SimpleAuthorization.TextResponse;    // SUCCESS
-result_SimpleAuthorization.TransId;    // 10928948
-result_SimpleAuthorization.XRef;    // 3863528016
+result_SimpleAuthorization.TransId;    // 10929124
+result_SimpleAuthorization.XRef;    // 3863567294
 result_SimpleAuthorization.AuthCode;    // 123456
 result_SimpleAuthorization.Type;    // auth
 result_SimpleAuthorization.CodeResponse;    // 100
@@ -1352,8 +1368,8 @@ RESULT AdvancedCapture:
 result_AdvancedCapture.Status;    // 200
 result_AdvancedCapture.Response;    // 1
 result_AdvancedCapture.TextResponse;    // SUCCESS
-result_AdvancedCapture.TransId;    // 10928948
-result_AdvancedCapture.XRef;    // 3863528016
+result_AdvancedCapture.TransId;    // 10929124
+result_AdvancedCapture.XRef;    // 3863567294
 result_AdvancedCapture.AuthCode;    // 123456
 result_AdvancedCapture.Type;    // capture
 result_AdvancedCapture.CodeResponse;    // 100
@@ -1379,8 +1395,8 @@ RESULT SimpleAuthorization:
 result_SimpleAuthorization.Status;    // 200
 result_SimpleAuthorization.Response;    // 1
 result_SimpleAuthorization.TextResponse;    // SUCCESS
-result_SimpleAuthorization.TransId;    // 10928949
-result_SimpleAuthorization.XRef;    // 3863528062
+result_SimpleAuthorization.TransId;    // 10929125
+result_SimpleAuthorization.XRef;    // 3863567371
 result_SimpleAuthorization.AuthCode;    // 123456
 result_SimpleAuthorization.Type;    // auth
 result_SimpleAuthorization.CodeResponse;    // 100
@@ -1407,8 +1423,8 @@ RESULT SimpleAuthorization:
 result_SimpleAuthorization.Status;    // 200
 result_SimpleAuthorization.Response;    // 1
 result_SimpleAuthorization.TextResponse;    // SUCCESS
-result_SimpleAuthorization.TransId;    // 10928950
-result_SimpleAuthorization.XRef;    // 3863528082
+result_SimpleAuthorization.TransId;    // 10929126
+result_SimpleAuthorization.XRef;    // 3863567419
 result_SimpleAuthorization.AuthCode;    // 123456
 result_SimpleAuthorization.Type;    // auth
 result_SimpleAuthorization.CodeResponse;    // 100
@@ -1422,8 +1438,8 @@ RESULT SimpleCapture:
 result_SimpleCapture.Status;    // 200
 result_SimpleCapture.Response;    // 1
 result_SimpleCapture.TextResponse;    // SUCCESS
-result_SimpleCapture.TransId;    // 10928950
-result_SimpleCapture.XRef;    // 3863528082
+result_SimpleCapture.TransId;    // 10929126
+result_SimpleCapture.XRef;    // 3863567419
 result_SimpleCapture.AuthCode;    // 123456
 result_SimpleCapture.Type;    // capture
 result_SimpleCapture.CodeResponse;    // 100
@@ -1448,7 +1464,7 @@ RESULT AdvancedStarCard:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_AdvancedStarCard.Status;    // 400
 result_AdvancedStarCard.TextResponse;    // System Error: Reason Code: 002 CID value is invalid or non existant
-result_AdvancedStarCard.TransId;    // 10928951
+result_AdvancedStarCard.TransId;    // 10929127
 result_AdvancedStarCard.Type;    // sale
 result_AdvancedStarCard.CodeDescription;    // Denied
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1471,7 +1487,7 @@ RESULT SimpleStarCard:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 result_SimpleStarCard.Status;    // 400
 result_SimpleStarCard.TextResponse;    // System Error: Reason Code: 002 CID value is invalid or non existant
-result_SimpleStarCard.TransId;    // 10928952
+result_SimpleStarCard.TransId;    // 10929128
 result_SimpleStarCard.Type;    // sale
 result_SimpleStarCard.CodeDescription;    // Denied
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

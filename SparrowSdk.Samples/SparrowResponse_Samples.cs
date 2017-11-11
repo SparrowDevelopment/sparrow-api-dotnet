@@ -8,6 +8,7 @@ namespace SparrowSdk.Samples
 {
     public static class SparrowResponseSamples
     {
+        public static Dictionary<string, List<string>> AllResponses = new Dictionary<string, List<string>>();
         public static Dictionary<string, List<string>> AllUnparsed = new Dictionary<string, List<string>>();
 
         public static string EnterSample(string relativePath, string instanceName, bool isSuccess)
@@ -52,15 +53,24 @@ namespace SparrowSdk.Samples
             return ""
                 + "\r\nLOG " + instanceName.Replace("result_", "") + ":\r\n"
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n"
-                + response.RawRequest.Aggregate(new System.Text.StringBuilder(), (sb, x) => sb.AppendLine(x.Key + " = " + x.Value + " ")).ToString().TrimEnd()
+                + response.RawRequest.Select(x => x.Key + " = " + x.Value).JoinStrings("\r\n")
                 + "\r\n\r\n==>\r\n\r\n"
-                + response.RawResponse.Aggregate(new System.Text.StringBuilder(), (sb, x) => sb.AppendLine(x.Key + " = " + x.Value + " ")).ToString().TrimEnd()
+                + response.RawResponse.Select(x => x.Key + " = " + x.Value).JoinStrings("\r\n")
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n";
         }
 
         public static string CreateResponseDemo(this SparrowResponse response, string instanceName = "result")
         {
             // DEBUG: Side Effect - Get Unparsed
+            foreach (var x in response.RawResponse)
+            {
+                if (!AllResponses.ContainsKey(x.Key))
+                {
+                    AllResponses[x.Key] = new List<string>();
+                }
+                AllResponses[x.Key].Add(x.Value);
+            }
+
             var unparsed = UnparsedResponseValues(response);
             foreach (var x in unparsed)
             {
@@ -105,7 +115,7 @@ namespace SparrowSdk.Samples
                         sb.AppendLine($"{instanceName}.{name}[{i}];    // {v}");
                     }
 
-                    // var valueListText = valueList.Aggregate(new StringBuilder(), (acc, x) => acc.Append(x + ", ")).ToString().Trim(' ', ',');
+                    // var valueListText = valueList.JoinStrings(", ");
 
                     // sb.AppendLine($"{instanceName}.{name};    // {valueListText}");
                 }
@@ -129,7 +139,7 @@ namespace SparrowSdk.Samples
 
         public static Dictionary<string, string> UnparsedResponseValues(this SparrowResponse response)
         {
-            var remaining = response.RawResponse.ToDictionary(x => x.Key.Replace("_1", ""), x => x.Value);
+            var remaining = response.RawResponse.ToDictionary(x => x.Key, x => x.Value);
 
             var target = response;
             var type = target.GetType();
@@ -140,8 +150,16 @@ namespace SparrowSdk.Samples
 
                 var nameLower = prop.Name.ToLowerInvariant();
                 var nameLower_noS = nameLower.Substring(0, nameLower.Length - 1);
+
                 remaining.Remove(nameLower);
                 remaining.Remove(nameLower_noS);
+
+                for (int i = 0; i < 10; i++)
+                {
+                    remaining.Remove(nameLower_noS + i);
+                    remaining.Remove(nameLower_noS + "_" + i);
+                }
+
             }
 
             return remaining;
