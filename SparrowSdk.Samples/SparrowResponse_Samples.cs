@@ -8,15 +8,17 @@ namespace SparrowSdk.Samples
 {
     public static class SparrowResponseSamples
     {
-        public static string EnterSample(string instanceName, bool isSuccess)
+        public static Dictionary<string, List<string>> AllUnparsed = new Dictionary<string, List<string>>();
+
+        public static string EnterSample(string relativePath, string instanceName, bool isSuccess)
         {
             var name = instanceName.Replace("result_", "");
             return ""
-    + $"\r\n### {name}{(isSuccess ? "" : " (FAIL)")}\r\n"
+    + $"\r\n### {relativePath}: {name}{(isSuccess ? "" : " (FAIL)")}\r\n"
     ;
         }
 
-        public static string ExitSample(string instanceName, bool isSuccess)
+        public static string ExitSample(string relativePath, string instanceName, bool isSuccess)
         {
             var name = instanceName.Replace("result_", "");
             return ""
@@ -58,6 +60,18 @@ namespace SparrowSdk.Samples
 
         public static string CreateResponseDemo(this SparrowResponse response, string instanceName = "result")
         {
+            // DEBUG: Side Effect - Get Unparsed
+            var unparsed = UnparsedResponseValues(response);
+            foreach (var x in unparsed)
+            {
+                if (!AllUnparsed.ContainsKey(x.Key))
+                {
+                    AllUnparsed[x.Key] = new List<string>();
+                }
+                AllUnparsed[x.Key].Add(x.Value);
+            }
+
+            // Main Function
             var sb = new StringBuilder();
 
             var target = response;
@@ -109,6 +123,28 @@ namespace SparrowSdk.Samples
                 + sb.ToString().TrimEnd()
                 + "\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n"
                 ;
+        }
+
+
+
+        public static Dictionary<string, string> UnparsedResponseValues(this SparrowResponse response)
+        {
+            var remaining = response.RawResponse.ToDictionary(x => x.Key.Replace("_1", ""), x => x.Value);
+
+            var target = response;
+            var type = target.GetType();
+
+            foreach (var prop in type.GetRuntimeProperties())
+            {
+                if (prop.SetMethod == null) { continue; }
+
+                var nameLower = prop.Name.ToLowerInvariant();
+                var nameLower_noS = nameLower.Substring(0, nameLower.Length - 1);
+                remaining.Remove(nameLower);
+                remaining.Remove(nameLower_noS);
+            }
+
+            return remaining;
         }
     }
 }

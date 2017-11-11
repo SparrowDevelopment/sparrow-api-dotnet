@@ -15,6 +15,8 @@ namespace SparrowSdk.Samples
             var generator = new SampleGenerator();
             await generator.Generate();
             var result = generator.Result;
+
+            var unparsed = SparrowResponseSamples.AllUnparsed;
         }
     }
 }
