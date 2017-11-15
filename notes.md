@@ -1,7 +1,7 @@
 # Unknown Test Data
 
 ## SimpleStarCard and AdvancedStarCard
-
+### Confirmed (MT)
 - Need a valid CID number for testing
 - textresponse: System Error: Reason Code: 002 CID value is invalid or non existant
 - Attempted Values:
@@ -12,7 +12,7 @@
 	- The curl test does not execute the proper call, but is actually doing a credit card transation
 
 ## DecryptCustomFields
-
+### Confirmed (MT)
 - Need valid data to test:
 	- token and fieldname
 	- OR a way to create an encrypted field
@@ -23,7 +23,7 @@
 
 
 ## RetrieveCardBalance
-
+### Confirmed (MT)
 - Unknown Error, Possibly a Parameter is missing from the documentation
 - textresponse: Operation type is not supported by payment processor
 
@@ -31,7 +31,7 @@
 	- textresponse=Operation+type+is+not+supported+by+payment+processor&
 
 ## PassengerSale
-
+### Confirmed (MT)
 - Need valid test data
 - textresponse: Operation type is not supported by payment processor
 
@@ -44,7 +44,7 @@
 ## CancelInvoiceByCustomer 
 
 - This endpoint does not refer to any customer in the docs, it seems to be identical to CancelInvoice
-
+- (Might be an implied reason code? E.g., transtype "cancelinvoice" implies cancelled by business, "cancelinvoicebycustomer" specifies invoice cancelled by consumer?)
 
 # Inconsistent Success Responses
 
