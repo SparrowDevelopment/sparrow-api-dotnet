@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="SampleGenerator.generated.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SparrowSdk\SparrowSdk.csproj" />
   </ItemGroup>
 

@@ -1,0 +1,260 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace SparrowSdk
+{
+    public class Address
+    {
+        /// <summary>
+        /// Address Line 1 - Should be from 1-200 alpha-numeric characters and can include # - : ;
+        /// </summary>
+        public string Address1 { get; set; } = "";
+        /// <summary>
+        /// Address Line 2 - Should be from 1-200 alpha-numeric characters and can include # - : ;
+        /// </summary>
+        public string Address2 { get; set; } = "";
+        /// <summary>
+        /// City - Should be 1-50 alpha characters
+        /// </summary>
+        public string City { get; set; } = "";
+        /// <summary>
+        /// State (2 character abbreviation)
+        /// </summary>
+        public string State { get; set; } = "";
+        /// <summary>
+        /// Postal Code - If the country is US zip code format must be 5 digits or 9 digits. Example xxxxx, xxxxxxxxx or xxxxx-xxxx
+        /// </summary>
+        public string Zip { get; set; } = "";
+        /// <summary>
+        /// Country (ie. US)
+        /// </summary>
+        public string Country { get; set; } = "US";
+    }
+
+    public class ClientAccount
+    {
+        /// <summary>
+        /// Client user name. This field is required if the Client Service Portal is enabled and ‘password’ or ‘clientuseremail’ is specified
+        /// </summary>
+        public string UserName { get; set; } = "";
+        /// <summary>
+        /// Client user password. This field is required if the Client Service Portal is enabled and ‘username’ or ‘clientuseremail’ is specified
+        /// </summary>
+        public string Password { get; set; } = "";
+        /// <summary>
+        /// Client user email. This field is required if the Client Service Portal is enabled and ‘password’ or ‘username’ is specified
+        /// </summary>
+        public string ClientUserEmail { get; set; } = "";
+    }
+
+    public class ContactInfo
+    {
+        /// <summary>
+        /// Person First name, should be from 1-100 characters
+        /// </summary>
+        public string FirstName { get; set; } = "";
+        /// <summary>
+        /// Person Last name, should be from 1-100 characters
+        /// </summary>
+        public string LastName { get; set; } = "";
+        /// <summary>
+        /// Company name
+        /// </summary>
+        public string Company { get; set; } = "";
+        /// <summary>
+        /// Person address
+        /// </summary>
+        public Address Address { get; set; } = new Address();
+        /// <summary>
+        /// Phone number, 10 digits
+        /// </summary>
+        public string Phone { get; set; } = "";
+        /// <summary>
+        /// Email address
+        /// </summary>
+        public string Email { get; set; } = "";
+    }
+
+    public class Product
+    {
+        /// <summary>
+        /// SKU number
+        /// </summary>
+        public string SkuNumber { get; set; } = "";
+        /// <summary>
+        /// Description
+        /// </summary>
+        public string Description { get; set; } = "";
+        /// <summary>
+        /// Price of a single unit
+        /// </summary>
+        public decimal? Amount { get; set; } = null;
+        /// <summary>
+        /// Number of units
+        /// </summary>
+        public int? Quantity { get; set; } = null;
+    }
+
+    public class InvoiceProduct
+    {
+        /// <summary>
+        /// SKU number
+        /// </summary>
+        public string InvoiceItemSku { get; set; } = "";
+        /// <summary>
+        /// Description
+        /// </summary>
+        public string InvoiceItemDescription { get; set; } = "";
+        /// <summary>
+        /// Price of a single unit
+        /// </summary>
+        public decimal? InvoiceItemPrice { get; set; } = null;
+        /// <summary>
+        /// Number of units
+        /// </summary>
+        public int? InvoiceItemQuantity { get; set; } = null;
+    }
+
+    public class SequenceStep
+    {
+        /// <summary>
+        /// The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present
+        /// </summary>
+        public int Sequence { get; set; }
+        /// <summary>
+        /// Amount to be paid
+        /// </summary>
+        public decimal Amount { get; set; }
+        /// <summary>
+        /// Specifies the type of payment schedule. Supported types are: every month of a specified date, every N days, every year on a specified date
+        /// </summary>
+        public string ScheduleType { get; set; }
+        /// <summary>
+        /// Day of the month for processing payments (scheduletype=monthly) or number of days between payments (scheduletype=custom)
+        /// </summary>
+        public int ScheduleDay { get; set; }
+        /// <summary>
+        /// Positive number of charges or -1 if no limit
+        /// </summary>
+        public int Duration { get; set; }
+        /// <summary>
+        /// External ID for the product
+        /// </summary>
+        public string ProductId { get; set; } = "";
+        /// <summary>
+        /// Description of the sequence step
+        /// </summary>
+        public string Description { get; set; } = "";
+    }
+
+    public class OptionalAmountWithPercentage
+    {
+        /// <summary>
+        /// Type of additional amount (Tip)
+        /// </summary>
+        public string OptAmountType { get; set; } = "";
+        /// <summary>
+        /// Value of the additional amount (10.00)
+        /// </summary>
+        public decimal? OptAmountValue { get; set; } = null;
+        /// <summary>
+        /// Percentage of additional amount (20)
+        /// </summary>
+        public string OptAmountPercentage { get; set; } = "";
+    }
+
+    public class OptionalAmount
+    {
+        /// <summary>
+        /// Type of additional amount (Tip)
+        /// </summary>
+        public string OptAmountType { get; set; } = "";
+        /// <summary>
+        /// Value of the additional amount (10.00)
+        /// </summary>
+        public decimal? OptAmountValue { get; set; } = null;
+    }
+
+    public class BankAccount
+    {
+        /// <summary>
+        /// Customers bank name
+        /// </summary>
+        public string BankName { get; set; } = "";
+        /// <summary>
+        /// Customers bank routing number
+        /// </summary>
+        public string Routing { get; set; } = "";
+        /// <summary>
+        /// Customers bank account number
+        /// </summary>
+        public string Account { get; set; } = "";
+        /// <summary>
+        /// Customers type of bank account (Format: [checking|savings])
+        /// </summary>
+        public string AchAccountType { get; set; } = "";
+        /// <summary>
+        /// Customers type of bank account (Format: [business|personal])
+        /// </summary>
+        public string AchAccountSubType { get; set; } = "";
+    }
+
+
+    public class CreditCard
+    {
+        /// <summary>
+        /// Credit card number
+        /// </summary>
+        public string CardNum { get; set; } = "";
+        /// <summary>
+        /// Credit card expiration (ie. 0711 = 7/2011) (Format: MMYY)
+        /// </summary>
+        public string CardExp { get; set; } = "";
+        /// <summary>
+        /// Card security code
+        /// </summary>
+        public string Cvv { get; set; } = "";
+    }
+
+    public class Ewallet
+    {
+        /// <summary>
+        /// eWallet account credentials, ie; email (ewalletaccount)
+        /// </summary>
+        public string EwalletAccount { get; set; } = "";
+        /// <summary>
+        /// Type of eWallet (ewallettype Format: paypal)
+        /// </summary>
+        public string EwalletType { get; set; } = "paypal";
+    }
+
+    public class PaymentType
+    {
+        /// <summary>
+        /// Type of payment info (paytype_# Format: [creditcard|check|ach|starcard|ewallet])
+        /// </summary>
+        public string PayType { get; set; } = "";
+        /// <summary>
+        /// Contact info
+        /// </summary>
+        public ContactInfo ContactInfo { get; set; }
+        /// <summary>
+        /// Credit Card
+        /// </summary>
+        public CreditCard CreditCard { get; set; }
+        /// <summary>
+        /// Bank Account
+        /// </summary>
+        public BankAccount BankAccount { get; set; }
+        /// <summary>
+        /// Ewallet
+        /// </summary>
+        public Ewallet Ewallet { get; set; }
+        /// <summary>
+        /// Priority of the payment type among others when sending payment using the customertoken (payno_# Format: positive integer)
+        /// </summary>
+        public int PayNo { get; set; }
+
+    }
+}

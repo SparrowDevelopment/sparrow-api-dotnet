@@ -11,8 +11,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AdvancedECheck()
         {
-            var resultAdvancedECheck = await _sparrow_ach.AdvancedECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m,
-                billing: new Sparrow.AdvancedECheckBilling { FirstName = "John", LastName = "Doe", Company = "Sparrow One", Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" });
+            var resultAdvancedECheck = await _sparrow_ach.AdvancedECheck(
+                transType: Sparrow.TransType_SaleRefundCredit.Sale,
+                bankAccount: new Sparrow.BankAccount { BankName = "First Test Bank", Routing = "110000000", Account = "1234567890123", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
+                amount: 9.99m,
+                contactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe", Company = "Sparrow One", Address = new Sparrow.Address { Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" } });
 
             TestContext.WriteLine(resultAdvancedECheck.CreateRawLog("resultAdvancedECheck"));
 
@@ -25,7 +28,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AdvancedACH()
         {
-            var resultAdvancedACH = await _sparrow_ach.AdvancedACH("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, "John", "Doe");
+            var resultAdvancedACH = await _sparrow_ach.AdvancedACH(
+                transType: Sparrow.TransType_SaleRefundCredit.Sale,
+                bankAccount: new Sparrow.BankAccount { BankName = "First Test Bank", Routing = "110000000", Account = "1234567890123", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
+                amount: 9.99m,
+                contactInfo: new Sparrow.ContactInfo { });
 
             TestContext.WriteLine(resultAdvancedACH.CreateRawLog("resultAdvancedACH"));
 
@@ -38,7 +45,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task SimpleACH()
         {
-            var resultSimpleACH = await _sparrow_ach.SimpleACH("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m, "John", "Doe");
+            var resultSimpleACH = await _sparrow_ach.SimpleACH(
+                transType: Sparrow.TransType_SaleRefundCredit.Sale,
+                bankAccount: new Sparrow.BankAccount { BankName = "First Test Bank", Routing = "110000000", Account = "1234567890123", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
+                amount: 9.99m,
+                contactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
 
             TestContext.WriteLine(resultSimpleACH.CreateRawLog("resultSimpleACH"));
 
@@ -51,8 +62,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task SimpleECheck()
         {
-            var resultSimpleECheck = await _sparrow_ach.SimpleECheck("sale", "First Test Bank", "110000000", "1234567890123", "checking", "personal", 9.99m,
-                billing: new Sparrow.SimpleECheckBilling { Company = "Sparrow One", FirstName = "John", LastName = "Doe", Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" });
+            var resultSimpleECheck = await _sparrow_ach.SimpleECheck(
+                transType: Sparrow.TransType_SaleRefund.Sale,
+                bankAccount: new Sparrow.BankAccount { BankName = "First Test Bank", Routing = "110000000", Account = "1234567890123", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
+                amount: 9.99m,
+                contactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe", Company = "Sparrow One", Address = new Sparrow.Address { Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" } });
 
             TestContext.WriteLine(resultSimpleECheck.CreateRawLog("resultSimpleECheck"));
 
@@ -65,7 +79,19 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task PassengerSale()
         {
-            var resultPassengerSale = await _sparrow_creditcard.PassengerSale("4111111111111111", "1019", 9.99m, "John Doe", "LAS", "AA0", "1234567890", "", "", "123456", "A", "1234", "AB");
+            var resultPassengerSale = await _sparrow_creditcard.PassengerSale(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m,
+                passengerName: "John Doe",
+                airportCodes: new[] { "" },
+                airlineCodeNumber: "AA0",
+                ticketNumber: "1234567890",
+                flightDateCoupons: new[] { "" },
+                flightDepartureTimeCoupons: new[] { "" },
+                approvalCode: "123456",
+                authCharIndicator: Sparrow.AuthCharIndicator.A,
+                validationCode: "1234",
+                authResponseCode: "AB");
 
             TestContext.WriteLine(resultPassengerSale.CreateRawLog("resultPassengerSale"));
 
@@ -78,7 +104,8 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task RetrieveCardBalance()
         {
-            var resultRetrieveCardBalance = await _sparrow_creditcard.RetrieveCardBalance("4111111111111111");
+            var resultRetrieveCardBalance = await _sparrow_creditcard.RetrieveCardBalance(
+                cardNum: "4111111111111111");
 
             TestContext.WriteLine(resultRetrieveCardBalance.CreateRawLog("resultRetrieveCardBalance"));
 
@@ -91,7 +118,9 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task VerifyAccount()
         {
-            var resultVerifyAccount = await _sparrow_creditcard.VerifyAccount("4111111111111111", "1019", 9.99m);
+            var resultVerifyAccount = await _sparrow_creditcard.VerifyAccount(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
 
             TestContext.WriteLine(resultVerifyAccount.CreateRawLog("resultVerifyAccount"));
 
@@ -104,8 +133,12 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task MarkSuccessfulTransactionAsChargeback()
         {
-            var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-            var resultMarkSuccessfulTransactionAsChargeback = await _sparrow_creditcard.MarkSuccessfulTransactionAsChargeback(resultSimpleSale.TransId, "Testing for Success");
+            var resultSimpleSale = await _sparrow_creditcard.SimpleSale(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
+            var resultMarkSuccessfulTransactionAsChargeback = await _sparrow_creditcard.MarkSuccessfulTransactionAsChargeback(
+                transId: resultSimpleSale.TransId,
+                reason: "Testing for Success");
 
             TestContext.WriteLine(resultSimpleSale.CreateRawLog("resultSimpleSale"));
             TestContext.WriteLine(resultMarkSuccessfulTransactionAsChargeback.CreateRawLog("resultMarkSuccessfulTransactionAsChargeback"));
@@ -119,7 +152,9 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task SimpleCredit()
         {
-            var resultSimpleCredit = await _sparrow_creditcard.SimpleCredit("4111111111111111", "1019", 9.99m);
+            var resultSimpleCredit = await _sparrow_creditcard.SimpleCredit(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
 
             TestContext.WriteLine(resultSimpleCredit.CreateRawLog("resultSimpleCredit"));
 
@@ -132,7 +167,9 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AdvancedSale()
         {
-            var resultAdvancedSale = await _sparrow_creditcard.AdvancedSale("4111111111111111", "1019", 9.99m);
+            var resultAdvancedSale = await _sparrow_creditcard.AdvancedSale(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
 
             TestContext.WriteLine(resultAdvancedSale.CreateRawLog("resultAdvancedSale"));
 
@@ -145,7 +182,9 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task SimpleSale()
         {
-            var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
+            var resultSimpleSale = await _sparrow_creditcard.SimpleSale(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
 
             TestContext.WriteLine(resultSimpleSale.CreateRawLog("resultSimpleSale"));
 
@@ -158,8 +197,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AddPaymentTypesToCustomer()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-            var resultAddPaymentTypesToCustomer = await _sparrow_creditcard.AddPaymentTypesToCustomer(resultAddCustomer.CustomerToken);
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
+            var resultAddPaymentTypesToCustomer = await _sparrow_creditcard.AddPaymentTypesToCustomer(
+                token: resultAddCustomer.CustomerToken,
+                paymentTypeToAdd: new[] { new Sparrow.PaymentTypeToAdd { } });
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultAddPaymentTypesToCustomer.CreateRawLog("resultAddPaymentTypesToCustomer"));
@@ -173,8 +215,9 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AddCustomer()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
-                payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
+                paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
 
@@ -187,8 +230,10 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task DeleteDataVaultCustomer()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-            var resultDeleteDataVaultCustomer = await _sparrow_creditcard.DeleteDataVaultCustomer(resultAddCustomer.CustomerToken);
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
+            var resultDeleteDataVaultCustomer = await _sparrow_creditcard.DeleteDataVaultCustomer(
+                token: resultAddCustomer.CustomerToken);
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultDeleteDataVaultCustomer.CreateRawLog("resultDeleteDataVaultCustomer"));
@@ -202,10 +247,12 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task DeletePaymentType()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
-                payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var resultDeletePaymentType = await _sparrow_creditcard.DeletePaymentType(resultAddCustomer.CustomerToken,
-                payments: new[] { new Sparrow.DeletePaymentTypePayment { Token = resultAddCustomer.PaymentTokens[0] } });
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
+                paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
+            var resultDeletePaymentType = await _sparrow_creditcard.DeletePaymentType(
+                token: resultAddCustomer.CustomerToken,
+                paymentTypeToDelete: new[] { new Sparrow.PaymentTypeToDelete { Token = resultAddCustomer.CustomerToken } });
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultDeletePaymentType.CreateRawLog("resultDeletePaymentType"));
@@ -219,8 +266,10 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task RetrieveCustomer()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-            var resultRetrieveCustomer = await _sparrow_creditcard.RetrieveCustomer(resultAddCustomer.CustomerToken);
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
+            var resultRetrieveCustomer = await _sparrow_creditcard.RetrieveCustomer(
+                token: resultAddCustomer.CustomerToken);
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultRetrieveCustomer.CreateRawLog("resultRetrieveCustomer"));
@@ -234,9 +283,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task RetrievePaymentType()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
-                payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var resultRetrievePaymentType = await _sparrow_creditcard.RetrievePaymentType(resultAddCustomer.PaymentTokens[0]);
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
+                paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
+            var resultRetrievePaymentType = await _sparrow_creditcard.RetrievePaymentType(
+                token: resultAddCustomer.PaymentTokens[0]);
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultRetrievePaymentType.CreateRawLog("resultRetrievePaymentType"));
@@ -250,10 +301,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task UpdateCustomer()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
-                payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var resultUpdateCustomer = await _sparrow_creditcard.UpdateCustomer(resultAddCustomer.CustomerToken,
-                billing: new Sparrow.UpdateCustomerBilling { Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254" });
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
+                paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
+            var resultUpdateCustomer = await _sparrow_creditcard.UpdateCustomer(
+                token: resultAddCustomer.CustomerToken);
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultUpdateCustomer.CreateRawLog("resultUpdateCustomer"));
@@ -267,10 +319,12 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task UpdatePaymentType()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
-                payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var resultUpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(resultAddCustomer.CustomerToken,
-                payments: new[] { new Sparrow.UpdatePaymentTypePayment { Token = resultAddCustomer.PaymentTokens[0] } });
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
+                paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
+            var resultUpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(
+                token: resultAddCustomer.CustomerToken,
+                paymentTypeToUpdate: new[] { new Sparrow.PaymentTypeToUpdate { Token = resultAddCustomer.CustomerToken, PaymentType = new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } } });
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultUpdatePaymentType.CreateRawLog("resultUpdatePaymentType"));
@@ -284,8 +338,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task DecryptCustomFields()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe");
-            var resultDecryptCustomFields = await _sparrow_creditcard.DecryptCustomFields("customField1", resultAddCustomer.CustomerToken);
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
+            var resultDecryptCustomFields = await _sparrow_creditcard.DecryptCustomFields(
+                fieldName: "customField1",
+                token: resultAddCustomer.CustomerToken);
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultDecryptCustomFields.CreateRawLog("resultDecryptCustomFields"));
@@ -299,7 +356,9 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task EWalletSimpleCredit()
         {
-            var resultEWalletSimpleCredit = await _sparrow_ewallet.EWalletSimpleCredit("user@example.com", 9.99m);
+            var resultEWalletSimpleCredit = await _sparrow_ewallet.EWalletSimpleCredit(
+                ewallet: new Sparrow.Ewallet { EwalletAccount = "user@example.com" },
+                amount: 9.99m);
 
             TestContext.WriteLine(resultEWalletSimpleCredit.CreateRawLog("resultEWalletSimpleCredit"));
 
@@ -312,7 +371,9 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AdvancedFiservSale()
         {
-            var resultAdvancedFiservSale = await _sparrow_creditcard.AdvancedFiservSale("4111111111111111", "1019", 9.99m);
+            var resultAdvancedFiservSale = await _sparrow_creditcard.AdvancedFiservSale(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
 
             TestContext.WriteLine(resultAdvancedFiservSale.CreateRawLog("resultAdvancedFiservSale"));
 
@@ -325,7 +386,10 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task FiservSimpleSale()
         {
-            var resultFiservSimpleSale = await _sparrow_creditcard.FiservSimpleSale("4111111111111111", "1019", 9.99m);
+            var resultFiservSimpleSale = await _sparrow_creditcard.FiservSimpleSale(
+                cardNum: "4111111111111111",
+                cardExp: "1019",
+                amount: 9.99m);
 
             TestContext.WriteLine(resultFiservSimpleSale.CreateRawLog("resultFiservSimpleSale"));
 
@@ -338,8 +402,14 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task CancelInvoiceByCustomer()
         {
-            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-            var resultCancelInvoiceByCustomer = await _sparrow_creditcard.CancelInvoiceByCustomer(resultCreateInvoice.InvoiceNumber, "Testing");
+            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice(
+                invoiceDate: "12/01/2017",
+                currency: "USD",
+                invoiceStatus: Sparrow.InvoiceStatus.Active,
+                invoiceAmount: 10.00m);
+            var resultCancelInvoiceByCustomer = await _sparrow_creditcard.CancelInvoiceByCustomer(
+                invoiceNumber: resultCreateInvoice.InvoiceNumber,
+                invoiceStatusReason: "Testing");
 
             TestContext.WriteLine(resultCreateInvoice.CreateRawLog("resultCreateInvoice"));
             TestContext.WriteLine(resultCancelInvoiceByCustomer.CreateRawLog("resultCancelInvoiceByCustomer"));
@@ -353,8 +423,14 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task CancelInvoice()
         {
-            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-            var resultCancelInvoice = await _sparrow_creditcard.CancelInvoice(resultCreateInvoice.InvoiceNumber, "Testing");
+            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice(
+                invoiceDate: "12/01/2017",
+                currency: "USD",
+                invoiceStatus: Sparrow.InvoiceStatus.Active,
+                invoiceAmount: 10.00m);
+            var resultCancelInvoice = await _sparrow_creditcard.CancelInvoice(
+                invoiceNumber: resultCreateInvoice.InvoiceNumber,
+                invoiceStatusReason: "Testing");
 
             TestContext.WriteLine(resultCreateInvoice.CreateRawLog("resultCreateInvoice"));
             TestContext.WriteLine(resultCancelInvoice.CreateRawLog("resultCancelInvoice"));
@@ -368,7 +444,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task CreateInvoice()
         {
-            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
+            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice(
+                invoiceDate: "12/01/2017",
+                currency: "USD",
+                invoiceStatus: Sparrow.InvoiceStatus.Active,
+                invoiceAmount: 10.00m);
 
             TestContext.WriteLine(resultCreateInvoice.CreateRawLog("resultCreateInvoice"));
 
@@ -381,8 +461,13 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task RetrieveInvoice()
         {
-            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-            var resultRetrieveInvoice = await _sparrow_creditcard.RetrieveInvoice(resultCreateInvoice.InvoiceNumber);
+            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice(
+                invoiceDate: "12/01/2017",
+                currency: "USD",
+                invoiceStatus: Sparrow.InvoiceStatus.Active,
+                invoiceAmount: 10.00m);
+            var resultRetrieveInvoice = await _sparrow_creditcard.RetrieveInvoice(
+                invoiceNumber: resultCreateInvoice.InvoiceNumber);
 
             TestContext.WriteLine(resultCreateInvoice.CreateRawLog("resultCreateInvoice"));
             TestContext.WriteLine(resultRetrieveInvoice.CreateRawLog("resultRetrieveInvoice"));
@@ -396,9 +481,15 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task PayInvoiceWithBankAccount()
         {
-            var resultCreateInvoice = await _sparrow_ach.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-            var resultPayInvoiceWithBankAccount = await _sparrow_ach.PayInvoiceWithBankAccount(resultCreateInvoice.InvoiceNumber, "First Test Bank", "110000000", "1234567890123", "checking", "personal",
-                billing: new Sparrow.PayInvoiceWithBankAccountBilling { FirstName = "John", LastName = "Doe" });
+            var resultCreateInvoice = await _sparrow_ach.CreateInvoice(
+                invoiceDate: "12/01/2017",
+                currency: "USD",
+                invoiceStatus: Sparrow.InvoiceStatus.Active,
+                invoiceAmount: 10.00m);
+            var resultPayInvoiceWithBankAccount = await _sparrow_ach.PayInvoiceWithBankAccount(
+                invoiceNumber: resultCreateInvoice.InvoiceNumber,
+                bankAccount: new Sparrow.BankAccount { BankName = "First Test Bank", Routing = "110000000", Account = "1234567890123", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
+                contactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
 
             TestContext.WriteLine(resultCreateInvoice.CreateRawLog("resultCreateInvoice"));
             TestContext.WriteLine(resultPayInvoiceWithBankAccount.CreateRawLog("resultPayInvoiceWithBankAccount"));
@@ -412,8 +503,14 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task PayInvoiceWithCreditCard()
         {
-            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "active", 10.00m);
-            var resultPayInvoiceWithCreditCard = await _sparrow_creditcard.PayInvoiceWithCreditCard(resultCreateInvoice.InvoiceNumber, "4111111111111111", "1019");
+            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice(
+                invoiceDate: "12/01/2017",
+                currency: "USD",
+                invoiceStatus: Sparrow.InvoiceStatus.Active,
+                invoiceAmount: 10.00m);
+            var resultPayInvoiceWithCreditCard = await _sparrow_creditcard.PayInvoiceWithCreditCard(
+                invoiceNumber: resultCreateInvoice.InvoiceNumber,
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" });
 
             TestContext.WriteLine(resultCreateInvoice.CreateRawLog("resultCreateInvoice"));
             TestContext.WriteLine(resultPayInvoiceWithCreditCard.CreateRawLog("resultPayInvoiceWithCreditCard"));
@@ -427,9 +524,14 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task UpdateInvoice()
         {
-            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice("12/01/2017", "USD", "draft", 10.00m);
-            var resultUpdateInvoice = await _sparrow_creditcard.UpdateInvoice(resultCreateInvoice.InvoiceNumber,
-                options: new Sparrow.UpdateInvoiceOptions { InvoiceStatus = "active" });
+            var resultCreateInvoice = await _sparrow_creditcard.CreateInvoice(
+                invoiceDate: "12/01/2017",
+                currency: "USD",
+                invoiceStatus: Sparrow.InvoiceStatus.Draft,
+                invoiceAmount: 10.00m);
+            var resultUpdateInvoice = await _sparrow_creditcard.UpdateInvoice(
+                invoiceNumber: resultCreateInvoice.InvoiceNumber,
+                invoiceStatus: Sparrow.InvoiceStatus.Active);
 
             TestContext.WriteLine(resultCreateInvoice.CreateRawLog("resultCreateInvoice"));
             TestContext.WriteLine(resultUpdateInvoice.CreateRawLog("resultUpdateInvoice"));
@@ -443,8 +545,12 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task SimpleRefund()
         {
-            var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-            var resultSimpleRefund = await _sparrow_creditcard.SimpleRefund(resultSimpleSale.TransId, 9.99m);
+            var resultSimpleSale = await _sparrow_creditcard.SimpleSale(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
+            var resultSimpleRefund = await _sparrow_creditcard.SimpleRefund(
+                transId: resultSimpleSale.TransId,
+                amount: 9.99m);
 
             TestContext.WriteLine(resultSimpleSale.CreateRawLog("resultSimpleSale"));
             TestContext.WriteLine(resultSimpleRefund.CreateRawLog("resultSimpleRefund"));
@@ -458,8 +564,12 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AdvancedRefund()
         {
-            var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-            var resultAdvancedRefund = await _sparrow_creditcard.AdvancedRefund(resultSimpleSale.TransId, 9.99m);
+            var resultSimpleSale = await _sparrow_creditcard.SimpleSale(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
+            var resultAdvancedRefund = await _sparrow_creditcard.AdvancedRefund(
+                transId: resultSimpleSale.TransId,
+                amount: 9.99m);
 
             TestContext.WriteLine(resultSimpleSale.CreateRawLog("resultSimpleSale"));
             TestContext.WriteLine(resultAdvancedRefund.CreateRawLog("resultAdvancedRefund"));
@@ -473,8 +583,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AdvancedVoid()
         {
-            var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-            var resultAdvancedVoid = await _sparrow_creditcard.AdvancedVoid(resultSimpleSale.TransId);
+            var resultSimpleSale = await _sparrow_creditcard.SimpleSale(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
+            var resultAdvancedVoid = await _sparrow_creditcard.AdvancedVoid(
+                transId: resultSimpleSale.TransId);
 
             TestContext.WriteLine(resultSimpleSale.CreateRawLog("resultSimpleSale"));
             TestContext.WriteLine(resultAdvancedVoid.CreateRawLog("resultAdvancedVoid"));
@@ -488,8 +601,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task SimpleVoid()
         {
-            var resultSimpleSale = await _sparrow_creditcard.SimpleSale("4111111111111111", "1019", 9.99m);
-            var resultSimpleVoid = await _sparrow_creditcard.SimpleVoid(resultSimpleSale.TransId);
+            var resultSimpleSale = await _sparrow_creditcard.SimpleSale(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
+            var resultSimpleVoid = await _sparrow_creditcard.SimpleVoid(
+                transId: resultSimpleSale.TransId);
 
             TestContext.WriteLine(resultSimpleSale.CreateRawLog("resultSimpleSale"));
             TestContext.WriteLine(resultSimpleVoid.CreateRawLog("resultSimpleVoid"));
@@ -501,13 +617,34 @@ namespace SparrowSdk.Tests
         }
 
         [TestMethod]
+        public async Task AddOrUpdateSequence()
+        {
+            var resultAddOrUpdateSequence = await _sparrow_creditcard.AddOrUpdateSequence(
+                sequenceSteps: new[] { new Sparrow.SequenceStep { } });
+
+            TestContext.WriteLine(resultAddOrUpdateSequence.CreateRawLog("resultAddOrUpdateSequence"));
+
+            Assert.IsTrue(resultAddOrUpdateSequence.IsSuccess);
+            // Assert.AreEqual(1, resultAddOrUpdateSequence.Response);
+            // Assert.IsTrue(resultAddOrUpdateSequence.TextResponse.ToUpper().Contains("SUCCESS"));
+            // Assert.IsTrue(resultAddOrUpdateSequence.TextResponse.ToUpper().Contains("SUCCESS"));
+        }
+
+        [TestMethod]
         public async Task AssignPaymentPlanToCustomer()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
-                payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
-                sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-            var resultAssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(resultAddCustomer.CustomerToken, resultCreatePaymentPlan.PlanToken, resultAddCustomer.PaymentTokens[0]);
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
+                paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
+            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan(
+                planName: "PaymentPlan1",
+                planDesc: "1st Payment Plan",
+                startDate: "01/31/2017",
+                sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 9.99m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
+            var resultAssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(
+                customerToken: resultAddCustomer.CustomerToken,
+                planToken: resultCreatePaymentPlan.PlanToken,
+                paymentToken: resultAddCustomer.PaymentTokens[0]);
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultCreatePaymentPlan.CreateRawLog("resultCreatePaymentPlan"));
@@ -522,12 +659,20 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task CancelPlanAssignment()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
-                payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
-                sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-            var resultAssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(resultAddCustomer.CustomerToken, resultCreatePaymentPlan.PlanToken, resultAddCustomer.PaymentTokens[0]);
-            var resultCancelPlanAssignment = await _sparrow_creditcard.CancelPlanAssignment(resultAssignPaymentPlanToCustomer.AssignmentToken);
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
+                paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
+            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan(
+                planName: "PaymentPlan1",
+                planDesc: "1st Payment Plan",
+                startDate: "01/31/2017",
+                sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 9.99m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
+            var resultAssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(
+                customerToken: resultAddCustomer.CustomerToken,
+                planToken: resultCreatePaymentPlan.PlanToken,
+                paymentToken: resultAddCustomer.PaymentTokens[0]);
+            var resultCancelPlanAssignment = await _sparrow_creditcard.CancelPlanAssignment(
+                assignmentToken: resultAssignPaymentPlanToCustomer.AssignmentToken);
 
             TestContext.WriteLine(resultAssignPaymentPlanToCustomer.CreateRawLog("resultAssignPaymentPlanToCustomer"));
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
@@ -543,8 +688,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task CreatePaymentPlan()
         {
-            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
-                sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
+            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan(
+                planName: "PaymentPlan1",
+                planDesc: "1st Payment Plan",
+                startDate: "01/31/2017",
+                sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 9.99m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
 
             TestContext.WriteLine(resultCreatePaymentPlan.CreateRawLog("resultCreatePaymentPlan"));
 
@@ -557,8 +705,13 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task DeletePlan()
         {
-            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017");
-            var resultDeletePlan = await _sparrow_creditcard.DeletePlan(resultCreatePaymentPlan.PlanToken);
+            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan(
+                planName: "PaymentPlan1",
+                planDesc: "1st Payment Plan",
+                startDate: "01/31/2017",
+                sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 9.99m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
+            var resultDeletePlan = await _sparrow_creditcard.DeletePlan(
+                token: resultCreatePaymentPlan.PlanToken);
 
             TestContext.WriteLine(resultCreatePaymentPlan.CreateRawLog("resultCreatePaymentPlan"));
             TestContext.WriteLine(resultDeletePlan.CreateRawLog("resultDeletePlan"));
@@ -570,15 +723,64 @@ namespace SparrowSdk.Tests
         }
 
         [TestMethod]
+        public async Task DeleteSequence()
+        {
+            var resultDeleteSequence = await _sparrow_creditcard.DeleteSequence(
+                deleteSequenceSteps: new[] { new Sparrow.SequenceStepToDelete { } });
+
+            TestContext.WriteLine(resultDeleteSequence.CreateRawLog("resultDeleteSequence"));
+
+            Assert.IsTrue(resultDeleteSequence.IsSuccess);
+            // Assert.AreEqual(1, resultDeleteSequence.Response);
+            // Assert.IsTrue(resultDeleteSequence.TextResponse.ToUpper().Contains("SUCCESS"));
+            // Assert.IsTrue(resultDeleteSequence.TextResponse.ToUpper().Contains("SUCCESS"));
+        }
+
+        [TestMethod]
+        public async Task NotificationSettings()
+        {
+            var resultNotificationSettings = await _sparrow_creditcard.NotificationSettings();
+
+            TestContext.WriteLine(resultNotificationSettings.CreateRawLog("resultNotificationSettings"));
+
+            Assert.IsTrue(resultNotificationSettings.IsSuccess);
+            // Assert.AreEqual(1, resultNotificationSettings.Response);
+            // Assert.IsTrue(resultNotificationSettings.TextResponse.ToUpper().Contains("SUCCESS"));
+            // Assert.IsTrue(resultNotificationSettings.TextResponse.ToUpper().Contains("SUCCESS"));
+        }
+
+        [TestMethod]
+        public async Task BuildSequence()
+        {
+            var resultBuildSequence = await _sparrow_creditcard.BuildSequence(
+                sequenceSteps: new[] { new Sparrow.SequenceStep { } });
+
+            TestContext.WriteLine(resultBuildSequence.CreateRawLog("resultBuildSequence"));
+
+            Assert.IsTrue(resultBuildSequence.IsSuccess);
+            // Assert.AreEqual(1, resultBuildSequence.Response);
+            // Assert.IsTrue(resultBuildSequence.TextResponse.ToUpper().Contains("SUCCESS"));
+            // Assert.IsTrue(resultBuildSequence.TextResponse.ToUpper().Contains("SUCCESS"));
+        }
+
+        [TestMethod]
         public async Task UpdatePaymentPlanAssignment()
         {
-            var resultAddCustomer = await _sparrow_creditcard.AddCustomer("John", "Doe",
-                payments: new[] { new Sparrow.AddCustomerPayment { PayType = "creditcard", CardNum = "4111111111111111", CardExp = "1019" } });
-            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/01/2018",
-                sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 9.99m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-            var resultAssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(resultAddCustomer.CustomerToken, resultCreatePaymentPlan.PlanToken, resultAddCustomer.PaymentTokens[0]);
-            var resultUpdatePaymentPlanAssignment = await _sparrow_creditcard.UpdatePaymentPlanAssignment(resultAssignPaymentPlanToCustomer.AssignmentToken,
-                options: new Sparrow.UpdatePaymentPlanAssignmentOptions { StartDate = "02/02/2020" });
+            var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
+                paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
+            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan(
+                planName: "PaymentPlan1",
+                planDesc: "1st Payment Plan",
+                startDate: "01/01/2018",
+                sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 9.99m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
+            var resultAssignPaymentPlanToCustomer = await _sparrow_creditcard.AssignPaymentPlanToCustomer(
+                customerToken: resultAddCustomer.CustomerToken,
+                planToken: resultCreatePaymentPlan.PlanToken,
+                paymentToken: resultAddCustomer.PaymentTokens[0]);
+            var resultUpdatePaymentPlanAssignment = await _sparrow_creditcard.UpdatePaymentPlanAssignment(
+                assignmentToken: resultAssignPaymentPlanToCustomer.AssignmentToken,
+                startDate: "02/02/2020");
 
             TestContext.WriteLine(resultAssignPaymentPlanToCustomer.CreateRawLog("resultAssignPaymentPlanToCustomer"));
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
@@ -594,10 +796,14 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task UpdatePaymentPlan()
         {
-            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan("PaymentPlan1", "1st Payment Plan", "01/31/2017",
-                sequences: new[] { new Sparrow.BuildSequenceSequence { Sequence = 1, Amount = 10.00m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
-            var resultUpdatePaymentPlan = await _sparrow_creditcard.UpdatePaymentPlan(resultCreatePaymentPlan.PlanToken,
-                sequences: new[] { new Sparrow.AddOrUpdateSequenceSequence { OperationType = "updatesequence", Sequence = 1, Amount = 20.00m, ScheduleType = "monthly", ScheduleDay = 5, Duration = 12 } });
+            var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan(
+                planName: "PaymentPlan1",
+                planDesc: "1st Payment Plan",
+                startDate: "01/31/2017",
+                sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 10.00m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
+            var resultUpdatePaymentPlan = await _sparrow_creditcard.UpdatePaymentPlan(
+                token: resultCreatePaymentPlan.PlanToken,
+                sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 20.00m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12, OperationType = Sparrow.OperationType_AddsequenceUpdatesequenceDeletesequence.Updatesequence } });
 
             TestContext.WriteLine(resultCreatePaymentPlan.CreateRawLog("resultCreatePaymentPlan"));
             TestContext.WriteLine(resultUpdatePaymentPlan.CreateRawLog("resultUpdatePaymentPlan"));
@@ -611,7 +817,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task SimpleOfflineCapture()
         {
-            var resultSimpleOfflineCapture = await _sparrow_creditcard.SimpleOfflineCapture("4111111111111111", "1019", 9.99m, "123456", "01/31/2017");
+            var resultSimpleOfflineCapture = await _sparrow_creditcard.SimpleOfflineCapture(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m,
+                authCode: "123456",
+                authDate: "01/31/2017");
 
             TestContext.WriteLine(resultSimpleOfflineCapture.CreateRawLog("resultSimpleOfflineCapture"));
 
@@ -624,8 +834,12 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AdvancedCapture()
         {
-            var resultSimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
-            var resultAdvancedCapture = await _sparrow_creditcard.AdvancedCapture(resultSimpleAuthorization.TransId, 9.99m);
+            var resultSimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
+            var resultAdvancedCapture = await _sparrow_creditcard.AdvancedCapture(
+                transId: resultSimpleAuthorization.TransId,
+                amount: 9.99m);
 
             TestContext.WriteLine(resultSimpleAuthorization.CreateRawLog("resultSimpleAuthorization"));
             TestContext.WriteLine(resultAdvancedCapture.CreateRawLog("resultAdvancedCapture"));
@@ -639,7 +853,9 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task SimpleAuthorization()
         {
-            var resultSimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
+            var resultSimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
 
             TestContext.WriteLine(resultSimpleAuthorization.CreateRawLog("resultSimpleAuthorization"));
 
@@ -652,8 +868,12 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task SimpleCapture()
         {
-            var resultSimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization("4111111111111111", "1019", 9.99m);
-            var resultSimpleCapture = await _sparrow_creditcard.SimpleCapture(resultSimpleAuthorization.TransId, 9.99m);
+            var resultSimpleAuthorization = await _sparrow_creditcard.SimpleAuthorization(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
+                amount: 9.99m);
+            var resultSimpleCapture = await _sparrow_creditcard.SimpleCapture(
+                transId: resultSimpleAuthorization.TransId,
+                amount: 9.99m);
 
             TestContext.WriteLine(resultSimpleAuthorization.CreateRawLog("resultSimpleAuthorization"));
             TestContext.WriteLine(resultSimpleCapture.CreateRawLog("resultSimpleCapture"));
@@ -667,7 +887,11 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task AdvancedStarCard()
         {
-            var resultAdvancedStarCard = await _sparrow_starcard.AdvancedStarCard("4111111111111111", "1019", 9.99m, "12345678901");
+            var resultAdvancedStarCard = await _sparrow_starcard.AdvancedStarCard(
+                cardNum: "4111111111111111",
+                cardExp: "1019",
+                amount: 9.99m,
+                CID: "12345678901");
 
             TestContext.WriteLine(resultAdvancedStarCard.CreateRawLog("resultAdvancedStarCard"));
 
@@ -680,7 +904,10 @@ namespace SparrowSdk.Tests
         [TestMethod]
         public async Task SimpleStarCard()
         {
-            var resultSimpleStarCard = await _sparrow_starcard.SimpleStarCard("4111111111111111", 9.99m, "12345678901");
+            var resultSimpleStarCard = await _sparrow_starcard.SimpleStarCard(
+                cardNum: "4111111111111111",
+                amount: 9.99m,
+                CID: "12345678901");
 
             TestContext.WriteLine(resultSimpleStarCard.CreateRawLog("resultSimpleStarCard"));
 

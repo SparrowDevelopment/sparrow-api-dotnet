@@ -10,4 +10,8 @@
     <Copyright>Sparrow 2017</Copyright>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="CommonTypes.cs.old" />
+  </ItemGroup>
+
 </Project>

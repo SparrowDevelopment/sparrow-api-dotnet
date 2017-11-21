@@ -48,5 +48,23 @@ namespace SparrowSdk
 
             return values;
         }
+
+        private string EnumToString(System.Enum value)
+        {
+            if (value == null) { return ""; }
+
+            var text = value.ToString().ToLowerInvariant();
+
+            if (text == "blank")
+            {
+                text = "";
+            }
+            else if (text == "space")
+            {
+                text = " ";
+            }
+
+            return text;
+        }
     }
 }
