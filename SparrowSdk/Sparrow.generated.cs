@@ -88,19 +88,6 @@ namespace SparrowSdk
             Surcharge
         }
 
-        public enum OperationType_AddsequenceUpdatesequence
-        {
-            Addsequence,
-            Updatesequence
-        }
-
-        public enum ScheduleType
-        {
-            Monthly,
-            Custom,
-            Annual
-        }
-
         public enum RetryType
         {
             Daily,
@@ -116,7 +103,14 @@ namespace SparrowSdk
             Quaterly
         }
 
-        public enum OperationType_AddsequenceUpdatesequenceDeletesequence
+        public enum ScheduleType
+        {
+            Monthly,
+            Custom,
+            Annual
+        }
+
+        public enum OperationType
         {
             Addsequence,
             Updatesequence,
@@ -326,7 +320,7 @@ namespace SparrowSdk
             /// <summary>
             /// Addsequence will add a new sequence, whereas Updatesequence will update an existing sequence
             /// </summary>
-            public OperationType_AddsequenceUpdatesequenceDeletesequence OperationType { get; set; }
+            public OperationType OperationType { get; set; }
             /// <summary>
             /// External ID for the product
             /// </summary>
@@ -346,7 +340,7 @@ namespace SparrowSdk
             /// <summary>
             /// Addsequence will add a new sequence, whereas Updatesequence will update an existing sequence
             /// </summary>
-            public OperationType_AddsequenceUpdatesequenceDeletesequence OperationType { get; set; }
+            public OperationType OperationType { get; set; }
             /// <summary>
             /// The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present
             /// </summary>
@@ -2219,63 +2213,6 @@ namespace SparrowSdk
         }
 
         /// <summary>
-        /// Add or Update a Sequence
-        /// </summary>
-        /// <remarks>
-        /// payment-plans/add-update-sequence.md - Adding or Updating a Sequence
-        /// </remarks>
-        /// <param name="notifyFailures">Sends notification emails to the client if failed payments occur (Format: true/false)</param>,
-        /// <param name="useRecycling">Specifies whether to reprocess failed transactions for this plan (Format: true/false)</param>,
-        /// <param name="defaultEwalletMKey">Merchant key of eWallet account with which plan payments should be processed by default</param>,
-        /// <param name="retryCount">Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise (Format: positive integer)</param>,
-        /// <param name="retryType">Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date (Format: [daily|weekly|monthly])</param>,
-        /// <param name="retryPeriod">Number of days between retry attempts. This field is required if retrytype=daily (Format: positive integer)</param>,
-        /// <param name="retryDayOfWeek">This field is required if retrytype=weekly (monday, tuesday etc.) (Format: string)</param>,
-        /// <param name="retryFirstDayOfMonth">First date of retry schedule. This field is required if retrytype=monthly (Format: positive integer)</param>,
-        /// <param name="retrySecondDayOfMonth">Second date of retry schedule. This field is required if retrytype=monthly (Format: positive integer)</param>,
-        /// <param name="autoCreateClientAccounts">Creates username and password for Client Portal automatically when plan is assigned to the client (Format: true/false)</param>,
-        /// <param name="sequenceSteps">SequenceStep</param>
-        public async Task<SparrowResponse> AddOrUpdateSequence(IList<SequenceStep> sequenceSteps, bool? notifyFailures = null, bool? useRecycling = null, string defaultEwalletMKey = "", int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? autoCreateClientAccounts = null)
-        {
-            var data = new Dictionary<string, string>
-            {
-                { "notifyfailures", notifyFailures == true ? "true" : "false" },
-                { "userecycling", useRecycling == true ? "true" : "false" },
-                { "defaultewalletmkey", defaultEwalletMKey },
-                { "retrycount", "" + retryCount },
-                { "retrytype", EnumToString(retryType) },
-                { "retryperiod", "" + retryPeriod },
-                { "retrydayofweek", retryDayOfWeek },
-                { "retryfirstdayofmonth", "" + retryFirstDayOfMonth },
-                { "retryseconddayofmonth", "" + retrySecondDayOfMonth },
-                { "autocreateclientaccounts", autoCreateClientAccounts == true ? "true" : "false" }
-            };
-
-
-            if (sequenceSteps != null)
-            {
-                for (int i = 0; i < sequenceSteps.Count; i++)
-                {
-                    var x = sequenceSteps[i];
-                    data.Add("sequence_" + (i + 1), "" + x.Sequence);
-                    data.Add("amount_" + (i + 1), x.Amount.ToString("f2"));
-                    data.Add("scheduletype_" + (i + 1), EnumToString(x.ScheduleType));
-                    data.Add("scheduleday_" + (i + 1), "" + x.ScheduleDay);
-                    data.Add("duration_" + (i + 1), "" + x.Duration);
-                    data.Add("operationtype_" + (i + 1), EnumToString(x.OperationType));
-                    data.Add("productid_" + (i + 1), x.ProductId);
-                    data.Add("description_" + (i + 1), x.Description);
-                    data.Add("newsequence_" + (i + 1), "" + x.NewSequence);
-                }
-            }
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues, data);
-        }
-
-        /// <summary>
         /// Assign a Payment Plan to a Customer
         /// </summary>
         /// <remarks>
@@ -2494,155 +2431,6 @@ namespace SparrowSdk
                 { "cancelpayments", cancelPayments == true ? "true" : "false" }
             };
 
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues, data);
-        }
-
-        /// <summary>
-        /// Delete a Sequence
-        /// </summary>
-        /// <remarks>
-        /// payment-plans/delete-sequence.md - Deleting a Sequence
-        /// </remarks>
-        /// <param name="deleteSequenceSteps">SequenceStepToDelete</param>
-        public async Task<SparrowResponse> DeleteSequence(IList<SequenceStepToDelete> deleteSequenceSteps)
-        {
-            var data = new Dictionary<string, string>
-            {
-
-            };
-
-
-            if (deleteSequenceSteps != null)
-            {
-                for (int i = 0; i < deleteSequenceSteps.Count; i++)
-                {
-                    var x = deleteSequenceSteps[i];
-                    data.Add("operationtype_" + (i + 1), EnumToString(x.OperationType));
-                    data.Add("sequence_" + (i + 1), "" + x.Sequence);
-                }
-            }
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues, data);
-        }
-
-        /// <summary>
-        /// Notification Settings
-        /// </summary>
-        /// <remarks>
-        /// payment-plans/notifications.md - Notification Settings
-        /// </remarks>
-        /// <param name="reviewOnAssignment">If “true” this will set the payment plan to pending until it is reviewed by the merchant admin (Format: true/false)</param>,
-        /// <param name="processImmediately">Specifies if new payments should be processed immediately or end of day (Format: true/false)</param>,
-        /// <param name="overrideSender">Specifies whether to override sender email for customers notifications (Format: true/false)</param>,
-        /// <param name="senderEmail">Sender email. This field is required if overridesender = true (Format: email)</param>,
-        /// <param name="notifyUpcomingPayment">Specifies whether to notify customer about upcoming payment (Format: true/false)</param>,
-        /// <param name="notifyDaysBeforeUpcomingPayment">Number of days before notification about upcoming payment should be sent to the client. This field is required if notifyupcomingpayment = true (Format: positive integer)</param>,
-        /// <param name="notifyPlanSummary">Specifies whether to send merchant a Summarized Plan Report (Format: true/false)</param>,
-        /// <param name="notifyPlanSummaryInterval">Interval of plan summary notifications. This field is required if notifyplansummary = true (Format: [daily|weekly|monthly|quaterly])</param>,
-        /// <param name="notifyPlanSummaryEmails">Multiple addresses are separated by comma. This field is required if notifyplansummary = true</param>,
-        /// <param name="notifyDailyStats">Specifies whether to send merchant a Daily Plan Processing Statistics Report (Format: true/false)</param>,
-        /// <param name="notifyDailyStatsEmails">Multiple addresses are separated by comma. This field is required if notifydailystats = true</param>,
-        /// <param name="notifyPlanComplete">Specifies whether to notify merchant about plan completion (Format: true/false)</param>,
-        /// <param name="notifyPlanCompleteEmails">Multiple addresses are separated by comma. This field is required if notifyplancomplete = true</param>,
-        /// <param name="notifyDecline">Specifies whether to notify merchant about failed payments (Format: true/false)</param>,
-        /// <param name="notifyDeclineEmails">Multiple addresses are separated by comma. This field is required if notifydecline = true</param>,
-        /// <param name="notifyViaFtp">Specifies whether to transfer transaction file via ftp (Format: true/false)</param>,
-        /// <param name="notifyViaFtpUrl">FTP address on which transaction file is transferred. This field is required if notifyviaftp = true (Format: true/false)</param>,
-        /// <param name="notifyViaFtpUserName">Username to access FTP address. This field is required if notifyviaftp = true</param>,
-        /// <param name="notifyViaFtpPassword">Password to access FTP address. This field is required if notifyviaftp = true</param>,
-        /// <param name="notifyFlagged">Specifies whether to notify merchant about flagged for review payments (Format: true/false)</param>,
-        /// <param name="notifyFlaggedEmails">Multiple addresses are separated by comma. This field is required if notifyflagged = true</param>
-        public async Task<SparrowResponse> NotificationSettings(bool? reviewOnAssignment = null, bool? processImmediately = null, bool? overrideSender = null, string senderEmail = "", bool? notifyUpcomingPayment = null, int? notifyDaysBeforeUpcomingPayment = null, bool? notifyPlanSummary = null, NotifyPlanSummaryInterval notifyPlanSummaryInterval = NotifyPlanSummaryInterval.Daily, string notifyPlanSummaryEmails = "", bool? notifyDailyStats = null, string notifyDailyStatsEmails = "", bool? notifyPlanComplete = null, string notifyPlanCompleteEmails = "", bool? notifyDecline = null, string notifyDeclineEmails = "", bool? notifyViaFtp = null, bool? notifyViaFtpUrl = null, string notifyViaFtpUserName = "", string notifyViaFtpPassword = "", bool? notifyFlagged = null, string notifyFlaggedEmails = "")
-        {
-            var data = new Dictionary<string, string>
-            {
-                { "reviewonassignment", reviewOnAssignment == true ? "true" : "false" },
-                { "processimmediately", processImmediately == true ? "true" : "false" },
-                { "overridesender", overrideSender == true ? "true" : "false" },
-                { "senderemail", senderEmail },
-                { "notifyupcomingpayment", notifyUpcomingPayment == true ? "true" : "false" },
-                { "notifydaysbeforeupcomingpayment", "" + notifyDaysBeforeUpcomingPayment },
-                { "notifyplansummary", notifyPlanSummary == true ? "true" : "false" },
-                { "notifyplansummaryinterval", EnumToString(notifyPlanSummaryInterval) },
-                { "notifyplansummaryemails", notifyPlanSummaryEmails },
-                { "notifydailystats", notifyDailyStats == true ? "true" : "false" },
-                { "notifydailystatsemails", notifyDailyStatsEmails },
-                { "notifyplancomplete", notifyPlanComplete == true ? "true" : "false" },
-                { "notifyplancompleteemails", notifyPlanCompleteEmails },
-                { "notifydecline", notifyDecline == true ? "true" : "false" },
-                { "notifydeclineemails", notifyDeclineEmails },
-                { "notifyviaftp", notifyViaFtp == true ? "true" : "false" },
-                { "notifyviaftpurl", notifyViaFtpUrl == true ? "true" : "false" },
-                { "notifyviaftpusername", notifyViaFtpUserName },
-                { "notifyviaftppassword", notifyViaFtpPassword },
-                { "notifyflagged", notifyFlagged == true ? "true" : "false" },
-                { "notifyflaggedemails", notifyFlaggedEmails }
-            };
-
-
-            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
-
-            var responseValues = await MakeRequest(data);
-            return SparrowResponse.Create(responseValues, data);
-        }
-
-        /// <summary>
-        /// Build a Sequence
-        /// </summary>
-        /// <remarks>
-        /// payment-plans/sequences.md - Building a Sequence
-        /// </remarks>
-        /// <param name="notifyFailures">Sends notification emails to the client if failed payments occur (Format: true/false)</param>,
-        /// <param name="useRecycling">Specifies whether to reprocess failed transactions for this plan (Format: true/false)</param>,
-        /// <param name="defaultEwalletMKey">Merchant key of eWallet account with which plan payments should be processed by default</param>,
-        /// <param name="retryCount">Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise (Format: positive integer)</param>,
-        /// <param name="retryType">Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date (Format: [daily|weekly|monthly])</param>,
-        /// <param name="retryPeriod">Number of days between retry attempts. This field is required if retrytype=daily (Format: positive integer)</param>,
-        /// <param name="retryDayOfWeek">This field is required if retrytype=weekly (monday, tuesday etc.) (Format: string)</param>,
-        /// <param name="retryFirstDayOfMonth">First date of retry schedule. This field is required if retrytype=monthly (Format: positive integer)</param>,
-        /// <param name="retrySecondDayOfMonth">Second date of retry schedule. This field is required if retrytype=monthly (Format: positive integer)</param>,
-        /// <param name="autoCreateClientAccounts">Creates username and password for Client Portal automatically when plan is assigned to the client (Format: true/false)</param>,
-        /// <param name="sequenceSteps">SequenceStep</param>
-        public async Task<SparrowResponse> BuildSequence(IList<SequenceStep> sequenceSteps, bool? notifyFailures = null, bool? useRecycling = null, string defaultEwalletMKey = "", int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? autoCreateClientAccounts = null)
-        {
-            var data = new Dictionary<string, string>
-            {
-                { "notifyfailures", notifyFailures == true ? "true" : "false" },
-                { "userecycling", useRecycling == true ? "true" : "false" },
-                { "defaultewalletmkey", defaultEwalletMKey },
-                { "retrycount", "" + retryCount },
-                { "retrytype", EnumToString(retryType) },
-                { "retryperiod", "" + retryPeriod },
-                { "retrydayofweek", retryDayOfWeek },
-                { "retryfirstdayofmonth", "" + retryFirstDayOfMonth },
-                { "retryseconddayofmonth", "" + retrySecondDayOfMonth },
-                { "autocreateclientaccounts", autoCreateClientAccounts == true ? "true" : "false" }
-            };
-
-
-            if (sequenceSteps != null)
-            {
-                for (int i = 0; i < sequenceSteps.Count; i++)
-                {
-                    var x = sequenceSteps[i];
-                    data.Add("sequence_" + (i + 1), "" + x.Sequence);
-                    data.Add("amount_" + (i + 1), x.Amount.ToString("f2"));
-                    data.Add("scheduletype_" + (i + 1), EnumToString(x.ScheduleType));
-                    data.Add("scheduleday_" + (i + 1), "" + x.ScheduleDay);
-                    data.Add("duration_" + (i + 1), "" + x.Duration);
-                    data.Add("operationtype_" + (i + 1), EnumToString(x.OperationType));
-                    data.Add("productid_" + (i + 1), x.ProductId);
-                    data.Add("description_" + (i + 1), x.Description);
-                    data.Add("newsequence_" + (i + 1), "" + x.NewSequence);
-                }
-            }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 

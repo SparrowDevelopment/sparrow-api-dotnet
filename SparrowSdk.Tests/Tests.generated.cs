@@ -198,10 +198,11 @@ namespace SparrowSdk.Tests
         public async Task AddPaymentTypesToCustomer()
         {
             var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
-                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
+                defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
+                paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
             var resultAddPaymentTypesToCustomer = await _sparrow_creditcard.AddPaymentTypesToCustomer(
                 token: resultAddCustomer.CustomerToken,
-                paymentTypeToAdd: new[] { new Sparrow.PaymentTypeToAdd { } });
+                paymentTypeToAdd: new[] { new Sparrow.PaymentTypeToAdd { PaymentType = new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } } });
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultAddPaymentTypesToCustomer.CreateRawLog("resultAddPaymentTypesToCustomer"));
@@ -252,7 +253,7 @@ namespace SparrowSdk.Tests
                 paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
             var resultDeletePaymentType = await _sparrow_creditcard.DeletePaymentType(
                 token: resultAddCustomer.CustomerToken,
-                paymentTypeToDelete: new[] { new Sparrow.PaymentTypeToDelete { Token = resultAddCustomer.CustomerToken } });
+                paymentTypeToDelete: new[] { new Sparrow.PaymentTypeToDelete { Token = resultAddCustomer.PaymentTokens[0] } });
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultDeletePaymentType.CreateRawLog("resultDeletePaymentType"));
@@ -324,7 +325,7 @@ namespace SparrowSdk.Tests
                 paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
             var resultUpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(
                 token: resultAddCustomer.CustomerToken,
-                paymentTypeToUpdate: new[] { new Sparrow.PaymentTypeToUpdate { Token = resultAddCustomer.CustomerToken, PaymentType = new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } } });
+                paymentTypeToUpdate: new[] { new Sparrow.PaymentTypeToUpdate { Token = resultAddCustomer.PaymentTokens[0], PaymentType = new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } } });
 
             TestContext.WriteLine(resultAddCustomer.CreateRawLog("resultAddCustomer"));
             TestContext.WriteLine(resultUpdatePaymentType.CreateRawLog("resultUpdatePaymentType"));
@@ -617,20 +618,6 @@ namespace SparrowSdk.Tests
         }
 
         [TestMethod]
-        public async Task AddOrUpdateSequence()
-        {
-            var resultAddOrUpdateSequence = await _sparrow_creditcard.AddOrUpdateSequence(
-                sequenceSteps: new[] { new Sparrow.SequenceStep { } });
-
-            TestContext.WriteLine(resultAddOrUpdateSequence.CreateRawLog("resultAddOrUpdateSequence"));
-
-            Assert.IsTrue(resultAddOrUpdateSequence.IsSuccess);
-            // Assert.AreEqual(1, resultAddOrUpdateSequence.Response);
-            // Assert.IsTrue(resultAddOrUpdateSequence.TextResponse.ToUpper().Contains("SUCCESS"));
-            // Assert.IsTrue(resultAddOrUpdateSequence.TextResponse.ToUpper().Contains("SUCCESS"));
-        }
-
-        [TestMethod]
         public async Task AssignPaymentPlanToCustomer()
         {
             var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
@@ -723,47 +710,6 @@ namespace SparrowSdk.Tests
         }
 
         [TestMethod]
-        public async Task DeleteSequence()
-        {
-            var resultDeleteSequence = await _sparrow_creditcard.DeleteSequence(
-                deleteSequenceSteps: new[] { new Sparrow.SequenceStepToDelete { } });
-
-            TestContext.WriteLine(resultDeleteSequence.CreateRawLog("resultDeleteSequence"));
-
-            Assert.IsTrue(resultDeleteSequence.IsSuccess);
-            // Assert.AreEqual(1, resultDeleteSequence.Response);
-            // Assert.IsTrue(resultDeleteSequence.TextResponse.ToUpper().Contains("SUCCESS"));
-            // Assert.IsTrue(resultDeleteSequence.TextResponse.ToUpper().Contains("SUCCESS"));
-        }
-
-        [TestMethod]
-        public async Task NotificationSettings()
-        {
-            var resultNotificationSettings = await _sparrow_creditcard.NotificationSettings();
-
-            TestContext.WriteLine(resultNotificationSettings.CreateRawLog("resultNotificationSettings"));
-
-            Assert.IsTrue(resultNotificationSettings.IsSuccess);
-            // Assert.AreEqual(1, resultNotificationSettings.Response);
-            // Assert.IsTrue(resultNotificationSettings.TextResponse.ToUpper().Contains("SUCCESS"));
-            // Assert.IsTrue(resultNotificationSettings.TextResponse.ToUpper().Contains("SUCCESS"));
-        }
-
-        [TestMethod]
-        public async Task BuildSequence()
-        {
-            var resultBuildSequence = await _sparrow_creditcard.BuildSequence(
-                sequenceSteps: new[] { new Sparrow.SequenceStep { } });
-
-            TestContext.WriteLine(resultBuildSequence.CreateRawLog("resultBuildSequence"));
-
-            Assert.IsTrue(resultBuildSequence.IsSuccess);
-            // Assert.AreEqual(1, resultBuildSequence.Response);
-            // Assert.IsTrue(resultBuildSequence.TextResponse.ToUpper().Contains("SUCCESS"));
-            // Assert.IsTrue(resultBuildSequence.TextResponse.ToUpper().Contains("SUCCESS"));
-        }
-
-        [TestMethod]
         public async Task UpdatePaymentPlanAssignment()
         {
             var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
@@ -803,7 +749,7 @@ namespace SparrowSdk.Tests
                 sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 10.00m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
             var resultUpdatePaymentPlan = await _sparrow_creditcard.UpdatePaymentPlan(
                 token: resultCreatePaymentPlan.PlanToken,
-                sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 20.00m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12, OperationType = Sparrow.OperationType_AddsequenceUpdatesequenceDeletesequence.Updatesequence } });
+                sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 20.00m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12, OperationType = Sparrow.OperationType.Updatesequence } });
 
             TestContext.WriteLine(resultCreatePaymentPlan.CreateRawLog("resultCreatePaymentPlan"));
             TestContext.WriteLine(resultUpdatePaymentPlan.CreateRawLog("resultUpdatePaymentPlan"));

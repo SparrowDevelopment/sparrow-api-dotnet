@@ -250,19 +250,21 @@ var result = await _sparrow.SimpleSale(
             if (!!true)
             {
                 var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
-                    defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
+                    defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
+                    paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
                 var resultAddPaymentTypesToCustomer = await _sparrow_creditcard.AddPaymentTypesToCustomer(
                     token: resultAddCustomer.CustomerToken,
-                    paymentTypeToAdd: new[] { new Sparrow.PaymentTypeToAdd { } });
+                    paymentTypeToAdd: new[] { new Sparrow.PaymentTypeToAdd { PaymentType = new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } } });
 
                 Log(SparrowResponseSamples.EnterSample("datavault/add-payment-type.md", "AddPaymentTypesToCustomer", resultAddPaymentTypesToCustomer.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
 var resultAddCustomer = await _sparrow.AddCustomer(
-    defaultContactInfo: new Sparrow.ContactInfo{ FirstName = ""John"", LastName = ""Doe"" });
+    defaultContactInfo: new Sparrow.ContactInfo{ FirstName = ""John"", LastName = ""Doe"" }, 
+    paymentType: new []{ new Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard{ CardNum = ""4111111111111111"", CardExp = ""1019"" } } });
 var result = await _sparrow.AddPaymentTypesToCustomer(
     token: resultAddCustomer.CustomerToken, 
-    paymentTypeToAdd: new []{ new Sparrow.PaymentTypeToAdd{  } });"));
+    paymentTypeToAdd: new []{ new Sparrow.PaymentTypeToAdd{ PaymentType = new Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard{ CardNum = ""4111111111111111"", CardExp = ""1019"" } } } });"));
 
                 Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
                 Log(resultAddPaymentTypesToCustomer.CreateResponseDemo("result"));
@@ -316,7 +318,7 @@ var result = await _sparrow.DeleteDataVaultCustomer(
                     paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
                 var resultDeletePaymentType = await _sparrow_creditcard.DeletePaymentType(
                     token: resultAddCustomer.CustomerToken,
-                    paymentTypeToDelete: new[] { new Sparrow.PaymentTypeToDelete { Token = resultAddCustomer.CustomerToken } });
+                    paymentTypeToDelete: new[] { new Sparrow.PaymentTypeToDelete { Token = resultAddCustomer.PaymentTokens[0] } });
 
                 Log(SparrowResponseSamples.EnterSample("datavault/delete-payment-type.md", "DeletePaymentType", resultDeletePaymentType.IsSuccess));
 
@@ -326,7 +328,7 @@ var resultAddCustomer = await _sparrow.AddCustomer(
     paymentType: new []{ new Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard{ CardNum = ""4111111111111111"", CardExp = ""1019"" } } });
 var result = await _sparrow.DeletePaymentType(
     token: resultAddCustomer.CustomerToken, 
-    paymentTypeToDelete: new []{ new Sparrow.PaymentTypeToDelete{ Token = resultAddCustomer.CustomerToken } });"));
+    paymentTypeToDelete: new []{ new Sparrow.PaymentTypeToDelete{ Token = resultAddCustomer.PaymentTokens[0] } });"));
 
                 Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
                 Log(resultDeletePaymentType.CreateResponseDemo("result"));
@@ -408,7 +410,7 @@ var result = await _sparrow.UpdateCustomer(
                     paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
                 var resultUpdatePaymentType = await _sparrow_creditcard.UpdatePaymentType(
                     token: resultAddCustomer.CustomerToken,
-                    paymentTypeToUpdate: new[] { new Sparrow.PaymentTypeToUpdate { Token = resultAddCustomer.CustomerToken, PaymentType = new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } } });
+                    paymentTypeToUpdate: new[] { new Sparrow.PaymentTypeToUpdate { Token = resultAddCustomer.PaymentTokens[0], PaymentType = new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } } });
 
                 Log(SparrowResponseSamples.EnterSample("datavault/update-payment-types.md", "UpdatePaymentType", resultUpdatePaymentType.IsSuccess));
 
@@ -418,7 +420,7 @@ var resultAddCustomer = await _sparrow.AddCustomer(
     paymentType: new []{ new Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard{ CardNum = ""4111111111111111"", CardExp = ""1019"" } } });
 var result = await _sparrow.UpdatePaymentType(
     token: resultAddCustomer.CustomerToken, 
-    paymentTypeToUpdate: new []{ new Sparrow.PaymentTypeToUpdate{ Token = resultAddCustomer.CustomerToken, PaymentType = new Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard{ CardNum = ""4111111111111111"", CardExp = ""1019"" } } } });"));
+    paymentTypeToUpdate: new []{ new Sparrow.PaymentTypeToUpdate{ Token = resultAddCustomer.PaymentTokens[0], PaymentType = new Sparrow.PaymentType{ PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard{ CardNum = ""4111111111111111"", CardExp = ""1019"" } } } });"));
 
                 Log(resultAddCustomer.CreateResponseDemo("resultAddCustomer"));
                 Log(resultUpdatePaymentType.CreateResponseDemo("result"));
@@ -799,22 +801,6 @@ var result = await _sparrow.SimpleVoid(
 
             if (!!true)
             {
-                var resultAddOrUpdateSequence = await _sparrow_creditcard.AddOrUpdateSequence(
-                    sequenceSteps: new[] { new Sparrow.SequenceStep { } });
-
-                Log(SparrowResponseSamples.EnterSample("payment-plans/add-update-sequence.md", "AddOrUpdateSequence", resultAddOrUpdateSequence.IsSuccess));
-
-                Log(SparrowResponseSamples.CreateCodeSample(@"
-var result = await _sparrow.AddOrUpdateSequence(
-    sequenceSteps: new []{ new Sparrow.SequenceStep{  } });"));
-
-                Log(resultAddOrUpdateSequence.CreateResponseDemo("result"));
-
-                Log(SparrowResponseSamples.ExitSample("payment-plans/add-update-sequence.md", "AddOrUpdateSequence", resultAddOrUpdateSequence.IsSuccess));
-            }
-
-            if (!!true)
-            {
                 var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
                     defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
                     paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
@@ -945,52 +931,6 @@ var result = await _sparrow.DeletePlan(
 
             if (!!true)
             {
-                var resultDeleteSequence = await _sparrow_creditcard.DeleteSequence(
-                    deleteSequenceSteps: new[] { new Sparrow.SequenceStepToDelete { } });
-
-                Log(SparrowResponseSamples.EnterSample("payment-plans/delete-sequence.md", "DeleteSequence", resultDeleteSequence.IsSuccess));
-
-                Log(SparrowResponseSamples.CreateCodeSample(@"
-var result = await _sparrow.DeleteSequence(
-    deleteSequenceSteps: new []{ new Sparrow.SequenceStepToDelete{  } });"));
-
-                Log(resultDeleteSequence.CreateResponseDemo("result"));
-
-                Log(SparrowResponseSamples.ExitSample("payment-plans/delete-sequence.md", "DeleteSequence", resultDeleteSequence.IsSuccess));
-            }
-
-            if (!!true)
-            {
-                var resultNotificationSettings = await _sparrow_creditcard.NotificationSettings();
-
-                Log(SparrowResponseSamples.EnterSample("payment-plans/notifications.md", "NotificationSettings", resultNotificationSettings.IsSuccess));
-
-                Log(SparrowResponseSamples.CreateCodeSample(@"
-var result = await _sparrow.NotificationSettings();"));
-
-                Log(resultNotificationSettings.CreateResponseDemo("result"));
-
-                Log(SparrowResponseSamples.ExitSample("payment-plans/notifications.md", "NotificationSettings", resultNotificationSettings.IsSuccess));
-            }
-
-            if (!!true)
-            {
-                var resultBuildSequence = await _sparrow_creditcard.BuildSequence(
-                    sequenceSteps: new[] { new Sparrow.SequenceStep { } });
-
-                Log(SparrowResponseSamples.EnterSample("payment-plans/sequences.md", "BuildSequence", resultBuildSequence.IsSuccess));
-
-                Log(SparrowResponseSamples.CreateCodeSample(@"
-var result = await _sparrow.BuildSequence(
-    sequenceSteps: new []{ new Sparrow.SequenceStep{  } });"));
-
-                Log(resultBuildSequence.CreateResponseDemo("result"));
-
-                Log(SparrowResponseSamples.ExitSample("payment-plans/sequences.md", "BuildSequence", resultBuildSequence.IsSuccess));
-            }
-
-            if (!!true)
-            {
                 var resultAddCustomer = await _sparrow_creditcard.AddCustomer(
                     defaultContactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" },
                     paymentType: new[] { new Sparrow.PaymentType { PayType = Sparrow.PayType.Creditcard, CreditCard = new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" } } });
@@ -1043,7 +983,7 @@ var result = await _sparrow.UpdatePaymentPlanAssignment(
                     sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 10.00m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
                 var resultUpdatePaymentPlan = await _sparrow_creditcard.UpdatePaymentPlan(
                     token: resultCreatePaymentPlan.PlanToken,
-                    sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 20.00m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12, OperationType = Sparrow.OperationType_AddsequenceUpdatesequenceDeletesequence.Updatesequence } });
+                    sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 20.00m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12, OperationType = Sparrow.OperationType.Updatesequence } });
 
                 Log(SparrowResponseSamples.EnterSample("payment-plans/update-plan.md", "UpdatePaymentPlan", resultUpdatePaymentPlan.IsSuccess));
 
@@ -1055,7 +995,7 @@ var resultCreatePaymentPlan = await _sparrow.CreatePaymentPlan(
     sequenceSteps: new []{ new Sparrow.SequenceStep{ Sequence = 1, Amount = 10.00m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
 var result = await _sparrow.UpdatePaymentPlan(
     token: resultCreatePaymentPlan.PlanToken, 
-    sequenceSteps: new []{ new Sparrow.SequenceStep{ Sequence = 1, Amount = 20.00m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12, OperationType = Sparrow.OperationType_AddsequenceUpdatesequenceDeletesequence.Updatesequence } });"));
+    sequenceSteps: new []{ new Sparrow.SequenceStep{ Sequence = 1, Amount = 20.00m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12, OperationType = Sparrow.OperationType.Updatesequence } });"));
 
                 Log(resultCreatePaymentPlan.CreateResponseDemo("resultCreatePaymentPlan"));
                 Log(resultUpdatePaymentPlan.CreateResponseDemo("result"));
