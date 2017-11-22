@@ -108,7 +108,6 @@ namespace SparrowSdk
         public string OrigResponse { get; set; }
         public string OrigTextResponse { get; set; }
 
-
         public int ErrorCode { get; set; }
 
         public Dictionary<string, string> RawResponse { get; set; }

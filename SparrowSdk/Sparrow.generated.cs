@@ -158,13 +158,13 @@ namespace SparrowSdk
         public class ContactInfo
         {
             /// <summary>
-            /// Billing first name, should be from 1-100 characters
+            /// Customer's first name
             /// </summary>
-            public string FirstName { get; set; } = "";
+            public string FirstName { get; set; }
             /// <summary>
-            /// Billing last name, should be from 1-100 characters
+            /// Customer's last name
             /// </summary>
-            public string LastName { get; set; } = "";
+            public string LastName { get; set; }
             /// <summary>
             /// Billing Company
             /// </summary>

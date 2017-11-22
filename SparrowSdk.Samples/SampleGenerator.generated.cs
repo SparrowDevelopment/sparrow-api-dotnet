@@ -36,7 +36,7 @@ var result = await _sparrow.AdvancedECheck(
                     transType: Sparrow.TransType_SaleRefundCredit.Sale,
                     bankAccount: new Sparrow.BankAccount { BankName = "First Test Bank", Routing = "110000000", Account = "1234567890123", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
                     amount: 9.99m,
-                    contactInfo: new Sparrow.ContactInfo { });
+                    contactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
 
                 Log(SparrowResponseSamples.EnterSample("ach/advanced-sale.md", "AdvancedACH", resultAdvancedACH.IsSuccess));
 
@@ -45,7 +45,7 @@ var result = await _sparrow.AdvancedACH(
     transType: Sparrow.TransType_SaleRefundCredit.Sale, 
     bankAccount: new Sparrow.BankAccount{ BankName = ""First Test Bank"", Routing = ""110000000"", Account = ""1234567890123"", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
     amount: 9.99m, 
-    contactInfo: new Sparrow.ContactInfo{  });"));
+    contactInfo: new Sparrow.ContactInfo{ FirstName = ""John"", LastName = ""Doe"" });"));
 
                 Log(resultAdvancedACH.CreateResponseDemo("result"));
 
@@ -730,6 +730,9 @@ var result = await _sparrow.SimpleRefund(
 
             if (!!true)
             {
+                // Prevent this from timing out
+                await Task.Delay(5000);
+
                 var resultSimpleSale = await _sparrow_creditcard.SimpleSale(
                     creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "1019" },
                     amount: 9.99m);

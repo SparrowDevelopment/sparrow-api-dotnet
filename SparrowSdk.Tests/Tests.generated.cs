@@ -32,7 +32,7 @@ namespace SparrowSdk.Tests
                 transType: Sparrow.TransType_SaleRefundCredit.Sale,
                 bankAccount: new Sparrow.BankAccount { BankName = "First Test Bank", Routing = "110000000", Account = "1234567890123", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
                 amount: 9.99m,
-                contactInfo: new Sparrow.ContactInfo { });
+                contactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
 
             TestContext.WriteLine(resultAdvancedACH.CreateRawLog("resultAdvancedACH"));
 

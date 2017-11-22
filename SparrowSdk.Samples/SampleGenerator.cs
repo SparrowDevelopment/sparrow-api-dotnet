@@ -26,6 +26,8 @@ namespace SparrowSdk.Samples
         private void Log(string text)
         {
             _logger.AppendLine(text);
+
+            Console.WriteLine(text);
         }
     }
 }
