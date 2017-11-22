@@ -9,7 +9,7 @@ namespace SampleClient
 
         public async Task CreateSparrowSale()
         {
-            var result = await _sparrow.SimpleSale(new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "01/18", Cvv = "123" }, 9.97m);
+            var result = await _sparrow.SimpleSale( new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = "01/18", Cvv = "123" }, 9.97m);
 
             if (result.IsSuccess)
             {

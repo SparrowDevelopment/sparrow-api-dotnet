@@ -11,7 +11,6 @@ namespace SparrowSdk.Samples
             if (!!true)
             {
                 var resultAdvancedECheck = await _sparrow_ach.AdvancedECheck(
-                    transType: Sparrow.TransType_SaleRefundCredit.Sale,
                     bankAccount: new Sparrow.BankAccount { BankName = "First Test Bank", Routing = "110000000", Account = "1234567890123", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
                     amount: 9.99m,
                     contactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe", Company = "Sparrow One", Address = new Sparrow.Address { Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" } });
@@ -20,7 +19,6 @@ namespace SparrowSdk.Samples
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
 var result = await _sparrow.AdvancedECheck(
-    transType: Sparrow.TransType_SaleRefundCredit.Sale, 
     bankAccount: new Sparrow.BankAccount{ BankName = ""First Test Bank"", Routing = ""110000000"", Account = ""1234567890123"", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
     amount: 9.99m, 
     contactInfo: new Sparrow.ContactInfo{ FirstName = ""John"", LastName = ""Doe"", Company = ""Sparrow One"", Address = new Sparrow.Address{ Address1 = ""16100 N 71st Street"", City = ""Scottsdale"", State = ""AZ"", Zip = ""85254"", Country = ""US"" } });"));
@@ -33,7 +31,6 @@ var result = await _sparrow.AdvancedECheck(
             if (!!true)
             {
                 var resultAdvancedACH = await _sparrow_ach.AdvancedACH(
-                    transType: Sparrow.TransType_SaleRefundCredit.Sale,
                     bankAccount: new Sparrow.BankAccount { BankName = "First Test Bank", Routing = "110000000", Account = "1234567890123", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
                     amount: 9.99m,
                     contactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
@@ -42,7 +39,6 @@ var result = await _sparrow.AdvancedECheck(
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
 var result = await _sparrow.AdvancedACH(
-    transType: Sparrow.TransType_SaleRefundCredit.Sale, 
     bankAccount: new Sparrow.BankAccount{ BankName = ""First Test Bank"", Routing = ""110000000"", Account = ""1234567890123"", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
     amount: 9.99m, 
     contactInfo: new Sparrow.ContactInfo{ FirstName = ""John"", LastName = ""Doe"" });"));
@@ -55,7 +51,6 @@ var result = await _sparrow.AdvancedACH(
             if (!!true)
             {
                 var resultSimpleACH = await _sparrow_ach.SimpleACH(
-                    transType: Sparrow.TransType_SaleRefundCredit.Sale,
                     bankAccount: new Sparrow.BankAccount { BankName = "First Test Bank", Routing = "110000000", Account = "1234567890123", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
                     amount: 9.99m,
                     contactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe" });
@@ -64,7 +59,6 @@ var result = await _sparrow.AdvancedACH(
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
 var result = await _sparrow.SimpleACH(
-    transType: Sparrow.TransType_SaleRefundCredit.Sale, 
     bankAccount: new Sparrow.BankAccount{ BankName = ""First Test Bank"", Routing = ""110000000"", Account = ""1234567890123"", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
     amount: 9.99m, 
     contactInfo: new Sparrow.ContactInfo{ FirstName = ""John"", LastName = ""Doe"" });"));
@@ -77,7 +71,6 @@ var result = await _sparrow.SimpleACH(
             if (!!true)
             {
                 var resultSimpleECheck = await _sparrow_ach.SimpleECheck(
-                    transType: Sparrow.TransType_SaleRefund.Sale,
                     bankAccount: new Sparrow.BankAccount { BankName = "First Test Bank", Routing = "110000000", Account = "1234567890123", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal },
                     amount: 9.99m,
                     contactInfo: new Sparrow.ContactInfo { FirstName = "John", LastName = "Doe", Company = "Sparrow One", Address = new Sparrow.Address { Address1 = "16100 N 71st Street", City = "Scottsdale", State = "AZ", Zip = "85254", Country = "US" } });
@@ -86,7 +79,6 @@ var result = await _sparrow.SimpleACH(
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
 var result = await _sparrow.SimpleECheck(
-    transType: Sparrow.TransType_SaleRefund.Sale, 
     bankAccount: new Sparrow.BankAccount{ BankName = ""First Test Bank"", Routing = ""110000000"", Account = ""1234567890123"", AchAccountType = Sparrow.AchAccountType.Checking, AchAccountSubType = Sparrow.AchAccountSubType.Personal }, 
     amount: 9.99m, 
     contactInfo: new Sparrow.ContactInfo{ FirstName = ""John"", LastName = ""Doe"", Company = ""Sparrow One"", Address = new Sparrow.Address{ Address1 = ""16100 N 71st Street"", City = ""Scottsdale"", State = ""AZ"", Zip = ""85254"", Country = ""US"" } });"));
@@ -730,7 +722,6 @@ var result = await _sparrow.SimpleRefund(
 
             if (!!true)
             {
-                // Prevent this from timing out
                 await Task.Delay(5000);
 
                 var resultSimpleSale = await _sparrow_creditcard.SimpleSale(
@@ -930,6 +921,24 @@ var result = await _sparrow.DeletePlan(
                 Log(resultDeletePlan.CreateResponseDemo("result"));
 
                 Log(SparrowResponseSamples.ExitSample("payment-plans/delete-plan.md", "DeletePlan", resultDeletePlan.IsSuccess));
+            }
+
+            if (!!true)
+            {
+                var resultDeleteSequence = await _sparrow_creditcard.DeleteSequence(
+                    deleteSequenceSteps: new[] { new Sparrow.SequenceStepToDelete { Sequence = 1 } },
+                    token: "I4LYCSV3FMGDTA9G");
+
+                Log(SparrowResponseSamples.EnterSample("payment-plans/delete-sequence.md", "DeleteSequence", resultDeleteSequence.IsSuccess));
+
+                Log(SparrowResponseSamples.CreateCodeSample(@"
+var result = await _sparrow.DeleteSequence(
+    deleteSequenceSteps: new []{ new Sparrow.SequenceStepToDelete{ Sequence = 1 } }, 
+    token: ""I4LYCSV3FMGDTA9G"");"));
+
+                Log(resultDeleteSequence.CreateResponseDemo("result"));
+
+                Log(SparrowResponseSamples.ExitSample("payment-plans/delete-sequence.md", "DeleteSequence", resultDeleteSequence.IsSuccess));
             }
 
             if (!!true)

@@ -9,13 +9,6 @@ namespace SparrowSdk
         // --- Enums ---
 
 
-        public enum TransType_SaleRefundCredit
-        {
-            Sale,
-            Refund,
-            Credit
-        }
-
         public enum AchAccountType
         {
             Checking,
@@ -26,12 +19,6 @@ namespace SparrowSdk
         {
             Business,
             Personal
-        }
-
-        public enum TransType_SaleRefund
-        {
-            Sale,
-            Refund
         }
 
         public enum StopOverCode
@@ -113,8 +100,7 @@ namespace SparrowSdk
         public enum OperationType
         {
             Addsequence,
-            Updatesequence,
-            Deletesequence
+            Updatesequence
         }
 
         public enum ShipCarrier
@@ -165,6 +151,10 @@ namespace SparrowSdk
             /// Customer's last name
             /// </summary>
             public string LastName { get; set; }
+            /// <summary>
+            /// Birthdate of the customer
+            /// </summary>
+            public string BirthDate { get; set; } = "";
             /// <summary>
             /// Billing Company
             /// </summary>
@@ -228,7 +218,7 @@ namespace SparrowSdk
             /// <summary>
             /// Shipping Address
             /// </summary>
-            public Address ShippingAddress { get; set; } = null;
+            public ShippingAddress ShippingAddress { get; set; } = null;
             /// <summary>
             /// Shipping phone number, 10 digits
             /// </summary>
@@ -338,11 +328,7 @@ namespace SparrowSdk
         public class SequenceStepToDelete
         {
             /// <summary>
-            /// Addsequence will add a new sequence, whereas Updatesequence will update an existing sequence
-            /// </summary>
-            public OperationType OperationType { get; set; }
-            /// <summary>
-            /// The sequence number defines which set of payments should occur first, second third, etc; if multiple sequences are present
+            /// Sequence to be deleted
             /// </summary>
             public int Sequence { get; set; }
         }
@@ -467,6 +453,138 @@ namespace SparrowSdk
             public string Token { get; set; }
         }
 
+        public class DefaultKeys
+        {
+            /// <summary>
+            /// Merchant key of ACH account with which plan payments should be processed by default
+            /// </summary>
+            public string DefaultAchMKey { get; set; } = "";
+            /// <summary>
+            /// Merchant key of Credit Card account with which plan payments should be processed by default
+            /// </summary>
+            public string DefaultCreditCardMKey { get; set; } = "";
+            /// <summary>
+            /// Merchant key of eCheck account with which plan payments should be processed by default
+            /// </summary>
+            public string DefaultEcheckMKey { get; set; } = "";
+            /// <summary>
+            /// Merchant key of Star Card account with which plan payments should be processed by default
+            /// </summary>
+            public string DefaultStartCardMKey { get; set; } = "";
+            /// <summary>
+            /// Merchant key of eWallet account with which plan payments should be processed by default
+            /// </summary>
+            public string DefaultEwalletMKey { get; set; } = "";
+        }
+
+        public class NotificationOptions
+        {
+            /// <summary>
+            /// Sends notification emails to the client if failed payments occur
+            /// </summary>
+            public bool? NotifyFailures { get; set; } = null;
+            /// <summary>
+            /// Specifies whether to notify customer about upcoming payment
+            /// </summary>
+            public bool? NotifyUpcomingPayment { get; set; } = null;
+            /// <summary>
+            /// Number of days before notification about upcoming payment should be sent to the client. This field is required if notifyupcomingpayment = true
+            /// </summary>
+            public int? NotifyDaysBeforeUpcomingPayment { get; set; } = null;
+            /// <summary>
+            /// Specifies whether to send merchant a Summarized Plan Report
+            /// </summary>
+            public bool? NotifyPlanSummary { get; set; } = null;
+            /// <summary>
+            /// Interval of plan summary notifications. This field is required if notifyplansummary = true
+            /// </summary>
+            public NotifyPlanSummaryInterval NotifyPlanSummaryInterval { get; set; } = NotifyPlanSummaryInterval.Daily;
+            /// <summary>
+            /// Multiple addresses are separated by comma. This field is required if notifyplansummary = true
+            /// </summary>
+            public string NotifyPlanSummaryEmails { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to send merchant a Daily Plan Processing Statistics Report
+            /// </summary>
+            public bool? NotifyDailyStats { get; set; } = null;
+            /// <summary>
+            /// Multiple addresses are separated by comma. This field is required if notifydailystats = true
+            /// </summary>
+            public string NotifyDailyStatsEmails { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to notify merchant about plan completion
+            /// </summary>
+            public bool? NotifyPlanComplete { get; set; } = null;
+            /// <summary>
+            /// Multiple addresses are separated by comma. This field is required if notifyplancomplete = true
+            /// </summary>
+            public string NotifyPlanCompleteEmails { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to notify merchant about failed payments
+            /// </summary>
+            public bool? NotifyDecline { get; set; } = null;
+            /// <summary>
+            /// Multiple addresses are separated by comma. This field is required if notifydecline = true
+            /// </summary>
+            public string NotifyDeclineEmails { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to transfer transaction file via ftp
+            /// </summary>
+            public bool? NotifyViaFtp { get; set; } = null;
+            /// <summary>
+            /// FTP address on which transaction file is transferred. This field is required if notifyviaftp = true
+            /// </summary>
+            public bool? NotifyViaFtpUrl { get; set; } = null;
+            /// <summary>
+            /// Username to access FTP address. This field is required if notifyviaftp = true
+            /// </summary>
+            public string NotifyViaFtpUserName { get; set; } = "";
+            /// <summary>
+            /// Password to access FTP address. This field is required if notifyviaftp = true
+            /// </summary>
+            public string NotifyViaFtpPassword { get; set; } = "";
+            /// <summary>
+            /// Specifies whether to notify merchant about flagged for review payments
+            /// </summary>
+            public bool? NotifyFlagged { get; set; } = null;
+            /// <summary>
+            /// Multiple addresses are separated by comma. This field is required if notifyflagged = true
+            /// </summary>
+            public string NotifyFlaggedEmails { get; set; } = "";
+        }
+
+        public class SendTransReceiptOptions
+        {
+            /// <summary>
+            /// Send multiple transaction receipts to customers. Multiple email must be separated by commas.
+            /// </summary>
+            public string SendTransReceiptToEmails { get; set; } = "";
+            /// <summary>
+            /// If true, this will send a transaction receipt to the billing email if present
+            /// </summary>
+            public bool? SendTransReceiptToBillEmail { get; set; } = null;
+            /// <summary>
+            /// If true, this will send a transaction receipt to the shipping email if present
+            /// </summary>
+            public bool? SendTransReceiptToShipEmail { get; set; } = null;
+        }
+
+        public class DriversLicense
+        {
+            /// <summary>
+            /// Drivers license number, 1-50 alphanumeric characters
+            /// </summary>
+            public string DriverLicenseNumber { get; set; } = "";
+            /// <summary>
+            /// Drivers license country
+            /// </summary>
+            public string DriverLicenseCountry { get; set; } = "";
+            /// <summary>
+            /// Drivers license state
+            /// </summary>
+            public string DriverLicenseState { get; set; } = "";
+        }
+
 
         // --- Content ---
 
@@ -476,52 +594,48 @@ namespace SparrowSdk
         /// <remarks>
         /// ach/advanced-echeck-sale.md - Advanced eCheck
         /// </remarks>
-        /// <param name="transType">sale- transaction sale, refund- transaction refund, credit- transaction credit (Format: [sale|refund|credit])</param>,
+        /// <param name="transType">Sale Transaction (Format: sale)</param>,
         /// <param name="mKey">Secured merchant account key</param>,
         /// <param name="amount">Total amount to be charged (Format: d.dd)</param>,
         /// <param name="orderDesc">Order Description</param>,
         /// <param name="orderId">Order ID</param>,
         /// <param name="saveClient">If parameter 'saveclient' = true and the customer is identified as new, then a new Data Vault client will be created with payment/contact info from the transaction data and DV token will be generated. The payment transaction will be assigned to this new DV client. (Format: true/false)</param>,
         /// <param name="updateClient">If the parameter 'updateclient' = true and the DataVault finds the client according to customer identification rules, then the payment transaction will be assigned to the DataVault client and the DataVault client payment/contact info will be updated according to the transaction's data. (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToBillEmail">If true, this will send a transaction receipt to the billing email if present (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToShipEmail">If true, this will send a transaction receipt to the shipping email if present (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToEmails">Send multiple transaction receipts to customers. Multiple email must be separated by commas. (Format: email@email.com)</param>,
         /// <param name="bankAccount">BankAccount</param>,
         /// <param name="contactInfo">ContactInfo</param>,
-        /// <param name="shippingContactInfo">ContactInfo</param>,
-        /// <param name="optionalAmount">OptionalAmount</param>
-        public async Task<SparrowResponse> AdvancedECheck(TransType_SaleRefundCredit transType, BankAccount bankAccount, decimal amount, ContactInfo contactInfo, ContactInfo shippingContactInfo = null, string orderDesc = "", string orderId = "", bool? saveClient = null, bool? updateClient = null, IList<OptionalAmount> optionalAmount = null, bool? sendTransReceiptToBillEmail = null, bool? sendTransReceiptToShipEmail = null, string sendTransReceiptToEmails = "")
+        /// <param name="shippingContactInfo">ShippingContactInfo</param>,
+        /// <param name="optionalAmount">OptionalAmount</param>,
+        /// <param name="sendTransReceiptOptions">SendTransReceiptOptions</param>
+        public async Task<SparrowResponse> AdvancedECheck(BankAccount bankAccount, decimal amount, ContactInfo contactInfo, ShippingContactInfo shippingContactInfo = null, string orderDesc = "", string orderId = "", bool? saveClient = null, bool? updateClient = null, IList<OptionalAmount> optionalAmount = null, SendTransReceiptOptions sendTransReceiptOptions = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", EnumToString(transType) },
-                { "mkey", _apiKey },
+                { "transType", "sale" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") },
-                { "orderdesc", orderDesc },
-                { "orderid", orderId },
-                { "saveclient", saveClient == true ? "true" : "false" },
-                { "updateclient", updateClient == true ? "true" : "false" },
-                { "sendtransreceipttobillemail", sendTransReceiptToBillEmail == true ? "true" : "false" },
-                { "sendtransreceipttoshipemail", sendTransReceiptToShipEmail == true ? "true" : "false" },
-                { "sendtransreceipttoemails", sendTransReceiptToEmails }
+                { "orderDesc", orderDesc },
+                { "orderId", orderId },
+                { "saveClient", saveClient == true ? "true" : "false" },
+                { "updateClient", updateClient == true ? "true" : "false" }
             };
 
 
             if (bankAccount != null)
             {
                 var x = bankAccount;
-                data.Add("bankname", x.BankName);
+                data.Add("bankName", x.BankName);
                 data.Add("routing", x.Routing);
                 data.Add("account", x.Account);
-                data.Add("achaccounttype", EnumToString(x.AchAccountType));
-                data.Add("achaccountsubtype", EnumToString(x.AchAccountSubType));
+                data.Add("achAccountType", EnumToString(x.AchAccountType));
+                data.Add("achAccountSubType", EnumToString(x.AchAccountSubType));
             }
 
             if (contactInfo != null)
             {
                 var x = contactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
+                data.Add("firstName", x.FirstName);
+                data.Add("lastName", x.LastName);
+                data.Add("birthDate", x.BirthDate);
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -536,17 +650,17 @@ namespace SparrowSdk
             if (shippingContactInfo != null)
             {
                 var x = shippingContactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
-                data.Add("company", x.Company);
-                data.Add("address1", x.Address?.Address1);
-                data.Add("city", x.Address?.City);
-                data.Add("state", x.Address?.State);
-                data.Add("zip", x.Address?.Zip);
-                data.Add("country", x.Address?.Country);
-                data.Add("address2", x.Address?.Address2);
-                data.Add("phone", x.Phone);
-                data.Add("email", x.Email);
+                data.Add("shipFirstName", x.ShipFirstName);
+                data.Add("shipLastName", x.ShipLastName);
+                data.Add("shipCompany", x.ShipCompany);
+                data.Add("shipAddress1", x.ShippingAddress?.ShipAddress1);
+                data.Add("shipCity", x.ShippingAddress?.ShipCity);
+                data.Add("shipState", x.ShippingAddress?.ShipState);
+                data.Add("shipZip", x.ShippingAddress?.ShipZip);
+                data.Add("shipCountry", x.ShippingAddress?.ShipCountry);
+                data.Add("shipAddress2", x.ShippingAddress?.ShipAddress2);
+                data.Add("shipPhone", x.ShipPhone);
+                data.Add("shipEmail", x.ShipEmail);
             }
 
             if (optionalAmount != null)
@@ -554,10 +668,18 @@ namespace SparrowSdk
                 for (int i = 0; i < optionalAmount.Count; i++)
                 {
                     var x = optionalAmount[i];
-                    data.Add("opt_amount_type_" + (i + 1), x.OptAmountType);
-                    data.Add("opt_amount_value_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
-                    data.Add("opt_amount_percentage_" + (i + 1), x.OptAmountPercentage);
+                    data.Add("optAmountType_" + (i + 1), x.OptAmountType);
+                    data.Add("optAmountValue_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
+                    data.Add("optAmountPercentage_" + (i + 1), x.OptAmountPercentage);
                 }
+            }
+
+            if (sendTransReceiptOptions != null)
+            {
+                var x = sendTransReceiptOptions;
+                data.Add("sendTransReceiptToEmails", x.SendTransReceiptToEmails);
+                data.Add("sendTransReceiptToBillEmail", x.SendTransReceiptToBillEmail == true ? "true" : "false");
+                data.Add("sendTransReceiptToShipEmail", x.SendTransReceiptToShipEmail == true ? "true" : "false");
             }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
@@ -572,64 +694,53 @@ namespace SparrowSdk
         /// <remarks>
         /// ach/advanced-sale.md - Advanced ACH
         /// </remarks>
-        /// <param name="transType">sale- transaction sale, refund- transaction refund, credit- transaction credit (Format: [sale|refund|credit])</param>,
+        /// <param name="transType">Sale Transaction (Format: sale)</param>,
         /// <param name="mKey">Secured merchant account key</param>,
         /// <param name="amount">Total amount to be charged (Format: d.dd)</param>,
         /// <param name="orderDesc">Order Description</param>,
         /// <param name="orderId">Order ID</param>,
         /// <param name="saveClient">If parameter 'saveclient' = true and the customer is identified as new, then a new Data Vault client will be created with payment/contact info from the transaction data and DV token will be generated. The payment transaction will be assigned to this new DV client. (Format: true/false)</param>,
         /// <param name="updateClient">If the parameter 'updateclient' = true and the DataVault finds the client according to customer identification rules, then the payment transaction will be assigned to the DataVault client and the DataVault client payment/contact info will be updated according to the transaction's data. (Format: true/false)</param>,
-        /// <param name="birthDate">Birthdate of the customer (Format: MM/DD/YYYY)</param>,
         /// <param name="checkNumber">Check number. 1-15 alphanumeric characters</param>,
-        /// <param name="driverLicenseNumber">Drivers license number, 1-50 alphanumeric characters</param>,
-        /// <param name="driverLicenseCountry">Drivers license country (Format: cc)</param>,
-        /// <param name="driverLicenseState">Drivers license state (Format: cc)</param>,
         /// <param name="courtesyCardId">This field is optional only for GETI ACH, for other processors can be ignored. From 1 to 50 characters. (Format: [a-z, A-Z, 0-9])</param>,
-        /// <param name="sendTransReceiptToBillEmail">If true, this will send a transaction receipt to the billing email if present (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToShipEmail">If true, this will send a transaction receipt to the shipping email if present (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToEmails">Send multiple transaction receipts to customers. Multiple email must be separated by commas. (Format: email@email.com)</param>,
         /// <param name="bankAccount">BankAccount</param>,
         /// <param name="contactInfo">ContactInfo</param>,
-        /// <param name="shippingContactInfo">ContactInfo</param>,
-        /// <param name="optionalAmount">OptionalAmount</param>
-        public async Task<SparrowResponse> AdvancedACH(TransType_SaleRefundCredit transType, BankAccount bankAccount, decimal amount, ContactInfo contactInfo, string orderDesc = "", string orderId = "", ContactInfo shippingContactInfo = null, bool? saveClient = null, bool? updateClient = null, IList<OptionalAmount> optionalAmount = null, string birthDate = "", string checkNumber = "", string driverLicenseNumber = "", string driverLicenseCountry = "", string driverLicenseState = "", string courtesyCardId = "", bool? sendTransReceiptToBillEmail = null, bool? sendTransReceiptToShipEmail = null, string sendTransReceiptToEmails = "")
+        /// <param name="shippingContactInfo">ShippingContactInfo</param>,
+        /// <param name="optionalAmount">OptionalAmount</param>,
+        /// <param name="driversLicense">DriversLicense</param>,
+        /// <param name="sendTransReceiptOptions">SendTransReceiptOptions</param>
+        public async Task<SparrowResponse> AdvancedACH(BankAccount bankAccount, decimal amount, ContactInfo contactInfo, string orderDesc = "", string orderId = "", ShippingContactInfo shippingContactInfo = null, bool? saveClient = null, bool? updateClient = null, IList<OptionalAmount> optionalAmount = null, string checkNumber = "", DriversLicense driversLicense = null, string courtesyCardId = "", SendTransReceiptOptions sendTransReceiptOptions = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", EnumToString(transType) },
-                { "mkey", _apiKey },
+                { "transType", "sale" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") },
-                { "orderdesc", orderDesc },
-                { "orderid", orderId },
-                { "saveclient", saveClient == true ? "true" : "false" },
-                { "updateclient", updateClient == true ? "true" : "false" },
-                { "birthdate", birthDate },
-                { "checknumber", checkNumber },
-                { "driverlicensenumber", driverLicenseNumber },
-                { "driverlicensecountry", driverLicenseCountry },
-                { "driverlicensestate", driverLicenseState },
-                { "courtesycardid", courtesyCardId },
-                { "sendtransreceipttobillemail", sendTransReceiptToBillEmail == true ? "true" : "false" },
-                { "sendtransreceipttoshipemail", sendTransReceiptToShipEmail == true ? "true" : "false" },
-                { "sendtransreceipttoemails", sendTransReceiptToEmails }
+                { "orderDesc", orderDesc },
+                { "orderId", orderId },
+                { "saveClient", saveClient == true ? "true" : "false" },
+                { "updateClient", updateClient == true ? "true" : "false" },
+                { "checkNumber", checkNumber },
+                { "courtesyCardId", courtesyCardId }
             };
 
 
             if (bankAccount != null)
             {
                 var x = bankAccount;
-                data.Add("bankname", x.BankName);
+                data.Add("bankName", x.BankName);
                 data.Add("routing", x.Routing);
                 data.Add("account", x.Account);
-                data.Add("achaccounttype", EnumToString(x.AchAccountType));
-                data.Add("achaccountsubtype", EnumToString(x.AchAccountSubType));
+                data.Add("achAccountType", EnumToString(x.AchAccountType));
+                data.Add("achAccountSubType", EnumToString(x.AchAccountSubType));
             }
 
             if (contactInfo != null)
             {
                 var x = contactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
+                data.Add("firstName", x.FirstName);
+                data.Add("lastName", x.LastName);
+                data.Add("birthDate", x.BirthDate);
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -644,17 +755,17 @@ namespace SparrowSdk
             if (shippingContactInfo != null)
             {
                 var x = shippingContactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
-                data.Add("company", x.Company);
-                data.Add("address1", x.Address?.Address1);
-                data.Add("city", x.Address?.City);
-                data.Add("state", x.Address?.State);
-                data.Add("zip", x.Address?.Zip);
-                data.Add("country", x.Address?.Country);
-                data.Add("address2", x.Address?.Address2);
-                data.Add("phone", x.Phone);
-                data.Add("email", x.Email);
+                data.Add("shipFirstName", x.ShipFirstName);
+                data.Add("shipLastName", x.ShipLastName);
+                data.Add("shipCompany", x.ShipCompany);
+                data.Add("shipAddress1", x.ShippingAddress?.ShipAddress1);
+                data.Add("shipCity", x.ShippingAddress?.ShipCity);
+                data.Add("shipState", x.ShippingAddress?.ShipState);
+                data.Add("shipZip", x.ShippingAddress?.ShipZip);
+                data.Add("shipCountry", x.ShippingAddress?.ShipCountry);
+                data.Add("shipAddress2", x.ShippingAddress?.ShipAddress2);
+                data.Add("shipPhone", x.ShipPhone);
+                data.Add("shipEmail", x.ShipEmail);
             }
 
             if (optionalAmount != null)
@@ -662,10 +773,26 @@ namespace SparrowSdk
                 for (int i = 0; i < optionalAmount.Count; i++)
                 {
                     var x = optionalAmount[i];
-                    data.Add("opt_amount_type_" + (i + 1), x.OptAmountType);
-                    data.Add("opt_amount_value_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
-                    data.Add("opt_amount_percentage_" + (i + 1), x.OptAmountPercentage);
+                    data.Add("optAmountType_" + (i + 1), x.OptAmountType);
+                    data.Add("optAmountValue_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
+                    data.Add("optAmountPercentage_" + (i + 1), x.OptAmountPercentage);
                 }
+            }
+
+            if (driversLicense != null)
+            {
+                var x = driversLicense;
+                data.Add("driverLicenseNumber", x.DriverLicenseNumber);
+                data.Add("driverLicenseCountry", x.DriverLicenseCountry);
+                data.Add("driverLicenseState", x.DriverLicenseState);
+            }
+
+            if (sendTransReceiptOptions != null)
+            {
+                var x = sendTransReceiptOptions;
+                data.Add("sendTransReceiptToEmails", x.SendTransReceiptToEmails);
+                data.Add("sendTransReceiptToBillEmail", x.SendTransReceiptToBillEmail == true ? "true" : "false");
+                data.Add("sendTransReceiptToShipEmail", x.SendTransReceiptToShipEmail == true ? "true" : "false");
             }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
@@ -680,17 +807,17 @@ namespace SparrowSdk
         /// <remarks>
         /// ach/simple-ach.md - Simple ACH
         /// </remarks>
-        /// <param name="transType">sale- transaction sale, refund- transaction refund, credit- transaction credit (Format: [sale|refund|credit])</param>,
+        /// <param name="transType">Sale Transaction (Format: sale)</param>,
         /// <param name="mKey">Secured merchant account key</param>,
         /// <param name="amount">Total amount to be charged (Format: d.dd)</param>,
         /// <param name="bankAccount">BankAccount</param>,
         /// <param name="contactInfo">ContactInfo</param>
-        public async Task<SparrowResponse> SimpleACH(TransType_SaleRefundCredit transType, BankAccount bankAccount, decimal amount, ContactInfo contactInfo)
+        public async Task<SparrowResponse> SimpleACH(BankAccount bankAccount, decimal amount, ContactInfo contactInfo)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", EnumToString(transType) },
-                { "mkey", _apiKey },
+                { "transType", "sale" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") }
             };
 
@@ -698,18 +825,19 @@ namespace SparrowSdk
             if (bankAccount != null)
             {
                 var x = bankAccount;
-                data.Add("bankname", x.BankName);
+                data.Add("bankName", x.BankName);
                 data.Add("routing", x.Routing);
                 data.Add("account", x.Account);
-                data.Add("achaccounttype", EnumToString(x.AchAccountType));
-                data.Add("achaccountsubtype", EnumToString(x.AchAccountSubType));
+                data.Add("achAccountType", EnumToString(x.AchAccountType));
+                data.Add("achAccountSubType", EnumToString(x.AchAccountSubType));
             }
 
             if (contactInfo != null)
             {
                 var x = contactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
+                data.Add("firstName", x.FirstName);
+                data.Add("lastName", x.LastName);
+                data.Add("birthDate", x.BirthDate);
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -733,17 +861,17 @@ namespace SparrowSdk
         /// <remarks>
         /// ach/simple-echeck.md - Simple eCheck
         /// </remarks>
-        /// <param name="transType">sale- transaction sale, refund- transaction refund (Format: [sale|refund])</param>,
+        /// <param name="transType">Sale Transaction (Format: sale)</param>,
         /// <param name="mKey">Secured merchant account key</param>,
         /// <param name="amount">Total amount to be charged (Format: d.dd)</param>,
         /// <param name="bankAccount">BankAccount</param>,
         /// <param name="contactInfo">ContactInfo</param>
-        public async Task<SparrowResponse> SimpleECheck(TransType_SaleRefund transType, BankAccount bankAccount, decimal amount, ContactInfo contactInfo)
+        public async Task<SparrowResponse> SimpleECheck(BankAccount bankAccount, decimal amount, ContactInfo contactInfo)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", EnumToString(transType) },
-                { "mkey", _apiKey },
+                { "transType", "sale" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") }
             };
 
@@ -751,18 +879,19 @@ namespace SparrowSdk
             if (bankAccount != null)
             {
                 var x = bankAccount;
-                data.Add("bankname", x.BankName);
+                data.Add("bankName", x.BankName);
                 data.Add("routing", x.Routing);
                 data.Add("account", x.Account);
-                data.Add("achaccounttype", EnumToString(x.AchAccountType));
-                data.Add("achaccountsubtype", EnumToString(x.AchAccountSubType));
+                data.Add("achAccountType", EnumToString(x.AchAccountType));
+                data.Add("achAccountSubType", EnumToString(x.AchAccountSubType));
             }
 
             if (contactInfo != null)
             {
                 var x = contactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
+                data.Add("firstName", x.FirstName);
+                data.Add("lastName", x.LastName);
+                data.Add("birthDate", x.BirthDate);
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -790,14 +919,14 @@ namespace SparrowSdk
         /// <param name="mKey">secured merchant account key</param>,
         /// <param name="amount">Total amount to be charged (ie. 10.00) (Format: d.dd)</param>,
         /// <param name="passengerName">First and last name of the passenger, 1-20 characters (Format: [a-z, A-Z, 0-9, ‘ ’])</param>,
-        /// <param name="stopOverCode"> (stopovercode1 stopovercode2 stopovercode3 stopovercode4 stopovercode5 Format: [ |O|X])</param>,
-        /// <param name="airportCode">Airport Codes, 3 characters (airportcode# Format: [a-z, A-Z, 0-9])</param>,
-        /// <param name="carrierCoupon">2 characters (carriercoupon# Format: [a-z, A-Z, 0-9])</param>,
+        /// <param name="stopOverCode"> (Format: [ |O|X])</param>,
+        /// <param name="airportCode">Airport Codes, 3 characters (Format: [a-z, A-Z, 0-9])</param>,
+        /// <param name="carrierCoupon">2 characters (Format: [a-z, A-Z, 0-9])</param>,
         /// <param name="airlineCodeNumber">3 characters (Format: [a-z, A-Z, 0-9])</param>,
         /// <param name="ticketNumber">10 characters (Format: [0-9])</param>,
-        /// <param name="classOfServiceCoupon">1 or 2 characters (classofservicecoupon# Format: [a-z, A-Z, 0-9])</param>,
-        /// <param name="flightDateCoupon">Departure date (flightdatecoupon# Format: MM/DD/YYYY)</param>,
-        /// <param name="flightDepartureTimeCoupon">Departure time (flightdeparturetimecoupon# Format: HH:mm (military))</param>,
+        /// <param name="classOfServiceCoupon">1 or 2 characters (Format: [a-z, A-Z, 0-9])</param>,
+        /// <param name="flightDateCoupon">Departure date (Format: MM/DD/YYYY)</param>,
+        /// <param name="flightDepartureTimeCoupon">Departure time (Format: HH:mm (military))</param>,
         /// <param name="addressVerificationCode">1 character (Format: [a-z, A-Z, 0-9])</param>,
         /// <param name="approvalCode">6 characters (Format: [a-z, A-Z, 0-9])</param>,
         /// <param name="transactionId">The field must be forwarded when sent from TSYS, or manually filled with zeros. 15 characters (Format: [a-z, A-Z, 0-9])</param>,
@@ -810,20 +939,20 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "passengersale" },
-                { "mkey", _apiKey },
+                { "transType", "passengersale" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") },
-                { "passengername", passengerName },
-                { "stopovercode", EnumToString(stopOverCode) },
-                { "airlinecodenumber", airlineCodeNumber },
-                { "ticketnumber", ticketNumber },
-                { "addressverificationcode", addressVerificationCode },
-                { "approvalcode", approvalCode },
-                { "transactionid", transactionId },
-                { "authcharindicator", EnumToString(authCharIndicator) },
-                { "referencenumber", referenceNumber },
-                { "validationcode", validationCode },
-                { "authresponsecode", authResponseCode }
+                { "passengerName", passengerName },
+                { "stopOverCode", EnumToString(stopOverCode) },
+                { "airlineCodeNumber", airlineCodeNumber },
+                { "ticketNumber", ticketNumber },
+                { "addressVerificationCode", addressVerificationCode },
+                { "approvalCode", approvalCode },
+                { "transactionId", transactionId },
+                { "authCharIndicator", EnumToString(authCharIndicator) },
+                { "referenceNumber", referenceNumber },
+                { "validationCode", validationCode },
+                { "authResponseCode", authResponseCode }
             };
 
 
@@ -870,8 +999,8 @@ namespace SparrowSdk
             if (creditCard != null)
             {
                 var x = creditCard;
-                data.Add("cardnum", x.CardNum);
-                data.Add("cardexp", x.CardExp);
+                data.Add("cardNum", x.CardNum);
+                data.Add("cardExp", x.CardExp);
                 data.Add("cvv", x.Cvv);
             }
 
@@ -894,9 +1023,9 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "balanceinquire" },
-                { "mkey", _apiKey },
-                { "cardnum", cardNum }
+                { "transType", "balanceinquire" },
+                { "mKey", _apiKey },
+                { "cardNum", cardNum }
             };
 
 
@@ -921,8 +1050,8 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "auth" },
-                { "mkey", _apiKey },
+                { "transType", "auth" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") },
                 { "zip", zip }
             };
@@ -931,8 +1060,8 @@ namespace SparrowSdk
             if (creditCard != null)
             {
                 var x = creditCard;
-                data.Add("cardnum", x.CardNum);
-                data.Add("cardexp", x.CardExp);
+                data.Add("cardNum", x.CardNum);
+                data.Add("cardExp", x.CardExp);
                 data.Add("cvv", x.Cvv);
             }
 
@@ -956,9 +1085,9 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "chargeback" },
-                { "mkey", _apiKey },
-                { "transid", transId },
+                { "transType", "chargeback" },
+                { "mKey", _apiKey },
+                { "transId", transId },
                 { "reason", reason }
             };
 
@@ -983,8 +1112,8 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "credit" },
-                { "mkey", _apiKey },
+                { "transType", "credit" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") }
             };
 
@@ -992,8 +1121,8 @@ namespace SparrowSdk
             if (creditCard != null)
             {
                 var x = creditCard;
-                data.Add("cardnum", x.CardNum);
-                data.Add("cardexp", x.CardExp);
+                data.Add("cardNum", x.CardNum);
+                data.Add("cardExp", x.CardExp);
                 data.Add("cvv", x.Cvv);
             }
 
@@ -1020,9 +1149,6 @@ namespace SparrowSdk
         /// <param name="shipAmount">Total shipping amount (Format: d.dd)</param>,
         /// <param name="poNumber">Original Purchase Order</param>,
         /// <param name="fax">Billing fax number</param>,
-        /// <param name="sendTransReceiptToBillEmail">If true receipt will be sent to email from Billing Information if email is specified (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToShipEmail">If true receipt will be sent to email from Shipping Information if email is specified (sendtransreceipttoshippemail Format: true/false)</param>,
-        /// <param name="sendTransReceiptToEmails">Send multiple transaction receipts to customers. Multiple email must be separated by commas. (Format: email@email.com)</param>,
         /// <param name="token">Customer or customer payment info unique identifier. (Format: [A-Z, 0-9])</param>,
         /// <param name="saveClient">If parameter 'saveclient' = true and the customer is identified as new, then a new Data Vault client will be created with payment/contact info from the transaction data and DV token will be generated. The payment transaction will be assigned to this new DV client. (Format: true / false)</param>,
         /// <param name="updateClient">If the parameter 'updateclient' = true and the DataVault finds the client according to customer identification rules, then the payment transaction will be assigned to the DataVault client and the DataVault client payment/contact info will be updated according to the transaction's data. (Format: true / false)</param>,
@@ -1032,48 +1158,47 @@ namespace SparrowSdk
         /// <param name="creditCard">CreditCard</param>,
         /// <param name="contactInfo">ContactInfo</param>,
         /// <param name="product">Product</param>,
-        /// <param name="shippingContactInfo">ContactInfo</param>,
-        /// <param name="optionalAmount">OptionalAmount</param>
-        public async Task<SparrowResponse> AdvancedSale(CreditCard creditCard, decimal amount, string currency = "", ContactInfo contactInfo = null, IList<Product> product = null, string orderDesc = "", string orderId = "", string cardIpAddress = "", decimal? tax = null, decimal? shipAmount = null, string poNumber = "", string fax = "", ContactInfo shippingContactInfo = null, IList<OptionalAmount> optionalAmount = null, bool? sendTransReceiptToBillEmail = null, bool? sendTransReceiptToShipEmail = null, string sendTransReceiptToEmails = "", string token = "", bool? saveClient = null, bool? updateClient = null, string groupId = "", bool? pinlessDebitIndicator = null, bool? sendPaymentDesc = null)
+        /// <param name="shippingContactInfo">ShippingContactInfo</param>,
+        /// <param name="optionalAmount">OptionalAmount</param>,
+        /// <param name="sendTransReceiptOptions">SendTransReceiptOptions</param>
+        public async Task<SparrowResponse> AdvancedSale(CreditCard creditCard, decimal amount, string currency = "", ContactInfo contactInfo = null, IList<Product> product = null, string orderDesc = "", string orderId = "", string cardIpAddress = "", decimal? tax = null, decimal? shipAmount = null, string poNumber = "", string fax = "", ShippingContactInfo shippingContactInfo = null, IList<OptionalAmount> optionalAmount = null, SendTransReceiptOptions sendTransReceiptOptions = null, string token = "", bool? saveClient = null, bool? updateClient = null, string groupId = "", bool? pinlessDebitIndicator = null, bool? sendPaymentDesc = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "sale" },
-                { "mkey", _apiKey },
+                { "transType", "sale" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") },
                 { "currency", currency },
-                { "orderdesc", orderDesc },
-                { "orderid", orderId },
-                { "cardipaddress", cardIpAddress },
+                { "orderDesc", orderDesc },
+                { "orderId", orderId },
+                { "cardIpAddress", cardIpAddress },
                 { "tax", tax?.ToString("f2") ?? "" },
-                { "shipamount", shipAmount?.ToString("f2") ?? "" },
-                { "ponumber", poNumber },
+                { "shipAmount", shipAmount?.ToString("f2") ?? "" },
+                { "poNumber", poNumber },
                 { "fax", fax },
-                { "sendtransreceipttobillemail", sendTransReceiptToBillEmail == true ? "true" : "false" },
-                { "sendtransreceipttoshippemail", sendTransReceiptToShipEmail == true ? "true" : "false" },
-                { "sendtransreceipttoemails", sendTransReceiptToEmails },
                 { "token", token },
-                { "saveclient", saveClient == true ? "true" : "false" },
-                { "updateclient", updateClient == true ? "true" : "false" },
-                { "groupid", groupId },
-                { "pinlessdebitindicator", pinlessDebitIndicator == true ? "true" : "false" },
-                { "sendpaymentdesc", sendPaymentDesc == true ? "true" : "false" }
+                { "saveClient", saveClient == true ? "true" : "false" },
+                { "updateClient", updateClient == true ? "true" : "false" },
+                { "groupId", groupId },
+                { "pinlessDebitIndicator", pinlessDebitIndicator == true ? "true" : "false" },
+                { "sendPaymentDesc", sendPaymentDesc == true ? "true" : "false" }
             };
 
 
             if (creditCard != null)
             {
                 var x = creditCard;
-                data.Add("cardnum", x.CardNum);
-                data.Add("cardexp", x.CardExp);
+                data.Add("cardNum", x.CardNum);
+                data.Add("cardExp", x.CardExp);
                 data.Add("cvv", x.Cvv);
             }
 
             if (contactInfo != null)
             {
                 var x = contactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
+                data.Add("firstName", x.FirstName);
+                data.Add("lastName", x.LastName);
+                data.Add("birthDate", x.BirthDate);
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -1090,7 +1215,7 @@ namespace SparrowSdk
                 for (int i = 0; i < product.Count; i++)
                 {
                     var x = product[i];
-                    data.Add("skunumber_" + (i + 1), x.SkuNumber);
+                    data.Add("skuNumber_" + (i + 1), x.SkuNumber);
                     data.Add("description_" + (i + 1), x.Description);
                     data.Add("amount_" + (i + 1), x.Amount?.ToString("f2") ?? "");
                     data.Add("quantity_" + (i + 1), "" + x.Quantity);
@@ -1100,17 +1225,17 @@ namespace SparrowSdk
             if (shippingContactInfo != null)
             {
                 var x = shippingContactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
-                data.Add("company", x.Company);
-                data.Add("address1", x.Address?.Address1);
-                data.Add("city", x.Address?.City);
-                data.Add("state", x.Address?.State);
-                data.Add("zip", x.Address?.Zip);
-                data.Add("country", x.Address?.Country);
-                data.Add("address2", x.Address?.Address2);
-                data.Add("phone", x.Phone);
-                data.Add("email", x.Email);
+                data.Add("shipFirstName", x.ShipFirstName);
+                data.Add("shipLastName", x.ShipLastName);
+                data.Add("shipCompany", x.ShipCompany);
+                data.Add("shipAddress1", x.ShippingAddress?.ShipAddress1);
+                data.Add("shipCity", x.ShippingAddress?.ShipCity);
+                data.Add("shipState", x.ShippingAddress?.ShipState);
+                data.Add("shipZip", x.ShippingAddress?.ShipZip);
+                data.Add("shipCountry", x.ShippingAddress?.ShipCountry);
+                data.Add("shipAddress2", x.ShippingAddress?.ShipAddress2);
+                data.Add("shipPhone", x.ShipPhone);
+                data.Add("shipEmail", x.ShipEmail);
             }
 
             if (optionalAmount != null)
@@ -1118,10 +1243,18 @@ namespace SparrowSdk
                 for (int i = 0; i < optionalAmount.Count; i++)
                 {
                     var x = optionalAmount[i];
-                    data.Add("opt_amount_type_" + (i + 1), x.OptAmountType);
-                    data.Add("opt_amount_value_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
-                    data.Add("opt_amount_percentage_" + (i + 1), x.OptAmountPercentage);
+                    data.Add("optAmountType_" + (i + 1), x.OptAmountType);
+                    data.Add("optAmountValue_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
+                    data.Add("optAmountPercentage_" + (i + 1), x.OptAmountPercentage);
                 }
+            }
+
+            if (sendTransReceiptOptions != null)
+            {
+                var x = sendTransReceiptOptions;
+                data.Add("sendTransReceiptToEmails", x.SendTransReceiptToEmails);
+                data.Add("sendTransReceiptToBillEmail", x.SendTransReceiptToBillEmail == true ? "true" : "false");
+                data.Add("sendTransReceiptToShipEmail", x.SendTransReceiptToShipEmail == true ? "true" : "false");
             }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
@@ -1144,8 +1277,8 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "sale" },
-                { "mkey", _apiKey },
+                { "transType", "sale" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") }
             };
 
@@ -1153,8 +1286,8 @@ namespace SparrowSdk
             if (creditCard != null)
             {
                 var x = creditCard;
-                data.Add("cardnum", x.CardNum);
-                data.Add("cardexp", x.CardExp);
+                data.Add("cardNum", x.CardNum);
+                data.Add("cardExp", x.CardExp);
                 data.Add("cvv", x.Cvv);
             }
 
@@ -1178,8 +1311,8 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "updatecustomer" },
+                { "mKey", _apiKey },
+                { "transType", "updatecustomer" },
                 { "token", token }
             };
 
@@ -1189,11 +1322,11 @@ namespace SparrowSdk
                 for (int i = 0; i < paymentTypeToAdd.Count; i++)
                 {
                     var x = paymentTypeToAdd[i];
-                    data.Add("operationtype_" + (i + 1), "addpaytype");
-                    data.Add("paytype_" + (i + 1), EnumToString(x.PaymentType?.PayType));
-                    data.Add("payno_" + (i + 1), "" + x.PaymentType?.PayNo);
-                    data.Add("firstname_" + (i + 1), x.PaymentType?.ContactInfo?.FirstName);
-                    data.Add("lastname_" + (i + 1), x.PaymentType?.ContactInfo?.LastName);
+                    data.Add("operationType_" + (i + 1), "addpaytype");
+                    data.Add("payType_" + (i + 1), EnumToString(x.PaymentType?.PayType));
+                    data.Add("payNo_" + (i + 1), "" + x.PaymentType?.PayNo);
+                    data.Add("firstName_" + (i + 1), x.PaymentType?.ContactInfo?.FirstName);
+                    data.Add("lastName_" + (i + 1), x.PaymentType?.ContactInfo?.LastName);
                     data.Add("company_" + (i + 1), x.PaymentType?.ContactInfo?.Company);
                     data.Add("address1_" + (i + 1), x.PaymentType?.ContactInfo?.Address?.Address1);
                     data.Add("city_" + (i + 1), x.PaymentType?.ContactInfo?.Address?.City);
@@ -1203,16 +1336,16 @@ namespace SparrowSdk
                     data.Add("address2_" + (i + 1), x.PaymentType?.ContactInfo?.Address?.Address2);
                     data.Add("phone_" + (i + 1), x.PaymentType?.ContactInfo?.Phone);
                     data.Add("email_" + (i + 1), x.PaymentType?.ContactInfo?.Email);
-                    data.Add("cardnum_" + (i + 1), x.PaymentType?.CreditCard?.CardNum);
-                    data.Add("cardexp_" + (i + 1), x.PaymentType?.CreditCard?.CardExp);
+                    data.Add("cardNum_" + (i + 1), x.PaymentType?.CreditCard?.CardNum);
+                    data.Add("cardExp_" + (i + 1), x.PaymentType?.CreditCard?.CardExp);
                     data.Add("cvv_" + (i + 1), x.PaymentType?.CreditCard?.Cvv);
-                    data.Add("bankname_" + (i + 1), x.PaymentType?.BankAccount?.BankName);
+                    data.Add("bankName_" + (i + 1), x.PaymentType?.BankAccount?.BankName);
                     data.Add("routing_" + (i + 1), x.PaymentType?.BankAccount?.Routing);
                     data.Add("account_" + (i + 1), x.PaymentType?.BankAccount?.Account);
-                    data.Add("achaccounttype_" + (i + 1), EnumToString(x.PaymentType?.BankAccount?.AchAccountType));
-                    data.Add("achaccountsubtype_" + (i + 1), EnumToString(x.PaymentType?.BankAccount?.AchAccountSubType));
-                    data.Add("ewalletaccount_" + (i + 1), x.PaymentType?.Ewallet?.EwalletAccount);
-                    data.Add("ewallettype_" + (i + 1), "paypal");
+                    data.Add("achAccountType_" + (i + 1), EnumToString(x.PaymentType?.BankAccount?.AchAccountType));
+                    data.Add("achAccountSubType_" + (i + 1), EnumToString(x.PaymentType?.BankAccount?.AchAccountSubType));
+                    data.Add("ewalletAccount_" + (i + 1), x.PaymentType?.Ewallet?.EwalletAccount);
+                    data.Add("ewalletType_" + (i + 1), "paypal");
                 }
             }
 
@@ -1234,16 +1367,16 @@ namespace SparrowSdk
         /// <param name="note">Customer note</param>,
         /// <param name="defaultContactInfo">ContactInfo</param>,
         /// <param name="defaultAddress">Address</param>,
-        /// <param name="shippingContactInfo">ContactInfo</param>,
+        /// <param name="shippingContactInfo">ShippingContactInfo</param>,
         /// <param name="clientAccount">ClientAccount</param>,
         /// <param name="paymentType">PaymentType</param>
-        public async Task<SparrowResponse> AddCustomer(ContactInfo defaultContactInfo, string customerId = "", string note = "", Address defaultAddress = null, ContactInfo shippingContactInfo = null, ClientAccount clientAccount = null, IList<PaymentType> paymentType = null)
+        public async Task<SparrowResponse> AddCustomer(ContactInfo defaultContactInfo, string customerId = "", string note = "", Address defaultAddress = null, ShippingContactInfo shippingContactInfo = null, ClientAccount clientAccount = null, IList<PaymentType> paymentType = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "addcustomer" },
-                { "mkey", _apiKey },
-                { "customerid", customerId },
+                { "transType", "addcustomer" },
+                { "mKey", _apiKey },
+                { "customerId", customerId },
                 { "note", note }
             };
 
@@ -1251,8 +1384,9 @@ namespace SparrowSdk
             if (defaultContactInfo != null)
             {
                 var x = defaultContactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
+                data.Add("firstName", x.FirstName);
+                data.Add("lastName", x.LastName);
+                data.Add("birthDate", x.BirthDate);
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -1278,25 +1412,25 @@ namespace SparrowSdk
             if (shippingContactInfo != null)
             {
                 var x = shippingContactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
-                data.Add("company", x.Company);
-                data.Add("address1", x.Address?.Address1);
-                data.Add("city", x.Address?.City);
-                data.Add("state", x.Address?.State);
-                data.Add("zip", x.Address?.Zip);
-                data.Add("country", x.Address?.Country);
-                data.Add("address2", x.Address?.Address2);
-                data.Add("phone", x.Phone);
-                data.Add("email", x.Email);
+                data.Add("shipFirstName", x.ShipFirstName);
+                data.Add("shipLastName", x.ShipLastName);
+                data.Add("shipCompany", x.ShipCompany);
+                data.Add("shipAddress1", x.ShippingAddress?.ShipAddress1);
+                data.Add("shipCity", x.ShippingAddress?.ShipCity);
+                data.Add("shipState", x.ShippingAddress?.ShipState);
+                data.Add("shipZip", x.ShippingAddress?.ShipZip);
+                data.Add("shipCountry", x.ShippingAddress?.ShipCountry);
+                data.Add("shipAddress2", x.ShippingAddress?.ShipAddress2);
+                data.Add("shipPhone", x.ShipPhone);
+                data.Add("shipEmail", x.ShipEmail);
             }
 
             if (clientAccount != null)
             {
                 var x = clientAccount;
-                data.Add("username", x.UserName);
+                data.Add("userName", x.UserName);
                 data.Add("password", x.Password);
-                data.Add("clientuseremail", x.ClientUserEmail);
+                data.Add("clientUserEmail", x.ClientUserEmail);
             }
 
             if (paymentType != null)
@@ -1304,10 +1438,10 @@ namespace SparrowSdk
                 for (int i = 0; i < paymentType.Count; i++)
                 {
                     var x = paymentType[i];
-                    data.Add("paytype_" + (i + 1), EnumToString(x.PayType));
-                    data.Add("payno_" + (i + 1), "" + x.PayNo);
-                    data.Add("firstname_" + (i + 1), x.ContactInfo?.FirstName);
-                    data.Add("lastname_" + (i + 1), x.ContactInfo?.LastName);
+                    data.Add("payType_" + (i + 1), EnumToString(x.PayType));
+                    data.Add("payNo_" + (i + 1), "" + x.PayNo);
+                    data.Add("firstName_" + (i + 1), x.ContactInfo?.FirstName);
+                    data.Add("lastName_" + (i + 1), x.ContactInfo?.LastName);
                     data.Add("company_" + (i + 1), x.ContactInfo?.Company);
                     data.Add("address1_" + (i + 1), x.ContactInfo?.Address?.Address1);
                     data.Add("city_" + (i + 1), x.ContactInfo?.Address?.City);
@@ -1317,16 +1451,16 @@ namespace SparrowSdk
                     data.Add("address2_" + (i + 1), x.ContactInfo?.Address?.Address2);
                     data.Add("phone_" + (i + 1), x.ContactInfo?.Phone);
                     data.Add("email_" + (i + 1), x.ContactInfo?.Email);
-                    data.Add("cardnum_" + (i + 1), x.CreditCard?.CardNum);
-                    data.Add("cardexp_" + (i + 1), x.CreditCard?.CardExp);
+                    data.Add("cardNum_" + (i + 1), x.CreditCard?.CardNum);
+                    data.Add("cardExp_" + (i + 1), x.CreditCard?.CardExp);
                     data.Add("cvv_" + (i + 1), x.CreditCard?.Cvv);
-                    data.Add("bankname_" + (i + 1), x.BankAccount?.BankName);
+                    data.Add("bankName_" + (i + 1), x.BankAccount?.BankName);
                     data.Add("routing_" + (i + 1), x.BankAccount?.Routing);
                     data.Add("account_" + (i + 1), x.BankAccount?.Account);
-                    data.Add("achaccounttype_" + (i + 1), EnumToString(x.BankAccount?.AchAccountType));
-                    data.Add("achaccountsubtype_" + (i + 1), EnumToString(x.BankAccount?.AchAccountSubType));
-                    data.Add("ewalletaccount_" + (i + 1), x.Ewallet?.EwalletAccount);
-                    data.Add("ewallettype_" + (i + 1), "paypal");
+                    data.Add("achAccountType_" + (i + 1), EnumToString(x.BankAccount?.AchAccountType));
+                    data.Add("achAccountSubType_" + (i + 1), EnumToString(x.BankAccount?.AchAccountSubType));
+                    data.Add("ewalletAccount_" + (i + 1), x.Ewallet?.EwalletAccount);
+                    data.Add("ewalletType_" + (i + 1), "paypal");
                 }
             }
 
@@ -1349,8 +1483,8 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "deletecustomer" },
+                { "mKey", _apiKey },
+                { "transType", "deletecustomer" },
                 { "token", token }
             };
 
@@ -1375,8 +1509,8 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "updatecustomer" },
+                { "mKey", _apiKey },
+                { "transType", "updatecustomer" },
                 { "token", token }
             };
 
@@ -1386,7 +1520,7 @@ namespace SparrowSdk
                 for (int i = 0; i < paymentTypeToDelete.Count; i++)
                 {
                     var x = paymentTypeToDelete[i];
-                    data.Add("operationtype_" + (i + 1), "deletepaytype");
+                    data.Add("operationType_" + (i + 1), "deletepaytype");
                     data.Add("token_" + (i + 1), x.Token);
                 }
             }
@@ -1410,8 +1544,8 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "getcustomer" },
+                { "mKey", _apiKey },
+                { "transType", "getcustomer" },
                 { "token", token }
             };
 
@@ -1435,8 +1569,8 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "getcustomer" },
+                { "mKey", _apiKey },
+                { "transType", "getcustomer" },
                 { "token", token }
             };
 
@@ -1457,14 +1591,14 @@ namespace SparrowSdk
         /// <param name="transType">This transaction type will update the current client information with any new data fields provided (Format: updatecustomer)</param>,
         /// <param name="token">Unique customer identifier (Format: alphanumericstring)</param>,
         /// <param name="contactInfo">ContactInfo</param>,
-        /// <param name="shippingContactInfo">ContactInfo</param>,
+        /// <param name="shippingContactInfo">ShippingContactInfo</param>,
         /// <param name="clientAccount">ClientAccount</param>
-        public async Task<SparrowResponse> UpdateCustomer(string token, ContactInfo contactInfo = null, ContactInfo shippingContactInfo = null, ClientAccount clientAccount = null)
+        public async Task<SparrowResponse> UpdateCustomer(string token, ContactInfo contactInfo = null, ShippingContactInfo shippingContactInfo = null, ClientAccount clientAccount = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "updatecustomer" },
+                { "mKey", _apiKey },
+                { "transType", "updatecustomer" },
                 { "token", token }
             };
 
@@ -1472,8 +1606,9 @@ namespace SparrowSdk
             if (contactInfo != null)
             {
                 var x = contactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
+                data.Add("firstName", x.FirstName);
+                data.Add("lastName", x.LastName);
+                data.Add("birthDate", x.BirthDate);
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -1488,25 +1623,25 @@ namespace SparrowSdk
             if (shippingContactInfo != null)
             {
                 var x = shippingContactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
-                data.Add("company", x.Company);
-                data.Add("address1", x.Address?.Address1);
-                data.Add("city", x.Address?.City);
-                data.Add("state", x.Address?.State);
-                data.Add("zip", x.Address?.Zip);
-                data.Add("country", x.Address?.Country);
-                data.Add("address2", x.Address?.Address2);
-                data.Add("phone", x.Phone);
-                data.Add("email", x.Email);
+                data.Add("shipFirstName", x.ShipFirstName);
+                data.Add("shipLastName", x.ShipLastName);
+                data.Add("shipCompany", x.ShipCompany);
+                data.Add("shipAddress1", x.ShippingAddress?.ShipAddress1);
+                data.Add("shipCity", x.ShippingAddress?.ShipCity);
+                data.Add("shipState", x.ShippingAddress?.ShipState);
+                data.Add("shipZip", x.ShippingAddress?.ShipZip);
+                data.Add("shipCountry", x.ShippingAddress?.ShipCountry);
+                data.Add("shipAddress2", x.ShippingAddress?.ShipAddress2);
+                data.Add("shipPhone", x.ShipPhone);
+                data.Add("shipEmail", x.ShipEmail);
             }
 
             if (clientAccount != null)
             {
                 var x = clientAccount;
-                data.Add("username", x.UserName);
+                data.Add("userName", x.UserName);
                 data.Add("password", x.Password);
-                data.Add("clientuseremail", x.ClientUserEmail);
+                data.Add("clientUserEmail", x.ClientUserEmail);
             }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
@@ -1529,8 +1664,8 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "updatecustomer" },
+                { "mKey", _apiKey },
+                { "transType", "updatecustomer" },
                 { "token", token }
             };
 
@@ -1540,12 +1675,12 @@ namespace SparrowSdk
                 for (int i = 0; i < paymentTypeToUpdate.Count; i++)
                 {
                     var x = paymentTypeToUpdate[i];
-                    data.Add("operationtype_" + (i + 1), "updatepaytype");
+                    data.Add("operationType_" + (i + 1), "updatepaytype");
                     data.Add("token_" + (i + 1), x.Token);
-                    data.Add("paytype_" + (i + 1), EnumToString(x.PaymentType?.PayType));
-                    data.Add("payno_" + (i + 1), "" + x.PaymentType?.PayNo);
-                    data.Add("firstname_" + (i + 1), x.PaymentType?.ContactInfo?.FirstName);
-                    data.Add("lastname_" + (i + 1), x.PaymentType?.ContactInfo?.LastName);
+                    data.Add("payType_" + (i + 1), EnumToString(x.PaymentType?.PayType));
+                    data.Add("payNo_" + (i + 1), "" + x.PaymentType?.PayNo);
+                    data.Add("firstName_" + (i + 1), x.PaymentType?.ContactInfo?.FirstName);
+                    data.Add("lastName_" + (i + 1), x.PaymentType?.ContactInfo?.LastName);
                     data.Add("company_" + (i + 1), x.PaymentType?.ContactInfo?.Company);
                     data.Add("address1_" + (i + 1), x.PaymentType?.ContactInfo?.Address?.Address1);
                     data.Add("city_" + (i + 1), x.PaymentType?.ContactInfo?.Address?.City);
@@ -1555,16 +1690,16 @@ namespace SparrowSdk
                     data.Add("address2_" + (i + 1), x.PaymentType?.ContactInfo?.Address?.Address2);
                     data.Add("phone_" + (i + 1), x.PaymentType?.ContactInfo?.Phone);
                     data.Add("email_" + (i + 1), x.PaymentType?.ContactInfo?.Email);
-                    data.Add("cardnum_" + (i + 1), x.PaymentType?.CreditCard?.CardNum);
-                    data.Add("cardexp_" + (i + 1), x.PaymentType?.CreditCard?.CardExp);
+                    data.Add("cardNum_" + (i + 1), x.PaymentType?.CreditCard?.CardNum);
+                    data.Add("cardExp_" + (i + 1), x.PaymentType?.CreditCard?.CardExp);
                     data.Add("cvv_" + (i + 1), x.PaymentType?.CreditCard?.Cvv);
-                    data.Add("bankname_" + (i + 1), x.PaymentType?.BankAccount?.BankName);
+                    data.Add("bankName_" + (i + 1), x.PaymentType?.BankAccount?.BankName);
                     data.Add("routing_" + (i + 1), x.PaymentType?.BankAccount?.Routing);
                     data.Add("account_" + (i + 1), x.PaymentType?.BankAccount?.Account);
-                    data.Add("achaccounttype_" + (i + 1), EnumToString(x.PaymentType?.BankAccount?.AchAccountType));
-                    data.Add("achaccountsubtype_" + (i + 1), EnumToString(x.PaymentType?.BankAccount?.AchAccountSubType));
-                    data.Add("ewalletaccount_" + (i + 1), x.PaymentType?.Ewallet?.EwalletAccount);
-                    data.Add("ewallettype_" + (i + 1), "paypal");
+                    data.Add("achAccountType_" + (i + 1), EnumToString(x.PaymentType?.BankAccount?.AchAccountType));
+                    data.Add("achAccountSubType_" + (i + 1), EnumToString(x.PaymentType?.BankAccount?.AchAccountSubType));
+                    data.Add("ewalletAccount_" + (i + 1), x.PaymentType?.Ewallet?.EwalletAccount);
+                    data.Add("ewalletType_" + (i + 1), "paypal");
                 }
             }
 
@@ -1588,9 +1723,9 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "decrypt" },
-                { "mkey", _apiKey },
-                { "fieldname", fieldName },
+                { "transType", "decrypt" },
+                { "mKey", _apiKey },
+                { "fieldName", fieldName },
                 { "token", token }
             };
 
@@ -1609,7 +1744,7 @@ namespace SparrowSdk
         /// </remarks>
         /// <param name="transType">credit- funds being pushed to the customer (Format: credit)</param>,
         /// <param name="mKey">Secured merchant account key</param>,
-        /// <param name="ewallet">Currently PayPal is the only eWallet type supported (ewallet type Format: PayPal)</param>,
+        /// <param name="ewallet">Currently PayPal is the only eWallet type supported (Format: PayPal)</param>,
         /// <param name="amount">Total amount to be charged (i.e. 10.00) (Format: d.dd)</param>,
         /// <param name="currency">Code of the payment currency. If not currency is specified, the default is USD (Format: ccc)</param>,
         /// <param name="ewallet">Ewallet</param>
@@ -1617,8 +1752,8 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "credit" },
-                { "mkey", _apiKey },
+                { "transType", "credit" },
+                { "mKey", _apiKey },
                 { "ewallet", "paypal" },
                 { "amount", amount.ToString("f2") },
                 { "currency", currency }
@@ -1628,7 +1763,7 @@ namespace SparrowSdk
             if (ewallet != null)
             {
                 var x = ewallet;
-                data.Add("ewalletaccount", x.EwalletAccount);
+                data.Add("ewalletAccount", x.EwalletAccount);
             }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
@@ -1656,37 +1791,38 @@ namespace SparrowSdk
         /// <param name="creditCard">CreditCard</param>,
         /// <param name="contactInfo">ContactInfo</param>,
         /// <param name="product">Product</param>,
-        /// <param name="shippingContactInfo">ContactInfo</param>
-        public async Task<SparrowResponse> AdvancedFiservSale(CreditCard creditCard, decimal amount, string currency = "", ContactInfo contactInfo = null, IList<Product> product = null, string orderDesc = "", string orderId = "", string cardIpAddress = "", decimal? tax = null, decimal? shipAmount = null, string poNumber = "", ContactInfo shippingContactInfo = null)
+        /// <param name="shippingContactInfo">ShippingContactInfo</param>
+        public async Task<SparrowResponse> AdvancedFiservSale(CreditCard creditCard, decimal amount, string currency = "", ContactInfo contactInfo = null, IList<Product> product = null, string orderDesc = "", string orderId = "", string cardIpAddress = "", decimal? tax = null, decimal? shipAmount = null, string poNumber = "", ShippingContactInfo shippingContactInfo = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "sale" },
-                { "mkey", _apiKey },
+                { "transType", "sale" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") },
                 { "currency", currency },
-                { "orderdesc", orderDesc },
-                { "orderid", orderId },
-                { "cardipaddress", cardIpAddress },
+                { "orderDesc", orderDesc },
+                { "orderId", orderId },
+                { "cardIpAddress", cardIpAddress },
                 { "tax", tax?.ToString("f2") ?? "" },
-                { "shipamount", shipAmount?.ToString("f2") ?? "" },
-                { "ponumber", poNumber }
+                { "shipAmount", shipAmount?.ToString("f2") ?? "" },
+                { "poNumber", poNumber }
             };
 
 
             if (creditCard != null)
             {
                 var x = creditCard;
-                data.Add("cardnum", x.CardNum);
-                data.Add("cardexp", x.CardExp);
+                data.Add("cardNum", x.CardNum);
+                data.Add("cardExp", x.CardExp);
                 data.Add("cvv", x.Cvv);
             }
 
             if (contactInfo != null)
             {
                 var x = contactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
+                data.Add("firstName", x.FirstName);
+                data.Add("lastName", x.LastName);
+                data.Add("birthDate", x.BirthDate);
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -1703,7 +1839,7 @@ namespace SparrowSdk
                 for (int i = 0; i < product.Count; i++)
                 {
                     var x = product[i];
-                    data.Add("skunumber_" + (i + 1), x.SkuNumber);
+                    data.Add("skuNumber_" + (i + 1), x.SkuNumber);
                     data.Add("description_" + (i + 1), x.Description);
                     data.Add("amount_" + (i + 1), x.Amount?.ToString("f2") ?? "");
                     data.Add("quantity_" + (i + 1), "" + x.Quantity);
@@ -1713,17 +1849,17 @@ namespace SparrowSdk
             if (shippingContactInfo != null)
             {
                 var x = shippingContactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
-                data.Add("company", x.Company);
-                data.Add("address1", x.Address?.Address1);
-                data.Add("city", x.Address?.City);
-                data.Add("state", x.Address?.State);
-                data.Add("zip", x.Address?.Zip);
-                data.Add("country", x.Address?.Country);
-                data.Add("address2", x.Address?.Address2);
-                data.Add("phone", x.Phone);
-                data.Add("email", x.Email);
+                data.Add("shipFirstName", x.ShipFirstName);
+                data.Add("shipLastName", x.ShipLastName);
+                data.Add("shipCompany", x.ShipCompany);
+                data.Add("shipAddress1", x.ShippingAddress?.ShipAddress1);
+                data.Add("shipCity", x.ShippingAddress?.ShipCity);
+                data.Add("shipState", x.ShippingAddress?.ShipState);
+                data.Add("shipZip", x.ShippingAddress?.ShipZip);
+                data.Add("shipCountry", x.ShippingAddress?.ShipCountry);
+                data.Add("shipAddress2", x.ShippingAddress?.ShipAddress2);
+                data.Add("shipPhone", x.ShipPhone);
+                data.Add("shipEmail", x.ShipEmail);
             }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
@@ -1747,10 +1883,10 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "sale" },
-                { "mkey", _apiKey },
-                { "cardnum", cardNum },
-                { "cardexp", cardExp },
+                { "transType", "sale" },
+                { "mKey", _apiKey },
+                { "cardNum", cardNum },
+                { "cardExp", cardExp },
                 { "amount", amount.ToString("f2") }
             };
 
@@ -1775,10 +1911,10 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "cancelinvoicebycustomer" },
-                { "invoicenumber", invoiceNumber },
-                { "invoicestatusreason", invoiceStatusReason }
+                { "mKey", _apiKey },
+                { "transType", "cancelinvoicebycustomer" },
+                { "invoiceNumber", invoiceNumber },
+                { "invoiceStatusReason", invoiceStatusReason }
             };
 
 
@@ -1802,10 +1938,10 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "cancelinvoice" },
-                { "invoicenumber", invoiceNumber },
-                { "invoicestatusreason", invoiceStatusReason }
+                { "mKey", _apiKey },
+                { "transType", "cancelinvoice" },
+                { "invoiceNumber", invoiceNumber },
+                { "invoiceStatusReason", invoiceStatusReason }
             };
 
 
@@ -1835,15 +1971,15 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "createmerchantinvoice" },
-                { "customertoken", customerToken },
-                { "invoicedate", invoiceDate },
+                { "mKey", _apiKey },
+                { "transType", "createmerchantinvoice" },
+                { "customerToken", customerToken },
+                { "invoiceDate", invoiceDate },
                 { "currency", currency },
-                { "invoicestatus", EnumToString(invoiceStatus) },
-                { "invoicesource", EnumToString(invoiceSource) },
-                { "invoiceamount", invoiceAmount.ToString("f2") },
-                { "sendpaymentlinkemail", sendPaymentLinkEmail }
+                { "invoiceStatus", EnumToString(invoiceStatus) },
+                { "invoiceSource", EnumToString(invoiceSource) },
+                { "invoiceAmount", invoiceAmount.ToString("f2") },
+                { "sendPaymentLinkEmail", sendPaymentLinkEmail }
             };
 
 
@@ -1852,10 +1988,10 @@ namespace SparrowSdk
                 for (int i = 0; i < invoiceProduct.Count; i++)
                 {
                     var x = invoiceProduct[i];
-                    data.Add("invoiceitemsku_" + (i + 1), x.InvoiceItemSku);
-                    data.Add("invoiceitemdescription_" + (i + 1), x.InvoiceItemDescription);
-                    data.Add("invoiceitemprice_" + (i + 1), x.InvoiceItemPrice?.ToString("f2") ?? "");
-                    data.Add("invoiceitemquantity_" + (i + 1), x.InvoiceItemQuantity);
+                    data.Add("invoiceItemSku_" + (i + 1), x.InvoiceItemSku);
+                    data.Add("invoiceItemDescription_" + (i + 1), x.InvoiceItemDescription);
+                    data.Add("invoiceItemPrice_" + (i + 1), x.InvoiceItemPrice?.ToString("f2") ?? "");
+                    data.Add("invoiceItemQuantity_" + (i + 1), x.InvoiceItemQuantity);
                 }
             }
 
@@ -1878,9 +2014,9 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "getinvoice" },
-                { "invoicenumber", invoiceNumber }
+                { "mKey", _apiKey },
+                { "transType", "getinvoice" },
+                { "invoiceNumber", invoiceNumber }
             };
 
 
@@ -1902,14 +2038,14 @@ namespace SparrowSdk
         /// <param name="fax">Billing fax number</param>,
         /// <param name="bankAccount">BankAccount</param>,
         /// <param name="contactInfo">ContactInfo</param>,
-        /// <param name="shippingContactInfo">ContactInfo</param>
-        public async Task<SparrowResponse> PayInvoiceWithBankAccount(string invoiceNumber, BankAccount bankAccount, ContactInfo contactInfo, string fax = "", ContactInfo shippingContactInfo = null)
+        /// <param name="shippingContactInfo">ShippingContactInfo</param>
+        public async Task<SparrowResponse> PayInvoiceWithBankAccount(string invoiceNumber, BankAccount bankAccount, ContactInfo contactInfo, string fax = "", ShippingContactInfo shippingContactInfo = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "payinvoice" },
-                { "invoicenumber", invoiceNumber },
+                { "mKey", _apiKey },
+                { "transType", "payinvoice" },
+                { "invoiceNumber", invoiceNumber },
                 { "fax", fax }
             };
 
@@ -1917,18 +2053,19 @@ namespace SparrowSdk
             if (bankAccount != null)
             {
                 var x = bankAccount;
-                data.Add("bankname", x.BankName);
+                data.Add("bankName", x.BankName);
                 data.Add("routing", x.Routing);
                 data.Add("account", x.Account);
-                data.Add("achaccounttype", EnumToString(x.AchAccountType));
-                data.Add("achaccountsubtype", EnumToString(x.AchAccountSubType));
+                data.Add("achAccountType", EnumToString(x.AchAccountType));
+                data.Add("achAccountSubType", EnumToString(x.AchAccountSubType));
             }
 
             if (contactInfo != null)
             {
                 var x = contactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
+                data.Add("firstName", x.FirstName);
+                data.Add("lastName", x.LastName);
+                data.Add("birthDate", x.BirthDate);
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -1943,17 +2080,17 @@ namespace SparrowSdk
             if (shippingContactInfo != null)
             {
                 var x = shippingContactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
-                data.Add("company", x.Company);
-                data.Add("address1", x.Address?.Address1);
-                data.Add("city", x.Address?.City);
-                data.Add("state", x.Address?.State);
-                data.Add("zip", x.Address?.Zip);
-                data.Add("country", x.Address?.Country);
-                data.Add("address2", x.Address?.Address2);
-                data.Add("phone", x.Phone);
-                data.Add("email", x.Email);
+                data.Add("shipFirstName", x.ShipFirstName);
+                data.Add("shipLastName", x.ShipLastName);
+                data.Add("shipCompany", x.ShipCompany);
+                data.Add("shipAddress1", x.ShippingAddress?.ShipAddress1);
+                data.Add("shipCity", x.ShippingAddress?.ShipCity);
+                data.Add("shipState", x.ShippingAddress?.ShipState);
+                data.Add("shipZip", x.ShippingAddress?.ShipZip);
+                data.Add("shipCountry", x.ShippingAddress?.ShipCountry);
+                data.Add("shipAddress2", x.ShippingAddress?.ShipAddress2);
+                data.Add("shipPhone", x.ShipPhone);
+                data.Add("shipEmail", x.ShipEmail);
             }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
@@ -1974,14 +2111,14 @@ namespace SparrowSdk
         /// <param name="fax">Billing fax number</param>,
         /// <param name="creditCard">CreditCard</param>,
         /// <param name="contactInfo">ContactInfo</param>,
-        /// <param name="shippingContactInfo">ContactInfo</param>
-        public async Task<SparrowResponse> PayInvoiceWithCreditCard(string invoiceNumber, CreditCard creditCard, ContactInfo contactInfo = null, string fax = "", ContactInfo shippingContactInfo = null)
+        /// <param name="shippingContactInfo">ShippingContactInfo</param>
+        public async Task<SparrowResponse> PayInvoiceWithCreditCard(string invoiceNumber, CreditCard creditCard, ContactInfo contactInfo = null, string fax = "", ShippingContactInfo shippingContactInfo = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "payinvoice" },
-                { "invoicenumber", invoiceNumber },
+                { "mKey", _apiKey },
+                { "transType", "payinvoice" },
+                { "invoiceNumber", invoiceNumber },
                 { "fax", fax }
             };
 
@@ -1989,16 +2126,17 @@ namespace SparrowSdk
             if (creditCard != null)
             {
                 var x = creditCard;
-                data.Add("cardnum", x.CardNum);
-                data.Add("cardexp", x.CardExp);
+                data.Add("cardNum", x.CardNum);
+                data.Add("cardExp", x.CardExp);
                 data.Add("cvv", x.Cvv);
             }
 
             if (contactInfo != null)
             {
                 var x = contactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
+                data.Add("firstName", x.FirstName);
+                data.Add("lastName", x.LastName);
+                data.Add("birthDate", x.BirthDate);
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -2013,17 +2151,17 @@ namespace SparrowSdk
             if (shippingContactInfo != null)
             {
                 var x = shippingContactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
-                data.Add("company", x.Company);
-                data.Add("address1", x.Address?.Address1);
-                data.Add("city", x.Address?.City);
-                data.Add("state", x.Address?.State);
-                data.Add("zip", x.Address?.Zip);
-                data.Add("country", x.Address?.Country);
-                data.Add("address2", x.Address?.Address2);
-                data.Add("phone", x.Phone);
-                data.Add("email", x.Email);
+                data.Add("shipFirstName", x.ShipFirstName);
+                data.Add("shipLastName", x.ShipLastName);
+                data.Add("shipCompany", x.ShipCompany);
+                data.Add("shipAddress1", x.ShippingAddress?.ShipAddress1);
+                data.Add("shipCity", x.ShippingAddress?.ShipCity);
+                data.Add("shipState", x.ShippingAddress?.ShipState);
+                data.Add("shipZip", x.ShippingAddress?.ShipZip);
+                data.Add("shipCountry", x.ShippingAddress?.ShipCountry);
+                data.Add("shipAddress2", x.ShippingAddress?.ShipAddress2);
+                data.Add("shipPhone", x.ShipPhone);
+                data.Add("shipEmail", x.ShipEmail);
             }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
@@ -2053,16 +2191,16 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "updateinvoice" },
-                { "invoicenumber", invoiceNumber },
-                { "customertoken", customerToken },
-                { "invoicedate", invoiceDate },
+                { "mKey", _apiKey },
+                { "transType", "updateinvoice" },
+                { "invoiceNumber", invoiceNumber },
+                { "customerToken", customerToken },
+                { "invoiceDate", invoiceDate },
                 { "currency", currency },
-                { "invoicestatus", EnumToString(invoiceStatus) },
-                { "invoicesource", EnumToString(invoiceSource) },
-                { "invoiceamount", invoiceAmount?.ToString("f2") ?? "" },
-                { "sendpaymentlinkemail", sendPaymentLinkEmail }
+                { "invoiceStatus", EnumToString(invoiceStatus) },
+                { "invoiceSource", EnumToString(invoiceSource) },
+                { "invoiceAmount", invoiceAmount?.ToString("f2") ?? "" },
+                { "sendPaymentLinkEmail", sendPaymentLinkEmail }
             };
 
 
@@ -2071,10 +2209,10 @@ namespace SparrowSdk
                 for (int i = 0; i < invoiceProduct.Count; i++)
                 {
                     var x = invoiceProduct[i];
-                    data.Add("invoiceitemsku_" + (i + 1), x.InvoiceItemSku);
-                    data.Add("invoiceitemdescription_" + (i + 1), x.InvoiceItemDescription);
-                    data.Add("invoiceitemprice_" + (i + 1), x.InvoiceItemPrice?.ToString("f2") ?? "");
-                    data.Add("invoiceitemquantity_" + (i + 1), x.InvoiceItemQuantity);
+                    data.Add("invoiceItemSku_" + (i + 1), x.InvoiceItemSku);
+                    data.Add("invoiceItemDescription_" + (i + 1), x.InvoiceItemDescription);
+                    data.Add("invoiceItemPrice_" + (i + 1), x.InvoiceItemPrice?.ToString("f2") ?? "");
+                    data.Add("invoiceItemQuantity_" + (i + 1), x.InvoiceItemQuantity);
                 }
             }
 
@@ -2098,9 +2236,9 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "refund" },
-                { "mkey", _apiKey },
-                { "transid", transId },
+                { "transType", "refund" },
+                { "mKey", _apiKey },
+                { "transId", transId },
                 { "amount", amount.ToString("f2") }
             };
 
@@ -2121,21 +2259,16 @@ namespace SparrowSdk
         /// <param name="mKey">Secured merchant account key</param>,
         /// <param name="transId">Original payment gateway transaction ID</param>,
         /// <param name="amount">Total amount to be refunded (Format: d.dd)</param>,
-        /// <param name="sendTransReceiptToBillEmail">If true a receipt will be sent to the email provided in the billing information if email is specified (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToShipEmail">If true a receipt will be sent to the email provided in the shipping information if email is specified (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToEmails">Send multiple transaction receipts to customers. Multiple email must be separated by commas. (Format: email@email.com)</param>,
-        /// <param name="optionalAmount">OptionalAmount</param>
-        public async Task<SparrowResponse> AdvancedRefund(string transId, decimal amount, IList<OptionalAmount> optionalAmount = null, bool? sendTransReceiptToBillEmail = null, bool? sendTransReceiptToShipEmail = null, string sendTransReceiptToEmails = "")
+        /// <param name="optionalAmount">OptionalAmount</param>,
+        /// <param name="sendTransReceiptOptions">SendTransReceiptOptions</param>
+        public async Task<SparrowResponse> AdvancedRefund(string transId, decimal amount, IList<OptionalAmount> optionalAmount = null, SendTransReceiptOptions sendTransReceiptOptions = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "refund" },
-                { "mkey", _apiKey },
-                { "transid", transId },
-                { "amount", amount.ToString("f2") },
-                { "sendtransreceipttobillemail", sendTransReceiptToBillEmail == true ? "true" : "false" },
-                { "sendtransreceipttoshipemail", sendTransReceiptToShipEmail == true ? "true" : "false" },
-                { "sendtransreceipttoemails", sendTransReceiptToEmails }
+                { "transType", "refund" },
+                { "mKey", _apiKey },
+                { "transId", transId },
+                { "amount", amount.ToString("f2") }
             };
 
 
@@ -2144,10 +2277,18 @@ namespace SparrowSdk
                 for (int i = 0; i < optionalAmount.Count; i++)
                 {
                     var x = optionalAmount[i];
-                    data.Add("opt_amount_type_" + (i + 1), x.OptAmountType);
-                    data.Add("opt_amount_value_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
-                    data.Add("opt_amount_percentage_" + (i + 1), x.OptAmountPercentage);
+                    data.Add("optAmountType_" + (i + 1), x.OptAmountType);
+                    data.Add("optAmountValue_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
+                    data.Add("optAmountPercentage_" + (i + 1), x.OptAmountPercentage);
                 }
+            }
+
+            if (sendTransReceiptOptions != null)
+            {
+                var x = sendTransReceiptOptions;
+                data.Add("sendTransReceiptToEmails", x.SendTransReceiptToEmails);
+                data.Add("sendTransReceiptToBillEmail", x.SendTransReceiptToBillEmail == true ? "true" : "false");
+                data.Add("sendTransReceiptToShipEmail", x.SendTransReceiptToShipEmail == true ? "true" : "false");
             }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
@@ -2165,21 +2306,24 @@ namespace SparrowSdk
         /// <param name="transType">Void (Format: void)</param>,
         /// <param name="mKey">Secured merchant account key</param>,
         /// <param name="transId">Original payment gateway transaction ID</param>,
-        /// <param name="sendTransReceiptToBillEmail">If true a receipt will be sent to the email provided in the billing information if email is specified (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToShipEmail">If true a receipt will be sent to the email provided in the shipping information if email is specified (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToEmails">Send multiple transaction receipts to customers. Multiple email must be separated by commas. (Format: email@email.com)</param>
-        public async Task<SparrowResponse> AdvancedVoid(string transId, bool? sendTransReceiptToBillEmail = null, bool? sendTransReceiptToShipEmail = null, string sendTransReceiptToEmails = "")
+        /// <param name="sendTransReceiptOptions">SendTransReceiptOptions</param>
+        public async Task<SparrowResponse> AdvancedVoid(string transId, SendTransReceiptOptions sendTransReceiptOptions = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "void" },
-                { "mkey", _apiKey },
-                { "transid", transId },
-                { "sendtransreceipttobillemail", sendTransReceiptToBillEmail == true ? "true" : "false" },
-                { "sendtransreceipttoshipemail", sendTransReceiptToShipEmail == true ? "true" : "false" },
-                { "sendtransreceipttoemails", sendTransReceiptToEmails }
+                { "transType", "void" },
+                { "mKey", _apiKey },
+                { "transId", transId }
             };
 
+
+            if (sendTransReceiptOptions != null)
+            {
+                var x = sendTransReceiptOptions;
+                data.Add("sendTransReceiptToEmails", x.SendTransReceiptToEmails);
+                data.Add("sendTransReceiptToBillEmail", x.SendTransReceiptToBillEmail == true ? "true" : "false");
+                data.Add("sendTransReceiptToShipEmail", x.SendTransReceiptToShipEmail == true ? "true" : "false");
+            }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
@@ -2200,9 +2344,9 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "void" },
-                { "mkey", _apiKey },
-                { "transid", transId }
+                { "transType", "void" },
+                { "mKey", _apiKey },
+                { "transId", transId }
             };
 
 
@@ -2227,7 +2371,6 @@ namespace SparrowSdk
         /// <param name="productId">External ID for the product (Format: string)</param>,
         /// <param name="description">Description of plan assignment (Format: string)</param>,
         /// <param name="amount">Amount purchased. This field is required for layaway plan assignment and ignored otherwise (Format: d.dd)</param>,
-        /// <param name="notifyFailures">Sends notification emails to the client if failed payments occur (Format: true/false)</param>,
         /// <param name="useRecycling">Specifies whether to reprocess failed transactions for this plan (Format: true/false)</param>,
         /// <param name="retryCount">Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise (Format: positive integer)</param>,
         /// <param name="retryType">Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date (Format: [daily|weekly|monthly])</param>,
@@ -2236,32 +2379,55 @@ namespace SparrowSdk
         /// <param name="retryFirstDayOfMonth">First date of retry schedule. This field is required if retrytype=monthly (Format: positive integer)</param>,
         /// <param name="retrySecondDayOfMonth">Second date of retry schedule. This field is required if retrytype=monthly (Format: positive integer)</param>,
         /// <param name="proratedPayment">Specifies whether to add prorated payment in this plan (Format: true / false)</param>,
-        /// <param name="routingKey">Merchant key of account with which plan payments should be processed by default. This account must be of the same type as selected customer’s payment type</param>
-        public async Task<SparrowResponse> AssignPaymentPlanToCustomer(string customerToken, string planToken, string paymentToken, string startDate = "", string productId = "", string description = "", decimal? amount = null, bool? notifyFailures = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? proratedPayment = null, string routingKey = "")
+        /// <param name="routingKey">Merchant key of account with which plan payments should be processed by default. This account must be of the same type as selected customer’s payment type</param>,
+        /// <param name="notificationOptions">NotificationOptions</param>
+        public async Task<SparrowResponse> AssignPaymentPlanToCustomer(string customerToken, string planToken, string paymentToken, string startDate = "", string productId = "", string description = "", decimal? amount = null, NotificationOptions notificationOptions = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? proratedPayment = null, string routingKey = "")
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "assignplan" },
-                { "customertoken", customerToken },
-                { "plantoken", planToken },
-                { "paymenttoken", paymentToken },
-                { "startdate", startDate },
-                { "productid", productId },
+                { "mKey", _apiKey },
+                { "transType", "assignplan" },
+                { "customerToken", customerToken },
+                { "planToken", planToken },
+                { "paymentToken", paymentToken },
+                { "startDate", startDate },
+                { "productId", productId },
                 { "description", description },
                 { "amount", amount?.ToString("f2") ?? "" },
-                { "notifyfailures", notifyFailures == true ? "true" : "false" },
-                { "userecycling", useRecycling == true ? "true" : "false" },
-                { "retrycount", "" + retryCount },
-                { "retrytype", EnumToString(retryType) },
-                { "retryperiod", "" + retryPeriod },
-                { "retrydayofweek", retryDayOfWeek },
-                { "retryfirstdayofmonth", "" + retryFirstDayOfMonth },
-                { "retryseconddayofmonth", "" + retrySecondDayOfMonth },
-                { "proratedpayment", proratedPayment == true ? "true" : "false" },
-                { "routingkey", routingKey }
+                { "useRecycling", useRecycling == true ? "true" : "false" },
+                { "retryCount", "" + retryCount },
+                { "retryType", EnumToString(retryType) },
+                { "retryPeriod", "" + retryPeriod },
+                { "retryDayOfWeek", retryDayOfWeek },
+                { "retryFirstDayOfMonth", "" + retryFirstDayOfMonth },
+                { "retrySecondDayOfMonth", "" + retrySecondDayOfMonth },
+                { "proratedPayment", proratedPayment == true ? "true" : "false" },
+                { "routingKey", routingKey }
             };
 
+
+            if (notificationOptions != null)
+            {
+                var x = notificationOptions;
+                data.Add("notifyFailures", x.NotifyFailures == true ? "true" : "false");
+                data.Add("notifyUpcomingPayment", x.NotifyUpcomingPayment == true ? "true" : "false");
+                data.Add("notifyDaysBeforeUpcomingPayment", "" + x.NotifyDaysBeforeUpcomingPayment);
+                data.Add("notifyPlanSummary", x.NotifyPlanSummary == true ? "true" : "false");
+                data.Add("notifyPlanSummaryInterval", EnumToString(x.NotifyPlanSummaryInterval));
+                data.Add("notifyPlanSummaryEmails", x.NotifyPlanSummaryEmails);
+                data.Add("notifyDailyStats", x.NotifyDailyStats == true ? "true" : "false");
+                data.Add("notifyDailyStatsEmails", x.NotifyDailyStatsEmails);
+                data.Add("notifyPlanComplete", x.NotifyPlanComplete == true ? "true" : "false");
+                data.Add("notifyPlanCompleteEmails", x.NotifyPlanCompleteEmails);
+                data.Add("notifyDecline", x.NotifyDecline == true ? "true" : "false");
+                data.Add("notifyDeclineEmails", x.NotifyDeclineEmails);
+                data.Add("notifyViaFtp", x.NotifyViaFtp == true ? "true" : "false");
+                data.Add("notifyViaFtpUrl", x.NotifyViaFtpUrl == true ? "true" : "false");
+                data.Add("notifyViaFtpUserName", x.NotifyViaFtpUserName);
+                data.Add("notifyViaFtpPassword", x.NotifyViaFtpPassword);
+                data.Add("notifyFlagged", x.NotifyFlagged == true ? "true" : "false");
+                data.Add("notifyFlaggedEmails", x.NotifyFlaggedEmails);
+            }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
@@ -2282,9 +2448,9 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "cancelassignment" },
-                { "assignmenttoken", assignmentToken }
+                { "mKey", _apiKey },
+                { "transType", "cancelassignment" },
+                { "assignmentToken", assignmentToken }
             };
 
 
@@ -2305,33 +2471,10 @@ namespace SparrowSdk
         /// <param name="planName">Payment plan name (Format: string)</param>,
         /// <param name="planDesc">Payment plan description (Format: string)</param>,
         /// <param name="startDate">Starting day of the plan (Format: MM/DD/YYYY)</param>,
-        /// <param name="defaultAchMKey">Merchant key of ACH account with which plan payments should be processed by default</param>,
-        /// <param name="defaultCreditCardMKey">Merchant key of Credit Card account with which plan payments should be processed by default</param>,
-        /// <param name="defaultEcheckMKey">Merchant key of eCheck account with which plan payments should be processed by default</param>,
-        /// <param name="defaultStartCardMKey">Merchant key of Star Card account with which plan payments should be processed by default</param>,
-        /// <param name="defaultEwalletMKey">Merchant key of eWallet account with which plan payments should be processed by default</param>,
         /// <param name="reviewOnAssignment">If “true” this will set the payment plan to pending until it is reviewed by the merchant admin (Format: true/false)</param>,
         /// <param name="processImmediately">Specifies if new payments should be processed immediately or end of day (Format: true/false)</param>,
         /// <param name="overrideSender">Specifies whether to override sender email for customers notifications (Format: true/false)</param>,
         /// <param name="senderEmail">Sender email. This field is required if overridesender = true (Format: email)</param>,
-        /// <param name="notifyUpcomingPayment">Specifies whether to notify customer about upcoming payment (Format: true/false)</param>,
-        /// <param name="notifyDaysBeforeUpcomingPayment">Number of days before notification about upcoming payment should be sent to the client. This field is required if notifyupcomingpayment = true (Format: positive integer)</param>,
-        /// <param name="notifyPlanSummary">Specifies whether to send merchant a Summarized Plan Report (Format: true/false)</param>,
-        /// <param name="notifyPlanSummaryInterval">Interval of plan summary notifications. This field is required if notifyplansummary = true (Format: [daily|weekly|monthly|quaterly])</param>,
-        /// <param name="notifyPlanSummaryEmails">Multiple addresses are separated by comma. This field is required if notifyplansummary = true</param>,
-        /// <param name="notifyDailyStats">Specifies whether to send merchant a Daily Plan Processing Statistics Report (Format: true/false)</param>,
-        /// <param name="notifyDailyStatsEmails">Multiple addresses are separated by comma. This field is required if notifydailystats = true</param>,
-        /// <param name="notifyPlanComplete">Specifies whether to notify merchant about plan completion (Format: true/false)</param>,
-        /// <param name="notifyPlanCompleteEmails">Multiple addresses are separated by comma. This field is required if notifyplancomplete = true</param>,
-        /// <param name="notifyDecline">Specifies whether to notify merchant about failed payments (Format: true/false)</param>,
-        /// <param name="notifyDeclineEmails">Multiple addresses are separated by comma. This field is required if notifydecline = true</param>,
-        /// <param name="notifyViaFtp">Specifies whether to transfer transaction file via ftp (Format: true/false)</param>,
-        /// <param name="notifyViaFtpUrl">FTP address on which transaction file is transferred. This field is required if notifyviaftp = true (Format: true/false)</param>,
-        /// <param name="notifyViaFtpUserName">Username to access FTP address. This field is required if notifyviaftp = true</param>,
-        /// <param name="notifyViaFtpPassword">Password to access FTP address. This field is required if notifyviaftp = true</param>,
-        /// <param name="notifyFlagged">Specifies whether to notify merchant about flagged for review payments (Format: true/false)</param>,
-        /// <param name="notifyFlaggedEmails">Multiple addresses are separated by comma. This field is required if notifyflagged = true</param>,
-        /// <param name="notifyFailures">Sends notification emails to the client if failed payments occur (Format: true/false)</param>,
         /// <param name="useRecycling">Specifies whether to reprocess failed transactions for this plan (Format: true/false)</param>,
         /// <param name="retryCount">Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise (Format: positive integer)</param>,
         /// <param name="retryType">Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date (Format: [daily|weekly|monthly])</param>,
@@ -2340,53 +2483,65 @@ namespace SparrowSdk
         /// <param name="retryFirstDayOfMonth">First date of retry schedule. This field is required if retrytype=monthly (Format: positive integer)</param>,
         /// <param name="retrySecondDayOfMonth">Second date of retry schedule. This field is required if retrytype=monthly (Format: positive integer)</param>,
         /// <param name="autoCreateClientAccounts">Creates username and password for Client Portal automatically when plan is assigned to the client (Format: true/false)</param>,
+        /// <param name="defaultKeys">DefaultKeys</param>,
+        /// <param name="notificationOptions">NotificationOptions</param>,
         /// <param name="sequenceSteps">SequenceStep</param>
-        public async Task<SparrowResponse> CreatePaymentPlan(string planName, string planDesc, string startDate, IList<SequenceStep> sequenceSteps, string defaultAchMKey = "", string defaultCreditCardMKey = "", string defaultEcheckMKey = "", string defaultStartCardMKey = "", string defaultEwalletMKey = "", bool? reviewOnAssignment = null, bool? processImmediately = null, bool? overrideSender = null, string senderEmail = "", bool? notifyUpcomingPayment = null, int? notifyDaysBeforeUpcomingPayment = null, bool? notifyPlanSummary = null, NotifyPlanSummaryInterval notifyPlanSummaryInterval = NotifyPlanSummaryInterval.Daily, string notifyPlanSummaryEmails = "", bool? notifyDailyStats = null, string notifyDailyStatsEmails = "", bool? notifyPlanComplete = null, string notifyPlanCompleteEmails = "", bool? notifyDecline = null, string notifyDeclineEmails = "", bool? notifyViaFtp = null, bool? notifyViaFtpUrl = null, string notifyViaFtpUserName = "", string notifyViaFtpPassword = "", bool? notifyFlagged = null, string notifyFlaggedEmails = "", bool? notifyFailures = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? autoCreateClientAccounts = null)
+        public async Task<SparrowResponse> CreatePaymentPlan(string planName, string planDesc, string startDate, IList<SequenceStep> sequenceSteps, DefaultKeys defaultKeys = null, bool? reviewOnAssignment = null, bool? processImmediately = null, bool? overrideSender = null, string senderEmail = "", NotificationOptions notificationOptions = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? autoCreateClientAccounts = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "addplan" },
-                { "planname", planName },
-                { "plandesc", planDesc },
-                { "startdate", startDate },
-                { "defaultachmkey", defaultAchMKey },
-                { "defaultcreditcardmkey", defaultCreditCardMKey },
-                { "defaultecheckmkey", defaultEcheckMKey },
-                { "defaultstartcardmkey", defaultStartCardMKey },
-                { "defaultewalletmkey", defaultEwalletMKey },
-                { "reviewonassignment", reviewOnAssignment == true ? "true" : "false" },
-                { "processimmediately", processImmediately == true ? "true" : "false" },
-                { "overridesender", overrideSender == true ? "true" : "false" },
-                { "senderemail", senderEmail },
-                { "notifyupcomingpayment", notifyUpcomingPayment == true ? "true" : "false" },
-                { "notifydaysbeforeupcomingpayment", "" + notifyDaysBeforeUpcomingPayment },
-                { "notifyplansummary", notifyPlanSummary == true ? "true" : "false" },
-                { "notifyplansummaryinterval", EnumToString(notifyPlanSummaryInterval) },
-                { "notifyplansummaryemails", notifyPlanSummaryEmails },
-                { "notifydailystats", notifyDailyStats == true ? "true" : "false" },
-                { "notifydailystatsemails", notifyDailyStatsEmails },
-                { "notifyplancomplete", notifyPlanComplete == true ? "true" : "false" },
-                { "notifyplancompleteemails", notifyPlanCompleteEmails },
-                { "notifydecline", notifyDecline == true ? "true" : "false" },
-                { "notifydeclineemails", notifyDeclineEmails },
-                { "notifyviaftp", notifyViaFtp == true ? "true" : "false" },
-                { "notifyviaftpurl", notifyViaFtpUrl == true ? "true" : "false" },
-                { "notifyviaftpusername", notifyViaFtpUserName },
-                { "notifyviaftppassword", notifyViaFtpPassword },
-                { "notifyflagged", notifyFlagged == true ? "true" : "false" },
-                { "notifyflaggedemails", notifyFlaggedEmails },
-                { "notifyfailures", notifyFailures == true ? "true" : "false" },
-                { "userecycling", useRecycling == true ? "true" : "false" },
-                { "retrycount", "" + retryCount },
-                { "retrytype", EnumToString(retryType) },
-                { "retryperiod", "" + retryPeriod },
-                { "retrydayofweek", retryDayOfWeek },
-                { "retryfirstdayofmonth", "" + retryFirstDayOfMonth },
-                { "retryseconddayofmonth", "" + retrySecondDayOfMonth },
-                { "autocreateclientaccounts", autoCreateClientAccounts == true ? "true" : "false" }
+                { "mKey", _apiKey },
+                { "transType", "addplan" },
+                { "planName", planName },
+                { "planDesc", planDesc },
+                { "startDate", startDate },
+                { "reviewOnAssignment", reviewOnAssignment == true ? "true" : "false" },
+                { "processImmediately", processImmediately == true ? "true" : "false" },
+                { "overrideSender", overrideSender == true ? "true" : "false" },
+                { "senderEmail", senderEmail },
+                { "useRecycling", useRecycling == true ? "true" : "false" },
+                { "retryCount", "" + retryCount },
+                { "retryType", EnumToString(retryType) },
+                { "retryPeriod", "" + retryPeriod },
+                { "retryDayOfWeek", retryDayOfWeek },
+                { "retryFirstDayOfMonth", "" + retryFirstDayOfMonth },
+                { "retrySecondDayOfMonth", "" + retrySecondDayOfMonth },
+                { "autoCreateClientAccounts", autoCreateClientAccounts == true ? "true" : "false" }
             };
 
+
+            if (defaultKeys != null)
+            {
+                var x = defaultKeys;
+                data.Add("defaultAchMKey", x.DefaultAchMKey);
+                data.Add("defaultCreditCardMKey", x.DefaultCreditCardMKey);
+                data.Add("defaultEcheckMKey", x.DefaultEcheckMKey);
+                data.Add("defaultStartCardMKey", x.DefaultStartCardMKey);
+                data.Add("defaultEwalletMKey", x.DefaultEwalletMKey);
+            }
+
+            if (notificationOptions != null)
+            {
+                var x = notificationOptions;
+                data.Add("notifyFailures", x.NotifyFailures == true ? "true" : "false");
+                data.Add("notifyUpcomingPayment", x.NotifyUpcomingPayment == true ? "true" : "false");
+                data.Add("notifyDaysBeforeUpcomingPayment", "" + x.NotifyDaysBeforeUpcomingPayment);
+                data.Add("notifyPlanSummary", x.NotifyPlanSummary == true ? "true" : "false");
+                data.Add("notifyPlanSummaryInterval", EnumToString(x.NotifyPlanSummaryInterval));
+                data.Add("notifyPlanSummaryEmails", x.NotifyPlanSummaryEmails);
+                data.Add("notifyDailyStats", x.NotifyDailyStats == true ? "true" : "false");
+                data.Add("notifyDailyStatsEmails", x.NotifyDailyStatsEmails);
+                data.Add("notifyPlanComplete", x.NotifyPlanComplete == true ? "true" : "false");
+                data.Add("notifyPlanCompleteEmails", x.NotifyPlanCompleteEmails);
+                data.Add("notifyDecline", x.NotifyDecline == true ? "true" : "false");
+                data.Add("notifyDeclineEmails", x.NotifyDeclineEmails);
+                data.Add("notifyViaFtp", x.NotifyViaFtp == true ? "true" : "false");
+                data.Add("notifyViaFtpUrl", x.NotifyViaFtpUrl == true ? "true" : "false");
+                data.Add("notifyViaFtpUserName", x.NotifyViaFtpUserName);
+                data.Add("notifyViaFtpPassword", x.NotifyViaFtpPassword);
+                data.Add("notifyFlagged", x.NotifyFlagged == true ? "true" : "false");
+                data.Add("notifyFlaggedEmails", x.NotifyFlaggedEmails);
+            }
 
             if (sequenceSteps != null)
             {
@@ -2395,13 +2550,13 @@ namespace SparrowSdk
                     var x = sequenceSteps[i];
                     data.Add("sequence_" + (i + 1), "" + x.Sequence);
                     data.Add("amount_" + (i + 1), x.Amount.ToString("f2"));
-                    data.Add("scheduletype_" + (i + 1), EnumToString(x.ScheduleType));
-                    data.Add("scheduleday_" + (i + 1), "" + x.ScheduleDay);
+                    data.Add("scheduleType_" + (i + 1), EnumToString(x.ScheduleType));
+                    data.Add("scheduleDay_" + (i + 1), "" + x.ScheduleDay);
                     data.Add("duration_" + (i + 1), "" + x.Duration);
-                    data.Add("operationtype_" + (i + 1), EnumToString(x.OperationType));
-                    data.Add("productid_" + (i + 1), x.ProductId);
+                    data.Add("operationType_" + (i + 1), EnumToString(x.OperationType));
+                    data.Add("productId_" + (i + 1), x.ProductId);
                     data.Add("description_" + (i + 1), x.Description);
-                    data.Add("newsequence_" + (i + 1), "" + x.NewSequence);
+                    data.Add("newSequence_" + (i + 1), "" + x.NewSequence);
                 }
             }
 
@@ -2425,12 +2580,48 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "deleteplan" },
+                { "mKey", _apiKey },
+                { "transType", "deleteplan" },
                 { "token", token },
-                { "cancelpayments", cancelPayments == true ? "true" : "false" }
+                { "cancelPayments", cancelPayments == true ? "true" : "false" }
             };
 
+
+            data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+
+            var responseValues = await MakeRequest(data);
+            return SparrowResponse.Create(responseValues, data);
+        }
+
+        /// <summary>
+        /// Delete a Sequence
+        /// </summary>
+        /// <remarks>
+        /// payment-plans/delete-sequence.md - Deleting a Sequence
+        /// </remarks>
+        /// <param name="mKey">Secured merchant account key</param>,
+        /// <param name="transType"> (Format: updateplan)</param>,
+        /// <param name="token">Unique payment plan identifier</param>,
+        /// <param name="deleteSequenceSteps">SequenceStepToDelete</param>
+        public async Task<SparrowResponse> DeleteSequence(IList<SequenceStepToDelete> deleteSequenceSteps, string token)
+        {
+            var data = new Dictionary<string, string>
+            {
+                { "mKey", _apiKey },
+                { "transType", "updateplan" },
+                { "token", token }
+            };
+
+
+            if (deleteSequenceSteps != null)
+            {
+                for (int i = 0; i < deleteSequenceSteps.Count; i++)
+                {
+                    var x = deleteSequenceSteps[i];
+                    data.Add("operationType_" + (i + 1), "deletesequence");
+                    data.Add("sequence_" + (i + 1), "" + x.Sequence);
+                }
+            }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
@@ -2451,7 +2642,6 @@ namespace SparrowSdk
         /// <param name="startDate">Day of the first payment of the plan; if not present the plan’s start date (if it exists) is used. (Format: MM/DD/YYYY)</param>,
         /// <param name="productId">External ID for the product (Format: string)</param>,
         /// <param name="description">Description of plan assignment (Format: string)</param>,
-        /// <param name="notifyFailures">Sends notification emails to the client if failed payments occur (Format: true/false)</param>,
         /// <param name="useRecycling">Specifies whether to reprocess failed transactions for this plan (Format: true/false)</param>,
         /// <param name="retryCount">Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise (Format: positive integer)</param>,
         /// <param name="retryType">Specifies the type of retry schedule. Supported types are: every month of a specified date, every N days, every year on a specified date (Format: [daily|weekly|monthly])</param>,
@@ -2460,30 +2650,53 @@ namespace SparrowSdk
         /// <param name="retryFirstDayOfMonth">First date of retry schedule. This field is required if retrytype=monthly (Format: positive integer)</param>,
         /// <param name="retrySecondDayOfMonth">Second date of retry schedule. This field is required if retrytype=monthly (Format: positive integer)</param>,
         /// <param name="proratedPayment">Specifies whether to add prorated payment in this plan (Format: true / false)</param>,
-        /// <param name="routingKey">Merchant key of account with which plan payments should be processed by default. This account must be of the same type as selected customer’s payment type</param>
-        public async Task<SparrowResponse> UpdatePaymentPlanAssignment(string assignmentToken, string paymentToken = "", string startDate = "", string productId = "", string description = "", bool? notifyFailures = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? proratedPayment = null, string routingKey = "")
+        /// <param name="routingKey">Merchant key of account with which plan payments should be processed by default. This account must be of the same type as selected customer’s payment type</param>,
+        /// <param name="notificationOptions">NotificationOptions</param>
+        public async Task<SparrowResponse> UpdatePaymentPlanAssignment(string assignmentToken, string paymentToken = "", string startDate = "", string productId = "", string description = "", NotificationOptions notificationOptions = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? proratedPayment = null, string routingKey = "")
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "updateassignment" },
-                { "assignmenttoken", assignmentToken },
-                { "paymenttoken", paymentToken },
-                { "startdate", startDate },
-                { "productid", productId },
+                { "mKey", _apiKey },
+                { "transType", "updateassignment" },
+                { "assignmentToken", assignmentToken },
+                { "paymentToken", paymentToken },
+                { "startDate", startDate },
+                { "productId", productId },
                 { "description", description },
-                { "notifyfailures", notifyFailures == true ? "true" : "false" },
-                { "userecycling", useRecycling == true ? "true" : "false" },
-                { "retrycount", "" + retryCount },
-                { "retrytype", EnumToString(retryType) },
-                { "retryperiod", "" + retryPeriod },
-                { "retrydayofweek", retryDayOfWeek },
-                { "retryfirstdayofmonth", "" + retryFirstDayOfMonth },
-                { "retryseconddayofmonth", "" + retrySecondDayOfMonth },
-                { "proratedpayment", proratedPayment == true ? "true" : "false" },
-                { "routingkey", routingKey }
+                { "useRecycling", useRecycling == true ? "true" : "false" },
+                { "retryCount", "" + retryCount },
+                { "retryType", EnumToString(retryType) },
+                { "retryPeriod", "" + retryPeriod },
+                { "retryDayOfWeek", retryDayOfWeek },
+                { "retryFirstDayOfMonth", "" + retryFirstDayOfMonth },
+                { "retrySecondDayOfMonth", "" + retrySecondDayOfMonth },
+                { "proratedPayment", proratedPayment == true ? "true" : "false" },
+                { "routingKey", routingKey }
             };
 
+
+            if (notificationOptions != null)
+            {
+                var x = notificationOptions;
+                data.Add("notifyFailures", x.NotifyFailures == true ? "true" : "false");
+                data.Add("notifyUpcomingPayment", x.NotifyUpcomingPayment == true ? "true" : "false");
+                data.Add("notifyDaysBeforeUpcomingPayment", "" + x.NotifyDaysBeforeUpcomingPayment);
+                data.Add("notifyPlanSummary", x.NotifyPlanSummary == true ? "true" : "false");
+                data.Add("notifyPlanSummaryInterval", EnumToString(x.NotifyPlanSummaryInterval));
+                data.Add("notifyPlanSummaryEmails", x.NotifyPlanSummaryEmails);
+                data.Add("notifyDailyStats", x.NotifyDailyStats == true ? "true" : "false");
+                data.Add("notifyDailyStatsEmails", x.NotifyDailyStatsEmails);
+                data.Add("notifyPlanComplete", x.NotifyPlanComplete == true ? "true" : "false");
+                data.Add("notifyPlanCompleteEmails", x.NotifyPlanCompleteEmails);
+                data.Add("notifyDecline", x.NotifyDecline == true ? "true" : "false");
+                data.Add("notifyDeclineEmails", x.NotifyDeclineEmails);
+                data.Add("notifyViaFtp", x.NotifyViaFtp == true ? "true" : "false");
+                data.Add("notifyViaFtpUrl", x.NotifyViaFtpUrl == true ? "true" : "false");
+                data.Add("notifyViaFtpUserName", x.NotifyViaFtpUserName);
+                data.Add("notifyViaFtpPassword", x.NotifyViaFtpPassword);
+                data.Add("notifyFlagged", x.NotifyFlagged == true ? "true" : "false");
+                data.Add("notifyFlaggedEmails", x.NotifyFlaggedEmails);
+            }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
@@ -2503,13 +2716,7 @@ namespace SparrowSdk
         /// <param name="planName">Payment plan name (Format: string)</param>,
         /// <param name="planDesc">Payment plan description (Format: string)</param>,
         /// <param name="startDate">Starting day of the plan (Format: MM/DD/YYYY)</param>,
-        /// <param name="defaultAchMKey">Merchant key of ACH account with which plan payments should be processed by default</param>,
-        /// <param name="defaultCreditCardMKey">Merchant key of Credit Card account with which plan payments should be processed by default</param>,
-        /// <param name="defaultEcheckMKey">Merchant key of eCheck account with which plan payments should be processed by default</param>,
-        /// <param name="defaultStartCardMKey">Merchant key of Star Card account with which plan payments should be processed by default</param>,
-        /// <param name="defaultEwalletMKey">Merchant key of eWallet account with which plan payments should be processed by default</param>,
         /// <param name="useRecycling">Specifies whether to reprocess failed transactions in this plan (Format: true/false)</param>,
-        /// <param name="notifyFailures">Sends notification emails to the client in case of failed payments (Format: true/false)</param>,
         /// <param name="retryCount">Number of times to retry each failed transaction. This field is required if transaction recycling is activated, and ignored otherwise (Format: positive integer)</param>,
         /// <param name="retryType">Specifies the type of retry schedule (Format: [daily|weekly|monthly])</param>,
         /// <param name="retryPeriod">Number of days between retry attempts. This field is required if retrytype=daily (Format: positive integer)</param>,
@@ -2521,71 +2728,66 @@ namespace SparrowSdk
         /// <param name="processImmediately">Specifies if new payments should be processed immediately or end of day (Format: true/false)</param>,
         /// <param name="overrideSender">Specifies whether to override sender email for customers notifications (Format: true/false)</param>,
         /// <param name="senderEmail">Sender email. This field is required if overridesender = true (Format: email)</param>,
-        /// <param name="notifyUpcomingPayment">Specifies whether to notify customer about upcoming payment (Format: true/false)</param>,
-        /// <param name="notifyDaysBeforeUpcomingPayment">Number of days before notification about upcoming payment should be sent to the client. This field is required if notifyupcomingpayment = true (Format: positive integer)</param>,
-        /// <param name="notifyPlanSummary">Specifies whether to send merchant a Summarized Plan Report (Format: true/false)</param>,
-        /// <param name="notifyPlanSummaryInterval">Interval of plan summary notifications. This field is required if notifyplansummary = true (Format: [daily|weekly|monthly|quaterly])</param>,
-        /// <param name="notifyPlanSummaryEmails">Multiple addresses are separated by comma. This field is required if notifyplansummary = true</param>,
-        /// <param name="notifyDailyStats">Specifies whether to send merchant a Daily Plan Processing Statistics Report (Format: true/false)</param>,
-        /// <param name="notifyDailyStatsEmails">Multiple addresses are separated by comma. This field is required if notifydailystats = true</param>,
-        /// <param name="notifyPlanComplete">Specifies whether to notify merchant about plan completion (Format: true/false)</param>,
-        /// <param name="notifyPlanCompleteEmails">Multiple addresses are separated by comma. This field is required if notifyplancomplete = true</param>,
-        /// <param name="notifyDecline">Specifies whether to notify merchant about failed payments (Format: true/false)</param>,
-        /// <param name="notifyDeclineEmails">Multiple addresses are separated by comma. This field is required if notifydecline = true</param>,
-        /// <param name="notifyViaFtp">Specifies whether to transfer transaction file via ftp (Format: true/false)</param>,
-        /// <param name="notifyViaFtpUrl">FTP address on which transaction file is transferred. This field is required if notifyviaftp = true (Format: true/false)</param>,
-        /// <param name="notifyViaFtpUserName">Username to access FTP address. This field is required if notifyviaftp = true</param>,
-        /// <param name="notifyViaFtpPassword">Password to access FTP address. This field is required if notifyviaftp = true</param>,
-        /// <param name="notifyFlagged">Specifies whether to notify merchant about flagged for review payments (Format: true/false)</param>,
-        /// <param name="notifyFlaggedEmails">Multiple addresses are separated by comma. This field is required if notifyflagged = true</param>,
+        /// <param name="defaultKeys">DefaultKeys</param>,
+        /// <param name="notificationOptions">NotificationOptions</param>,
         /// <param name="sequenceSteps">SequenceStep</param>
-        public async Task<SparrowResponse> UpdatePaymentPlan(string token, IList<SequenceStep> sequenceSteps, string planName = "", string planDesc = "", string startDate = "", string defaultAchMKey = "", string defaultCreditCardMKey = "", string defaultEcheckMKey = "", string defaultStartCardMKey = "", string defaultEwalletMKey = "", bool? useRecycling = null, bool? notifyFailures = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? autoCreateClientAccounts = null, bool? reviewOnAssignment = null, bool? processImmediately = null, bool? overrideSender = null, string senderEmail = "", bool? notifyUpcomingPayment = null, int? notifyDaysBeforeUpcomingPayment = null, bool? notifyPlanSummary = null, NotifyPlanSummaryInterval notifyPlanSummaryInterval = NotifyPlanSummaryInterval.Daily, string notifyPlanSummaryEmails = "", bool? notifyDailyStats = null, string notifyDailyStatsEmails = "", bool? notifyPlanComplete = null, string notifyPlanCompleteEmails = "", bool? notifyDecline = null, string notifyDeclineEmails = "", bool? notifyViaFtp = null, bool? notifyViaFtpUrl = null, string notifyViaFtpUserName = "", string notifyViaFtpPassword = "", bool? notifyFlagged = null, string notifyFlaggedEmails = "")
+        public async Task<SparrowResponse> UpdatePaymentPlan(string token, IList<SequenceStep> sequenceSteps, string planName = "", string planDesc = "", string startDate = "", DefaultKeys defaultKeys = null, bool? useRecycling = null, NotificationOptions notificationOptions = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? autoCreateClientAccounts = null, bool? reviewOnAssignment = null, bool? processImmediately = null, bool? overrideSender = null, string senderEmail = "")
         {
             var data = new Dictionary<string, string>
             {
-                { "mkey", _apiKey },
-                { "transtype", "updateplan" },
+                { "mKey", _apiKey },
+                { "transType", "updateplan" },
                 { "token", token },
-                { "planname", planName },
-                { "plandesc", planDesc },
-                { "startdate", startDate },
-                { "defaultachmkey", defaultAchMKey },
-                { "defaultcreditcardmkey", defaultCreditCardMKey },
-                { "defaultecheckmkey", defaultEcheckMKey },
-                { "defaultstartcardmkey", defaultStartCardMKey },
-                { "defaultewalletmkey", defaultEwalletMKey },
-                { "userecycling", useRecycling == true ? "true" : "false" },
-                { "notifyfailures", notifyFailures == true ? "true" : "false" },
-                { "retrycount", "" + retryCount },
-                { "retrytype", EnumToString(retryType) },
-                { "retryperiod", "" + retryPeriod },
-                { "retrydayofweek", retryDayOfWeek },
-                { "retryfirstdayofmonth", "" + retryFirstDayOfMonth },
-                { "retryseconddayofmonth", "" + retrySecondDayOfMonth },
-                { "autocreateclientaccounts", autoCreateClientAccounts == true ? "true" : "false" },
-                { "reviewonassignment", reviewOnAssignment == true ? "true" : "false" },
-                { "processimmediately", processImmediately == true ? "true" : "false" },
-                { "overridesender", overrideSender == true ? "true" : "false" },
-                { "senderemail", senderEmail },
-                { "notifyupcomingpayment", notifyUpcomingPayment == true ? "true" : "false" },
-                { "notifydaysbeforeupcomingpayment", "" + notifyDaysBeforeUpcomingPayment },
-                { "notifyplansummary", notifyPlanSummary == true ? "true" : "false" },
-                { "notifyplansummaryinterval", EnumToString(notifyPlanSummaryInterval) },
-                { "notifyplansummaryemails", notifyPlanSummaryEmails },
-                { "notifydailystats", notifyDailyStats == true ? "true" : "false" },
-                { "notifydailystatsemails", notifyDailyStatsEmails },
-                { "notifyplancomplete", notifyPlanComplete == true ? "true" : "false" },
-                { "notifyplancompleteemails", notifyPlanCompleteEmails },
-                { "notifydecline", notifyDecline == true ? "true" : "false" },
-                { "notifydeclineemails", notifyDeclineEmails },
-                { "notifyviaftp", notifyViaFtp == true ? "true" : "false" },
-                { "notifyviaftpurl", notifyViaFtpUrl == true ? "true" : "false" },
-                { "notifyviaftpusername", notifyViaFtpUserName },
-                { "notifyviaftppassword", notifyViaFtpPassword },
-                { "notifyflagged", notifyFlagged == true ? "true" : "false" },
-                { "notifyflaggedemails", notifyFlaggedEmails }
+                { "planName", planName },
+                { "planDesc", planDesc },
+                { "startDate", startDate },
+                { "useRecycling", useRecycling == true ? "true" : "false" },
+                { "retryCount", "" + retryCount },
+                { "retryType", EnumToString(retryType) },
+                { "retryPeriod", "" + retryPeriod },
+                { "retryDayOfWeek", retryDayOfWeek },
+                { "retryFirstDayOfMonth", "" + retryFirstDayOfMonth },
+                { "retrySecondDayOfMonth", "" + retrySecondDayOfMonth },
+                { "autoCreateClientAccounts", autoCreateClientAccounts == true ? "true" : "false" },
+                { "reviewOnAssignment", reviewOnAssignment == true ? "true" : "false" },
+                { "processImmediately", processImmediately == true ? "true" : "false" },
+                { "overrideSender", overrideSender == true ? "true" : "false" },
+                { "senderEmail", senderEmail }
             };
 
+
+            if (defaultKeys != null)
+            {
+                var x = defaultKeys;
+                data.Add("defaultAchMKey", x.DefaultAchMKey);
+                data.Add("defaultCreditCardMKey", x.DefaultCreditCardMKey);
+                data.Add("defaultEcheckMKey", x.DefaultEcheckMKey);
+                data.Add("defaultStartCardMKey", x.DefaultStartCardMKey);
+                data.Add("defaultEwalletMKey", x.DefaultEwalletMKey);
+            }
+
+            if (notificationOptions != null)
+            {
+                var x = notificationOptions;
+                data.Add("notifyFailures", x.NotifyFailures == true ? "true" : "false");
+                data.Add("notifyUpcomingPayment", x.NotifyUpcomingPayment == true ? "true" : "false");
+                data.Add("notifyDaysBeforeUpcomingPayment", "" + x.NotifyDaysBeforeUpcomingPayment);
+                data.Add("notifyPlanSummary", x.NotifyPlanSummary == true ? "true" : "false");
+                data.Add("notifyPlanSummaryInterval", EnumToString(x.NotifyPlanSummaryInterval));
+                data.Add("notifyPlanSummaryEmails", x.NotifyPlanSummaryEmails);
+                data.Add("notifyDailyStats", x.NotifyDailyStats == true ? "true" : "false");
+                data.Add("notifyDailyStatsEmails", x.NotifyDailyStatsEmails);
+                data.Add("notifyPlanComplete", x.NotifyPlanComplete == true ? "true" : "false");
+                data.Add("notifyPlanCompleteEmails", x.NotifyPlanCompleteEmails);
+                data.Add("notifyDecline", x.NotifyDecline == true ? "true" : "false");
+                data.Add("notifyDeclineEmails", x.NotifyDeclineEmails);
+                data.Add("notifyViaFtp", x.NotifyViaFtp == true ? "true" : "false");
+                data.Add("notifyViaFtpUrl", x.NotifyViaFtpUrl == true ? "true" : "false");
+                data.Add("notifyViaFtpUserName", x.NotifyViaFtpUserName);
+                data.Add("notifyViaFtpPassword", x.NotifyViaFtpPassword);
+                data.Add("notifyFlagged", x.NotifyFlagged == true ? "true" : "false");
+                data.Add("notifyFlaggedEmails", x.NotifyFlaggedEmails);
+            }
 
             if (sequenceSteps != null)
             {
@@ -2594,13 +2796,13 @@ namespace SparrowSdk
                     var x = sequenceSteps[i];
                     data.Add("sequence_" + (i + 1), "" + x.Sequence);
                     data.Add("amount_" + (i + 1), x.Amount.ToString("f2"));
-                    data.Add("scheduletype_" + (i + 1), EnumToString(x.ScheduleType));
-                    data.Add("scheduleday_" + (i + 1), "" + x.ScheduleDay);
+                    data.Add("scheduleType_" + (i + 1), EnumToString(x.ScheduleType));
+                    data.Add("scheduleDay_" + (i + 1), "" + x.ScheduleDay);
                     data.Add("duration_" + (i + 1), "" + x.Duration);
-                    data.Add("operationtype_" + (i + 1), EnumToString(x.OperationType));
-                    data.Add("productid_" + (i + 1), x.ProductId);
+                    data.Add("operationType_" + (i + 1), EnumToString(x.OperationType));
+                    data.Add("productId_" + (i + 1), x.ProductId);
                     data.Add("description_" + (i + 1), x.Description);
-                    data.Add("newsequence_" + (i + 1), "" + x.NewSequence);
+                    data.Add("newSequence_" + (i + 1), "" + x.NewSequence);
                 }
             }
 
@@ -2626,19 +2828,19 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "offline" },
-                { "mkey", _apiKey },
+                { "transType", "offline" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") },
-                { "authcode", authCode },
-                { "authdate", authDate }
+                { "authCode", authCode },
+                { "authDate", authDate }
             };
 
 
             if (creditCard != null)
             {
                 var x = creditCard;
-                data.Add("cardnum", x.CardNum);
-                data.Add("cardexp", x.CardExp);
+                data.Add("cardNum", x.CardNum);
+                data.Add("cardExp", x.CardExp);
                 data.Add("cvv", x.Cvv);
             }
 
@@ -2658,38 +2860,41 @@ namespace SparrowSdk
         /// <param name="mKey">Secured merchant account key</param>,
         /// <param name="transId">Original Payment Gateway Transaction ID</param>,
         /// <param name="amount">Total amount to be charged (i.e. 10.00) (Format: d.dd)</param>,
-        /// <param name="sendTransReceiptToBillEmail">If true receipt will be sent to email from Billing Information if email is specified (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToShipEmail">If true receipt will be sent to email from Shipping Information if email is specified (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToEmails">Additional list of emails to receive receipts (Format: email@email.com)</param>,
         /// <param name="shipTrackNum">Shipping Tracking Number</param>,
         /// <param name="shipCarrier">Shipping Carrier (Format: [ups|fedex|dhl|usps])</param>,
         /// <param name="orderId">Order ID</param>,
+        /// <param name="sendTransReceiptOptions">SendTransReceiptOptions</param>,
         /// <param name="optionalAmount">OptionalAmount</param>
-        public async Task<SparrowResponse> AdvancedCapture(string transId, decimal amount, bool? sendTransReceiptToBillEmail = null, bool? sendTransReceiptToShipEmail = null, string sendTransReceiptToEmails = "", string shipTrackNum = "", ShipCarrier shipCarrier = ShipCarrier.Ups, string orderId = "", IList<OptionalAmount> optionalAmount = null)
+        public async Task<SparrowResponse> AdvancedCapture(string transId, decimal amount, SendTransReceiptOptions sendTransReceiptOptions = null, string shipTrackNum = "", ShipCarrier shipCarrier = ShipCarrier.Ups, string orderId = "", IList<OptionalAmount> optionalAmount = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "capture" },
-                { "mkey", _apiKey },
-                { "transid", transId },
+                { "transType", "capture" },
+                { "mKey", _apiKey },
+                { "transId", transId },
                 { "amount", amount.ToString("f2") },
-                { "sendtransreceipttobillemail", sendTransReceiptToBillEmail == true ? "true" : "false" },
-                { "sendtransreceipttoshipemail", sendTransReceiptToShipEmail == true ? "true" : "false" },
-                { "sendtransreceipttoemails", sendTransReceiptToEmails },
-                { "shiptracknum", shipTrackNum },
-                { "shipcarrier", EnumToString(shipCarrier) },
-                { "orderid", orderId }
+                { "shipTrackNum", shipTrackNum },
+                { "shipCarrier", EnumToString(shipCarrier) },
+                { "orderId", orderId }
             };
 
+
+            if (sendTransReceiptOptions != null)
+            {
+                var x = sendTransReceiptOptions;
+                data.Add("sendTransReceiptToEmails", x.SendTransReceiptToEmails);
+                data.Add("sendTransReceiptToBillEmail", x.SendTransReceiptToBillEmail == true ? "true" : "false");
+                data.Add("sendTransReceiptToShipEmail", x.SendTransReceiptToShipEmail == true ? "true" : "false");
+            }
 
             if (optionalAmount != null)
             {
                 for (int i = 0; i < optionalAmount.Count; i++)
                 {
                     var x = optionalAmount[i];
-                    data.Add("opt_amount_type_" + (i + 1), x.OptAmountType);
-                    data.Add("opt_amount_value_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
-                    data.Add("opt_amount_percentage_" + (i + 1), x.OptAmountPercentage);
+                    data.Add("optAmountType_" + (i + 1), x.OptAmountType);
+                    data.Add("optAmountValue_" + (i + 1), x.OptAmountValue?.ToString("f2") ?? "");
+                    data.Add("optAmountPercentage_" + (i + 1), x.OptAmountPercentage);
                 }
             }
 
@@ -2713,8 +2918,8 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "auth" },
-                { "mkey", _apiKey },
+                { "transType", "auth" },
+                { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") }
             };
 
@@ -2722,8 +2927,8 @@ namespace SparrowSdk
             if (creditCard != null)
             {
                 var x = creditCard;
-                data.Add("cardnum", x.CardNum);
-                data.Add("cardexp", x.CardExp);
+                data.Add("cardNum", x.CardNum);
+                data.Add("cardExp", x.CardExp);
                 data.Add("cvv", x.Cvv);
             }
 
@@ -2743,22 +2948,25 @@ namespace SparrowSdk
         /// <param name="mKey">Secured merchant account key</param>,
         /// <param name="transId">Original Payment Gateway Transaction ID</param>,
         /// <param name="amount">Total amount to be charged (i.e. 10.00) (Format: d.dd)</param>,
-        /// <param name="sendTransReceiptToBillEmail">If true receipt will be sent to email from Billing Information if email is specified (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToShipEmail">If true receipt will be sent to email from Shipping Information if email is specified (Format: true/false)</param>,
-        /// <param name="sendTransReceiptToEmails">Additional list of emails to receive receipts (Format: email@email.com)</param>
-        public async Task<SparrowResponse> SimpleCapture(string transId, decimal amount, bool? sendTransReceiptToBillEmail = null, bool? sendTransReceiptToShipEmail = null, string sendTransReceiptToEmails = "")
+        /// <param name="sendTransReceiptOptions">SendTransReceiptOptions</param>
+        public async Task<SparrowResponse> SimpleCapture(string transId, decimal amount, SendTransReceiptOptions sendTransReceiptOptions = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "capture" },
-                { "mkey", _apiKey },
-                { "transid", transId },
-                { "amount", amount.ToString("f2") },
-                { "sendtransreceipttobillemail", sendTransReceiptToBillEmail == true ? "true" : "false" },
-                { "sendtransreceipttoshipemail", sendTransReceiptToShipEmail == true ? "true" : "false" },
-                { "sendtransreceipttoemails", sendTransReceiptToEmails }
+                { "transType", "capture" },
+                { "mKey", _apiKey },
+                { "transId", transId },
+                { "amount", amount.ToString("f2") }
             };
 
+
+            if (sendTransReceiptOptions != null)
+            {
+                var x = sendTransReceiptOptions;
+                data.Add("sendTransReceiptToEmails", x.SendTransReceiptToEmails);
+                data.Add("sendTransReceiptToBillEmail", x.SendTransReceiptToBillEmail == true ? "true" : "false");
+                data.Add("sendTransReceiptToShipEmail", x.SendTransReceiptToShipEmail == true ? "true" : "false");
+            }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
 
@@ -2788,24 +2996,24 @@ namespace SparrowSdk
         /// <param name="fax">Billing fax number</param>,
         /// <param name="contactInfo">ContactInfo</param>,
         /// <param name="product">Product</param>,
-        /// <param name="shippingContactInfo">ContactInfo</param>
-        public async Task<SparrowResponse> AdvancedStarCard(string cardNum, string cardExp, decimal amount, string CID, string currency = "", ContactInfo contactInfo = null, IList<Product> product = null, string orderDesc = "", string orderId = "", string cardIpAddress = "", decimal? tax = null, decimal? shipAmount = null, string poNumber = "", string fax = "", ContactInfo shippingContactInfo = null)
+        /// <param name="shippingContactInfo">ShippingContactInfo</param>
+        public async Task<SparrowResponse> AdvancedStarCard(string cardNum, string cardExp, decimal amount, string CID, string currency = "", ContactInfo contactInfo = null, IList<Product> product = null, string orderDesc = "", string orderId = "", string cardIpAddress = "", decimal? tax = null, decimal? shipAmount = null, string poNumber = "", string fax = "", ShippingContactInfo shippingContactInfo = null)
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "sale" },
-                { "mkey", _apiKey },
-                { "cardnum", cardNum },
-                { "cardexp", cardExp },
+                { "transType", "sale" },
+                { "mKey", _apiKey },
+                { "cardNum", cardNum },
+                { "cardExp", cardExp },
                 { "amount", amount.ToString("f2") },
                 { "CID", CID },
                 { "currency", currency },
-                { "orderdesc", orderDesc },
-                { "orderid", orderId },
-                { "cardipaddress", cardIpAddress },
+                { "orderDesc", orderDesc },
+                { "orderId", orderId },
+                { "cardIpAddress", cardIpAddress },
                 { "tax", tax?.ToString("f2") ?? "" },
-                { "shipamount", shipAmount?.ToString("f2") ?? "" },
-                { "ponumber", poNumber },
+                { "shipAmount", shipAmount?.ToString("f2") ?? "" },
+                { "poNumber", poNumber },
                 { "fax", fax }
             };
 
@@ -2813,8 +3021,9 @@ namespace SparrowSdk
             if (contactInfo != null)
             {
                 var x = contactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
+                data.Add("firstName", x.FirstName);
+                data.Add("lastName", x.LastName);
+                data.Add("birthDate", x.BirthDate);
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -2831,7 +3040,7 @@ namespace SparrowSdk
                 for (int i = 0; i < product.Count; i++)
                 {
                     var x = product[i];
-                    data.Add("skunumber_" + (i + 1), x.SkuNumber);
+                    data.Add("skuNumber_" + (i + 1), x.SkuNumber);
                     data.Add("description_" + (i + 1), x.Description);
                     data.Add("amount_" + (i + 1), x.Amount?.ToString("f2") ?? "");
                     data.Add("quantity_" + (i + 1), "" + x.Quantity);
@@ -2841,17 +3050,17 @@ namespace SparrowSdk
             if (shippingContactInfo != null)
             {
                 var x = shippingContactInfo;
-                data.Add("firstname", x.FirstName);
-                data.Add("lastname", x.LastName);
-                data.Add("company", x.Company);
-                data.Add("address1", x.Address?.Address1);
-                data.Add("city", x.Address?.City);
-                data.Add("state", x.Address?.State);
-                data.Add("zip", x.Address?.Zip);
-                data.Add("country", x.Address?.Country);
-                data.Add("address2", x.Address?.Address2);
-                data.Add("phone", x.Phone);
-                data.Add("email", x.Email);
+                data.Add("shipFirstName", x.ShipFirstName);
+                data.Add("shipLastName", x.ShipLastName);
+                data.Add("shipCompany", x.ShipCompany);
+                data.Add("shipAddress1", x.ShippingAddress?.ShipAddress1);
+                data.Add("shipCity", x.ShippingAddress?.ShipCity);
+                data.Add("shipState", x.ShippingAddress?.ShipState);
+                data.Add("shipZip", x.ShippingAddress?.ShipZip);
+                data.Add("shipCountry", x.ShippingAddress?.ShipCountry);
+                data.Add("shipAddress2", x.ShippingAddress?.ShipAddress2);
+                data.Add("shipPhone", x.ShipPhone);
+                data.Add("shipEmail", x.ShipEmail);
             }
 
             data = data.Where(x => !string.IsNullOrEmpty(x.Value)).ToDictionary(x => x.Key, x => x.Value);
@@ -2875,9 +3084,9 @@ namespace SparrowSdk
         {
             var data = new Dictionary<string, string>
             {
-                { "transtype", "sale" },
-                { "mkey", _apiKey },
-                { "cardnum", cardNum },
+                { "transType", "sale" },
+                { "mKey", _apiKey },
+                { "cardNum", cardNum },
                 { "amount", amount.ToString("f2") },
                 { "CID", CID }
             };
