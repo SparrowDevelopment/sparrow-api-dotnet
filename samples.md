@@ -1322,23 +1322,39 @@ result.Type;    // deleteplan
 
 
 
-### payment-plans/delete-sequence.md: DeleteSequence (FAIL)
+
+### payment-plans/delete-sequence.md: DeleteSequence
 
 
 CODE: 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+var resultCreatePaymentPlan = await _sparrow.CreatePaymentPlan(
+    planName: "PaymentPlan1", 
+    planDesc: "1st Payment Plan", 
+    startDate: new DateTime(2019,10,21), 
+    sequenceSteps: new []{ new Sparrow.SequenceStep{ Sequence = 1, Amount = 9.99m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
 var result = await _sparrow.DeleteSequence(
     deleteSequenceSteps: new []{ new Sparrow.SequenceStepToDelete{ Sequence = 1 } }, 
-    token: "I4LYCSV3FMGDTA9G");
+    token: resultCreatePaymentPlan.PlanToken);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+RESULT CreatePaymentPlan:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+resultCreatePaymentPlan.Response;    // 1
+resultCreatePaymentPlan.TextResponse;    // SUCCESS
+resultCreatePaymentPlan.Type;    // addplan
+resultCreatePaymentPlan.PlanToken;    // X16TGWE4V6Z5X90W
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 RESULT:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-result.Response;    // 3
-result.TextResponse;    // Sequence with #1 does not exist.
+result.Response;    // 1
+result.TextResponse;    // SUCCESS
 result.Type;    // updateplan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

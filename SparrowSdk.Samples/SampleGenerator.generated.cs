@@ -931,17 +931,28 @@ var result = await _sparrow.DeletePlan(
 
             if (!!true)
             {
+                var resultCreatePaymentPlan = await _sparrow_creditcard.CreatePaymentPlan(
+                    planName: "PaymentPlan1",
+                    planDesc: "1st Payment Plan",
+                    startDate: new DateTime(2019, 10, 21),
+                    sequenceSteps: new[] { new Sparrow.SequenceStep { Sequence = 1, Amount = 9.99m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
                 var resultDeleteSequence = await _sparrow_creditcard.DeleteSequence(
                     deleteSequenceSteps: new[] { new Sparrow.SequenceStepToDelete { Sequence = 1 } },
-                    token: "I4LYCSV3FMGDTA9G");
+                    token: resultCreatePaymentPlan.PlanToken);
 
                 Log(SparrowResponseSamples.EnterSample("payment-plans/delete-sequence.md", "DeleteSequence", resultDeleteSequence.IsSuccess));
 
                 Log(SparrowResponseSamples.CreateCodeSample(@"
+var resultCreatePaymentPlan = await _sparrow.CreatePaymentPlan(
+    planName: ""PaymentPlan1"", 
+    planDesc: ""1st Payment Plan"", 
+    startDate: new DateTime(2019,10,21), 
+    sequenceSteps: new []{ new Sparrow.SequenceStep{ Sequence = 1, Amount = 9.99m, ScheduleType = Sparrow.ScheduleType.Monthly, ScheduleDay = 5, Duration = 12 } });
 var result = await _sparrow.DeleteSequence(
     deleteSequenceSteps: new []{ new Sparrow.SequenceStepToDelete{ Sequence = 1 } }, 
-    token: ""I4LYCSV3FMGDTA9G"");"));
+    token: resultCreatePaymentPlan.PlanToken);"));
 
+                Log(resultCreatePaymentPlan.CreateResponseDemo("resultCreatePaymentPlan"));
                 Log(resultDeleteSequence.CreateResponseDemo("result"));
 
                 Log(SparrowResponseSamples.ExitSample("payment-plans/delete-sequence.md", "DeleteSequence", resultDeleteSequence.IsSuccess));
