@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -154,7 +155,7 @@ namespace SparrowSdk
             /// <summary>
             /// Birthdate of the customer
             /// </summary>
-            public string BirthDate { get; set; } = "";
+            public DateTime? BirthDate { get; set; } = null;
             /// <summary>
             /// Billing Company
             /// </summary>
@@ -382,7 +383,7 @@ namespace SparrowSdk
             /// <summary>
             /// Credit card expiration (ie 0719 = 07/2019)
             /// </summary>
-            public string CardExp { get; set; }
+            public DateTime CardExp { get; set; }
             /// <summary>
             /// Card security code
             /// </summary>
@@ -418,11 +419,11 @@ namespace SparrowSdk
             /// <summary>
             /// Bank Account
             /// </summary>
-            public BankAccount BankAccount { get; set; } = null;
+            public BankAccount BankAccount { get; set; }
             /// <summary>
             /// eWallet Account
             /// </summary>
-            public Ewallet Ewallet { get; set; } = null;
+            public Ewallet Ewallet { get; set; }
         }
 
         public class PaymentTypeToUpdate
@@ -442,7 +443,7 @@ namespace SparrowSdk
             /// <summary>
             /// Payment Type
             /// </summary>
-            public PaymentType PaymentType { get; set; } = null;
+            public PaymentType PaymentType { get; set; }
         }
 
         public class PaymentTypeToDelete
@@ -635,7 +636,7 @@ namespace SparrowSdk
                 var x = contactInfo;
                 data.Add("firstName", x.FirstName);
                 data.Add("lastName", x.LastName);
-                data.Add("birthDate", x.BirthDate);
+                data.Add("birthDate", x.BirthDate?.ToString("MM/dd/yy") ?? "");
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -740,7 +741,7 @@ namespace SparrowSdk
                 var x = contactInfo;
                 data.Add("firstName", x.FirstName);
                 data.Add("lastName", x.LastName);
-                data.Add("birthDate", x.BirthDate);
+                data.Add("birthDate", x.BirthDate?.ToString("MM/dd/yy") ?? "");
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -837,7 +838,7 @@ namespace SparrowSdk
                 var x = contactInfo;
                 data.Add("firstName", x.FirstName);
                 data.Add("lastName", x.LastName);
-                data.Add("birthDate", x.BirthDate);
+                data.Add("birthDate", x.BirthDate?.ToString("MM/dd/yy") ?? "");
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -891,7 +892,7 @@ namespace SparrowSdk
                 var x = contactInfo;
                 data.Add("firstName", x.FirstName);
                 data.Add("lastName", x.LastName);
-                data.Add("birthDate", x.BirthDate);
+                data.Add("birthDate", x.BirthDate?.ToString("MM/dd/yy") ?? "");
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -935,7 +936,7 @@ namespace SparrowSdk
         /// <param name="validationCode">4 characters (Format: [a-z, A-Z, 0-9])</param>,
         /// <param name="authResponseCode">2 characters (Format: [a-zA-Z0-9 ] or two spaces)</param>,
         /// <param name="creditCard">CreditCard</param>
-        public async Task<SparrowResponse> PassengerSale(CreditCard creditCard, decimal amount, string passengerName, IList<string> airportCodes, string airlineCodeNumber, string ticketNumber, IList<string> flightDateCoupons, IList<string> flightDepartureTimeCoupons, string approvalCode, AuthCharIndicator authCharIndicator, string validationCode, string authResponseCode, StopOverCode stopOverCode = StopOverCode.SPACE, IList<string> carrierCoupons = null, IList<string> classOfServiceCoupons = null, string addressVerificationCode = "", string transactionId = "", string referenceNumber = "")
+        public async Task<SparrowResponse> PassengerSale(CreditCard creditCard, decimal amount, string passengerName, IList<string> airportCodes, string airlineCodeNumber, string ticketNumber, IList<DateTime> flightDateCoupons, IList<string> flightDepartureTimeCoupons, string approvalCode, AuthCharIndicator authCharIndicator, string validationCode, string authResponseCode, StopOverCode stopOverCode = StopOverCode.SPACE, IList<string> carrierCoupons = null, IList<string> classOfServiceCoupons = null, string addressVerificationCode = "", string transactionId = "", string referenceNumber = "")
         {
             var data = new Dictionary<string, string>
             {
@@ -984,7 +985,7 @@ namespace SparrowSdk
             {
                 for (int i = 0; i < flightDateCoupons.Count; i++)
                 {
-                    data.Add("flightDateCoupons" + (i + 1), flightDateCoupons[i]);
+                    data.Add("flightDateCoupons" + (i + 1), flightDateCoupons[i].ToString("MM/dd/yy"));
                 }
             }
 
@@ -1000,7 +1001,7 @@ namespace SparrowSdk
             {
                 var x = creditCard;
                 data.Add("cardNum", x.CardNum);
-                data.Add("cardExp", x.CardExp);
+                data.Add("cardExp", x.CardExp.ToString("MMyy"));
                 data.Add("cvv", x.Cvv);
             }
 
@@ -1061,7 +1062,7 @@ namespace SparrowSdk
             {
                 var x = creditCard;
                 data.Add("cardNum", x.CardNum);
-                data.Add("cardExp", x.CardExp);
+                data.Add("cardExp", x.CardExp.ToString("MMyy"));
                 data.Add("cvv", x.Cvv);
             }
 
@@ -1122,7 +1123,7 @@ namespace SparrowSdk
             {
                 var x = creditCard;
                 data.Add("cardNum", x.CardNum);
-                data.Add("cardExp", x.CardExp);
+                data.Add("cardExp", x.CardExp.ToString("MMyy"));
                 data.Add("cvv", x.Cvv);
             }
 
@@ -1189,7 +1190,7 @@ namespace SparrowSdk
             {
                 var x = creditCard;
                 data.Add("cardNum", x.CardNum);
-                data.Add("cardExp", x.CardExp);
+                data.Add("cardExp", x.CardExp.ToString("MMyy"));
                 data.Add("cvv", x.Cvv);
             }
 
@@ -1198,7 +1199,7 @@ namespace SparrowSdk
                 var x = contactInfo;
                 data.Add("firstName", x.FirstName);
                 data.Add("lastName", x.LastName);
-                data.Add("birthDate", x.BirthDate);
+                data.Add("birthDate", x.BirthDate?.ToString("MM/dd/yy") ?? "");
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -1287,7 +1288,7 @@ namespace SparrowSdk
             {
                 var x = creditCard;
                 data.Add("cardNum", x.CardNum);
-                data.Add("cardExp", x.CardExp);
+                data.Add("cardExp", x.CardExp.ToString("MMyy"));
                 data.Add("cvv", x.Cvv);
             }
 
@@ -1337,7 +1338,7 @@ namespace SparrowSdk
                     data.Add("phone_" + (i + 1), x.PaymentType?.ContactInfo?.Phone);
                     data.Add("email_" + (i + 1), x.PaymentType?.ContactInfo?.Email);
                     data.Add("cardNum_" + (i + 1), x.PaymentType?.CreditCard?.CardNum);
-                    data.Add("cardExp_" + (i + 1), x.PaymentType?.CreditCard?.CardExp);
+                    data.Add("cardExp_" + (i + 1), x.PaymentType?.CreditCard?.CardExp.ToString("MMyy"));
                     data.Add("cvv_" + (i + 1), x.PaymentType?.CreditCard?.Cvv);
                     data.Add("bankName_" + (i + 1), x.PaymentType?.BankAccount?.BankName);
                     data.Add("routing_" + (i + 1), x.PaymentType?.BankAccount?.Routing);
@@ -1370,7 +1371,7 @@ namespace SparrowSdk
         /// <param name="shippingContactInfo">ShippingContactInfo</param>,
         /// <param name="clientAccount">ClientAccount</param>,
         /// <param name="paymentType">PaymentType</param>
-        public async Task<SparrowResponse> AddCustomer(ContactInfo defaultContactInfo, string customerId = "", string note = "", Address defaultAddress = null, ShippingContactInfo shippingContactInfo = null, ClientAccount clientAccount = null, IList<PaymentType> paymentType = null)
+        public async Task<SparrowResponse> AddCustomer(ContactInfo defaultContactInfo, IList<PaymentType> paymentType, string customerId = "", string note = "", Address defaultAddress = null, ShippingContactInfo shippingContactInfo = null, ClientAccount clientAccount = null)
         {
             var data = new Dictionary<string, string>
             {
@@ -1386,7 +1387,7 @@ namespace SparrowSdk
                 var x = defaultContactInfo;
                 data.Add("firstName", x.FirstName);
                 data.Add("lastName", x.LastName);
-                data.Add("birthDate", x.BirthDate);
+                data.Add("birthDate", x.BirthDate?.ToString("MM/dd/yy") ?? "");
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -1452,7 +1453,7 @@ namespace SparrowSdk
                     data.Add("phone_" + (i + 1), x.ContactInfo?.Phone);
                     data.Add("email_" + (i + 1), x.ContactInfo?.Email);
                     data.Add("cardNum_" + (i + 1), x.CreditCard?.CardNum);
-                    data.Add("cardExp_" + (i + 1), x.CreditCard?.CardExp);
+                    data.Add("cardExp_" + (i + 1), x.CreditCard?.CardExp.ToString("MMyy"));
                     data.Add("cvv_" + (i + 1), x.CreditCard?.Cvv);
                     data.Add("bankName_" + (i + 1), x.BankAccount?.BankName);
                     data.Add("routing_" + (i + 1), x.BankAccount?.Routing);
@@ -1608,7 +1609,7 @@ namespace SparrowSdk
                 var x = contactInfo;
                 data.Add("firstName", x.FirstName);
                 data.Add("lastName", x.LastName);
-                data.Add("birthDate", x.BirthDate);
+                data.Add("birthDate", x.BirthDate?.ToString("MM/dd/yy") ?? "");
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -1691,7 +1692,7 @@ namespace SparrowSdk
                     data.Add("phone_" + (i + 1), x.PaymentType?.ContactInfo?.Phone);
                     data.Add("email_" + (i + 1), x.PaymentType?.ContactInfo?.Email);
                     data.Add("cardNum_" + (i + 1), x.PaymentType?.CreditCard?.CardNum);
-                    data.Add("cardExp_" + (i + 1), x.PaymentType?.CreditCard?.CardExp);
+                    data.Add("cardExp_" + (i + 1), x.PaymentType?.CreditCard?.CardExp.ToString("MMyy"));
                     data.Add("cvv_" + (i + 1), x.PaymentType?.CreditCard?.Cvv);
                     data.Add("bankName_" + (i + 1), x.PaymentType?.BankAccount?.BankName);
                     data.Add("routing_" + (i + 1), x.PaymentType?.BankAccount?.Routing);
@@ -1813,7 +1814,7 @@ namespace SparrowSdk
             {
                 var x = creditCard;
                 data.Add("cardNum", x.CardNum);
-                data.Add("cardExp", x.CardExp);
+                data.Add("cardExp", x.CardExp.ToString("MMyy"));
                 data.Add("cvv", x.Cvv);
             }
 
@@ -1822,7 +1823,7 @@ namespace SparrowSdk
                 var x = contactInfo;
                 data.Add("firstName", x.FirstName);
                 data.Add("lastName", x.LastName);
-                data.Add("birthDate", x.BirthDate);
+                data.Add("birthDate", x.BirthDate?.ToString("MM/dd/yy") ?? "");
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -1879,14 +1880,14 @@ namespace SparrowSdk
         /// <param name="cardNum">Credit card number</param>,
         /// <param name="cardExp">Credit card expiration (ie. 0711 = 7/2011) (Format: MMYY)</param>,
         /// <param name="amount">Total amount to be charged (i.e. 10.00) (Format: d.dd)</param>
-        public async Task<SparrowResponse> FiservSimpleSale(string cardNum, string cardExp, decimal amount)
+        public async Task<SparrowResponse> FiservSimpleSale(string cardNum, DateTime cardExp, decimal amount)
         {
             var data = new Dictionary<string, string>
             {
                 { "transType", "sale" },
                 { "mKey", _apiKey },
                 { "cardNum", cardNum },
-                { "cardExp", cardExp },
+                { "cardExp", cardExp.ToString("MMyy") },
                 { "amount", amount.ToString("f2") }
             };
 
@@ -1967,14 +1968,14 @@ namespace SparrowSdk
         /// <param name="invoiceAmount">Total amount of invoice (i.e. 10.00). Required if product list is not specified (Format: d.dd)</param>,
         /// <param name="sendPaymentLinkEmail">If Invoice status is 'Active' email with Pay Invoice URL will be sent to specified email. (Format: email@email.com)</param>,
         /// <param name="invoiceProduct">InvoiceProduct</param>
-        public async Task<SparrowResponse> CreateInvoice(string invoiceDate, string currency, InvoiceStatus invoiceStatus, decimal invoiceAmount, string customerToken = "", InvoiceSource invoiceSource = InvoiceSource.Checkoutapi, IList<InvoiceProduct> invoiceProduct = null, string sendPaymentLinkEmail = "")
+        public async Task<SparrowResponse> CreateInvoice(DateTime invoiceDate, string currency, InvoiceStatus invoiceStatus, decimal invoiceAmount, string customerToken = "", InvoiceSource invoiceSource = InvoiceSource.Checkoutapi, IList<InvoiceProduct> invoiceProduct = null, string sendPaymentLinkEmail = "")
         {
             var data = new Dictionary<string, string>
             {
                 { "mKey", _apiKey },
                 { "transType", "createmerchantinvoice" },
                 { "customerToken", customerToken },
-                { "invoiceDate", invoiceDate },
+                { "invoiceDate", invoiceDate.ToString("MM/dd/yy") },
                 { "currency", currency },
                 { "invoiceStatus", EnumToString(invoiceStatus) },
                 { "invoiceSource", EnumToString(invoiceSource) },
@@ -2065,7 +2066,7 @@ namespace SparrowSdk
                 var x = contactInfo;
                 data.Add("firstName", x.FirstName);
                 data.Add("lastName", x.LastName);
-                data.Add("birthDate", x.BirthDate);
+                data.Add("birthDate", x.BirthDate?.ToString("MM/dd/yy") ?? "");
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -2127,7 +2128,7 @@ namespace SparrowSdk
             {
                 var x = creditCard;
                 data.Add("cardNum", x.CardNum);
-                data.Add("cardExp", x.CardExp);
+                data.Add("cardExp", x.CardExp.ToString("MMyy"));
                 data.Add("cvv", x.Cvv);
             }
 
@@ -2136,7 +2137,7 @@ namespace SparrowSdk
                 var x = contactInfo;
                 data.Add("firstName", x.FirstName);
                 data.Add("lastName", x.LastName);
-                data.Add("birthDate", x.BirthDate);
+                data.Add("birthDate", x.BirthDate?.ToString("MM/dd/yy") ?? "");
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
@@ -2187,7 +2188,7 @@ namespace SparrowSdk
         /// <param name="invoiceAmount">Total amount of invoice (i.e. 10.00). Required if product list is not specified (Format: d.dd)</param>,
         /// <param name="sendPaymentLinkEmail">If Invoice status is 'Active' email with Pay Invoice URL will be sent to specified email. (Format: email@email.com)</param>,
         /// <param name="invoiceProduct">InvoiceProduct</param>
-        public async Task<SparrowResponse> UpdateInvoice(string invoiceNumber, string customerToken = "", string invoiceDate = "", string currency = "", InvoiceStatus invoiceStatus = InvoiceStatus.Draft, InvoiceSource invoiceSource = InvoiceSource.Checkoutapi, decimal? invoiceAmount = null, IList<InvoiceProduct> invoiceProduct = null, string sendPaymentLinkEmail = "")
+        public async Task<SparrowResponse> UpdateInvoice(string invoiceNumber, string customerToken = "", DateTime? invoiceDate = null, string currency = "", InvoiceStatus invoiceStatus = InvoiceStatus.Draft, InvoiceSource invoiceSource = InvoiceSource.Checkoutapi, decimal? invoiceAmount = null, IList<InvoiceProduct> invoiceProduct = null, string sendPaymentLinkEmail = "")
         {
             var data = new Dictionary<string, string>
             {
@@ -2195,7 +2196,7 @@ namespace SparrowSdk
                 { "transType", "updateinvoice" },
                 { "invoiceNumber", invoiceNumber },
                 { "customerToken", customerToken },
-                { "invoiceDate", invoiceDate },
+                { "invoiceDate", invoiceDate?.ToString("MM/dd/yy") ?? "" },
                 { "currency", currency },
                 { "invoiceStatus", EnumToString(invoiceStatus) },
                 { "invoiceSource", EnumToString(invoiceSource) },
@@ -2381,7 +2382,7 @@ namespace SparrowSdk
         /// <param name="proratedPayment">Specifies whether to add prorated payment in this plan (Format: true / false)</param>,
         /// <param name="routingKey">Merchant key of account with which plan payments should be processed by default. This account must be of the same type as selected customer’s payment type</param>,
         /// <param name="notificationOptions">NotificationOptions</param>
-        public async Task<SparrowResponse> AssignPaymentPlanToCustomer(string customerToken, string planToken, string paymentToken, string startDate = "", string productId = "", string description = "", decimal? amount = null, NotificationOptions notificationOptions = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? proratedPayment = null, string routingKey = "")
+        public async Task<SparrowResponse> AssignPaymentPlanToCustomer(string customerToken, string planToken, string paymentToken, DateTime? startDate = null, string productId = "", string description = "", decimal? amount = null, NotificationOptions notificationOptions = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? proratedPayment = null, string routingKey = "")
         {
             var data = new Dictionary<string, string>
             {
@@ -2390,7 +2391,7 @@ namespace SparrowSdk
                 { "customerToken", customerToken },
                 { "planToken", planToken },
                 { "paymentToken", paymentToken },
-                { "startDate", startDate },
+                { "startDate", startDate?.ToString("MM/dd/yy") ?? "" },
                 { "productId", productId },
                 { "description", description },
                 { "amount", amount?.ToString("f2") ?? "" },
@@ -2486,7 +2487,7 @@ namespace SparrowSdk
         /// <param name="defaultKeys">DefaultKeys</param>,
         /// <param name="notificationOptions">NotificationOptions</param>,
         /// <param name="sequenceSteps">SequenceStep</param>
-        public async Task<SparrowResponse> CreatePaymentPlan(string planName, string planDesc, string startDate, IList<SequenceStep> sequenceSteps, DefaultKeys defaultKeys = null, bool? reviewOnAssignment = null, bool? processImmediately = null, bool? overrideSender = null, string senderEmail = "", NotificationOptions notificationOptions = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? autoCreateClientAccounts = null)
+        public async Task<SparrowResponse> CreatePaymentPlan(string planName, string planDesc, DateTime startDate, IList<SequenceStep> sequenceSteps, DefaultKeys defaultKeys = null, bool? reviewOnAssignment = null, bool? processImmediately = null, bool? overrideSender = null, string senderEmail = "", NotificationOptions notificationOptions = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? autoCreateClientAccounts = null)
         {
             var data = new Dictionary<string, string>
             {
@@ -2494,7 +2495,7 @@ namespace SparrowSdk
                 { "transType", "addplan" },
                 { "planName", planName },
                 { "planDesc", planDesc },
-                { "startDate", startDate },
+                { "startDate", startDate.ToString("MM/dd/yy") },
                 { "reviewOnAssignment", reviewOnAssignment == true ? "true" : "false" },
                 { "processImmediately", processImmediately == true ? "true" : "false" },
                 { "overrideSender", overrideSender == true ? "true" : "false" },
@@ -2652,7 +2653,7 @@ namespace SparrowSdk
         /// <param name="proratedPayment">Specifies whether to add prorated payment in this plan (Format: true / false)</param>,
         /// <param name="routingKey">Merchant key of account with which plan payments should be processed by default. This account must be of the same type as selected customer’s payment type</param>,
         /// <param name="notificationOptions">NotificationOptions</param>
-        public async Task<SparrowResponse> UpdatePaymentPlanAssignment(string assignmentToken, string paymentToken = "", string startDate = "", string productId = "", string description = "", NotificationOptions notificationOptions = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? proratedPayment = null, string routingKey = "")
+        public async Task<SparrowResponse> UpdatePaymentPlanAssignment(string assignmentToken, string paymentToken = "", DateTime? startDate = null, string productId = "", string description = "", NotificationOptions notificationOptions = null, bool? useRecycling = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? proratedPayment = null, string routingKey = "")
         {
             var data = new Dictionary<string, string>
             {
@@ -2660,7 +2661,7 @@ namespace SparrowSdk
                 { "transType", "updateassignment" },
                 { "assignmentToken", assignmentToken },
                 { "paymentToken", paymentToken },
-                { "startDate", startDate },
+                { "startDate", startDate?.ToString("MM/dd/yy") ?? "" },
                 { "productId", productId },
                 { "description", description },
                 { "useRecycling", useRecycling == true ? "true" : "false" },
@@ -2731,7 +2732,7 @@ namespace SparrowSdk
         /// <param name="defaultKeys">DefaultKeys</param>,
         /// <param name="notificationOptions">NotificationOptions</param>,
         /// <param name="sequenceSteps">SequenceStep</param>
-        public async Task<SparrowResponse> UpdatePaymentPlan(string token, IList<SequenceStep> sequenceSteps, string planName = "", string planDesc = "", string startDate = "", DefaultKeys defaultKeys = null, bool? useRecycling = null, NotificationOptions notificationOptions = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? autoCreateClientAccounts = null, bool? reviewOnAssignment = null, bool? processImmediately = null, bool? overrideSender = null, string senderEmail = "")
+        public async Task<SparrowResponse> UpdatePaymentPlan(string token, IList<SequenceStep> sequenceSteps, string planName = "", string planDesc = "", DateTime? startDate = null, DefaultKeys defaultKeys = null, bool? useRecycling = null, NotificationOptions notificationOptions = null, int? retryCount = null, RetryType retryType = RetryType.Daily, int? retryPeriod = null, string retryDayOfWeek = "", int? retryFirstDayOfMonth = null, int? retrySecondDayOfMonth = null, bool? autoCreateClientAccounts = null, bool? reviewOnAssignment = null, bool? processImmediately = null, bool? overrideSender = null, string senderEmail = "")
         {
             var data = new Dictionary<string, string>
             {
@@ -2740,7 +2741,7 @@ namespace SparrowSdk
                 { "token", token },
                 { "planName", planName },
                 { "planDesc", planDesc },
-                { "startDate", startDate },
+                { "startDate", startDate?.ToString("MM/dd/yy") ?? "" },
                 { "useRecycling", useRecycling == true ? "true" : "false" },
                 { "retryCount", "" + retryCount },
                 { "retryType", EnumToString(retryType) },
@@ -2824,7 +2825,7 @@ namespace SparrowSdk
         /// <param name="authCode">Auth code received from the issuer (Format: string)</param>,
         /// <param name="authDate">Date that auth code was obtained, required for Chase only (Format: MM/DD/YYYY)</param>,
         /// <param name="creditCard">CreditCard</param>
-        public async Task<SparrowResponse> SimpleOfflineCapture(CreditCard creditCard, decimal amount, string authCode, string authDate)
+        public async Task<SparrowResponse> SimpleOfflineCapture(CreditCard creditCard, decimal amount, string authCode, DateTime authDate)
         {
             var data = new Dictionary<string, string>
             {
@@ -2832,7 +2833,7 @@ namespace SparrowSdk
                 { "mKey", _apiKey },
                 { "amount", amount.ToString("f2") },
                 { "authCode", authCode },
-                { "authDate", authDate }
+                { "authDate", authDate.ToString("MM/dd/yy") }
             };
 
 
@@ -2840,7 +2841,7 @@ namespace SparrowSdk
             {
                 var x = creditCard;
                 data.Add("cardNum", x.CardNum);
-                data.Add("cardExp", x.CardExp);
+                data.Add("cardExp", x.CardExp.ToString("MMyy"));
                 data.Add("cvv", x.Cvv);
             }
 
@@ -2928,7 +2929,7 @@ namespace SparrowSdk
             {
                 var x = creditCard;
                 data.Add("cardNum", x.CardNum);
-                data.Add("cardExp", x.CardExp);
+                data.Add("cardExp", x.CardExp.ToString("MMyy"));
                 data.Add("cvv", x.Cvv);
             }
 
@@ -2997,14 +2998,14 @@ namespace SparrowSdk
         /// <param name="contactInfo">ContactInfo</param>,
         /// <param name="product">Product</param>,
         /// <param name="shippingContactInfo">ShippingContactInfo</param>
-        public async Task<SparrowResponse> AdvancedStarCard(string cardNum, string cardExp, decimal amount, string CID, string currency = "", ContactInfo contactInfo = null, IList<Product> product = null, string orderDesc = "", string orderId = "", string cardIpAddress = "", decimal? tax = null, decimal? shipAmount = null, string poNumber = "", string fax = "", ShippingContactInfo shippingContactInfo = null)
+        public async Task<SparrowResponse> AdvancedStarCard(string cardNum, DateTime cardExp, decimal amount, string CID, string currency = "", ContactInfo contactInfo = null, IList<Product> product = null, string orderDesc = "", string orderId = "", string cardIpAddress = "", decimal? tax = null, decimal? shipAmount = null, string poNumber = "", string fax = "", ShippingContactInfo shippingContactInfo = null)
         {
             var data = new Dictionary<string, string>
             {
                 { "transType", "sale" },
                 { "mKey", _apiKey },
                 { "cardNum", cardNum },
-                { "cardExp", cardExp },
+                { "cardExp", cardExp.ToString("MMyy") },
                 { "amount", amount.ToString("f2") },
                 { "CID", CID },
                 { "currency", currency },
@@ -3023,7 +3024,7 @@ namespace SparrowSdk
                 var x = contactInfo;
                 data.Add("firstName", x.FirstName);
                 data.Add("lastName", x.LastName);
-                data.Add("birthDate", x.BirthDate);
+                data.Add("birthDate", x.BirthDate?.ToString("MM/dd/yy") ?? "");
                 data.Add("company", x.Company);
                 data.Add("address1", x.Address?.Address1);
                 data.Add("city", x.Address?.City);
