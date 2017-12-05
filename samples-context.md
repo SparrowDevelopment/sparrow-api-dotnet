@@ -1,8 +1,9 @@
 ## Context
 
-The following is an example of the context where a call to the sparrow sdk could be made.
+The following is an example of a simple usage of the Sparrow Sdk.
 
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+using System;
 using System.Threading.Tasks;
 using SparrowSdk;
 
@@ -14,7 +15,7 @@ namespace SampleClient
 
         public async Task CreateSparrowSale()
         {
-            var result = await _sparrow.SimpleSale("4111111111111111", "01/18", 9.97m, "123");
+            var result = await _sparrow.SimpleSale(new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = new DateTime(2019, 10, 21), Cvv = "123" }, 9.97m);
 
             if (result.IsSuccess)
             {
@@ -32,7 +33,9 @@ namespace SampleClient
 
         public async Task CreateSparrowSale_WithNamedArguments()
         {
-            var result = await _sparrow.SimpleSale(cardNum: "4111111111111111", cardExp: "01/18", amount: 9.97m, cvv: "123");
+            var result = await _sparrow.SimpleSale(
+                creditCard: new Sparrow.CreditCard { CardNum = "4111111111111111", CardExp = new DateTime(2019, 10, 21), Cvv = "123" },
+                amount: 9.97m);
 
             if (result.IsSuccess)
             {
@@ -51,5 +54,4 @@ namespace SampleClient
     }
 }
 
-
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
